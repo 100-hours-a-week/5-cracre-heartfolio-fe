@@ -2,12 +2,21 @@
 module.exports = {
   content: ["./src/**/*.{html,jsx,js}"],
   theme: {
-    container:{
-      center:true,
+    extend: {
+      colors :{
+        btnclickColor: "#FFBBC0",
+        toastColor: "#FFA3B2",
+        iconColor: "#FF4359",
+        btnNoClickColor: "#FFE7E9",
+        boxBackgroundColor: "#EEEEEE",
+        modalBtnColor: "#B3B3B3",
+        blueColor: "#1573FE",
+        redColor : "#DF1525"
+        },
+      },
     },
-    extend: {},
-  },
-  plugins: [
-    require('@tailwindcss/forms'),
-  ],
-}
+    container: {
+      center: true,
+    },
+  plugins: [require('@tailwindcss/typography'), require("@tailwindcss/forms")],
+};
