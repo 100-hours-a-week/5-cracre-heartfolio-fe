@@ -1,9 +1,16 @@
 import "./App.css";
-import Header from './components/header';
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Portfolio from "./pages/portfolio";
 
 function App() {
   return (
-    <Header/>
+    <Router>
+      <Routes>
+        <Route path="/portfolio" element={<Portfolio />} />
+        <Route path="/intereststock" element={<Portfolio />} />
+        <Route path="/popularstock" element={<Portfolio />} />
+      </Routes>
+    </Router>
   );
 }
 
