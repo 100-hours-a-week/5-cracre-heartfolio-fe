@@ -58,7 +58,7 @@ function Header() {
                 </Disclosure.Button>
                 <Disclosure.Button
                   as="a"
-                  href="#"
+                  href="/ranking"
                   className="block border-transparent py-3 pl-3 pr-4 text-base font-medium text-center text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-black"
                 >
                   랭킹
@@ -72,14 +72,14 @@ function Header() {
                 </Disclosure.Button>
                 <Disclosure.Button
                   as="a"
-                  href="#"
+                  href="/mypage"
                   className="block border-transparent py-3 pl-3 pr-4 text-base font-medium text-center text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700"
                 >
                   마이페이지
                 </Disclosure.Button>
                 <Disclosure.Button
                   as="a"
-                  href="#"
+                  href="/cashcharge"
                   className="block border-transparent py-3 pl-3 pr-4 text-base font-medium text-center text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700"
                 >
                   캐시 충전
