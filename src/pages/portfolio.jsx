@@ -2,6 +2,7 @@ import { useState } from "react";
 import Header from "../components/header";
 import MoneyInfo from "../components/moneyInfo";
 import AssetConfiguration from "../components/assetConfiguration";
+import TransactionHistory from "../components/transactionHistory";
 
 function Portfolio() {
   const [activeTab, setActiveTab] = useState(1);
@@ -37,9 +38,9 @@ function Portfolio() {
           보유 자산
         </a>
       </div>
-      <div role="tabpanel" className="tab-content block p-10">
+      <div role="tabpanel" className="tab-content block p-4">
         {activeTab === 1 && <AssetConfiguration />}
-        {activeTab === 2 && "거래 내역"}
+        {activeTab === 2 && <TransactionHistory />}
         {activeTab === 3 && "보유 자산"}
       </div>
     </>

@@ -76,7 +76,7 @@ function AssetConfiguration() {
   };
 
   return (
-    <div className="mx-auto max-w-[350px]">
+    <div className="mx-auto max-w-[350px] py-4">
       <Chart options={options} series={sortedSeries} type="donut" height={350} />
     </div>
   );
