@@ -3,6 +3,7 @@ import Header from "../components/header";
 import MoneyInfo from "../components/moneyInfo";
 import AssetConfiguration from "../components/assetConfiguration";
 import TransactionHistory from "../components/transactionHistory";
+import Holdings from "../components/holdings";
 
 function Portfolio() {
   const [activeTab, setActiveTab] = useState(1);
@@ -35,13 +36,15 @@ function Portfolio() {
           className={`tab h-[50px] ${activeTab === 3 ? "tab-active" : ""}`}
           onClick={() => setActiveTab(3)}
         >
-          보유 자산
+          보유 종목
         </a>
       </div>
-      <div role="tabpanel" className="tab-content block p-4">
-        {activeTab === 1 && <AssetConfiguration />}
-        {activeTab === 2 && <TransactionHistory />}
-        {activeTab === 3 && "보유 자산"}
+      <div className="mx-auto max-w-[370px] bg-backColor p-4">
+        <div role="tabpanel" className="tab-content block">
+          {activeTab === 1 && <AssetConfiguration />}
+          {activeTab === 2 && <TransactionHistory />}
+          {activeTab === 3 && <Holdings />}
+        </div>
       </div>
     </>
   );

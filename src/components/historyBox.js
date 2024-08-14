@@ -1,8 +1,8 @@
 function HistoryBox() {
   return (
     <>
-      <div className="w-[350px] h-[80px] content-center">
-        <div className="flex w-[350px] justify-between items-center">
+      <div className="w-[330px] h-[80px] flex justify-center items-center">
+        <div className="flex w-[320px] justify-between items-center">
           <div className="w-[180px]">
             <div className="text-sm">YYYY-MM-DD HH:MM:SS</div>
             <div className="flex w-[90px] justify-between">
