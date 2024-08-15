@@ -1,6 +1,8 @@
 import { useState } from "react";
 import Header from "../components/header";
 import StockHeader from "../components/stockHeader";
+import Chart from "../components/chart";
+import StockHistory from "../components/stockHistory";
 
 function StockPage() {
   const [activeTab, setActiveTab] = useState(1);
@@ -15,14 +17,18 @@ function StockPage() {
       >
         <a
           role="tab"
-          className={`tab h-[50px] ${activeTab === 1 ? "bg-btnclickColor" : ""}`}
+          className={`tab h-[50px] ${
+            activeTab === 1 ? "bg-btnclickColor" : ""
+          }`}
           onClick={() => setActiveTab(1)}
         >
           차트
         </a>
         <a
           role="tab"
-          className={`tab h-[50px] ${activeTab === 2 ? "bg-btnclickColor" : ""}`}
+          className={`tab h-[50px] ${
+            activeTab === 2 ? "bg-btnclickColor" : ""
+          }`}
           onClick={() => setActiveTab(2)}
         >
           거래 내역
@@ -35,10 +41,10 @@ function StockPage() {
           정보
         </a> */}
       </div>
-      <div className="mx-auto max-w-[370px] p-4">
+      <div className="mx-auto max-w-[390px] p-4">
         <div role="tabpanel" className="tab-content block">
-          {activeTab === 1 && "1"}
-          {activeTab === 2 && "2"}
+          {activeTab === 1 && <Chart />}
+          {activeTab === 2 && <StockHistory />}
           {/* {activeTab === 3 && "3"} */}
         </div>
       </div>

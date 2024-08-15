@@ -2089,6 +2089,18 @@ input.tab:checked + .tab-content,
   margin-top: 20px;
 }
 
+.ml-1 {
+  margin-left: 0.25rem;
+}
+
+.mb-1 {
+  margin-bottom: 0.25rem;
+}
+
+.mb-2 {
+  margin-bottom: 0.5rem;
+}
+
 .block {
   display: block;
 }
@@ -2261,6 +2273,10 @@ input.tab:checked + .tab-content,
   width: 390px;
 }
 
+.w-fit {
+  width: fit-content;
+}
+
 .min-w-0 {
   min-width: 0px;
 }
@@ -2301,6 +2317,10 @@ input.tab:checked + .tab-content,
   flex-direction: row;
 }
 
+.flex-col {
+  flex-direction: column;
+}
+
 .flex-nowrap {
   flex-wrap: nowrap;
 }
@@ -2337,6 +2357,12 @@ input.tab:checked + .tab-content,
   --tw-space-y-reverse: 0;
   margin-top: calc(0.25rem * calc(1 - var(--tw-space-y-reverse)));
   margin-bottom: calc(0.25rem * var(--tw-space-y-reverse));
+}
+
+.space-y-3 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(0.75rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(0.75rem * var(--tw-space-y-reverse));
 }
 
 .divide-y > :not([hidden]) ~ :not([hidden]) {
@@ -2489,6 +2515,11 @@ input.tab:checked + .tab-content,
   padding-right: 0.5rem;
 }
 
+.px-6 {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
 .pb-3 {
   padding-bottom: 0.75rem;
 }
@@ -2507,6 +2538,10 @@ input.tab:checked + .tab-content,
 
 .text-center {
   text-align: center;
+}
+
+.text-right {
+  text-align: right;
 }
 
 .text-base {
