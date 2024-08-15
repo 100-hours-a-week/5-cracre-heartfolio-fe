@@ -1,8 +1,8 @@
 import { useState } from "react";
 import Header from "../components/header";
 import StockHeader from "../components/stockHeader";
-import Chart from "../components/chart";
 import StockHistory from "../components/stockHistory";
+import Chart from "../components/chart";
 
 function StockPage() {
   const [activeTab, setActiveTab] = useState(1);
@@ -41,7 +41,7 @@ function StockPage() {
           정보
         </a> */}
       </div>
-      <div className="mx-auto max-w-[390px] p-4">
+      <div className="mx-auto max-w-[390px] p-4 flex justify-center">
         <div role="tabpanel" className="tab-content block">
           {activeTab === 1 && <Chart />}
           {activeTab === 2 && <StockHistory />}
