@@ -7,12 +7,16 @@ import RankingPage from "./pages/rankingPage";
 import MyPage from "./pages/myPage";
 import CashChargePage from "./pages/cashChargePage";
 import MainPage from "./pages/mainPage";
+import LoginPage from "./pages/loginPage";
+import KakaoRedirect from "./pages/kakaoRedirect";
 
 function App() {
   return (
     <Router>
       <Routes>
         <Route path="/" element={<MainPage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/oauth" element={<KakaoRedirect />} />
         <Route path="/portfolio" element={<PortfolioPage />} />
         <Route path="/intereststock" element={<Intereststock />} />
         <Route path="/popularstock" element={<Popularstock />} />
