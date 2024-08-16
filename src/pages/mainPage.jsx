@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import Header from "../components/header";
 import ButtomNavigation from "../components/bottomNavigation";
-import PopularStockBox from "../components/popularStockBox";
+import PopularStockBox from "../components/box/popularStockBox";
 import PopularChart from "../components/popularChart";
 
 function MainPage() {

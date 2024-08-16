@@ -1,4 +1,4 @@
-import PopularStockBox from "./popularStockBox";
+import PopularStockBox from "./box/popularStockBox";
 
 const items = [{ id: 1 }, { id: 2 }, { id: 3 }];
 

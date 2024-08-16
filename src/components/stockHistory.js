@@ -1,5 +1,5 @@
-import HistoryBox from "./historyBox";
-import StockHistoryBox from "./stockHistoryBox";
+import HistoryBox from "./box/historyBox";
+import StockHistoryBox from "./box/stockHistoryBox";
 
 function StockHistory() {
   const items = [{ id: 1 }, { id: 2 }, { id: 3 }, { id: 4 }, { id: 5 }, { id: 6 }];
