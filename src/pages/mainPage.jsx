@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import Header from "../components/header";
+import ButtomNavigation from "../components/bottomNavigation";
 
 function MainPage() {
   const navigate = useNavigate();
@@ -19,6 +20,7 @@ function MainPage() {
           </button>
         </div>
       </div>
+      <ButtomNavigation/>
     </>
   );
 }

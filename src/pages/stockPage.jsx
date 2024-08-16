@@ -3,6 +3,7 @@ import Header from "../components/header";
 import StockHeader from "../components/stockHeader";
 import StockHistory from "../components/stockHistory";
 import Chart from "../components/chart";
+import ButtomNavigation from "../components/bottomNavigation";
 
 function StockPage() {
   const [activeTab, setActiveTab] = useState(1);
@@ -48,6 +49,7 @@ function StockPage() {
           {/* {activeTab === 3 && "3"} */}
         </div>
       </div>
+      <ButtomNavigation />
     </>
   );
 }

@@ -4,6 +4,7 @@ import MoneyInfo from "../components/moneyInfo";
 import AssetConfiguration from "../components/assetConfiguration";
 import TransactionHistory from "../components/transactionHistory";
 import Holdings from "../components/holdings";
+import ButtomNavigation from "../components/bottomNavigation";
 
 function Portfolio() {
   const [activeTab, setActiveTab] = useState(1);
@@ -46,6 +47,7 @@ function Portfolio() {
           {activeTab === 3 && <Holdings />}
         </div>
       </div>
+      <ButtomNavigation />
     </>
   );
 }
