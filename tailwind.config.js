@@ -8,6 +8,7 @@ module.exports = {
         toastColor: "#FFA3B2",
         iconColor: "#FF4359",
         btnNoClickColor: "#FFE7E9",
+        btnDisabledColor: "#fef5f6",
         boxBackgroundColor: "#EEEEEE",
         modalBtnColor: "#B3B3B3",
         blueColor: "#1573FE",

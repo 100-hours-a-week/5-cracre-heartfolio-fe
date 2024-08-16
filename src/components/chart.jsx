@@ -10,6 +10,8 @@ function Chart() {
       setQuantity(e.target.value);
     }
   };
+  const isDisabled = quantity <= 0;
+  const buttonStyle = isDisabled ? "bg-[#FEF0F2]" : "bg-[#FFE7E9]";
   return (
     <>
       <div className="mx-auto max-w-[370px]">
@@ -44,17 +46,31 @@ function Chart() {
           <div className="flex w-[370px] justify-between mt-3">
             <div className="flex items-center w-1/2">
               <p>총액</p>
-              <p className="h-[30px] w-[130px] content-center text-right text-xs">KRW</p>
+              <p className="h-[30px] w-[130px] content-center text-right text-xs">
+                KRW
+              </p>
             </div>
             <div className="flex items-center w-1/2">
               <p>내 캐시</p>
-              <p className="h-[30px] w-[130px] content-center text-right text-xs">KRW</p>
+              <p className="h-[30px] w-[130px] content-center text-right text-xs">
+                KRW
+              </p>
             </div>
           </div>
         </div>
         <div className="w-[390px] text-center mt-9">
-          <button className="bg-btnNoClickColor h-10 w-[140px] mx-3 rounded-md text-sm">매수</button>
-          <button className="bg-btnNoClickColor h-10 w-[140px] mx-3 rounded-md text-sm">매도</button>
+          <button
+            className={`${buttonStyle} h-10 w-[140px] mx-3 rounded-md text-sm`}
+            disabled={isDisabled}
+          >
+            매수
+          </button>
+          <button
+            className={`${buttonStyle} h-10 w-[140px] mx-3 rounded-md text-sm`}
+            disabled={isDisabled}
+          >
+            매도
+          </button>
         </div>
       </div>
     </>
