@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import ButtomNavigation from "../components/bottomNavigation";
 
 const LoginPage = () => {
   const REST_API_KEY = process.env.REACT_APP_REST_API_KEY; //REST API KEY
@@ -30,6 +31,7 @@ const LoginPage = () => {
         </button>
         <p id="token-result" className="mt-4 text-sm text-gray-700"></p>
       </div>
+      <ButtomNavigation />
     </>
   );
 };
