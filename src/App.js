@@ -6,11 +6,13 @@ import StockPage from "./pages/stockPage";
 import RankingPage from "./pages/rankingPage";
 import MyPage from "./pages/myPage";
 import CashChargePage from "./pages/cashChargePage";
+import MainPage from "./pages/mainPage";
 
 function App() {
   return (
     <Router>
       <Routes>
+        <Route path="/" element={<MainPage />} />
         <Route path="/portfolio" element={<PortfolioPage />} />
         <Route path="/intereststock" element={<Intereststock />} />
         <Route path="/popularstock" element={<Popularstock />} />
