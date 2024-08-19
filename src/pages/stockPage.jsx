@@ -4,14 +4,17 @@ import StockHeader from "../components/stockHeader";
 import StockHistory from "../components/stockHistory";
 import Chart from "../components/chart";
 import ButtomNavigation from "../components/bottomNavigation";
+import { useParams } from "react-router-dom";
 
 function StockPage() {
+  
   const [activeTab, setActiveTab] = useState(1);
   console.log("Active Tab:", activeTab);
+  const { stockName } = useParams();
   return (
     <>
       <Header />
-      <StockHeader />
+      <StockHeader name={stockName} />
       <div
         role="tablist"
         className="tabs tabs-boxed mx-auto max-w-[390px] bg-backColor mt-[20px]"

@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 // 관심종목의 각 주식
 export default function Eachintereststock({ name, price, change, percentage }) {
@@ -12,9 +13,13 @@ export default function Eachintereststock({ name, price, change, percentage }) {
         // 조건부 연산자를 사용하여 이미지 바꾸는 로직을 구현.
         setImageSrc(prevSrc => prevSrc === '/assets/images/uninterest.png' ? '/assets/images/interest.png' : '/assets/images/uninterest.png');
     };
-
+    const navigate = useNavigate();
+    function handleClick(get_name) {
+        navigate(`/stock/${get_name}`);
+    }
+    console.log(name);
     return (
-        <div className='flex flex-rowmx-auto max-w-[390px]'>
+        <div className='flex flex-rowmx-auto max-w-[390px]' onClick={()=> handleClick(name)}>
             {/* 하트 */}
             {/* 이 버튼은 클릭 시 toggleImage 함수를 호출하여 이미지가 바뀝니다. */}
             <button onClick={toggleImage} className=''>
