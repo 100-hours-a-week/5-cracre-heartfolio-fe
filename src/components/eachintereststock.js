@@ -40,9 +40,9 @@ export default function Eachintereststock({name, price, change, percentage}) {
                     {/* 현재가 */}
                     <p className=''>{price}</p>
                     {/* 전일대비수익 */}
-                    <p className=''>{change}</p>
+                    <p className={change.startsWith('-') ? 'text-[#1573FE]' : 'text-[#DF1525]'}>{change}</p>
                     {/* 수익률 */}
-                    <p className=''>{percentage}</p>
+                    <p className={percentage.startsWith('-') ? 'text-[#1573FE]' : 'text-[#DF1525]'}>({percentage})</p>
                 </div>
             </div>
         </div>
