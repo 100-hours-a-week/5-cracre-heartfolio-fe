@@ -19,10 +19,10 @@ export default function Eachintereststock({ name, price, change, percentage }) {
             {/* 이 버튼은 클릭 시 toggleImage 함수를 호출하여 이미지가 바뀝니다. */}
             <button onClick={toggleImage} className=''>
                 {/* 이미지 태그를 사용하여 현재 상태에 저장된 imageSrc 경로의 이미지를 표시합니다. */}
-                <img src={imageSrc} alt="Heart Icon" />
+                <img className='w-6 ' src={imageSrc} alt="Heart Icon" />
             </button>
             {/* 내용 */}
-            <div className='' >
+            <div className='ee ml-4' >
                 {/* 종목이름 */}
                 <h1 className=''>
                     {name}
