@@ -1,26 +1,16 @@
 import Chart from "react-apexcharts";
-
-function AssetConfiguration() {
-  const series = [44, 55, 41, 17, 15, 50, 43, 17, 15, 59, 41, 17, 15];
-  const labels = [
-    "종목1",
-    "종목2",
-    "종목3",
-    "종목4",
-    "종목5",
-    "종목6",
-    "종목7",
-    "종목8",
-    "종목9",
-    "종목10",
-    "종목11",
-    "종목12",
-    "종목13",
-  ];
+function getRandomPastelColor() {
+  const r = Math.floor(Math.random() * 127) + 128; // 128 to 255
+  const g = Math.floor(Math.random() * 127) + 128; // 128 to 255
+  const b = 255; // 255
+  return `rgb(${r}, ${g}, ${b})`;
+}
+function AssetConfiguration(props) {
+  const series = props.data.data.stocks.map((stock) => stock.percentage);
+  const labels = props.data.data.stocks.map((stock) => stock.stock_name);
 
   // 전체 합계 계산
   const total = series.reduce((acc, value) => acc + value, 0);
-
   // percentage를 기준으로 series와 labels를 정렬
   const sortedData = series
     .map((value, index) => ({
@@ -33,33 +23,28 @@ function AssetConfiguration() {
   // 정렬된 데이터를 기반으로 새로운 series와 labels 생성
   const sortedSeries = sortedData.map((data) => data.value);
   const sortedLabels = sortedData.map((data) => data.label);
+  const colors = sortedSeries.map(() => getRandomPastelColor());
 
   const options = {
     dataLabels: {
       enabled: false,
     },
     labels: sortedLabels,
-    colors: [
-      "#fd8c8c",
-      "#feb98b",
-      "#fef28b",
-      "#d7fe8b",
-      "#8bf8fe",
-      "#feb98b",
-      "#fef28b",
-      "#d7fe8b",
-      "#8bf8fe",
-      "#feb98b",
-      "#fef28b",
-      "#d7fe8b",
-      "#8bf8fe",
-    ],
+    colors: colors,
     plotOptions: {
       pie: {
         offsetX: -5, // 도넛 그래프를 왼쪽으로 이동
         donut: {
           labels: {
             show: true,
+            name: {
+              show: true,
+              fontSize: "15px",
+            },
+            value: {
+              show: true,
+              fontSize: "15px",
+            },
           },
         },
       },
@@ -73,11 +58,19 @@ function AssetConfiguration() {
         return seriesName + ": " + percentage + "%";
       },
     },
+    tooltip: {
+      enabled: false,
+    },
   };
 
   return (
     <div className="mx-auto max-w-[350px] py-4">
-      <Chart options={options} series={sortedSeries} type="donut" height={350} />
+      <Chart
+        options={options}
+        series={sortedSeries}
+        type="donut"
+        height={350}
+      />
     </div>
   );
 }
