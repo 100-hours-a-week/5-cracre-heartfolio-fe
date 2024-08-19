@@ -2,7 +2,7 @@ import HistoryBox from "./box/historyBox";
 
 function TransactionHistory(props) {
   const items = props.data.data;
-console.log(items)
+  console.log(items);
   return (
     <>
       <div className="mx-auto max-w-[350px]">
