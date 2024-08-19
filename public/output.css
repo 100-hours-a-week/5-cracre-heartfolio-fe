@@ -2216,10 +2216,6 @@ input.tab:checked + .tab-content,
   height: fit-content;
 }
 
-.h-4 {
-  height: 1rem;
-}
-
 .w-1\/2 {
   width: 50%;
 }
@@ -2234,10 +2230,6 @@ input.tab:checked + .tab-content,
 
 .w-6 {
   width: 1.5rem;
-}
-
-.w-8 {
-  width: 2rem;
 }
 
 .w-\[110px\] {
@@ -2295,6 +2287,7 @@ input.tab:checked + .tab-content,
 .w-full {
   width: 100%;
 }
+
 .w-\[200px\] {
   width: 200px;
 }
@@ -2305,9 +2298,6 @@ input.tab:checked + .tab-content,
 
 .w-9 {
   width: 2.25rem;
-=======
-.w-60 {
-  width: 15rem;
 }
 
 .w-10 {
@@ -2320,6 +2310,18 @@ input.tab:checked + .tab-content,
 
 .w-\[300px\] {
   width: 300px;
+}
+
+.w-\[100px\] {
+  width: 100px;
+}
+
+.w-\[150px\] {
+  width: 150px;
+}
+
+.w-\[160px\] {
+  width: 160px;
 }
 
 .min-w-0 {
@@ -2415,41 +2417,9 @@ input.tab:checked + .tab-content,
   border-bottom-width: calc(1px * var(--tw-divide-y-reverse));
 }
 
-.divide-y-4 > :not([hidden]) ~ :not([hidden]) {
-  --tw-divide-y-reverse: 0;
-  border-top-width: calc(4px * calc(1 - var(--tw-divide-y-reverse)));
-  border-bottom-width: calc(4px * var(--tw-divide-y-reverse));
-}
-
-.divide-y-2 > :not([hidden]) ~ :not([hidden]) {
-  --tw-divide-y-reverse: 0;
-  border-top-width: calc(2px * calc(1 - var(--tw-divide-y-reverse)));
-  border-bottom-width: calc(2px * var(--tw-divide-y-reverse));
-}
-
 .divide-gray-200 > :not([hidden]) ~ :not([hidden]) {
   --tw-divide-opacity: 1;
   border-color: rgb(229 231 235 / var(--tw-divide-opacity));
-}
-
-.divide-slate-400\/25 > :not([hidden]) ~ :not([hidden]) {
-  border-color: rgb(148 163 184 / 0.25);
-}
-
-.divide-slate-400\/20 > :not([hidden]) ~ :not([hidden]) {
-  border-color: rgb(148 163 184 / 0.2);
-}
-
-.divide-slate-400\/15 > :not([hidden]) ~ :not([hidden]) {
-  border-color: rgb(148 163 184 / 0.15);
-}
-
-.divide-slate-400\/10 > :not([hidden]) ~ :not([hidden]) {
-  border-color: rgb(148 163 184 / 0.1);
-}
-
-.divide-slate-300\/25 > :not([hidden]) ~ :not([hidden]) {
-  border-color: rgb(203 213 225 / 0.25);
 }
 
 .overflow-hidden {
@@ -2581,21 +2551,6 @@ input.tab:checked + .tab-content,
 .py-5 {
   padding-top: 1.25rem;
   padding-bottom: 1.25rem;
-}
-
-.px-2 {
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
-}
-
-.px-10 {
-  padding-left: 2.5rem;
-  padding-right: 2.5rem;
-}
-
-.px-5 {
-  padding-left: 1.25rem;
-  padding-right: 1.25rem;
 }
 
 .pb-3 {
@@ -2758,11 +2713,6 @@ input.tab:checked + .tab-content,
 .hover\:text-gray-700:hover {
   --tw-text-opacity: 1;
   color: rgb(55 65 81 / var(--tw-text-opacity));
-}
-
-.hover\:text-gray-900:hover {
-  --tw-text-opacity: 1;
-  color: rgb(17 24 39 / var(--tw-text-opacity));
 }
 
 .focus\:z-10:focus {
