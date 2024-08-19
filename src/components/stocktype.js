@@ -9,7 +9,7 @@ function classNames(...classes) {
 
 export default function Stocktype() {
   return (
-    <div className="mx-auto max-w-[390px] flex">
+    <div className="mx-auto max-w-[390px] px-3  z-50 flex">
       <div className="hidden sm:block">
         <nav
           aria-label="Tabs"
@@ -26,7 +26,7 @@ export default function Stocktype() {
                   : "text-gray-500 hover:text-gray-700",
                 tabIdx === 0 ? "rounded-l-lg" : "",
                 tabIdx === tabs.length - 1 ? "rounded-r-lg" : "",
-                "group relative min-w-0 flex-1 overflow-hidden bg-white px-4 py-4 text-center text-sm font-medium hover:bg-gray-50 focus:z-10"
+                "group relative min-w-0 flex-1  bg-white px-4 py-4 text-center  hover:bg-gray-50 focus:z-10 w-40"
               )}
             >
               <span>{tab.name}</span>
@@ -41,7 +41,12 @@ export default function Stocktype() {
           ))}
         </nav>
       </div>
-      <p>돋보기</p>
+      <a
+        href="/search" //검색 화면으로 이동
+        className="material-symbols-outlined px-4 py-4 text-gray-500 hover:text-gray-700 "
+      >
+        search
+      </a>
     </div>
   );
 }
