@@ -20,7 +20,7 @@ function App() {
         <Route path="/portfolio" element={<PortfolioPage />} />
         <Route path="/intereststock" element={<Intereststock />} />
         <Route path="/popularstock" element={<Popularstock />} />
-        <Route path="/stock" element={<StockPage />} />
+        <Route path="/stock=:stockName" element={<StockPage />} />        
         <Route path="/ranking" element={<RankingPage />} />
         <Route path="/mypage" element={<MyPage />} />
         <Route path="/cashcharge" element={<CashChargePage />} />

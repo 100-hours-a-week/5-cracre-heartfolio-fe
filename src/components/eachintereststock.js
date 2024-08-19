@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import { useNavigate } from "react-router-dom";
+
 
 // 관심종목의 각 주식
 export default function Eachintereststock({ name, price, change, percentage }) {
@@ -13,16 +15,23 @@ export default function Eachintereststock({ name, price, change, percentage }) {
         setImageSrc(prevSrc => prevSrc === '/assets/images/uninterest.png' ? '/assets/images/interest.png' : '/assets/images/uninterest.png');
     };
 
+    //각 주식 페이지로 이동
+    const navigate = useNavigate();
+    const handleClick = () => {
+        navigate(`/stock=${name}`);
+    };
+
     return (
-        <div className='flex flex-rowmx-auto max-w-[390px]'>
+        //onClick={handleClick} 아래줄에 넣어주세요!!
+        <div  className='flex flex-rowmx-auto max-w-[390px]  bg-white  hover:bg-gray-50'>
             {/* 하트 */}
             {/* 이 버튼은 클릭 시 toggleImage 함수를 호출하여 이미지가 바뀝니다. */}
-            <button onClick={toggleImage} className=''>
+            <button onClick={toggleImage} className='px-3'>
                 {/* 이미지 태그를 사용하여 현재 상태에 저장된 imageSrc 경로의 이미지를 표시합니다. */}
                 <img className='w-6 ' src={imageSrc} alt="Heart Icon" />
             </button>
             {/* 내용 */}
-            <div className='ee ml-4' >
+            <div className='ml-4 w-[300px]' >
                 {/* 종목이름 */}
                 <h1 className=''>
                     {name}
