@@ -7,7 +7,7 @@ function TransactionHistory(props) {
     <>
       <div className="mx-auto max-w-[350px]">
         <ul role="list" className="divide-y divide-gray-200">
-          {items.map((item) => (
+          {items.slice().reverse().map((item) => (
             <li key={item.stock_id} className="py-2">
               <HistoryBox
                 stock_id={item.stock_id}
