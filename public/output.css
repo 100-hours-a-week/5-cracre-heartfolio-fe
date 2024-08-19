@@ -1026,18 +1026,6 @@ html {
     --tw-text-opacity: 1;
     color: var(--fallback-pc,oklch(var(--pc)/var(--tw-text-opacity)));
   }
-
-  .table tr.hover:hover,
-  .table tr.hover:nth-child(even):hover {
-    --tw-bg-opacity: 1;
-    background-color: var(--fallback-b2,oklch(var(--b2)/var(--tw-bg-opacity)));
-  }
-
-  .table-zebra tr.hover:hover,
-  .table-zebra tr.hover:nth-child(even):hover {
-    --tw-bg-opacity: 1;
-    background-color: var(--fallback-b3,oklch(var(--b3)/var(--tw-bg-opacity)));
-  }
 }
 
 .divider {
@@ -2295,17 +2283,7 @@ input.tab:checked + .tab-content,
 .w-full {
   width: 100%;
 }
-.w-\[200px\] {
-  width: 200px;
-}
 
-.w-2 {
-  width: 0.5rem;
-}
-
-.w-9 {
-  width: 2.25rem;
-=======
 .w-60 {
   width: 15rem;
 }
@@ -2683,16 +2661,6 @@ input.tab:checked + .tab-content,
 .text-\[\#000000\] {
   --tw-text-opacity: 1;
   color: rgb(0 0 0 / var(--tw-text-opacity));
-}
-
-.text-\[\#1573FE\] {
-  --tw-text-opacity: 1;
-  color: rgb(21 115 254 / var(--tw-text-opacity));
-}
-
-.text-\[\#DF1525\] {
-  --tw-text-opacity: 1;
-  color: rgb(223 21 37 / var(--tw-text-opacity));
 }
 
 .text-blueColor {

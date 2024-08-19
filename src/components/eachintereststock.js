@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 // 관심종목의 각 주식
-export default function Eachintereststock({ name, price, change, percentage }) {
+export default function Eachintereststock({name, price, change, percentage}) {
 
     // useState를 사용하여 이미지의 경로를 관리하는 상태를 선언합니다.초기값으로 'a.jpg'를 설정합니다.
     const [imageSrc, setImageSrc] = useState('/assets/images/uninterest.png');
@@ -19,7 +19,7 @@ export default function Eachintereststock({ name, price, change, percentage }) {
     function handleClick(get_name) {
         navigate(`/stock/${get_name}`);
     }
-    console.log(name);
+    console.log();
     return (
         <div className='flex flex-rowmx-auto max-w-[390px] bg-white hover:bg-gray-50' onClick={()=> handleClick(name)}>
 
