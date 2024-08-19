@@ -1,4 +1,4 @@
-import HistoryBox from "./historyBox";
+import HistoryBox from "./box/historyBox";
 
 function TransactionHistory() {
   const items = [

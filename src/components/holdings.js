@@ -1,4 +1,4 @@
-import HoldingsBox from "./holdingsBox";
+import HoldingsBox from "./box/holdingsBox";
 
 function Holdings() {
   const items = [
