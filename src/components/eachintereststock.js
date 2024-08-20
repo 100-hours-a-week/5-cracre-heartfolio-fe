@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 // 관심종목의 각 주식
-export default function Eachintereststock({name, price, change, percentage}) {
+export default function Eachintereststock({ id, name, price, change, percentage }) {
 
     // useState를 사용하여 이미지의 경로를 관리하는 상태를 선언합니다.초기값으로 'a.jpg'를 설정합니다.
     const [imageSrc, setImageSrc] = useState('/assets/images/uninterest.png');
@@ -16,12 +16,11 @@ export default function Eachintereststock({name, price, change, percentage}) {
     const navigate = useNavigate();
   
     // 각 주식 페이지 이동
-    function handleClick(get_name) {
-        navigate(`/stock/${get_name}`);
+    function handleClick(get_id) {
+        navigate(`/stock/${get_id}`);
     }
-    console.log();
     return (
-        <div className='flex flex-rowmx-auto max-w-[390px] bg-white hover:bg-gray-50' onClick={()=> handleClick(name)}>
+        <div className='flex flex-rowmx-auto max-w-[390px] bg-white hover:bg-gray-50' onClick={()=> handleClick(id)}>
 
             {/* 하트 */}
             {/* 이 버튼은 클릭 시 toggleImage 함수를 호출하여 이미지가 바뀝니다. */}
@@ -40,9 +39,9 @@ export default function Eachintereststock({name, price, change, percentage}) {
                     {/* 현재가 */}
                     <p className=''>{price}</p>
                     {/* 전일대비수익 */}
-                    <p className={change.startsWith('-') ? 'text-[#1573FE]' : 'text-[#DF1525]'}>{change}</p>
+                    <p className=''>{change}</p>
                     {/* 수익률 */}
-                    <p className={percentage.startsWith('-') ? 'text-[#1573FE]' : 'text-[#DF1525]'}>({percentage})</p>
+                    <p className=''>{percentage}</p>
                 </div>
             </div>
         </div>

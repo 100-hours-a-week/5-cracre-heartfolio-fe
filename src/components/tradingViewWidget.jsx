@@ -1,7 +1,7 @@
 // TradingViewWidget.jsx
 import React, { useEffect, useRef, memo } from "react";
 
-function TradingViewWidget() {
+function TradingViewWidget(props) {
   const container = useRef();
 
   useEffect(() => {
@@ -17,7 +17,7 @@ function TradingViewWidget() {
         {
           "width": "370",
           "height": "300",
-          "symbol": "NASDAQ:AAPL",
+          "symbol": "${props.symbol}",
           "interval": "60",
           "timezone": "Etc/UTC",
           "theme": "light",
