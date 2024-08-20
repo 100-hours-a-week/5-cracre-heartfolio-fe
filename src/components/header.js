@@ -21,7 +21,7 @@ function Header() {
                   src="/assets/images/heartfolioLogo.webp"
                   className="h-8 w-auto"
                 />           
-                <div className=" ml-4 mr-36">Heartfolio</div>
+                <div className=" ml-4 mr-36 content-center">Heartfolio</div>
               </a>
             </div>
             <a href="/login" className="content-center">
