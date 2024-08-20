@@ -4,53 +4,68 @@ import Eachpopularstock from "../components/eachpopularstock";
 import ButtomNavigation from "../components/bottomNavigation";
 
 function Popularstock() {
+
+  // const {data, error, loading} = useFetch("http://localhost:8080/api//api/stock/popular?limit={limit}");
+
   // 인기 종목 데이터 배열
-  const popularStocks = [
-    {
-      id: 1,
-      rank: "1",
-      name: "NVIDIA",
-      price: "23,000",
-      change: "+1200",
-      percentage: "(+8.8%)",
-    },
-    {
-      id: 2,
-      rank: "2",
-      name: "Apple",
-      price: "150,000",
-      change: "+3000",
-      percentage: "(+2.0%)",
-    },
-    {
-      id: 3,
-      rank: "3",
-      name: "Tesla",
-      price: "50,000",
-      change: "-2000",
-      percentage: "(-3.5%)",
-    },
-    // ... 더 많은 종목 추가
-    {
-      id: 24,
-      rank: "25",
-      name: "Intel",
-      price: "30,000",
-      change: "+1000",
-      percentage: "(+3.3%)",
-    },
-    {
-      id: 25,
-      rank: "26",
-      name: "AMD",
-      price: "40,000",
-      change: "+500",
-      percentage: "(+1.3%)",
-    }, // 26번째 종목 (표시되지 않음)
-  ];
+  const popular_data = {
+    "data": [
+      {
+        "stock_id": 1,
+        "stock_name": "Apple Inc.",
+        "earningRate": 3.5
+      },
+      {
+        "stock_id": 2,
+        "stock_name": "NVIDIA",
+        "earningRate": 1.5
+      },
+      {
+        "stock_id": 3,
+        "stock_name": "Tesla, Inc.",
+        "earningRate": 4.2
+      },
+      {
+        "stock_id": 4,
+        "stock_name": "Amazon.com Inc.",
+        "earningRate": 2.8
+      },
+      {
+        "stock_id": 5,
+        "stock_name": "Microsoft Corporation",
+        "earningRate": -0.5
+      },
+      {
+        "stock_id": 6,
+        "stock_name": "Alphabet Inc.",
+        "earningRate": 0.8
+      },
+      {
+        "stock_id": 7,
+        "stock_name": "Meta Platforms, Inc.",
+        "earningRate": 3.1
+      },
+      {
+        "stock_id": 8,
+        "stock_name": "Netflix, Inc.",
+        "earningRate": -1.2
+      },
+      {
+        "stock_id": 9,
+        "stock_name": "Intel Corporation",
+        "earningRate": 2.0
+      },
+      {
+        "stock_id": 10,
+        "stock_name": "Advanced Micro Devices, Inc.",
+        "earningRate": 1.7
+      }
+    ]
+  }
+  
 
   // 상위 25개의 종목만 선택
-  const top25Stocks = popularStocks.slice(0, 25);
+  const top25Stocks = popular_data.data.slice(0, 25);
 
   return (
     <>
@@ -61,12 +76,12 @@ function Popularstock() {
         {/* map을 사용하여 상위 25개 종목 반복 렌더링 */}
         {top25Stocks.map((stock) => (
           <Eachpopularstock
-            key={stock.id}
+            key={stock.stock_id}
             rank={stock.rank}
-            name={stock.name}
+            name={stock.stock_name}
             price={stock.price}
             change={stock.change}
-            percentage={stock.percentage}
+            percentage={stock.earningRate}
           />
         ))}
       </div>
