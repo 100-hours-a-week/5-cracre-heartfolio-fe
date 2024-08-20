@@ -2,7 +2,7 @@ import { useState } from "react";
 
 const { default: TradingViewWidget } = require("./tradingViewWidget");
 
-function Chart() {
+function Chart(props) {
   const [quantity, setQuantity] = useState("");
 
   const handleQuantityChange = (e) => {
@@ -15,7 +15,7 @@ function Chart() {
   return (
     <>
       <div className="mx-auto max-w-[370px]">
-        <TradingViewWidget />
+        <TradingViewWidget symbol={props.info.symbol} />
         <div>
           <div className="flex w-[370px]">
             <div className="flex items-center w-3/5 justify-between">

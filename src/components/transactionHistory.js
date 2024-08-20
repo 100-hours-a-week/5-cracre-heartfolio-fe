@@ -5,7 +5,7 @@ function TransactionHistory(props) {
   console.log(items);
   return (
     <>
-      <div className="mx-auto max-w-[350px]">
+      <div className="mx-auto max-w-[350px] pb-8">
         <ul role="list" className="divide-y divide-gray-200">
           {items.slice().reverse().map((item) => (
             <li key={item.stock_id} className="py-2">

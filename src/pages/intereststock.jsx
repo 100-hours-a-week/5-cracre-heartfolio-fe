@@ -83,6 +83,7 @@ console.log(interest_data)
         {/* map을 사용하여 반복 렌더링 */}
         {interest_data.map((stock) => (
           <Eachintereststock
+            id={stock.stock_id}
             key={stock.stock_id}
             name={stock.stock_code}
             price={stock.price}

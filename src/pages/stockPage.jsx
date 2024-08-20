@@ -5,16 +5,22 @@ import StockHistory from "../components/stockHistory";
 import Chart from "../components/chart";
 import ButtomNavigation from "../components/bottomNavigation";
 import { useParams } from "react-router-dom";
+import useFetch from "../hooks/useFetch";
 
 function StockPage() {
-  
   const [activeTab, setActiveTab] = useState(1);
   console.log("Active Tab:", activeTab);
-  const { stockName } = useParams();
+  const { id } = useParams();
+  // const {stock_info_data, error, loading} = useFetch("http://localhost:8080/api/invest/"id);
+  // const {holdings_history_data, error, loading} = useFetch("http://localhost:8080/api/stock/"+id+"/order");
+  const stock_info_data = {
+    symbol : "NASDAQ:MSFT",
+    name : "Microsoft"
+  }
   return (
     <>
       <Header />
-      <StockHeader name={stockName} />
+      <StockHeader name={stock_info_data.name} />
       <div
         role="tablist"
         className="tabs tabs-boxed mx-auto max-w-[390px] bg-backColor mt-[20px]"
@@ -47,7 +53,7 @@ function StockPage() {
       </div>
       <div className="mx-auto max-w-[390px] p-4 flex justify-center">
         <div role="tabpanel" className="tab-content block">
-          {activeTab === 1 && <Chart />}
+          {activeTab === 1 && <Chart info={stock_info_data}/>}
           {activeTab === 2 && <StockHistory />}
           {/* {activeTab === 3 && "3"} */}
         </div>

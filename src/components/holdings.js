@@ -4,7 +4,7 @@ function Holdings(props) {
   const items = props.data;
   return (
     <>
-      <div className="mx-auto max-w-[350px] py-4">
+      <div className="mx-auto max-w-[350px] py-4 pb-8">
         <div className="text-xl">보유 종목(KRW)</div>
         <ul role="list">
           {items.map((item) => (
