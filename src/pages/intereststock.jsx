@@ -9,68 +9,77 @@ function Intereststock() {
 
   // 인기 종목 데이터 배열_목업데이터
   const interest_data = [
-    {
-        "stock_id": 1,
-        "stock_code": "AAPL",
-        "stock_name": "Apple Inc.",
-        //임의로 넣음
-        "price": "85,000",
-        "change": "-45,000",
-        "percentage": "-0.53%"
-    },
-    {
-        "stock_id": 2,
-        "stock_code": "GOOGL",
-        "stock_name": "Alphabet Inc.",  
-        //임의로 넣음      
-        "price": "95,000",
-        "change": "45,000",
-        "percentage": "+0.53%"
-
-    },
-    // {
-    //     "stock_id": 3,
-    //     "stock_code": "MSFT",
-    //     "stock_name": "Microsoft Corporation"
-    // },
-    // {
-    //     "stock_id": 4,
-    //     "stock_code": "AMZN",
-    //     "stock_name": "Amazon.com Inc."
-    // },
-    // {
-    //     "stock_id": 5,
-    //     "stock_code": "TSLA",
-    //     "stock_name": "Tesla, Inc."
-    // },
-    // {
-    //     "stock_id": 6,
-    //     "stock_code": "FB",
-    //     "stock_name": "Meta Platforms, Inc."
-    // },
-    // {
-    //     "stock_id": 7,
-    //     "stock_code": "NVDA",
-    //     "stock_name": "NVIDIA Corporation"
-    // },
-    // {
-    //     "stock_id": 8,
-    //     "stock_code": "NFLX",
-    //     "stock_name": "Netflix, Inc."
-    // },
-    // {
-    //     "stock_id": 9,
-    //     "stock_code": "INTC",
-    //     "stock_name": "Intel Corporation"
-    // },
-    // {
-    //     "stock_id": 10,
-    //     "stock_code": "AMD",
-    //     "stock_name": "Advanced Micro Devices, Inc."
-    // }
-]
-
-  
+      {
+          "stockId": 1,
+          "stockName": "Apple Inc.", //종목명
+          "currentPrice": 15000, //현재가
+          "earningValue": 500,//전일대비 증가량
+          "earningRate": "3.45" //수익률
+      },
+      {
+          "stockId": 2,
+          "stockName": "Alphabet Inc.",
+          "currentPrice": 27500,
+          "earningValue": 1200,
+          "earningRate": "4.56"
+      },
+      {
+          "stockId": 3,
+          "stockName": "Amazon.com Inc.",
+          "currentPrice": 34000,
+          "earningValue": -300,
+          "earningRate": "-0.88"
+      },
+      {
+          "stockId": 4,
+          "stockName": "Tesla Inc.",
+          "currentPrice": 42000,
+          "earningValue": 1500,
+          "earningRate": "3.70"
+      },
+      {
+          "stockId": 5,
+          "stockName": "Microsoft Corp.",
+          "currentPrice": 29000,
+          "earningValue": 800,
+          "earningRate": "2.83"
+      },
+      {
+          "stockId": 6,
+          "stockName": "Meta Platforms Inc.",
+          "currentPrice": 21000,
+          "earningValue": -450,
+          "earningRate": "-2.10"
+      },
+      {
+          "stockId": 7,
+          "stockName": "Netflix Inc.",
+          "currentPrice": 18000,
+          "earningValue": 900,
+          "earningRate": "5.26"
+      },
+      {
+          "stockId": 8,
+          "stockName": "NVIDIA Corp.",
+          "currentPrice": 35000,
+          "earningValue": 2000,
+          "earningRate": "6.06"
+      },
+      {
+          "stockId": 9,
+          "stockName": "Adobe Inc.",
+          "currentPrice": 14000,
+          "earningValue": -200,
+          "earningRate": "-1.41"
+      },
+      {
+          "stockId": 10,
+          "stockName": "Intel Corp.",
+          "currentPrice": 10000,
+          "earningValue": 300,
+          "earningRate": "3.00"
+      }
+    ]
 
 console.log(interest_data)
 
@@ -83,12 +92,11 @@ console.log(interest_data)
         {/* map을 사용하여 반복 렌더링 */}
         {interest_data.map((stock) => (
           <Eachintereststock
-            id={stock.stock_id}
-            key={stock.stock_id}
-            name={stock.stock_code}
-            price={stock.price}
-            change={stock.change}
-            percentage={stock.percentage}
+            id={stock.stock_id} //주식별 고유 아이디(기본키)
+            name={stock.stockName} //종목명
+            price={stock.currentPrice} //현재가
+            change={stock.earningValue} //전일대비 증가량
+            percentage={stock.earningRate} //수익률
           />
         ))}
       </div>
