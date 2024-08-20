@@ -15,13 +15,18 @@ function Header() {
         <div className="flex h-16 justify-between">
           <div className="flex">
             <div className="flex flex-shrink-0 items-center">
-              <img
-                alt="Logo"
-                src="/assets/images/heartfolioLogo.webp"
-                className="h-8 w-auto"
-              />
+              <a href="/" className=" flex content-center"> 
+                <img
+                  alt="Logo"
+                  src="/assets/images/heartfolioLogo.webp"
+                  className="h-8 w-auto"
+                />           
+                <div className=" ml-4 mr-36">Heartfolio</div>
+              </a>
             </div>
-            <div className="content-center ml-4">Heartfolio</div>
+            <a href="/login" className="content-center">
+            <div className=" ml-5 mr-5 text-sm" >로그인</div>
+            </a>
           </div>
           <div className="flex ml-auto items-center">
             <Disclosure.Button

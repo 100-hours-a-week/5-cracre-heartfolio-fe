@@ -4,45 +4,75 @@ import Eachintereststock from "../components/eachintereststock";
 import ButtomNavigation from "../components/bottomNavigation";
 
 function Intereststock() {
-  // 인기 종목 데이터 배열
-  const interestStocks = [
+
+  // const {data, error, loading} = useFetch("http://localhost:8080/api//api/stock/favorites");
+
+  // 인기 종목 데이터 배열_목업데이터
+  const interest_data = [
     {
-      id: 1,
-      name: "NVIDIA",
-      price: "23,000",
-      change: "+1200",
-      percentage: "(+8.8%)",
+        "stock_id": 1,
+        "stock_code": "AAPL",
+        "stock_name": "Apple Inc.",
+        //임의로 넣음
+        "price": "85,000",
+        "change": "-45,000",
+        "percentage": "-0.53%"
     },
     {
-      id: 2,
-      name: "Apple",
-      price: "150,000",
-      change: "+3000",
-      percentage: "(+2.0%)",
+        "stock_id": 2,
+        "stock_code": "GOOGL",
+        "stock_name": "Alphabet Inc.",  
+        //임의로 넣음      
+        "price": "95,000",
+        "change": "45,000",
+        "percentage": "+0.53%"
+
     },
-    {
-      id: 3,
-      name: "Tesla",
-      price: "50,000",
-      change: "-2000",
-      percentage: "(-3.5%)",
-    },
-    // ... 더 많은 종목 추가
-    {
-      id: 24,
-      name: "Intel",
-      price: "30,000",
-      change: "+1000",
-      percentage: "(+3.3%)",
-    },
-    {
-      id: 25,
-      name: "AMD",
-      price: "40,000",
-      change: "+500",
-      percentage: "(+1.3%)",
-    }, // 26번째 종목 (표시되지 않음)
-  ];
+    // {
+    //     "stock_id": 3,
+    //     "stock_code": "MSFT",
+    //     "stock_name": "Microsoft Corporation"
+    // },
+    // {
+    //     "stock_id": 4,
+    //     "stock_code": "AMZN",
+    //     "stock_name": "Amazon.com Inc."
+    // },
+    // {
+    //     "stock_id": 5,
+    //     "stock_code": "TSLA",
+    //     "stock_name": "Tesla, Inc."
+    // },
+    // {
+    //     "stock_id": 6,
+    //     "stock_code": "FB",
+    //     "stock_name": "Meta Platforms, Inc."
+    // },
+    // {
+    //     "stock_id": 7,
+    //     "stock_code": "NVDA",
+    //     "stock_name": "NVIDIA Corporation"
+    // },
+    // {
+    //     "stock_id": 8,
+    //     "stock_code": "NFLX",
+    //     "stock_name": "Netflix, Inc."
+    // },
+    // {
+    //     "stock_id": 9,
+    //     "stock_code": "INTC",
+    //     "stock_name": "Intel Corporation"
+    // },
+    // {
+    //     "stock_id": 10,
+    //     "stock_code": "AMD",
+    //     "stock_name": "Advanced Micro Devices, Inc."
+    // }
+]
+
+  
+
+console.log(interest_data)
 
   return (
     <>
@@ -51,10 +81,10 @@ function Intereststock() {
       {/* 인기종목리스트 */}
       <div className="mx-auto max-w-[390px] ">
         {/* map을 사용하여 반복 렌더링 */}
-        {interestStocks.map((stock) => (
+        {interest_data.map((stock) => (
           <Eachintereststock
-            key={stock.id}
-            name={stock.name}
+            key={stock.stock_id}
+            name={stock.stock_code}
             price={stock.price}
             change={stock.change}
             percentage={stock.percentage}
