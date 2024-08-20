@@ -11,8 +11,11 @@ function Portfolio() {
   const [activeTab, setActiveTab] = useState(1);
   console.log("Active Tab:", activeTab);
 
-  // const {data, error, loading} = useFetch("http://localhost:8080/api/portfolio/"+userId);
-  // const {data, error, loading} = useFetch("http://localhost:8080/api/portfolio/"+userId+"/stock");
+  // const {cash_data, error, loading} = useFetch("http://localhost:8080/api/portfolio/"+userId);
+  // const {asset_data, error, loading} = useFetch("http://localhost:8080/api/portfolio/"+userId+"/stock");
+  // const {transaction_data, error, loading} = useFetch("http://localhost:8080/api/portfolio/investInfo");
+  // const {holdings_data, error, loading} = useFetch("http://localhost:8080/api/portfolio/totalStocks");
+
   const cash_data = {
     cash: 75121616,
     total_purchase: 35000616,
@@ -76,6 +79,117 @@ function Portfolio() {
       ],
     },
   };
+  const transaction_data = {
+    data: [
+      {
+        stock_id: 1,
+        name: "NVIDIA",
+        order_category: "buy",
+        order_date: "2024-08-14 13:16:00",
+        order_amount: 100,
+        order_price: 30330,
+        total_amount: 303300,
+      },
+      {
+        stock_id: 2,
+        name: "Apple",
+        order_category: "sell",
+        order_date: "2024-08-15 09:30:00",
+        order_amount: 50,
+        order_price: 15000,
+        total_amount: 750000,
+      },
+      {
+        stock_id: 3,
+        name: "Tesla",
+        order_category: "buy",
+        order_date: "2024-08-16 10:45:00",
+        order_amount: 75,
+        order_price: 68000,
+        total_amount: 5100000,
+      },
+      {
+        stock_id: 4,
+        name: "AMD",
+        order_category: "buy",
+        order_date: "2024-08-17 11:22:00",
+        order_amount: 200,
+        order_price: 12000,
+        total_amount: 2400000,
+      },
+      {
+        stock_id: 5,
+        name: "Microsoft",
+        order_category: "sell",
+        order_date: "2024-08-18 14:50:00",
+        order_amount: 30,
+        order_price: 32000,
+        total_amount: 96023442000,
+      },
+      {
+        stock_id: 6,
+        name: "Microsoft",
+        order_category: "sell",
+        order_date: "2024-08-18 14:50:00",
+        order_amount: 30,
+        order_price: 32000,
+        total_amount: 960000,
+      },
+    ],
+  };
+
+  const holdings_data = [
+    {
+      stock_id: 1,
+      name: "Apple",
+      total_quantity: 300,
+      purchase_avg_price: 3500,
+      total_purchase_price: 105000,
+      evalValue: 103200,
+      evalProfit: -1800,
+      profitPercentage: -1.69,
+    },
+    {
+      stock_id: 2,
+      name: "NVIDIA",
+      total_quantity: 200,
+      purchase_avg_price: 5000,
+      total_purchase_price: 100000,
+      evalValue: 108200,
+      evalProfit: 8200,
+      profitPercentage: 8.2,
+    },
+    {
+      stock_id: 3,
+      name: "SamSung",
+      total_quantity: 500,
+      purchase_avg_price: 60000,
+      total_purchase_price: 30000000,
+      evalValue: 31500000,
+      evalProfit: 1500000,
+      profitPercentage: 5,
+    },
+    {
+      stock_id: 4,
+      name: "Tesla",
+      total_quantity: 100,
+      purchase_avg_price: 70000,
+      total_purchase_price: 7000000,
+      evalValue: 6800000,
+      evalProfit: -200000,
+      profitPercentage: -2.86,
+    },
+    {
+      stock_id: 5,
+      name: "Amazon",
+      total_quantity: 150,
+      purchase_avg_price: 3200,
+      total_purchase_price: 480000,
+      evalValue: 500000,
+      evalProfit: 20000,
+      profitPercentage: 4.17,
+    },
+  ];
 
   return (
     <>
@@ -109,9 +223,9 @@ function Portfolio() {
       </div>
       <div className="mx-auto max-w-[370px] bg-backColor p-4">
         <div role="tabpanel" className="tab-content block">
-          {activeTab === 1 && <AssetConfiguration data={asset_data}/>}
-          {activeTab === 2 && <TransactionHistory />}
-          {activeTab === 3 && <Holdings />}
+          {activeTab === 1 && <AssetConfiguration data={asset_data} />}
+          {activeTab === 2 && <TransactionHistory data={transaction_data} />}
+          {activeTab === 3 && <Holdings data={holdings_data} />}
         </div>
       </div>
       <ButtomNavigation />

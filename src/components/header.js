@@ -30,15 +30,24 @@ function Header() {
           </div>
           <div className="flex ml-auto items-center">
             <Disclosure.Button
-              className="group relative inline-flex rounded-md text-gray-400 hover:bg-gray-100 hover:text-gray-500 "
+              className={`relative inline-flex rounded-md text-gray-400 hover:bg-gray-100 hover:text-gray-500 transition-transform duration-300 ${
+                isOpen ? "rotate-180" : ""
+              }`}
               onClick={() => setIsOpen(!isOpen)}
             >
               <span className="sr-only">Open main menu</span>
-              {isOpen ? (
-                <XMarkIcon aria-hidden="true" className="block h-6 w-6" />
-              ) : (
-                <Bars3Icon aria-hidden="true" className="block h-6 w-6" />
-              )}
+              <Bars3Icon
+                className={`h-6 w-6 transition-opacity duration-300 ${
+                  isOpen ? "opacity-0" : "opacity-100"
+                }`}
+                aria-hidden="true"
+              />
+              <XMarkIcon
+                className={`absolute h-6 w-6 transition-opacity duration-300 ${
+                  isOpen ? "opacity-100" : "opacity-0"
+                }`}
+                aria-hidden="true"
+              />
             </Disclosure.Button>
           </div>
         </div>
