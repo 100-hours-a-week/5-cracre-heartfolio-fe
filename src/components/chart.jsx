@@ -1,9 +1,25 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { io } from "socket.io-client";
+const socket = io("http://localhost:3000");
 
 const { default: TradingViewWidget } = require("./tradingViewWidget");
 
 function Chart(props) {
   const [quantity, setQuantity] = useState("");
+  const [currentPrice, setCurrentPrice] = useState(0); // 주식 현재가를 저장할 상태
+
+  useEffect(() => {
+    // 웹소켓을 통해 주식 현재가를 수신하는 로직
+    socket.on("stockPriceUpdate", (data) => {
+      // 서버로부터 수신한 주식 현재가를 업데이트
+      setCurrentPrice(data.price);
+    });
+
+    // 컴포넌트 언마운트 시에 소켓 연결 정리
+    return () => {
+      socket.off("stockPriceUpdate");
+    };
+  }, []);
 
   const handleQuantityChange = (e) => {
     if (e.target.value >= 0) {
@@ -15,6 +31,8 @@ function Chart(props) {
   return (
     <>
       <div className="mx-auto max-w-[370px]">
+        <div></div>
+          <p className="pb-2">{currentPrice} KRW</p>
         <TradingViewWidget symbol={props.info.symbol} />
         <div>
           <div className="flex w-[370px]">
