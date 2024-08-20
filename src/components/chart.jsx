@@ -11,8 +11,14 @@ function Chart(props) {
 
   const [quantity, setQuantity] = useState("");
   const [currentPrice, setCurrentPrice] = useState(0); // 주식 현재가를 저장할 상태
-  const [isModalOpen, setIsModalOpen] = useState(false); // 모달 상태 관리
+  const [isBuyModalOpen, setIsBuyModalOpen] = useState(false); // 모달 상태 관리
+  const [isSellModalOpen, setIsSellModalOpen] = useState(false); // 모달 상태 관리
   const [orderDetails, setOrderDetails] = useState({
+    quantity: 0,
+    price: 0,
+    total: 0,
+  });
+  const [sellDetails, setSellDetails] = useState({
     quantity: 0,
     price: 0,
     total: 0,
@@ -71,7 +77,7 @@ function Chart(props) {
       //       price: currentPrice,
       //       total: quantity * currentPrice,
       //     });
-      //     setIsModalOpen(true);
+      //     setIsBuyModalOpen(true);
       //   }
       // });
     }
@@ -80,10 +86,49 @@ function Chart(props) {
       price: currentPrice,
       total: quantity * currentPrice,
     });
-    setIsModalOpen(true);
+    setIsBuyModalOpen(true);
   }
   function closeModal() {
-    setIsModalOpen(false);
+    setIsBuyModalOpen(false);
+  }
+
+  function sell() {
+    if (quantity < 0) {
+      // 수량이 본인이 가지고 있는 수량보다 큰 경우
+      alert("본인 캐시를 확인해주세요");
+      return;
+    } else {
+            // fetch("http://localhost:8080/api/invest/order", {
+      //   credentials: "include",
+      //   method: "DELETE",
+      //   headers: {
+      //     "Content-Type": "application/json",
+      //   },
+      //   body: JSON.stringify({
+      //     id: id,
+      //     quantity: quantity,
+      //     price: currentPrice,
+      //   }),
+      // }).then((res) => {
+      //   if (res.ok) {
+      //     setSellDetails({
+      //       quantity: quantity,
+      //       price: currentPrice,
+      //       total: quantity * currentPrice,
+      //     });
+      //     setIsSellModalOpen(true);
+      //   }
+      // });
+    }
+    setSellDetails({
+      quantity: quantity,
+      price: currentPrice,
+      total: quantity * currentPrice,
+    });
+    setIsSellModalOpen(true);
+  }
+  function closeSellModal() {
+    setIsSellModalOpen(false);
   }
   return (
     <>
@@ -144,6 +189,7 @@ function Chart(props) {
           <button
             className={`${buttonStyle} h-10 w-[140px] mx-3 rounded-md text-sm`}
             disabled={isDisabled}
+            onClick={() => sell()}
           >
             매도
           </button>
@@ -151,19 +197,39 @@ function Chart(props) {
       </div>
 
       {/* 매수 완료 모달 */}
-      {isModalOpen && (
+      {isBuyModalOpen && (
         <div
           id="my_modal_5"
           className="modal modal-bottom sm:modal-middle "
           open
         >
-          <div className="modal-box text-center" style={{ width: '350px' }}>
+          <div className="modal-box text-center" style={{ width: "350px" }}>
             <h3 className="font-bold text-lg p-3">매수 거래 체결 완료!</h3>
             <p>수량 : {orderDetails.quantity}</p>
             <p>가격 : {orderDetails.price} KRW</p>
             <p>총액 : {orderDetails.total} KRW</p>
             <div className="modal-action">
               <button className="btn" onClick={closeModal}>
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+      {/* 매도 완료 모달 */}
+      {isSellModalOpen && (
+        <div
+          id="my_modal_5"
+          className="modal modal-bottom sm:modal-middle "
+          open
+        >
+          <div className="modal-box text-center" style={{ width: "350px" }}>
+            <h3 className="font-bold text-lg p-3">매도 거래 체결 완료!</h3>
+            <p>수량 : {sellDetails.quantity}</p>
+            <p>가격 : {sellDetails.price} KRW</p>
+            <p>총액 : {sellDetails.total} KRW</p>
+            <div className="modal-action">
+              <button className="btn" onClick={closeSellModal}>
                 Close
               </button>
             </div>
