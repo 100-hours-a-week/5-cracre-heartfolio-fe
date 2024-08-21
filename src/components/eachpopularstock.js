@@ -14,7 +14,7 @@ export default function Eachpopularstock(props) {
 
     return (
         //onClick={handleClick} 아래줄에 넣어주세요!!
-        <div className='flex flex-rowmx-auto max-w-[390px] m-3 bg-white  hover:bg-gray-50 ' onClick={()=> handleClick(props.stockId)}>
+        <div className='flex flex-row mx-auto max-w-[390px] m-3 bg-white  hover:bg-gray-50 ' onClick={()=> handleClick(props.stockId)}>
             {/* 순위 */}
             <p className='w-10 py-3 text-center'>
                 {props.rank}

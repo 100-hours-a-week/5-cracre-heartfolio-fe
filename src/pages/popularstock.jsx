@@ -100,7 +100,7 @@ function Popularstock() {
       <Header />
       <Stocktype />
       {/* 인기종목리스트 */}
-      <div className="mx-auto max-w-[390px] pb-[40px]">
+      <div className="mx-auto max-w-[390px] pb-[40px] mt-[10px]">
         {/* map을 사용하여 상위 25개 종목 반복 렌더링 */}
         {top25Stocks.map((stock) => (
           <Eachpopularstock
