@@ -83,6 +83,7 @@ function Intereststock() {
   return (
     <>
       <Header />
+      <div className="mt-[80px]">
       <Stocktype />
       {/* 관심종목리스트 */}
       <div className="mx-auto max-w-[390px] pb-[40px]">
@@ -97,6 +98,7 @@ function Intereststock() {
             earningRate={stock.earningRate} //수익률
           />
         ))}
+      </div>
       </div>
       <ButtomNavigation />
     </>

@@ -98,6 +98,7 @@ function Popularstock() {
   return (
     <>
       <Header />
+      <div className="mt-[80px]">
       <Stocktype />
       {/* 인기종목리스트 */}
       <div className="mx-auto max-w-[390px] pb-[40px] mt-[10px]">
@@ -113,6 +114,7 @@ function Popularstock() {
             earningRate={stock.earningRate} //수익률
           />
         ))}
+      </div>
       </div>
       <ButtomNavigation />
     </>

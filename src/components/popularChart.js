@@ -96,7 +96,7 @@ function PopularChart() {
   const top5Stocks = popular_data.data.slice(0, 5);
 
   return (
-    <div className="py-5">
+    <div className="py-10">
       <div className="flex justify-between">
         <div className="text-lg ml-[10px]">오늘의 인기 차트</div>
         <a href="/popularstock">
