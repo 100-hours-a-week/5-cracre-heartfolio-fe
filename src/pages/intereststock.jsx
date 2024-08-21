@@ -5,7 +5,7 @@ import ButtomNavigation from "../components/bottomNavigation";
 
 function Intereststock() {
 
-  // const {data, error, loading} = useFetch("http://localhost:8080/api//api/stock/favorites");
+  // const {interest_data, error, loading} = useFetch("https://heartfolio.site/api/stock/favorites");
 
   // 인기 종목 데이터 배열_목업데이터
   const interest_data = [

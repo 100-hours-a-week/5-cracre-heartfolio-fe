@@ -7,9 +7,9 @@ import PopularChart from "../components/popularChart";
 function MainPage() {
   const navigate = useNavigate();
   return (
-    <>
+    <div className="w-full">
       <Header />
-      <div className="mx-auto max-w-[390px] px-3 mt-[34px]">
+      <div className="mx-auto w-[390px] px-3 mt-[34px]">
         <div className="flex justify-around">
           <button className="text-sm" onClick={() => navigate("/portfolio")}>
             <img src="./assets/images/profiles.png" className="size-14 m-3"></img>
@@ -29,7 +29,7 @@ function MainPage() {
         </div>
       </div>
       <ButtomNavigation />
-    </>
+    </div>
   );
 }
 

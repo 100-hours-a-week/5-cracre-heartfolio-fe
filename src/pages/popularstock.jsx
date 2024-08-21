@@ -5,7 +5,7 @@ import ButtomNavigation from "../components/bottomNavigation";
 
 function Popularstock() {
 
-  // const {data, error, loading} = useFetch("http://localhost:8080/api//api/stock/popular?limit={limit}");
+  // const {popular_data, error, loading} = useFetch("https://heartfolio.site/api/stock/popular?limit={limit}");
 
   // 인기 종목 데이터 배열
   const popular_data = {
