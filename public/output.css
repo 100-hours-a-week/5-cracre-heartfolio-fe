@@ -2670,6 +2670,7 @@ input.tab:checked + .tab-content,
   max-width: 100%;
 }
 
+
 .max-w-5xl {
   max-width: 64rem;
 }

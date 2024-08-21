@@ -31,10 +31,25 @@ export default function Eachpopularstock({rank, name, price, change, percentage}
                 <div className='flex flex-row' >
                     {/* 현재가 */}
                     <p className=''>{price}</p>
+
                     {/* 전일대비수익 */}
-                    <p className=''>{change}</p>
+                    <div className={` ${
+                    change > 0
+                      ? "text-redColor"
+                      : change<0
+                      ? "text-blueColor"
+                      : "text-[#000000]"
+                    }`}>{change}</div> 
+
                     {/* 수익률 */}
-                    <p className=''>{percentage}</p>
+                    <div className={` ${
+                    percentage> 0
+                      ? "text-redColor"
+                      : percentage <0
+                      ? "text-blueColor"
+                      : "text-[#000000]"
+                    }`}>({percentage}%)
+                    </div>               
                 </div>
             </div>
         </div>

@@ -11,57 +11,88 @@ function Popularstock() {
   const popular_data = {
     "data": [
       {
-        "stock_id": 1,
-        "stock_name": "Apple Inc.",
-        "earningRate": 3.5
+        "stockId": 1, //주식별 종목 아이디
+        "rank": 1, //순위
+        "stockName": "Apple Inc.", //종목명
+        "currentPrice": 13500, //현재가
+        "earningValue": -150, //전일대비 증가량
+        "earningRate": -3.5 //수익률
       },
       {
-        "stock_id": 2,
-        "stock_name": "NVIDIA",
+        "stockId": 2,
+        "rank": 2,
+        "stockName": "NVIDIA",
+        "currentPrice": 14500,
+        "earningValue": 100,
         "earningRate": 1.5
       },
       {
-        "stock_id": 3,
-        "stock_name": "Tesla, Inc.",
-        "earningRate": 4.2
+        "stockId": 3,
+        "rank": 3,
+        "stockName": "Microsoft Corp.",
+        "currentPrice": 25000,
+        "earningValue": -200,
+        "earningRate": -0.8
       },
       {
-        "stock_id": 4,
-        "stock_name": "Amazon.com Inc.",
-        "earningRate": 2.8
+        "stockId": 4,
+        "rank": 4,
+        "stockName": "Tesla Inc.",
+        "currentPrice": 42000,
+        "earningValue": 500,
+        "earningRate": 1.2
       },
       {
-        "stock_id": 5,
-        "stock_name": "Microsoft Corporation",
+        "stockId": 5,
+        "rank": 5,
+        "stockName": "Amazon.com Inc.",
+        "currentPrice": 34000,
+        "earningValue": 600,
+        "earningRate": 1.9
+      },
+      {
+        "stockId": 6,
+        "rank": 6,
+        "stockName": "Alphabet Inc.",
+        "currentPrice": 30000,
+        "earningValue": 350,
+        "earningRate": 2.3
+      },
+      {
+        "stockId": 7,
+        "rank": 7,
+        "stockName": "Meta Platforms Inc.",
+        "currentPrice": 21000,
+        "earningValue": -80,
         "earningRate": -0.5
       },
       {
-        "stock_id": 6,
-        "stock_name": "Alphabet Inc.",
-        "earningRate": 0.8
+        "stockId": 8,
+        "rank": 8,
+        "stockName": "Netflix Inc.",
+        "currentPrice": 18000,
+        "earningValue": 120,
+        "earningRate": 0.7
       },
       {
-        "stock_id": 7,
-        "stock_name": "Meta Platforms, Inc.",
-        "earningRate": 3.1
+        "stockId": 9,
+        "rank": 9,
+        "stockName": "Adobe Inc.",
+        "currentPrice": 14000,
+        "earningValue": 90,
+        "earningRate": 0.6
       },
       {
-        "stock_id": 8,
-        "stock_name": "Netflix, Inc.",
-        "earningRate": -1.2
-      },
-      {
-        "stock_id": 9,
-        "stock_name": "Intel Corporation",
-        "earningRate": 2.0
-      },
-      {
-        "stock_id": 10,
-        "stock_name": "Advanced Micro Devices, Inc.",
-        "earningRate": 1.7
+        "stockId": 10,
+        "rank": 10,
+        "stockName": "Intel Corp.",
+        "currentPrice": 10000,
+        "earningValue": 50,
+        "earningRate": 0.5
       }
     ]
   }
+  
   
 
   // 상위 25개의 종목만 선택
@@ -76,12 +107,12 @@ function Popularstock() {
         {/* map을 사용하여 상위 25개 종목 반복 렌더링 */}
         {top25Stocks.map((stock) => (
           <Eachpopularstock
-            key={stock.stock_id}
-            rank={stock.rank}
-            name={stock.stock_name}
-            price={stock.price}
-            change={stock.change}
-            percentage={stock.earningRate}
+            id={stock.stockId} //주식별 고유 아이디(기본키)
+            rank={stock.rank} //순위
+            name={stock.stockName} //종목명
+            price={stock.currentPrice} //현재가
+            change={stock.earningValue} //전일대비 증가량
+            percentage={stock.earningRate} //수익률
           />
         ))}
       </div>
