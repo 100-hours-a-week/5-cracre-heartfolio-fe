@@ -10,8 +10,8 @@ function classNames(...classes) {
 
 export default function Stocktype() {
   return (
-    <div className="mx-auto max-w-[390px] px-3 z-50 flex">
-      <div className="hidden sm:block w-full">
+    <div className="mx-auto max-w-[390px] min-w-[380px] px-3 z-50 flex">
+      <div className=" sm:block w-full">
         <nav
           aria-label="Tabs"
           className="isolate flex divide-x divide-gray-200 shadow"

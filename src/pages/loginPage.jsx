@@ -16,9 +16,11 @@ const LoginPage = () => {
           <img
             src="/assets/images/heartfolioLogo.webp"
             alt="heartfolio logo"
-            className="w-[180px] my-10"
+            className="w-[180px] my-10 rounded-lg"
           ></img>
-          <p>기부로 마음을 공유할 수 있는 모의투자, HeartFoilo</p>
+          
+          <p className="text-3xl m-5 font-semibold">HeartFoilo</p>
+          <p className="m-2 font-medium ">기부로 마음을 공유할 수 있는 모의투자</p>
         </div>
       </div>
       <div className="flex flex-col items-center">
@@ -31,7 +33,9 @@ const LoginPage = () => {
         </button>
         <p id="token-result" className="mt-4 text-sm text-gray-700"></p>
       </div>
-      <ButtomNavigation />
+      <a href="/">
+      <p className="text-xs m-5 text-center text-slate-400	"> 비회원으로 이용하기</p>
+      </a>
     </>
   );
 };
