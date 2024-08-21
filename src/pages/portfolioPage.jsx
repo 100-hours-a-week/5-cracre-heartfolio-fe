@@ -13,7 +13,6 @@ function Portfolio() {
 
   // const {cash_data, error, loading} = useFetch("https://heartfolio.site/api/portfolio/"+userId);
   // const {asset_data, error, loading} = useFetch("https://heartfolio.site/api/portfolio/"+userId+"/stock");
-  const {data:transaction_data, error, loading} = useFetch("https://heartfolio.site/api/portfolio/investInfo");
   // const {holdings_data, error, loading} = useFetch("https://heartfolio.site/api/portfolio/totalStocks");
 
   const cash_data = {
@@ -79,65 +78,6 @@ function Portfolio() {
       ],
     },
   };
-
-  // const transaction_data = {
-  //   data: [
-  //     {
-  //       stockId: 1,
-  //       name: "NVIDIA",
-  //       orderCategory: "buy",
-  //       orderDate: "2024-08-14 13:16:00",
-  //       orderAmount: 100,
-  //       orderPrice: 30330,
-  //       totalAmount: 303300,
-  //     },
-  //     {
-  //       stockId: 2,
-  //       name: "Apple",
-  //       orderCategory: "sell",
-  //       orderDate: "2024-08-15 09:30:00",
-  //       orderAmount: 50,
-  //       orderPrice: 15000,
-  //       totalAmount: 750000,
-  //     },
-  //     {
-  //       stockId: 3,
-  //       name: "Tesla",
-  //       orderCategory: "buy",
-  //       orderDate: "2024-08-16 10:45:00",
-  //       orderAmount: 75,
-  //       orderPrice: 68000,
-  //       totalAmount: 5100000,
-  //     },
-  //     {
-  //       stockId: 4,
-  //       name: "AMD",
-  //       orderCategory: "buy",
-  //       orderDate: "2024-08-17 11:22:00",
-  //       orderAmount: 200,
-  //       orderPrice: 12000,
-  //       totalAmount: 2400000,
-  //     },
-  //     {
-  //       stockId: 5,
-  //       name: "Microsoft",
-  //       orderCategory: "sell",
-  //       orderDate: "2024-08-18 14:50:00",
-  //       orderAmount: 30,
-  //       orderPrice: 32000,
-  //       totalAmount: 96023442000,
-  //     },
-  //     {
-  //       stockId: 6,
-  //       name: "Microsoft",
-  //       orderCategory: "sell",
-  //       orderDate: "2024-08-18 14:50:00",
-  //       orderAmount: 30,
-  //       orderPrice: 32000,
-  //       totalAmount: 960000,
-  //     },
-  //   ],
-  // };
 
   const holdings_data = [
     {
@@ -226,7 +166,7 @@ function Portfolio() {
       <div className="mx-auto max-w-[370px] bg-backColor p-4">
         <div role="tabpanel" className="tab-content block">
           {activeTab === 1 && <AssetConfiguration data={asset_data} />}
-          {activeTab === 2 && <TransactionHistory data={transaction_data} />}
+          {activeTab === 2 && <TransactionHistory/>}
           {activeTab === 3 && <Holdings data={holdings_data} />}
         </div>
       </div>
