@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { io } from "socket.io-client";
+import { BuyModal, SellModal } from "./transactionModal";
 const socket = io("http://localhost:3000");
 
 const { default: TradingViewWidget } = require("./tradingViewWidget");
@@ -98,7 +99,7 @@ function Chart(props) {
       alert("본인 캐시를 확인해주세요");
       return;
     } else {
-            // fetch("http://localhost:8080/api/invest/order", {
+      // fetch("http://localhost:8080/api/invest/order", {
       //   credentials: "include",
       //   method: "DELETE",
       //   headers: {
@@ -197,45 +198,9 @@ function Chart(props) {
       </div>
 
       {/* 매수 완료 모달 */}
-      {isBuyModalOpen && (
-        <div
-          id="my_modal_5"
-          className="modal modal-bottom sm:modal-middle "
-          open
-        >
-          <div className="modal-box text-center" style={{ width: "350px" }}>
-            <h3 className="font-bold text-lg p-3">매수 거래 체결 완료!</h3>
-            <p>수량 : {orderDetails.quantity}</p>
-            <p>가격 : {orderDetails.price} KRW</p>
-            <p>총액 : {orderDetails.total} KRW</p>
-            <div className="modal-action">
-              <button className="btn" onClick={closeModal}>
-                Close
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
+      {isBuyModalOpen && <BuyModal orderDetails={orderDetails} onClick={closeModal}/>}
       {/* 매도 완료 모달 */}
-      {isSellModalOpen && (
-        <div
-          id="my_modal_5"
-          className="modal modal-bottom sm:modal-middle "
-          open
-        >
-          <div className="modal-box text-center" style={{ width: "350px" }}>
-            <h3 className="font-bold text-lg p-3">매도 거래 체결 완료!</h3>
-            <p>수량 : {sellDetails.quantity}</p>
-            <p>가격 : {sellDetails.price} KRW</p>
-            <p>총액 : {sellDetails.total} KRW</p>
-            <div className="modal-action">
-              <button className="btn" onClick={closeSellModal}>
-                Close
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
+      {isSellModalOpen && <SellModal sellDetails={sellDetails} onClick={closeSellModal}/>}
     </>
   );
 }
