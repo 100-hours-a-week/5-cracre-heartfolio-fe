@@ -1,18 +1,20 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 
 function useFetch(url, options) {
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  useEffect(function fetchedData() {
-    const send = async () => {
+  useEffect(() => {
+    const fetchData = async () => {
       setLoading(true);
-      const newOptions = {...options,credentials: "include"}
+      const newOptions = { ...options };
+
       try {
         const res = await fetch(url, newOptions);
-        if(res.status==400||res.status==500||res.status==404){
-          setError(res.message);
+        if (!res.ok) {
+          setError(new Error(res.statusText));
+          setLoading(false);
           return;
         }
         const json = await res.json();
@@ -21,12 +23,13 @@ function useFetch(url, options) {
       } catch (err) {
         setError(err);
       }
-
       setLoading(false);
     };
-    send();
-  }, []);
 
-  return {data, error, loading};
+    fetchData();
+  }, [url, options]);
+
+  return { data, error, loading };
 }
+
 export default useFetch;
