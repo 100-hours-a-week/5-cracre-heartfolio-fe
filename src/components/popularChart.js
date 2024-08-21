@@ -99,7 +99,9 @@ function PopularChart() {
     <div className="py-5">
       <div className="flex justify-between">
         <div className="text-lg ml-[10px]">오늘의 인기 차트</div>
-        <div className="text-sm py-1 float-right mr-[5px] pt-[10px]">더보기</div>
+        <a href="/popularstock">
+          <div className="text-sm py-1 float-right mr-[5px] pt-[10px]">더보기</div>
+        </a>
       </div>
       <div className="mx-auto max-w-[390px] pb-[40px] mt-[6px] border-t border-gray-300">
         {/* map을 사용하여 상위 25개 종목 반복 렌더링 */}
