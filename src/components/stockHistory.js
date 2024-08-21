@@ -1,9 +1,9 @@
 import HistoryBox from "./box/historyBox";
 import StockHistoryBox from "./box/stockHistoryBox";
 
-function StockHistory() {
-  const items = [{ id: 1 }, { id: 2 }, { id: 3 }, { id: 4 }, { id: 5 }, { id: 6 }];
-
+function StockHistory(props) {
+  const items = props.data;
+  console.log(items);
   return (
     <>
       <div className="mx-auto max-w-[370px] py-2 flex flex-col justify-center">
@@ -14,7 +14,12 @@ function StockHistory() {
               key={item.id}
               className="overflow-hidden rounded-md bg-white p-4 shadow w-[350px] mx-auto"
             >
-              <StockHistoryBox />
+              <StockHistoryBox
+                orderCategory={item.orderCategory}
+                orderAmount={item.orderAmount}
+                orderDate={item.orderDate}
+                orderPrice={item.orderPrice}
+              />
             </li>
           ))}
         </ul>

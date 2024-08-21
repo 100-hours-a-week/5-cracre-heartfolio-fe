@@ -15,9 +15,9 @@ function Holdings(props) {
                 evalProfit={item.evalProfit}
                 evalValue={item.evalValue}
                 profitPercentage={item.profitPercentage}
-                purchase_avg_price={item.purchase_avg_price}
-                total_purchase_price={item.total_purchase_price}
-                total_quantity={item.total_quantity}
+                purchaseAvgPrice={item.purchaseAvgPrice}
+                totalPurchasePrice={item.totalPurchasePrice}
+                totalQuantity={item.totalQuantity}
               />
             </li>
           ))}

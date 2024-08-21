@@ -7,7 +7,7 @@ function getRandomPastelColor() {
 }
 function AssetConfiguration(props) {
   const series = props.data.data.stocks.map((stock) => stock.percentage);
-  const labels = props.data.data.stocks.map((stock) => stock.stock_name);
+  const labels = props.data.data.stocks.map((stock) => stock.stockName);
 
   // 전체 합계 계산
   const total = series.reduce((acc, value) => acc + value, 0);
