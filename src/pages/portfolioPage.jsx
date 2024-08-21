@@ -195,6 +195,7 @@ function Portfolio() {
   return (
     <>
       <Header />
+      <div className="mt-[90px]">
       <MoneyInfo data={cash_data} />
       <div
         role="tablist"
@@ -228,6 +229,7 @@ function Portfolio() {
           {activeTab === 2 && <TransactionHistory data={transaction_data} />}
           {activeTab === 3 && <Holdings data={holdings_data} />}
         </div>
+      </div>
       </div>
       <ButtomNavigation />
     </>

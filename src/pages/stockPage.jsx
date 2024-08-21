@@ -93,45 +93,44 @@ function StockPage() {
   return (
     <>
       <Header />
-      <StockHeader name={stock_info_data.name} />
-      <div
-        role="tablist"
-        className="tabs tabs-boxed mx-auto max-w-[390px] bg-backColor mt-[20px]"
-      >
-        <a
-          role="tab"
-          className={`tab h-[40px] ${
-            activeTab === 1 ? "bg-btnclickColor" : ""
-          }`}
-          onClick={() => setActiveTab(1)}
+      <div className="mt-[71px]">
+        <StockHeader name={stock_info_data.name} />
+        <div
+          role="tablist"
+          className="tabs tabs-boxed mx-auto max-w-[390px] bg-backColor mt-[20px]"
         >
-          차트
-        </a>
-        <a
-          role="tab"
-          className={`tab h-[40px] ${
-            activeTab === 2 ? "bg-btnclickColor" : ""
-          }`}
-          onClick={() => setActiveTab(2)}
-        >
-          거래 내역
-        </a>
-        {/* <a
+          <a
+            role="tab"
+            className={`tab h-[40px] ${
+              activeTab === 1 ? "bg-btnclickColor" : ""
+            }`}
+            onClick={() => setActiveTab(1)}
+          >
+            차트
+          </a>
+          <a
+            role="tab"
+            className={`tab h-[40px] ${
+              activeTab === 2 ? "bg-btnclickColor" : ""
+            }`}
+            onClick={() => setActiveTab(2)}
+          >
+            거래 내역
+          </a>
+          {/* <a
           role="tab"
           className={`tab h-[50px] ${activeTab === 3 ? "bg-btnclickColor" : ""}`}
           onClick={() => setActiveTab(3)}
         >
           정보
         </a> */}
-      </div>
-      <div className="mx-auto max-w-[390px] p-4 flex justify-center">
-        <div
-          role="tabpanel"
-          className="tab-content block pb-[29px]"
-        >
-          {activeTab === 1 && <Chart info={stock_info_data} />}
-          {activeTab === 2 && <StockHistory data={holdings_history_data} />}
-          {/* {activeTab === 3 && "3"} */}
+        </div>
+        <div className="mx-auto max-w-[390px] p-4 flex justify-center">
+          <div role="tabpanel" className="tab-content block pb-[29px]">
+            {activeTab === 1 && <Chart info={stock_info_data} />}
+            {activeTab === 2 && <StockHistory data={holdings_history_data} />}
+            {/* {activeTab === 3 && "3"} */}
+          </div>
         </div>
       </div>
       <ButtomNavigation />

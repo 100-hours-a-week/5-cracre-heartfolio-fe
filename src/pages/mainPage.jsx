@@ -9,6 +9,7 @@ function MainPage() {
   return (
     <div className="w-full">
       <Header />
+      <div className="mt-[85px]">
       <div className="mx-auto w-[390px] px-3 mt-[34px]">
         <div className="flex justify-around">
           <button className="text-sm" onClick={() => navigate("/portfolio")}>
@@ -27,6 +28,7 @@ function MainPage() {
         <div>
             <PopularChart/> 
         </div>
+      </div>
       </div>
       <ButtomNavigation />
     </div>
