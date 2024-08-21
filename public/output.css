@@ -2928,6 +2928,10 @@ input.tab:checked + .tab-content,
   padding-bottom: 29px;
 }
 
+.pb-\[40px\] {
+  padding-bottom: 40px;
+}
+
 .text-center {
   text-align: center;
 }

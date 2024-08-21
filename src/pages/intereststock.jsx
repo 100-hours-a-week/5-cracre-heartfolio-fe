@@ -85,7 +85,7 @@ function Intereststock() {
       <Header />
       <Stocktype />
       {/* 관심종목리스트 */}
-      <div className="mx-auto max-w-[390px] ">
+      <div className="mx-auto max-w-[390px] pb-[40px]">
         {/* map을 사용하여 반복 렌더링 */}
         {interest_data.map((stock) => (
           <Eachintereststock
