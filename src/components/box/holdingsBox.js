@@ -24,7 +24,7 @@ function HoldingsBox(props) {
                       : props.profitPercentage<0
                       ? "text-blueColor"
                       : "text-[#000000]"
-                  }`}>{props.profitPercentage}%</div>
+                  }`}>{props.profitPercentage.toFixed(2)}%</div>
               </div>
             </div>
           </div>
