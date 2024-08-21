@@ -1,13 +1,12 @@
 import HistoryBox from "./box/historyBox";
 
 function TransactionHistory(props) {
-  const items = props.data.data;
-  console.log(items);
+  const items = props.data;
   return (
     <>
       <div className="mx-auto max-w-[350px] pb-8">
         <ul role="list" className="divide-y divide-gray-200">
-          {items.slice().reverse().map((item) => (
+          {items.map((item) => (
             <li key={item.stock_id} className="py-2">
               <HistoryBox
                 stock_id={item.stockId}
