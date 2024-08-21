@@ -11,10 +11,10 @@ function Portfolio() {
   const [activeTab, setActiveTab] = useState(1);
   console.log("Active Tab:", activeTab);
 
-  // const {cash_data, error, loading} = useFetch("http://localhost:8080/api/portfolio/"+userId);
-  // const {asset_data, error, loading} = useFetch("http://localhost:8080/api/portfolio/"+userId+"/stock");
-  // const {transaction_data, error, loading} = useFetch("http://localhost:8080/api/portfolio/investInfo");
-  // const {holdings_data, error, loading} = useFetch("http://localhost:8080/api/portfolio/totalStocks");
+  // const {cash_data, error, loading} = useFetch("https://heartfolio.site/api/portfolio/"+userId);
+  // const {asset_data, error, loading} = useFetch("https://heartfolio.site/api/portfolio/"+userId+"/stock");
+  // const {transaction_data, error, loading} = useFetch("https://heartfolio.site/api/portfolio/investInfo");
+  // const {holdings_data, error, loading} = useFetch("https://heartfolio.site/api/portfolio/totalStocks");
 
   const cash_data = {
     cash: 75121616,

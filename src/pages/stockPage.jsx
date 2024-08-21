@@ -11,8 +11,8 @@ function StockPage() {
   const [activeTab, setActiveTab] = useState(1);
   console.log("Active Tab:", activeTab);
   const { id } = useParams();
-  // const {stock_info_data, error, loading} = useFetch("http://localhost:8080/api/invest/"id);
-  // const {holdings_history_data, error, loading} = useFetch("http://localhost:8080/api/stock/"+id+"/order");
+  // const {stock_info_data, error, loading} = useFetch("https://heartfolio.site/api/invest/"id);
+  // const {holdings_history_data, error, loading} = useFetch("https://heartfolio.site/api/stock/"+id+"/order");
   const stock_info_data = {
     symbol : "NASDAQ:MSFT",
     name : "Microsoft"

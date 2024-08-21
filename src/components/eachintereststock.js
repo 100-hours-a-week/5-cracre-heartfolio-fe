@@ -14,7 +14,7 @@ export default function Eachintereststock({ id, name, price, change, percentage 
         setImageSrc( imageSrc=== '/assets/images/uninterest.png' ? '/assets/images/interest.png' : '/assets/images/uninterest.png');
 
         //좋아요 되어있는거 클릭해서 없애기
-        // fetch("http://localhost:8081//api/stock/favorites/" + stock_id, {
+        // fetch("https://heartfolio.site/api/stock/favorites/" + stock_id, {
         //     credentials: "include",
         //     method: "DELETE",
         //     headers: {

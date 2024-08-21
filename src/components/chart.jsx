@@ -60,7 +60,7 @@ function Chart(props) {
       alert("본인 캐시를 확인해주세요");
       return;
     } else {
-      // fetch("http://localhost:8080/api/invest/order", {
+      // fetch("https://heartfolio.site/api/order", {
       //   credentials: "include",
       //   method: "POST",
       //   headers: {
@@ -99,7 +99,7 @@ function Chart(props) {
       alert("본인 캐시를 확인해주세요");
       return;
     } else {
-      // fetch("http://localhost:8080/api/invest/order", {
+      // fetch("https://heartfolio.site/api/invest/order", {
       //   credentials: "include",
       //   method: "DELETE",
       //   headers: {
