@@ -2,7 +2,8 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 // 관심종목의 각 주식
-export default function Eachintereststock({ id, name, price, change, percentage }) {
+export default function Eachintereststock(props) {
+    const navigate = useNavigate();
 
     // useState를 사용하여 이미지의 경로를 관리하는 상태를 선언합니다.초기값으로 'a.jpg'를 설정합니다.
     const [imageSrc, setImageSrc] = useState('/assets/images/interest.png');
@@ -25,52 +26,48 @@ export default function Eachintereststock({ id, name, price, change, percentage 
         //   });
     };
 
-    const navigate = useNavigate();
-  
     // 각 주식 페이지 이동
     function handleClick(get_id) {
         navigate(`/stock/${get_id}`);
     }
-
-    
 
     return (
         <div className='flex flex-rowmx-auto max-w-[390px] m-3 bg-white hover:bg-gray-50' >
 
             {/* 하트 */}
             {/* 이 버튼은 클릭 시 toggleImage 함수를 호출하여 이미지가 바뀝니다. */}
-            <button onClick={()=> toggleImage(id)} className='px-3'>
+            <button onClick={()=> toggleImage(props.stockId)} className='px-3'>
                 {/* 이미지 태그를 사용하여 현재 상태에 저장된 imageSrc 경로의 이미지를 표시합니다. */}
                 <img className='w-6 ' src={imageSrc} alt="Heart Icon" />
             </button>
             {/* 내용 */}
-            <div className='ml-4 w-[300px]'onClick={()=> handleClick(id)} >
+            <div className='ml-4 w-[300px]'onClick={()=> handleClick(props.stockId)} >
                 {/* 종목이름 */}
                 <h1 className=''>
-                    {name}
+                    {props.stockName}
                 </h1>
                 {/* 종목정보 */}
                 <div className='flex flex-row' >
                     {/* 현재가 */}
-                    <p className='mr-1'>{price.toLocaleString()}</p>
+                    <p className='mr-1'>{props.currentPrice.toLocaleString()}</p>
 
                     {/* 전일대비수익 */}
                     <div className={`mr-1 ${
-                    change > 0
+                    props.earningValue > 0
                       ? "text-redColor"
-                      : change<0
+                      : props.earningValue<0
                       ? "text-blueColor"
                       : "text-[#000000]"
-                    }`}>{change}</div>
+                    }`}>{props.earningValue}</div>
 
                     {/* 수익률 */}
                     <div className={`mr-1 ${
-                    percentage> 0
+                    props.earningRate> 0
                       ? "text-redColor"
-                      : percentage <0
+                      : props.earningRate <0
                       ? "text-blueColor"
                       : "text-[#000000]"
-                    }`}>({percentage}%)
+                    }`}>({props.earningRate}%)
                     </div>        
                 </div>
             </div>
