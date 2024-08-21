@@ -19,13 +19,13 @@ function Header() {
                 <img
                   alt="Logo"
                   src="/assets/images/heartfolioLogo.webp"
-                  className="h-8 w-auto"
+                  className="h-8 w-auto rounded-lg"
                 />           
                 <div className=" ml-4 mr-36 content-center">Heartfolio</div>
               </a>
             </div>
             <a href="/login" className="content-center">
-            <div className=" ml-5 mr-5 text-sm" >로그인</div>
+            <div className=" ml-5 mr-5 text-sm min-w-14" >로그인</div>
             </a>
           </div>
           <div className="flex ml-auto items-center">
