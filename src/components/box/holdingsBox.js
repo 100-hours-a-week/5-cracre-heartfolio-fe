@@ -33,7 +33,7 @@ function HoldingsBox(props) {
             <div className=" h-[50px] flex-grow content-center px-1">
               <div className="flex justify-between">
                 <div className="text-sm">보유수량</div>
-                <div className="text-sm">{props.total_quantity}</div>
+                <div className="text-sm">{props.totalQuantity}</div>
               </div>
               <div className="flex justify-between">
                 <div className="text-sm">평가금액</div>
@@ -44,11 +44,11 @@ function HoldingsBox(props) {
             <div className=" h-[50px] flex-grow content-center px-1">
               <div className="flex justify-between ">
                 <div className="text-sm">매수금액</div>
-                <div className="text-sm">{props.total_purchase_price.toLocaleString()}</div>
+                <div className="text-sm">{props.totalPurchasePrice.toLocaleString()}</div>
               </div>
               <div className="flex justify-between">
                 <div className="text-sm">매수평균가</div>
-                <div className="text-sm">{props.purchase_avg_price.toLocaleString()}</div>
+                <div className="text-sm">{props.purchaseAvgPrice.toLocaleString()}</div>
               </div>
             </div>
           </div>

@@ -10,13 +10,13 @@ function TransactionHistory(props) {
           {items.slice().reverse().map((item) => (
             <li key={item.stock_id} className="py-2">
               <HistoryBox
-                stock_id={item.stock_id}
+                stock_id={item.stockId}
                 name={item.name}
-                order_category={item.order_category}
-                order_date={item.order_date}
-                order_amount={item.order_amount}
-                order_price={item.order_price}
-                total_amount={item.total_amount}
+                order_category={item.orderCategory}
+                order_date={item.orderDate}
+                order_amount={item.orderAmount}
+                order_price={item.orderPrice}
+                total_amount={item.totalAmount}
               />
             </li>
           ))}
