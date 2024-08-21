@@ -2638,6 +2638,10 @@ input.tab:checked + .tab-content,
   width: 100%;
 }
 
+.w-\[390\] {
+  width: 390;
+}
+
 .min-w-0 {
   min-width: 0px;
 }
@@ -3090,6 +3094,12 @@ input.tab:checked + .tab-content,
 @media (min-width: 640px) {
   .sm\:block {
     display: block;
+  }
+}
+
+@media (min-width: 768px) {
+  .md\:w-\[980px\] {
+    width: 980px;
   }
 }
   
