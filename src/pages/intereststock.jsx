@@ -92,7 +92,7 @@ console.log(interest_data)
         {/* map을 사용하여 반복 렌더링 */}
         {interest_data.map((stock) => (
           <Eachintereststock
-            id={stock.stock_id} //주식별 고유 아이디(기본키)
+            id={stock.stockId} //주식별 고유 아이디(기본키)
             name={stock.stockName} //종목명
             price={stock.currentPrice} //현재가
             change={stock.earningValue} //전일대비 증가량

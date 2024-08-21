@@ -16,7 +16,7 @@ export default function Eachpopularstock({rank, name, price, change, percentage}
 
     return (
         //onClick={handleClick} 아래줄에 넣어주세요!!
-        <div className='flex flex-rowmx-auto max-w-[390px]   bg-white  hover:bg-gray-50 ' onClick={()=> handleClick(name)}>
+        <div className='flex flex-rowmx-auto max-w-[390px] m-3 bg-white  hover:bg-gray-50 ' onClick={()=> handleClick(name)}>
             {/* 순위 */}
             <p className='w-10 py-3 text-center'>
                 {rank}
@@ -30,10 +30,10 @@ export default function Eachpopularstock({rank, name, price, change, percentage}
                 {/* 종목정보 */}
                 <div className='flex flex-row' >
                     {/* 현재가 */}
-                    <p className=''>{price}</p>
+                    <p className='mr-1'>{price.toLocaleString()}</p>
 
                     {/* 전일대비수익 */}
-                    <div className={` ${
+                    <div className={`mr-1 ${
                     change > 0
                       ? "text-redColor"
                       : change<0
@@ -42,7 +42,7 @@ export default function Eachpopularstock({rank, name, price, change, percentage}
                     }`}>{change}</div> 
 
                     {/* 수익률 */}
-                    <div className={` ${
+                    <div className={` mr-1 ${
                     percentage> 0
                       ? "text-redColor"
                       : percentage <0

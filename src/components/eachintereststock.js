@@ -35,7 +35,7 @@ export default function Eachintereststock({ id, name, price, change, percentage 
     
 
     return (
-        <div className='flex flex-rowmx-auto max-w-[390px] bg-white hover:bg-gray-50' >
+        <div className='flex flex-rowmx-auto max-w-[390px] m-3 bg-white hover:bg-gray-50' >
 
             {/* 하트 */}
             {/* 이 버튼은 클릭 시 toggleImage 함수를 호출하여 이미지가 바뀝니다. */}
@@ -52,10 +52,10 @@ export default function Eachintereststock({ id, name, price, change, percentage 
                 {/* 종목정보 */}
                 <div className='flex flex-row' >
                     {/* 현재가 */}
-                    <p className=''>{price}</p>
+                    <p className='mr-1'>{price.toLocaleString()}</p>
 
                     {/* 전일대비수익 */}
-                    <div className={` ${
+                    <div className={`mr-1 ${
                     change > 0
                       ? "text-redColor"
                       : change<0
@@ -64,7 +64,7 @@ export default function Eachintereststock({ id, name, price, change, percentage 
                     }`}>{change}</div>
 
                     {/* 수익률 */}
-                    <div className={` ${
+                    <div className={`mr-1 ${
                     percentage> 0
                       ? "text-redColor"
                       : percentage <0
