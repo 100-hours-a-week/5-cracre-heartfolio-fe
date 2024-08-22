@@ -83,34 +83,34 @@ function Chart(props) {
       alert("본인 캐시를 확인해주세요");
       return;
     } else {
-      // fetch("https://heartfolio.site/api/order", {
-      //   credentials: "include",
-      //   method: "POST",
-      //   headers: {
-      //     "Content-Type": "application/json",
-      //   },
-      //   body: JSON.stringify({
-      //     id: id,
-      //     quantity: quantity,
-      //     price: currentPrice,
-      //   }),
-      // }).then((res) => {
-      //   if (res.ok) {
-      //     setOrderDetails({
-      //       quantity: quantity,
-      //       price: currentPrice,
-      //       total: quantity * currentPrice,
-      //     });
-      //     setIsBuyModalOpen(true);
-      //   }
-      // });
+      fetch("https://heartfolio.site/api/invest/order", {
+        credentials: "include",
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          stockId: 1,
+          quantity: quantity,
+          price: currentPrice,
+        }),
+      }).then((res) => {
+        if (res.ok) {
+          setOrderDetails({
+            quantity: quantity,
+            price: currentPrice,
+            total: quantity * currentPrice,
+          });
+          setIsBuyModalOpen(true);
+        }
+      });
     }
-    setOrderDetails({
-      quantity: quantity,
-      price: currentPrice,
-      total: quantity * currentPrice,
-    });
-    setIsBuyModalOpen(true);
+    // setOrderDetails({
+    //   quantity: quantity,
+    //   price: currentPrice,
+    //   total: quantity * currentPrice,
+    // });
+    // setIsBuyModalOpen(true);
   }
   function closeModal() {
     setIsBuyModalOpen(false);
@@ -122,34 +122,34 @@ function Chart(props) {
       alert("본인 캐시를 확인해주세요");
       return;
     } else {
-      // fetch("https://heartfolio.site/api/invest/order", {
-      //   credentials: "include",
-      //   method: "DELETE",
-      //   headers: {
-      //     "Content-Type": "application/json",
-      //   },
-      //   body: JSON.stringify({
-      //     id: id,
-      //     quantity: quantity,
-      //     price: currentPrice,
-      //   }),
-      // }).then((res) => {
-      //   if (res.ok) {
-      //     setSellDetails({
-      //       quantity: quantity,
-      //       price: currentPrice,
-      //       total: quantity * currentPrice,
-      //     });
-      //     setIsSellModalOpen(true);
-      //   }
-      // });
+      fetch("https://heartfolio.site/api/invest/order", {
+        credentials: "include",
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          id: id,
+          quantity: quantity,
+          price: currentPrice,
+        }),
+      }).then((res) => {
+        if (res.ok) {
+          setSellDetails({
+            quantity: quantity,
+            price: currentPrice,
+            total: quantity * currentPrice,
+          });
+          setIsSellModalOpen(true);
+        }
+      });
     }
-    setSellDetails({
-      quantity: quantity,
-      price: currentPrice,
-      total: quantity * currentPrice,
-    });
-    setIsSellModalOpen(true);
+    // setSellDetails({
+    //   quantity: quantity,
+    //   price: currentPrice,
+    //   total: quantity * currentPrice,
+    // });
+    // setIsSellModalOpen(true);
   }
   function closeSellModal() {
     setIsSellModalOpen(false);
