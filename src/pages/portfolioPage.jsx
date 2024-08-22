@@ -11,7 +11,6 @@ function Portfolio() {
   const [activeTab, setActiveTab] = useState(1);
   console.log("Active Tab:", activeTab);
 
-  // const {asset_data, error, loading} = useFetch("https://heartfolio.site/api/portfolio/"+userId+"/stock");
   // const {holdings_data, error, loading} = useFetch("https://heartfolio.site/api/portfolio/totalStocks");
   // const cash_data = {
   //   cash: 75121616,
@@ -20,62 +19,7 @@ function Portfolio() {
   //   total_value: 151152125,
   //   profitRate: -10.4,
   // };
-  const asset_data = {
-    data: {
-      stocks: [
-        {
-          id: 1,
-          stockName: "Apple",
-          percentage: 13.8,
-        },
-        {
-          id: 2,
-          stockName: "AMD",
-          percentage: 2.6,
-        },
-        {
-          id: 3,
-          stockName: "Tesla",
-          percentage: 8.5,
-        },
-        {
-          id: 4,
-          stockName: "Google",
-          percentage: 5.7,
-        },
-        {
-          id: 5,
-          stockName: "Microsoft",
-          percentage: 9.3,
-        },
-        {
-          id: 6,
-          stockName: "Samsung",
-          percentage: 7.1,
-        },
-        {
-          id: 7,
-          stockName: "Nvidia",
-          percentage: 11.4,
-        },
-        {
-          id: 8,
-          stockName: "Amazon",
-          percentage: 6.8,
-        },
-        {
-          id: 9,
-          stockName: "Facebook",
-          percentage: 4.9,
-        },
-        {
-          id: 10,
-          stockName: "Alibaba",
-          percentage: 3.9,
-        },
-      ],
-    },
-  };
+
 
   
 
@@ -112,7 +56,7 @@ function Portfolio() {
       </div>
       <div className="mx-auto max-w-[370px] bg-backColor p-4">
         <div role="tabpanel" className="tab-content block">
-          {activeTab === 1 && <AssetConfiguration data={asset_data} />}
+          {activeTab === 1 && <AssetConfiguration/>}
           {activeTab === 2 && <TransactionHistory/>}
           {activeTab === 3 && <Holdings />}
         </div>
