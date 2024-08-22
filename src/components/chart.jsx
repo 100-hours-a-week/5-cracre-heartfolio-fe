@@ -11,7 +11,7 @@ function Chart(props) {
   // const {money_data, error, loading} = useFetch("http://localhost:8080/api/portfolio/"+userId);
 
   const [quantity, setQuantity] = useState("");
-  const [currentPrice, setCurrentPrice] = useState(0); // 주식 현재가를 저장할 상태
+  const [currentPrice, setCurrentPrice] = useState(1000); // 주식 현재가를 저장할 상태
   const [isBuyModalOpen, setIsBuyModalOpen] = useState(false); // 모달 상태 관리
   const [isSellModalOpen, setIsSellModalOpen] = useState(false); // 모달 상태 관리
   const [orderDetails, setOrderDetails] = useState({
@@ -26,11 +26,11 @@ function Chart(props) {
   });
 
   const money_data = {
-    cash: 75121616,
-    total_purchase: 35000616,
-    total_amount: 200000000,
-    total_value: 151152125,
-    profitRate: -10.4,
+    cash: 100000, //보유캐시
+    total_purchase: 35000616, //총 매수 금액
+    total_amount: 200000000,  //총 자산
+    total_value: 151152125, //총 평가 금액
+    profitRate: -10.4, //평가수익률
   };
 
   useEffect(() => {
@@ -51,6 +51,29 @@ function Chart(props) {
       setQuantity(e.target.value);
     }
   };
+
+  ///추가 코드1. 
+
+  // "최대" 버튼 클릭 시 최대 수량을 계산하여 설정하는 함수
+  const handleMaxQuantity = () => {
+    const maxQuantity = Math.floor(money_data.cash / currentPrice);
+    setQuantity(maxQuantity);
+  };
+
+  // "50%" 버튼 클릭 시 최대 수량의 50%를 계산하여 설정하는 함수
+  const handle50PercentQuantity = () => {
+    const maxQuantity = Math.floor(money_data.cash / currentPrice);
+    setQuantity(Math.floor(maxQuantity / 2));
+  };
+
+  // "25%" 버튼 클릭 시 최대 수량의 25%를 계산하여 설정하는 함수
+  const handle25PercentQuantity = () => {
+    const maxQuantity = Math.floor(money_data.cash / currentPrice);
+    setQuantity(Math.floor(maxQuantity / 4));
+  };
+
+  ////요까지1
+
   const total_money = currentPrice * quantity;
 
   const isDisabled = quantity <= 0;
@@ -135,7 +158,7 @@ function Chart(props) {
     <>
       <div className="mx-auto max-w-[370px]">
         <div></div>
-        <p className="pb-2">{currentPrice} KRW</p>
+        <p className="pb-2">{currentPrice.toLocaleString()} KRW</p>
         <TradingViewWidget symbol={props.info.symbol} />
         <div>
           <div className="flex w-[370px]">
@@ -153,13 +176,16 @@ function Chart(props) {
               </div>
             </div>
             <div className="w-2/5 text-center">
-              <button className="text-center text-[10px] bg-boxBackgroundColor p-2 rounded-md mx-1">
+              <button className="text-center text-[10px] bg-boxBackgroundColor p-2 rounded-md mx-1  hover:bg-boxHoverColor"
+               onClick={handle25PercentQuantity}>
                 25%
               </button>
-              <button className="text-center text-[10px] bg-boxBackgroundColor p-2 rounded-md mx-1">
+              <button className="text-center text-[10px] bg-boxBackgroundColor p-2 rounded-md mx-1 hover:bg-boxHoverColor"
+               onClick={handle50PercentQuantity}>
                 50%
               </button>
-              <button className="text-center text-[10px] bg-boxBackgroundColor p-2 rounded-md mx-1">
+              <button className="text-center text-[10px] bg-boxBackgroundColor p-2 rounded-md mx-1 hover:bg-boxHoverColor"
+               onClick={handleMaxQuantity}>
                 최대
               </button>
             </div>
@@ -168,13 +194,13 @@ function Chart(props) {
             <div className="flex items-center w-1/2">
               <p>총액</p>
               <p className="h-[30px] w-[130px] content-center text-right text-xs">
-                {total_money} KRW
+                {total_money.toLocaleString()} KRW
               </p>
             </div>
             <div className="flex items-center w-1/2">
               <p>내 캐시</p>
               <p className="h-[30px] w-[130px] content-center text-right text-xs">
-                {money_data.cash} KRW
+                {money_data.cash.toLocaleString()} KRW
               </p>
             </div>
           </div>

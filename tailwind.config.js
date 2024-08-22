@@ -10,6 +10,7 @@ module.exports = {
         btnNoClickColor: "#FFE7E9",
         btnDisabledColor: "#fef5f6",
         boxBackgroundColor: "#EEEEEE",
+        boxHoverColor: "#C9C9C9",
         modalBtnColor: "#B3B3B3",
         blueColor: "#1573FE",
         redColor: "#DF1525",
