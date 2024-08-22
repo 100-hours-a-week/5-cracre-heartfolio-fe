@@ -13,7 +13,7 @@ function Portfolio() {
 
   // const {cash_data, error, loading} = useFetch("https://heartfolio.site/api/portfolio/"+userId);
   // const {asset_data, error, loading} = useFetch("https://heartfolio.site/api/portfolio/"+userId+"/stock");
-  const {holdings_data, error, loading} = useFetch("https://heartfolio.site/api/portfolio/totalStocks");
+  // const {holdings_data, error, loading} = useFetch("https://heartfolio.site/api/portfolio/totalStocks");
 
   const cash_data = {
     cash: 75121616,
