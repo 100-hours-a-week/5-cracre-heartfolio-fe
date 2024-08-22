@@ -70,13 +70,13 @@ function TransactionHistory() {
           {data?.map((item) => (
             <li key={item.id} className="py-2">
               <HistoryBox
-                stock_id={item.stockId}
+                stockId={item.stockId}
                 name={item.name}
-                order_category={item.orderCategory}
-                order_date={item.orderDate}
-                order_amount={item.orderAmount}
-                order_price={item.orderPrice}
-                total_amount={item.totalAmount}
+                orderCategory={item.orderCategory}
+                orderDate={item.orderDate}
+                orderAmount={item.orderAmount}
+                orderPrice={item.orderPrice}
+                totalAmount={item.totalAmount}
               />
             </li>
           ))}
