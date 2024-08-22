@@ -1,5 +1,8 @@
-function MoneyInfo(props) {
+import useFetch from "../hooks/useFetch";
+function MoneyInfo() {
+  const {data, error, loading} = useFetch("https://heartfolio.site/api/portfolio/"+1);
   function money_change(money) {
+    if (money === undefined || money === null) return "N/A";
     if (money >= 1000000000000) {
       // 1조 이상
       let trillion = Math.floor(money / 1_0000_0000_0000);
@@ -22,39 +25,39 @@ function MoneyInfo(props) {
           <div>
             <div className="text-sm">총 자산</div>
             <div className="text-base">
-              {money_change(props.data.total_amount)}
+              {money_change(data?.totalAmount)}
             </div>
           </div>
           <div>
             <div className="text-sm">보유 캐시(KRW)</div>
-            <div className="text-base">{money_change(props.data.cash)}</div>
+            <div className="text-base">{money_change(data?.cash)}</div>
           </div>
         </div>
         <div className="flex justify-around mt-[34px]">
           <div>
             <div className="text-sm">총 매수 금액(KRW)</div>
             <div className="text-base">
-              {money_change(props.data.total_purchase)}
+              {money_change(data?.totalPurchase)}
             </div>
           </div>
           <div>
             <div className="text-sm">총 평가 금액(KRW)</div>
             <div className="text-base">
-              {money_change(props.data.total_value)}
+              {money_change(data?.totalValue)}
             </div>
           </div>
           <div>
             <div className="text-sm">평가 수익률</div>
             <div
               className={`text-base ${
-                props.data.profitRate > 0
+                data?.profitRate > 0
                   ? "text-redColor" // 양수일 때, 빨강색
-                  : props.data.profitRate < 0
+                  : data?.profitRate < 0
                   ? "text-blueColor" // 음수일 때, 파랑색
                   : "text-[#000000]" // 0일 때, 검정색
               }`}
             >
-              {props.data.profitRate}%
+              {data?.profitRate}%
             </div>
           </div>
         </div>
