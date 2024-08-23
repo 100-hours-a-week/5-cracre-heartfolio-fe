@@ -9,6 +9,7 @@
     "@heroicons/react": "^2.1.5",
     "@material-tailwind/react": "^2.1.9",
     "@mui/icons-material": "^5.16.7",
+    "@stomp/stompjs": "^7.0.0",
     "@tailwindcss/forms": "^0.5.7",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
@@ -17,10 +18,13 @@
     "react": "^18.3.1",
     "react-apexcharts": "^1.4.1",
     "react-dom": "^18.3.1",
+    "react-kakao-login": "^2.1.1",
     "react-router-dom": "^6.26.1",
     "react-scripts": "5.0.1",
     "socket.io-client": "^4.7.5",
-    "web-vitals": "^2.1.4"
+    "sockjs-client": "^1.6.1",
+    "web-vitals": "^2.1.4",
+    "websocket": "^1.0.35"
   },
   "scripts": {
     "start": "react-scripts start",

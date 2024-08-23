@@ -5,11 +5,9 @@ import ButtomNavigation from "../components/bottomNavigation";
 import useFetch from "../hooks/useFetch";
 
 function Intereststock() {
-  const {
-    data,
-    error,
-    loading,
-  } = useFetch("https://heartfolio.site/api/stock/favorites");
+  const { data, error, loading } = useFetch(
+    "https://heartfolio.site/api/stock/favorites"
+  );
 
   if (loading) {
     return <div>Loading...</div>; // 로딩 중일 때 표시할 내용
@@ -96,7 +94,6 @@ function Intereststock() {
   //     earningRate: "3.00",
   //   },
   // ];
-
   return (
     <>
       <Header />
@@ -104,17 +101,21 @@ function Intereststock() {
         <Stocktype />
         {/* 관심종목리스트 */}
         <div className="mx-auto max-w-[390px] pb-[40px]">
-          {/* map을 사용하여 반복 렌더링 */}
-          {data.map((stock) => (
-            <Eachintereststock
-              key={stock.stockId}
-              stockId={stock.stockId} //주식별 고유 아이디(기본키)
-              stockName={stock.stockName} //종목명
-              currentPrice={stock.currentPrice} //현재가
-              earningValue={stock.earningValue} //전일대비 증가량
-              earningRate={stock.earningRate} //수익률
-            />
-          ))}
+          {/* If data array is empty, show the message */}
+          {data.length === 0 ? (
+            <div>추가한 관심종목이 없습니다</div>
+          ) : (
+            data.map((stock) => (
+              <Eachintereststock
+                key={stock.stockId}
+                stockId={stock.stockId} // 주식별 고유 아이디(기본키)
+                stockName={stock.stockName} // 종목명
+                currentPrice={stock.currentPrice} // 현재가
+                earningValue={stock.earningValue} // 전일대비 증가량
+                earningRate={stock.earningRate} // 수익률
+              />
+            ))
+          )}
         </div>
       </div>
       <ButtomNavigation />
