@@ -55,7 +55,7 @@ function StockPage() {
         </div>
         <div className="mx-auto max-w-[390px] p-4 flex justify-center">
           <div role="tabpanel" className="tab-content block pb-[29px]">
-            {activeTab === 1 && <Chart info={stock_info_data} />}
+            {activeTab === 1 && <Chart data={stock_info_data}/>}
             {activeTab === 2 && <StockHistory />}
             {/* {activeTab === 3 && "3"} */}
           </div>
