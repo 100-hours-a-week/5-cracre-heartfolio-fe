@@ -60,7 +60,7 @@ function Chart(props) {
         stompClient.current.disconnect();
       }
     };
-  }, [props.data.symbol]);
+  }, [props.data?.symbol]);
 
   const handleQuantityChange = (e) => {
     if (e.target.value >= 0) {
@@ -175,9 +175,9 @@ function Chart(props) {
       <div className="mx-auto max-w-[370px]">
         <div></div>
         <p className="pb-2">{curPrice.toLocaleString()} KRW</p>
-        <TradingViewWidget symbol={props.data.symbol} />
+        <TradingViewWidget symbol={props.data?.symbol} />
         <div>
-          <div className="flex w-[370px]">
+          <div className="flex w-[370px] pt-5">
             <div className="flex items-center w-3/5 justify-between">
               <label>수량</label>
               <div className="flex items-center">

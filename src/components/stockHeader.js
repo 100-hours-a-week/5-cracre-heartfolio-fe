@@ -4,8 +4,7 @@ import { useNavigate, useParams } from "react-router-dom";
 function StockHeader(props) {
   const { id } = useParams();
   const navigate = useNavigate();
-  
-  const initialHeartImage = props.data.likePresent === "false"
+  const initialHeartImage = props.data?.likePresent === "false"
     ? "/assets/images/uninterest.png"
     : "/assets/images/interest.png";
 
@@ -49,7 +48,7 @@ function StockHeader(props) {
             className="h-[20px]"
             onClick={() => navigate("/intereststock")}
           ></img>
-          <div onClick={() => navigate("/stock/"+id)}>{props.data.name}</div>
+          <div onClick={() => navigate("/stock/"+id)}>{props.data?.name}</div>
           <img src={src} className="h-[20px]" onClick={() => handlefavorite()}></img>
         </div>
       </div>

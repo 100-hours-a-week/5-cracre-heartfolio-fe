@@ -17,7 +17,7 @@ function Intereststock() {
     return <div>Error: {error.message}</div>; // 에러 발생 시 표시할 내용
   }
 
-  if (!data || data.length === 0) {
+  if (!data) {
     return <div>No data available</div>; // 데이터가 없을 때 표시할 내용
   }
 
@@ -102,10 +102,10 @@ function Intereststock() {
         {/* 관심종목리스트 */}
         <div className="mx-auto max-w-[390px] pb-[40px]">
           {/* If data array is empty, show the message */}
-          {data.length === 0 ? (
-            <div>추가한 관심종목이 없습니다</div>
+          {data?.length === 0 ? (
+            <div className='max-w-[370px] m-3'>추가한 관심종목이 없습니다</div>
           ) : (
-            data.map((stock) => (
+            data?.map((stock) => (
               <Eachintereststock
                 key={stock.stockId}
                 stockId={stock.stockId} // 주식별 고유 아이디(기본키)
