@@ -3,11 +3,17 @@ import React, { useEffect, useRef, memo } from "react";
 
 function TradingViewWidget(props) {
   const container = useRef();
+  console.log("props",props.symbol)
 
   useEffect(() => {
-    if (container.current && container.current.querySelector("script")) {
-      return; // 이미 스크립트가 추가되었으므로 중복 추가하지 않음
+    if (!props.symbol || props.symbol.trim() === "") {
+      console.warn("Invalid symbol:", props.symbol);
+      return;
     }
+    if (container.current) {
+      container.current.innerHTML = "";
+    }
+    
     const script = document.createElement("script");
     script.src =
       "https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js";
@@ -29,7 +35,7 @@ function TradingViewWidget(props) {
           "support_host": "https://www.tradingview.com"
         }`;
     container.current.appendChild(script);
-  }, []);
+  }, [props.symbol]);
 
   return (
     <div className="tradingview-widget-container" ref={container}>

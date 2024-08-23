@@ -10,7 +10,7 @@ function Chart(props) {
   const { id } = useParams();
   // const {money_data, error, loading} = useFetch("http://localhost:8080/api/portfolio/"+userId);
   const [quantity, setQuantity] = useState("");
-  const [currentPrice, setCurrentPrice] = useState(0); // 주식 현재가를 저장할 상태
+  const [curPrice, setcurPrice] = useState(0); // 주식 현재가를 저장할 상태
   const [isBuyModalOpen, setIsBuyModalOpen] = useState(false); // 모달 상태 관리
   const [isSellModalOpen, setIsSellModalOpen] = useState(false); // 모달 상태 관리
   const [orderDetails, setOrderDetails] = useState({
@@ -48,8 +48,8 @@ function Chart(props) {
           const data = JSON.parse(message.body);
           console.log("서버에서 받은 데이터:", data);
 
-          if (data && data.currentPrice) {
-            setCurrentPrice(data.currentPrice);
+          if (data && data.curPrice) {
+            setcurPrice(data.curPrice);
           }
         }
       );
@@ -60,7 +60,7 @@ function Chart(props) {
         stompClient.current.disconnect();
       }
     };
-  }, [props.data.symbol]);
+  }, [props.data?.symbol]);
 
   const handleQuantityChange = (e) => {
     if (e.target.value >= 0) {
@@ -72,30 +72,30 @@ function Chart(props) {
 
   // "최대" 버튼 클릭 시 최대 수량을 계산하여 설정하는 함수
   const handleMaxQuantity = () => {
-    const maxQuantity = Math.floor(money_data.cash / currentPrice);
+    const maxQuantity = Math.floor(money_data.cash / curPrice);
     setQuantity(maxQuantity);
   };
 
   // "50%" 버튼 클릭 시 최대 수량의 50%를 계산하여 설정하는 함수
   const handle50PercentQuantity = () => {
-    const maxQuantity = Math.floor(money_data.cash / currentPrice);
+    const maxQuantity = Math.floor(money_data.cash / curPrice);
     setQuantity(Math.floor(maxQuantity / 2));
   };
 
   // "25%" 버튼 클릭 시 최대 수량의 25%를 계산하여 설정하는 함수
   const handle25PercentQuantity = () => {
-    const maxQuantity = Math.floor(money_data.cash / currentPrice);
+    const maxQuantity = Math.floor(money_data.cash / curPrice);
     setQuantity(Math.floor(maxQuantity / 4));
   };
 
   ////요까지1
 
-  const total_money = currentPrice * quantity;
+  const total_money = curPrice * quantity;
 
   const isDisabled = quantity <= 0;
   const buttonStyle = isDisabled ? "bg-[#FEF0F2]" : "bg-[#FFE7E9]";
   function buy() {
-    if (quantity * currentPrice > money_data.cash) {
+    if (quantity * curPrice > money_data.cash) {
       alert("본인 캐시를 확인해주세요");
       return;
     } else {
@@ -108,14 +108,14 @@ function Chart(props) {
         body: JSON.stringify({
           stockId: 1,
           quantity: quantity,
-          price: currentPrice,
+          price: curPrice,
         }),
       }).then((res) => {
         if (res.ok) {
           setOrderDetails({
             quantity: quantity,
-            price: currentPrice,
-            total: quantity * currentPrice,
+            price: curPrice,
+            total: quantity * curPrice,
           });
           setIsBuyModalOpen(true);
         }
@@ -123,8 +123,8 @@ function Chart(props) {
     }
     // setOrderDetails({
     //   quantity: quantity,
-    //   price: currentPrice,
-    //   total: quantity * currentPrice,
+    //   price: curPrice,
+    //   total: quantity * curPrice,
     // });
     // setIsBuyModalOpen(true);
   }
@@ -147,14 +147,14 @@ function Chart(props) {
         body: JSON.stringify({
           id: id,
           quantity: quantity,
-          price: currentPrice,
+          price: curPrice,
         }),
       }).then((res) => {
         if (res.ok) {
           setSellDetails({
             quantity: quantity,
-            price: currentPrice,
-            total: quantity * currentPrice,
+            price: curPrice,
+            total: quantity * curPrice,
           });
           setIsSellModalOpen(true);
         }
@@ -162,8 +162,8 @@ function Chart(props) {
     }
     // setSellDetails({
     //   quantity: quantity,
-    //   price: currentPrice,
-    //   total: quantity * currentPrice,
+    //   price: curPrice,
+    //   total: quantity * curPrice,
     // });
     // setIsSellModalOpen(true);
   }
@@ -174,10 +174,10 @@ function Chart(props) {
     <>
       <div className="mx-auto max-w-[370px]">
         <div></div>
-        <p className="pb-2">{currentPrice.toLocaleString()} KRW</p>
-        <TradingViewWidget symbol={props.data.symbol} />
+        <p className="pb-2">{curPrice.toLocaleString()} KRW</p>
+        <TradingViewWidget symbol={props.data?.symbol} />
         <div>
-          <div className="flex w-[370px]">
+          <div className="flex w-[370px] pt-5">
             <div className="flex items-center w-3/5 justify-between">
               <label>수량</label>
               <div className="flex items-center">
