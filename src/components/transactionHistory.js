@@ -63,7 +63,7 @@ function TransactionHistory() {
   const { data, error, loading } = useFetch(
     "https://heartfolio.site/api/portfolio/investInfo"
   );
-
+console.log(data);
   return (
     <>
       <div className="mx-auto max-w-[350px] pb-8">
@@ -74,7 +74,7 @@ function TransactionHistory() {
         ) : (
           <ul role="list" className="divide-y divide-gray-200">
             {data?.map((item) => (
-              <li key={item.id} className="py-2">
+              <li key={item.orderId} className="py-2">
                 <HistoryBox
                   stockId={item.stockId}
                   name={item.name}
