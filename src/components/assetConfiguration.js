@@ -10,7 +10,7 @@ function getRandomPastelColor() {
 }
 
 function AssetConfiguration() {
-    // const asset_data = {
+  // const asset_data = {
   //   data: {
   //     stocks: [
   //       {
@@ -67,7 +67,9 @@ function AssetConfiguration() {
   //   },
   // };
   const userId = 1;
-  const { data, error, loading } = useFetch("https://heartfolio.site/api/portfolio/" + userId + "/stock");
+  const { data, error, loading } = useFetch(
+    "https://heartfolio.site/api/portfolio/" + userId + "/stock"
+  );
   const [chartData, setChartData] = useState({
     series: [],
     labels: [],
@@ -75,7 +77,7 @@ function AssetConfiguration() {
   });
 
   useEffect(() => {
-    if (data?.stocks) {
+    if (data?.stocks && data.stocks.length > 0) {
       const series = data.stocks.map((stock) => stock.evalPrice);
       const labels = data.stocks.map((stock) => stock.stockName);
 
@@ -102,7 +104,10 @@ function AssetConfiguration() {
       });
     }
   }, [data]);
-
+  
+  if (data?.stocks?.length === 0) {
+    return <p>아직 거래한 내역이 없습니다.</p>;
+  }
   const colors = chartData.series.map(() => getRandomPastelColor());
 
   const options = {
@@ -135,7 +140,8 @@ function AssetConfiguration() {
       offsetY: -20, // 라벨을 위로 이동
       formatter: function (seriesName, opts) {
         const seriesIndex = opts.seriesIndex;
-        const percentage = chartData.sortedData[seriesIndex].percentage.toFixed(1);
+        const percentage =
+          chartData.sortedData[seriesIndex].percentage.toFixed(1);
         return seriesName + ": " + percentage + "%";
       },
     },

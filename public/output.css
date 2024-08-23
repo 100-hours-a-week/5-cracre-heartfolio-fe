@@ -2415,6 +2415,10 @@ input.tab:checked + .tab-content,
   margin: 1.25rem;
 }
 
+.m-4 {
+  margin: 1rem;
+}
+
 .mx-1 {
   margin-left: 0.25rem;
   margin-right: 0.25rem;
@@ -2527,6 +2531,10 @@ input.tab:checked + .tab-content,
 
 .mt-\[90px\] {
   margin-top: 90px;
+}
+
+.mt-10 {
+  margin-top: 2.5rem;
 }
 
 .block {

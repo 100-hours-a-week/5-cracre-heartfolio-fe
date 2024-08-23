@@ -103,7 +103,7 @@ function Intereststock() {
         <div className="mx-auto max-w-[390px] pb-[40px]">
           {/* If data array is empty, show the message */}
           {data?.length === 0 ? (
-            <div className='max-w-[370px] m-3'>추가한 관심종목이 없습니다</div>
+            <div className='max-w-[370px] m-5 text-center mt-10'>추가한 관심종목이 없습니다</div>
           ) : (
             data?.map((stock) => (
               <Eachintereststock
