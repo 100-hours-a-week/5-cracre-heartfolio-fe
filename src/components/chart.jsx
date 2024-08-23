@@ -1,17 +1,16 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
 import { io } from "socket.io-client";
 import { BuyModal, SellModal } from "./transactionModal";
-const socket = io("http://localhost:3000");
-
+import * as StompJs from "@stomp/stompjs";
+import SockJS from 'sockjs-client';
 const { default: TradingViewWidget } = require("./tradingViewWidget");
 
 function Chart(props) {
   const { id } = useParams();
   // const {money_data, error, loading} = useFetch("http://localhost:8080/api/portfolio/"+userId);
-
   const [quantity, setQuantity] = useState("");
-  const [currentPrice, setCurrentPrice] = useState(1000); // 주식 현재가를 저장할 상태
+  const [currentPrice, setCurrentPrice] = useState(0); // 주식 현재가를 저장할 상태
   const [isBuyModalOpen, setIsBuyModalOpen] = useState(false); // 모달 상태 관리
   const [isSellModalOpen, setIsSellModalOpen] = useState(false); // 모달 상태 관리
   const [orderDetails, setOrderDetails] = useState({
@@ -28,23 +27,40 @@ function Chart(props) {
   const money_data = {
     cash: 100000, //보유캐시
     total_purchase: 35000616, //총 매수 금액
-    total_amount: 200000000,  //총 자산
+    total_amount: 200000000, //총 자산
     total_value: 151152125, //총 평가 금액
     profitRate: -10.4, //평가수익률
   };
 
+  const stompClient = useRef(null);
+
   useEffect(() => {
-    // 웹소켓을 통해 주식 현재가를 수신하는 로직
-    socket.on("stockPriceUpdate", (data) => {
-      // 서버로부터 수신한 주식 현재가를 업데이트
-      setCurrentPrice(data.price);
+    const socket = new SockJS("https://heartfolio.site/heartfolio");
+    stompClient.current = StompJs.Stomp.over(socket);
+
+    stompClient.current.connect({}, function (frame) {
+      console.log("Connected: " + frame);
+
+      // 특정 종목에 대한 구독
+      stompClient.current.subscribe(
+        `/from/stock/APPL`, // 일단 종목 APPL로 설정
+        function (message) {
+          const data = JSON.parse(message.body);
+          console.log("서버에서 받은 데이터:", data);
+
+          if (data && data.currentPrice) {
+            setCurrentPrice(data.currentPrice);
+          }
+        }
+      );
     });
 
-    // 컴포넌트 언마운트 시에 소켓 연결 정리
     return () => {
-      socket.off("stockPriceUpdate");
+      if (stompClient.current !== null) {
+        stompClient.current.disconnect();
+      }
     };
-  }, []);
+  }, [props.data.symbol]);
 
   const handleQuantityChange = (e) => {
     if (e.target.value >= 0) {
@@ -52,7 +68,7 @@ function Chart(props) {
     }
   };
 
-  ///추가 코드1. 
+  ///추가 코드1.
 
   // "최대" 버튼 클릭 시 최대 수량을 계산하여 설정하는 함수
   const handleMaxQuantity = () => {
@@ -159,7 +175,7 @@ function Chart(props) {
       <div className="mx-auto max-w-[370px]">
         <div></div>
         <p className="pb-2">{currentPrice.toLocaleString()} KRW</p>
-        <TradingViewWidget symbol={props.info.symbol} />
+        <TradingViewWidget symbol={props.data.symbol} />
         <div>
           <div className="flex w-[370px]">
             <div className="flex items-center w-3/5 justify-between">
@@ -176,16 +192,22 @@ function Chart(props) {
               </div>
             </div>
             <div className="w-2/5 text-center">
-              <button className="text-center text-[10px] bg-boxBackgroundColor p-2 rounded-md mx-1  hover:bg-boxHoverColor"
-               onClick={handle25PercentQuantity}>
+              <button
+                className="text-center text-[10px] bg-boxBackgroundColor p-2 rounded-md mx-1  hover:bg-boxHoverColor"
+                onClick={handle25PercentQuantity}
+              >
                 25%
               </button>
-              <button className="text-center text-[10px] bg-boxBackgroundColor p-2 rounded-md mx-1 hover:bg-boxHoverColor"
-               onClick={handle50PercentQuantity}>
+              <button
+                className="text-center text-[10px] bg-boxBackgroundColor p-2 rounded-md mx-1 hover:bg-boxHoverColor"
+                onClick={handle50PercentQuantity}
+              >
                 50%
               </button>
-              <button className="text-center text-[10px] bg-boxBackgroundColor p-2 rounded-md mx-1 hover:bg-boxHoverColor"
-               onClick={handleMaxQuantity}>
+              <button
+                className="text-center text-[10px] bg-boxBackgroundColor p-2 rounded-md mx-1 hover:bg-boxHoverColor"
+                onClick={handleMaxQuantity}
+              >
                 최대
               </button>
             </div>
@@ -224,9 +246,13 @@ function Chart(props) {
       </div>
 
       {/* 매수 완료 모달 */}
-      {isBuyModalOpen && <BuyModal orderDetails={orderDetails} onClick={closeModal}/>}
+      {isBuyModalOpen && (
+        <BuyModal orderDetails={orderDetails} onClick={closeModal} />
+      )}
       {/* 매도 완료 모달 */}
-      {isSellModalOpen && <SellModal sellDetails={sellDetails} onClick={closeSellModal}/>}
+      {isSellModalOpen && (
+        <SellModal sellDetails={sellDetails} onClick={closeSellModal} />
+      )}
     </>
   );
 }

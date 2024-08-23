@@ -1,40 +1,44 @@
+import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
 function StockHeader(props) {
   const { id } = useParams();
   const navigate = useNavigate();
+
+  const initialHeartImage = props.data.likePresent === "false"
+    ? "/assets/images/uninterest.png"
+    : "/assets/images/interest.png";
+
+  const [src, setSrc]= useState(initialHeartImage);
+
   function handlefavorite(){
-    // if(src=="/assets/images/uninterest.png"){
-    //   fetch("https://heartfolio.site/api/stock/favorites/"+id, {
-    //     credentials: "include",
-    //     method: "POST",
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //     },
-    //     body: JSON.stringify({
-
-    //     }),
-    //   }).then((res) => {
-    //     if (res.ok) {
-
-    //     }
-    //   });
-    // }else if(src=="/assets/images/interest.png"){
-    //   fetch("https://heartfolio.site/api/stock/favorites/"+id, {
-    //     credentials: "include",
-    //     method: "DELETE",
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //     },
-    //     body: JSON.stringify({
-
-    //     }),
-    //   }).then((res) => {
-    //     if (res.ok) {
-
-    //     }
-    //   });
-    // }
+    if(src==="/assets/images/uninterest.png"){
+      fetch("https://heartfolio.site/api/stock/favorites/"+id, {
+        credentials: "include",
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }).then((res) => {
+        if (res.ok) {
+          setSrc("/assets/images/interest.png");
+          navigate(`/stock/${id}`);
+        }
+      });
+    }else if(src=="/assets/images/interest.png"){
+      fetch("https://heartfolio.site/api/stock/favorites/"+id, {
+        credentials: "include",
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }).then((res) => {
+        if (res.ok) {
+          setSrc("/assets/images/uninterest.png");
+          navigate(`/stock/${id}`);
+        }
+      });
+    }
   }
   return (
     <>
@@ -45,8 +49,8 @@ function StockHeader(props) {
             className="h-[20px]"
             onClick={() => navigate("/intereststock")}
           ></img>
-          <div onClick={() => navigate("/stock/"+id)}>{props.name}</div>
-          <img src="/assets/images/uninterest.png" className="h-[20px]" onClick={handlefavorite()}></img>
+          <div onClick={() => navigate("/stock/"+id)}>{props.data.name}</div>
+          <img src={src} className="h-[20px]" onClick={() => handlefavorite()}></img>
         </div>
       </div>
     </>

@@ -14,10 +14,12 @@ function HistoryBox(props) {
     } else {
       return money.toLocaleString(); // 기본적으로 1,000 단위로 콤마를 추가
     }
-  }
+  };
 
   const formatDate = (date) => {
-    return date.replace("T", " ");
+    const [datePart, timePart] = date.split(".");
+    const formattedDate = datePart.replace("T", " ");
+    return formattedDate;
   };
 
   return (
