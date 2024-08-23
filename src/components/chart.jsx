@@ -1,18 +1,19 @@
 import { useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
-import { io } from "socket.io-client";
 import { BuyModal, SellModal } from "./transactionModal";
 import * as StompJs from "@stomp/stompjs";
-import SockJS from 'sockjs-client';
-const { default: TradingViewWidget } = require("./tradingViewWidget");
+import SockJS from "sockjs-client";
+import TradingViewWidget from "./tradingViewWidget";
+import SellBox from "./sellBox";
+import BuyBox from "./buyBox";
 
 function Chart(props) {
   const { id } = useParams();
-  // const {money_data, error, loading} = useFetch("http://localhost:8080/api/portfolio/"+userId);
-  const [quantity, setQuantity] = useState("");
-  const [curPrice, setcurPrice] = useState(0); // 주식 현재가를 저장할 상태
+  // const {moneyData, error, loading} = useFetch("http://localhost:8080/api/portfolio/"+userId);
+  const [curPrice, setcurPrice] = useState(10000); // 주식 현재가를 저장할 상태
   const [isBuyModalOpen, setIsBuyModalOpen] = useState(false); // 모달 상태 관리
   const [isSellModalOpen, setIsSellModalOpen] = useState(false); // 모달 상태 관리
+  const [activeTab, setActiveTab] = useState(1);
   const [orderDetails, setOrderDetails] = useState({
     quantity: 0,
     price: 0,
@@ -24,7 +25,7 @@ function Chart(props) {
     total: 0,
   });
 
-  const money_data = {
+  const moneyData = {
     cash: 100000, //보유캐시
     total_purchase: 35000616, //총 매수 금액
     total_amount: 200000000, //총 자산
@@ -62,192 +63,66 @@ function Chart(props) {
     };
   }, [props.data?.symbol]);
 
-  const handleQuantityChange = (e) => {
-    if (e.target.value >= 0) {
-      setQuantity(e.target.value);
-    }
-  };
-
-  ///추가 코드1.
-
-  // "최대" 버튼 클릭 시 최대 수량을 계산하여 설정하는 함수
-  const handleMaxQuantity = () => {
-    const maxQuantity = Math.floor(money_data.cash / curPrice);
-    setQuantity(maxQuantity);
-  };
-
-  // "50%" 버튼 클릭 시 최대 수량의 50%를 계산하여 설정하는 함수
-  const handle50PercentQuantity = () => {
-    const maxQuantity = Math.floor(money_data.cash / curPrice);
-    setQuantity(Math.floor(maxQuantity / 2));
-  };
-
-  // "25%" 버튼 클릭 시 최대 수량의 25%를 계산하여 설정하는 함수
-  const handle25PercentQuantity = () => {
-    const maxQuantity = Math.floor(money_data.cash / curPrice);
-    setQuantity(Math.floor(maxQuantity / 4));
-  };
-
-  ////요까지1
-
-  const total_money = curPrice * quantity;
-
-  const isDisabled = quantity <= 0;
-  const buttonStyle = isDisabled ? "bg-[#FEF0F2]" : "bg-[#FFE7E9]";
-  function buy() {
-    if (quantity * curPrice > money_data.cash) {
-      alert("본인 캐시를 확인해주세요");
-      return;
-    } else {
-      fetch("https://heartfolio.site/api/invest/order", {
-        credentials: "include",
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          stockId: 1,
-          quantity: quantity,
-          price: curPrice,
-        }),
-      }).then((res) => {
-        if (res.ok) {
-          setOrderDetails({
-            quantity: quantity,
-            price: curPrice,
-            total: quantity * curPrice,
-          });
-          setIsBuyModalOpen(true);
-        }
-      });
-    }
-    // setOrderDetails({
-    //   quantity: quantity,
-    //   price: curPrice,
-    //   total: quantity * curPrice,
-    // });
-    // setIsBuyModalOpen(true);
-  }
-  function closeModal() {
+  function closeBuyModal() {
     setIsBuyModalOpen(false);
   }
 
-  function sell() {
-    if (quantity < 0) {
-      // 수량이 본인이 가지고 있는 수량보다 큰 경우
-      alert("본인 캐시를 확인해주세요");
-      return;
-    } else {
-      fetch("https://heartfolio.site/api/invest/order", {
-        credentials: "include",
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          id: id,
-          quantity: quantity,
-          price: curPrice,
-        }),
-      }).then((res) => {
-        if (res.ok) {
-          setSellDetails({
-            quantity: quantity,
-            price: curPrice,
-            total: quantity * curPrice,
-          });
-          setIsSellModalOpen(true);
-        }
-      });
-    }
-    // setSellDetails({
-    //   quantity: quantity,
-    //   price: curPrice,
-    //   total: quantity * curPrice,
-    // });
-    // setIsSellModalOpen(true);
-  }
   function closeSellModal() {
     setIsSellModalOpen(false);
   }
+
   return (
     <>
       <div className="mx-auto max-w-[370px]">
         <div></div>
         <p className="pb-2">{curPrice.toLocaleString()} KRW</p>
         <TradingViewWidget symbol={props.data?.symbol} />
-        <div>
-          <div className="flex w-[370px] pt-5">
-            <div className="flex items-center w-3/5 justify-between">
-              <label>수량</label>
-              <div className="flex items-center">
-                <input
-                  type="number"
-                  value={quantity}
-                  onChange={handleQuantityChange}
-                  placeholder="0"
-                  className="h-[30px] w-[120px]"
-                ></input>
-                <p className="text-gray-500 ml-1">주</p>
-              </div>
-            </div>
-            <div className="w-2/5 text-center">
-              <button
-                className="text-center text-[10px] bg-boxBackgroundColor p-2 rounded-md mx-1  hover:bg-boxHoverColor"
-                onClick={handle25PercentQuantity}
-              >
-                25%
-              </button>
-              <button
-                className="text-center text-[10px] bg-boxBackgroundColor p-2 rounded-md mx-1 hover:bg-boxHoverColor"
-                onClick={handle50PercentQuantity}
-              >
-                50%
-              </button>
-              <button
-                className="text-center text-[10px] bg-boxBackgroundColor p-2 rounded-md mx-1 hover:bg-boxHoverColor"
-                onClick={handleMaxQuantity}
-              >
-                최대
-              </button>
-            </div>
-          </div>
-          <div className="flex w-[370px] justify-between mt-3">
-            <div className="flex items-center w-1/2">
-              <p>총액</p>
-              <p className="h-[30px] w-[130px] content-center text-right text-xs">
-                {total_money.toLocaleString()} KRW
-              </p>
-            </div>
-            <div className="flex items-center w-1/2">
-              <p>내 캐시</p>
-              <p className="h-[30px] w-[130px] content-center text-right text-xs">
-                {money_data.cash.toLocaleString()} KRW
-              </p>
-            </div>
-          </div>
-        </div>
-        <div className="w-[350px] text-center mt-9">
-          <button
-            className={`${buttonStyle} h-10 w-[140px] mx-3 rounded-md text-sm`}
-            disabled={isDisabled}
-            onClick={() => buy()}
+        <div
+          role="tablist"
+          className="tabs tabs-bordered mx-auto max-w-[370px] mt-[34px]"
+        >
+          <div
+            role="tab"
+            className={`tab h-[50px] ${activeTab === 1 ? "tab-active" : ""}`}
+            onClick={() => setActiveTab(1)}
           >
             매수
-          </button>
-          <button
-            className={`${buttonStyle} h-10 w-[140px] mx-3 rounded-md text-sm`}
-            disabled={isDisabled}
-            onClick={() => sell()}
+          </div>
+          <div
+            role="tab"
+            className={`tab h-[50px] ${activeTab === 2 ? "tab-active" : ""}`}
+            onClick={() => setActiveTab(2)}
           >
             매도
-          </button>
+          </div>
+        </div>
+        <div className="mx-auto max-w-[370px] p-4">
+          <div role="tabpanel" className="tab-content block">
+            {activeTab === 1 && (
+              <BuyBox
+                curPrice={curPrice}
+                moneyData={moneyData}
+                id={id}
+                setIsBuyModalOpen={setIsBuyModalOpen}
+                setOrderDetails={setOrderDetails}
+              />
+            )}
+            {activeTab === 2 && (
+              <SellBox
+                curPrice={curPrice}
+                amount={props.data.amount}
+                id={id}
+                setIsSellModalOpen={setIsSellModalOpen}
+                setSellDetails={setSellDetails}
+              />
+            )}
+          </div>
         </div>
       </div>
 
       {/* 매수 완료 모달 */}
       {isBuyModalOpen && (
-        <BuyModal orderDetails={orderDetails} onClick={closeModal} />
+        <BuyModal orderDetails={orderDetails} onClick={closeBuyModal} />
       )}
       {/* 매도 완료 모달 */}
       {isSellModalOpen && (

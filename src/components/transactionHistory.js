@@ -2,7 +2,6 @@ import useFetch from "../hooks/useFetch";
 import HistoryBox from "./box/historyBox";
 
 function TransactionHistory() {
-
   // const transaction_data = {
   //   data: [
   //     {
@@ -61,26 +60,34 @@ function TransactionHistory() {
   //     },
   //   ],
   // };
-  const { data, error, loading } = useFetch("https://heartfolio.site/api/portfolio/investInfo");
-
+  const { data, error, loading } = useFetch(
+    "https://heartfolio.site/api/portfolio/investInfo"
+  );
+console.log(data);
   return (
     <>
       <div className="mx-auto max-w-[350px] pb-8">
-        <ul role="list" className="divide-y divide-gray-200">
-          {data?.map((item) => (
-            <li key={item.id} className="py-2">
-              <HistoryBox
-                stockId={item.stockId}
-                name={item.name}
-                orderCategory={item.orderCategory}
-                orderDate={item.orderDate}
-                orderAmount={item.orderAmount}
-                orderPrice={item.orderPrice}
-                totalAmount={item.totalAmount}
-              />
-            </li>
-          ))}
-        </ul>
+        {data?.length === 0 ? (
+          <div className="text-center text-gray-500">
+            거래 내역이 없습니다.
+          </div>
+        ) : (
+          <ul role="list" className="divide-y divide-gray-200">
+            {data?.map((item) => (
+              <li key={item.orderId} className="py-2">
+                <HistoryBox
+                  stockId={item.stockId}
+                  name={item.name}
+                  orderCategory={item.orderCategory}
+                  orderDate={item.orderDate}
+                  orderAmount={item.orderAmount}
+                  orderPrice={item.orderPrice}
+                  totalAmount={item.totalAmount}
+                />
+              </li>
+            ))}
+          </ul>
+        )}
       </div>
     </>
   );

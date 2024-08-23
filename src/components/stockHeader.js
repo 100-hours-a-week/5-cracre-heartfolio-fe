@@ -4,16 +4,25 @@ import { useNavigate, useParams } from "react-router-dom";
 function StockHeader(props) {
   const { id } = useParams();
   const navigate = useNavigate();
-  const initialHeartImage = props.data?.likePresent === false
-    ? "/assets/images/uninterest.png"
-    : "/assets/images/interest.png";
-  console.log("heart:",props.data?.likePresent)
-  const [src, setSrc]= useState(initialHeartImage);
+  const initialHeartImage =
+    props.data?.likePresent === false
+      ? "/assets/images/uninterest.png"
+      : "/assets/images/interest.png";
+  console.log("heart:", props.data?.likePresent);
 
-  function handlefavorite(){
-    if(src==="/assets/images/uninterest.png"){
-      fetch("https://heartfolio.site/api/stock/favorites/"+id, {
-        credentials: "include",
+  const [src, setSrc] = useState(initialHeartImage);
+  useEffect(() => {
+    const newHeartImage =
+      props.data?.likePresent === false
+        ? "/assets/images/uninterest.png"
+        : "/assets/images/interest.png";
+    setSrc(newHeartImage);
+  }, [props.data?.likePresent]);
+  
+  function handlefavorite() {
+    if (src === "/assets/images/uninterest.png") {
+      fetch("https://heartfolio.site/api/stock/favorites/" + id, {
+        // credentials: "include",
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -24,9 +33,9 @@ function StockHeader(props) {
           navigate(`/stock/${id}`);
         }
       });
-    }else if(src=="/assets/images/interest.png"){
-      fetch("https://heartfolio.site/api/stock/favorites/"+id, {
-        credentials: "include",
+    } else if (src == "/assets/images/interest.png") {
+      fetch("https://heartfolio.site/api/stock/favorites/" + id, {
+        // credentials: "include",
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
@@ -48,8 +57,14 @@ function StockHeader(props) {
             className="h-[20px]"
             onClick={() => navigate("/intereststock")}
           ></img>
-          <div onClick={() => navigate("/stock/"+id)}>{props.data?.symbol}</div>
-          <img src={src} className="h-[20px]" onClick={() => handlefavorite()}></img>
+          <div onClick={() => navigate("/stock/" + id)}>
+            {props.data?.symbol}
+          </div>
+          <img
+            src={src}
+            className="h-[20px]"
+            onClick={() => handlefavorite()}
+          ></img>
         </div>
       </div>
     </>
