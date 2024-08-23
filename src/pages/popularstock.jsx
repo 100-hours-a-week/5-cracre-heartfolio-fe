@@ -5,7 +5,7 @@ import ButtomNavigation from "../components/bottomNavigation";
 import useFetch from "../hooks/useFetch";
 
 function Popularstock() {
-  const {data, error, loading} = useFetch("https://heartfolio.site/api/stock/popular?limit="+25);
+  const {data, error, loading} = useFetch("https://heartfolio.site/api/stock/popular?limit="+50);
   if (loading) {
     return <div>Loading...</div>; // 로딩 중일 때 표시할 내용
   }
