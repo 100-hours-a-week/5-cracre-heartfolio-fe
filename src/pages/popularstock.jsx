@@ -6,6 +6,17 @@ import useFetch from "../hooks/useFetch";
 
 function Popularstock() {
   const {data, error, loading} = useFetch("https://heartfolio.site/api/stock/popular?limit="+25);
+  if (loading) {
+    return <div>Loading...</div>; // 로딩 중일 때 표시할 내용
+  }
+
+  if (error) {
+    return <div>Error: {error.message}</div>; // 에러 발생 시 표시할 내용
+  }
+
+  if (!data || data.length === 0) {
+    return <div>No data available</div>; // 데이터가 없을 때 표시할 내용
+  }
 
   // 인기 종목 데이터 배열
   // const popular_data = {

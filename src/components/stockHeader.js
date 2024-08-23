@@ -4,7 +4,7 @@ import { useNavigate, useParams } from "react-router-dom";
 function StockHeader(props) {
   const { id } = useParams();
   const navigate = useNavigate();
-
+  
   const initialHeartImage = props.data.likePresent === "false"
     ? "/assets/images/uninterest.png"
     : "/assets/images/interest.png";
