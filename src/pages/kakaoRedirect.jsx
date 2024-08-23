@@ -12,7 +12,7 @@ export function KakaoRedirect() {
 
   useEffect(() => {
     fetch(`https://heartfolio.site/oauth?code=${code}`, {
-      method: "POST",
+      method: "GET",
       headers: headers,
     })
       .then((response) => response.json())
