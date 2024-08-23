@@ -22,7 +22,7 @@ function StockHeader(props) {
   function handlefavorite() {
     if (src === "/assets/images/uninterest.png") {
       fetch("https://heartfolio.site/api/stock/favorites/" + id, {
-        credentials: "include",
+        // credentials: "include",
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -35,7 +35,7 @@ function StockHeader(props) {
       });
     } else if (src == "/assets/images/interest.png") {
       fetch("https://heartfolio.site/api/stock/favorites/" + id, {
-        credentials: "include",
+        // credentials: "include",
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
