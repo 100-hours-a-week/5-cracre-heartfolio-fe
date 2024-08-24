@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function SellBox({ curPrice, amount, id, setIsSellModalOpen, setSellDetails }) {
+function SellBox({ curPrice, amount, id, setIsSellModalOpen, setSellDetails, isLoggedIn }) {
   const [quantity, setQuantity] = useState("");
 
   const handleQuantityChange = (e) => {
@@ -29,6 +29,9 @@ function SellBox({ curPrice, amount, id, setIsSellModalOpen, setSellDetails }) {
   function sell() {
     if (amount < quantity) {
       alert("본인의 보유 수량을 확인해주세요");
+      return;
+    } else if (!isLoggedIn) {
+      alert("로그인이 필요한 서비스입니다.");
       return;
     } else {
       fetch("https://heartfolio.site/api/invest/order", {
