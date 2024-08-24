@@ -1,13 +1,21 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 const LoginPage = () => {
-  const redirectUri = `${window.location.origin}/oauth`;
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!window.Kakao.isInitialized()) {
+      window.Kakao.init(process.env.REACT_APP_REST_API_KEY);
+    }
+  }, []);
 
   const handleLogin = () => {
-    const kakaoAuthUri = `https://heartfolio.site/oauth`;
-    window.location.href = kakaoAuthUri;
+    window.Kakao.Auth.authorize({
+      redirectUri: `${window.location.origin}/oauth`,
+    });
   };
-
+  
   return (
     <>
       <div>
@@ -35,7 +43,7 @@ const LoginPage = () => {
         <p id="token-result" className="mt-4 text-sm text-gray-700"></p>
       </div>
       <a href="/">
-        <p className="text-xs m-5 text-center text-slate-400">
+        <p className="text-xs m-5 text-center text-slate-400	">
           비회원으로 이용하기
         </p>
       </a>
