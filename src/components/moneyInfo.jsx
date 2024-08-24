@@ -1,6 +1,7 @@
 import useFetch from "../hooks/useFetch";
 function MoneyInfo() {
-  const {data, error, loading} = useFetch("https://heartfolio.site/api/portfolio/"+1);
+  const userId = 1;
+  const {data, error, loading} = useFetch("https://heartfolio.site/api/portfolio/"+userId);
   function money_change(money) {
     if (money === undefined || money === null) return "N/A";
     if (money >= 1000000000000) {
