@@ -55,7 +55,7 @@ function StockHeader(props) {
           <img
             src="/assets/images/back.png"
             className="h-[20px]"
-            onClick={() => navigate("/intereststock")}
+            onClick={() => navigate(-1)}
           ></img>
           <div onClick={() => navigate("/stock/" + id)}>
             {props.data?.symbol}
