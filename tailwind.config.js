@@ -4,7 +4,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        btnclickColor: "#FFBBC0",
+        btnClickColor: "#FFBBC0",
         toastColor: "#FFA3B2",
         iconColor: "#FF4359",
         btnNoClickColor: "#FFE7E9",

@@ -31,7 +31,7 @@ function StockPage() {
           <a
             role="tab"
             className={`tab h-[40px] ${
-              activeTab === 1 ? "bg-btnclickColor" : ""
+              activeTab === 1 ? "bg-btnClickColor" : ""
             }`}
             onClick={() => setActiveTab(1)}
           >
@@ -40,7 +40,7 @@ function StockPage() {
           <a
             role="tab"
             className={`tab h-[40px] ${
-              activeTab === 2 ? "bg-btnclickColor" : ""
+              activeTab === 2 ? "bg-btnClickColor" : ""
             }`}
             onClick={() => setActiveTab(2)}
           >
@@ -48,7 +48,7 @@ function StockPage() {
           </a>
           {/* <a
           role="tab"
-          className={`tab h-[50px] ${activeTab === 3 ? "bg-btnclickColor" : ""}`}
+          className={`tab h-[50px] ${activeTab === 3 ? "bg-btnClickColor" : ""}`}
           onClick={() => setActiveTab(3)}
         >
           정보

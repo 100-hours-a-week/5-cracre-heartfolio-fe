@@ -47,7 +47,7 @@ function BuyBox({
             icon: "error",
             text: "본인 캐시를 확인해주세요",
             customClass: {
-              confirmButton: "bg-btnNoClickColor w-[70px] h-[40px] text-gray-800 rounded hover:bg-btnclickColor", // Tailwind CSS 클래스 적용
+              confirmButton: "bg-btnNoClickColor w-[70px] h-[40px] text-gray-800 rounded hover:bg-btnClickColor", // Tailwind CSS 클래스 적용
             },
             buttonsStyling: false,
           });
@@ -58,7 +58,7 @@ function BuyBox({
         text: "로그인이 필요한 서비스입니다.",
         footer: '<a href="/login">로그인 하러가기</a>',
         customClass: {
-          confirmButton: "bg-btnNoClickColor w-[70px] h-[40px] text-gray-800 rounded hover:bg-btnclickColor", // Tailwind CSS 클래스 적용
+          confirmButton: "bg-btnNoClickColor w-[70px] h-[40px] text-gray-800 rounded hover:bg-btnClickColor", // Tailwind CSS 클래스 적용
         },
         buttonsStyling: false,
       });

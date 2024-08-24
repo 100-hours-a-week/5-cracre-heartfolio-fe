@@ -41,7 +41,7 @@ function SellBox({
         text: "본인의 보유 수량을 확인해주세요",
         customClass: {
           confirmButton:
-            "bg-btnNoClickColor w-[70px] h-[40px] text-gray-800 rounded hover:bg-btnclickColor", // Tailwind CSS 클래스 적용
+            "bg-btnNoClickColor w-[70px] h-[40px] text-gray-800 rounded hover:bg-btnClickColor", // Tailwind CSS 클래스 적용
         },
         buttonsStyling: false,
       });
@@ -53,7 +53,7 @@ function SellBox({
         footer: '<a href="/login">로그인 하러가기</a>',
         customClass: {
           confirmButton:
-            "bg-btnNoClickColor w-[70px] h-[40px] text-gray-800 rounded hover:bg-btnclickColor", // Tailwind CSS 클래스 적용
+            "bg-btnNoClickColor w-[70px] h-[40px] text-gray-800 rounded hover:bg-btnClickColor", // Tailwind CSS 클래스 적용
         },
         buttonsStyling: false,
       });
