@@ -11,18 +11,18 @@ const LoginPage = () => {
   }, []);
 
   const handleLogin = () => {
-    console.log(process.env.NODE_ENV)
-    const redirectUri =
-      process.env.NODE_ENV === "development"
-        ? "http://localhost:3000/oauth"  // 서버용 redirectUri
-        : "https://heartfolio.site/oauth";  // 로컬 개발 환경용 redirectUri
-  
+    const redirectUri = "https://heartfolio.site/oauth" // 서버용 redirectUri
+    console.log(redirectUri);
     window.Kakao.Auth.authorize({
       redirectUri: redirectUri,
     });
   };
-  
 
+  // const handleLogin = () => {
+  //   window.Kakao.Auth.authorize({
+  //     redirectUri: `${window.location.origin}/oauth`,
+  //   });
+  // };
   return (
     <>
       <div>
