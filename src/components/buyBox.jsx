@@ -2,11 +2,12 @@ import React, { useState } from "react";
 
 function BuyBox({
   curPrice,
-  moneyData,
+  data,
   id,
   setIsBuyModalOpen,
   setOrderDetails,
 }) {
+    console.log("data",data?.cash);
   const [quantity, setQuantity] = useState("");
 
   const handleQuantityChange = (e) => {
@@ -16,17 +17,17 @@ function BuyBox({
   };
 
   const handleMaxQuantity = () => {
-    const maxQuantity = Math.floor(moneyData.cash / curPrice);
+    const maxQuantity = Math.floor(data?.cash / curPrice);
     setQuantity(maxQuantity);
   };
 
   const handle50PercentQuantity = () => {
-    const maxQuantity = Math.floor(moneyData.cash / curPrice);
+    const maxQuantity = Math.floor(data?.cash / curPrice);
     setQuantity(Math.floor(maxQuantity / 2));
   };
 
   const handle25PercentQuantity = () => {
-    const maxQuantity = Math.floor(moneyData.cash / curPrice);
+    const maxQuantity = Math.floor(data?.cash / curPrice);
     setQuantity(Math.floor(maxQuantity / 4));
   };
 
@@ -39,7 +40,7 @@ function BuyBox({
     console.log("id:", id);
     console.log("quantity:", quantity);
     console.log("price:", curPrice);
-    if (quantity * curPrice > moneyData.cash) {
+    if (quantity * curPrice > data?.cash) {
       alert("본인 캐시를 확인해주세요");
       return;
     } else {
@@ -114,7 +115,7 @@ function BuyBox({
         <div className="flex items-center w-1/2">
           <p>내 캐시</p>
           <p className="h-[30px] w-[115px] content-center text-right text-xs">
-            {moneyData.cash.toLocaleString()} KRW
+            {data?.cash.toLocaleString()} KRW
           </p>
         </div>
       </div>

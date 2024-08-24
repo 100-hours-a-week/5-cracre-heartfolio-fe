@@ -6,10 +6,12 @@ import SockJS from "sockjs-client";
 import TradingViewWidget from "./tradingViewWidget";
 import SellBox from "./sellBox";
 import BuyBox from "./buyBox";
+import useFetch from "../hooks/useFetch";
 
 function Chart(props) {
   const { id } = useParams();
-  // const {moneyData, error, loading} = useFetch("http://localhost:8080/api/portfolio/"+userId);
+  const userId = 1;
+  const {data:moneyData, error, loading} = useFetch("https://heartfolio.site/api/portfolio/"+userId);
   const [curPrice, setcurPrice] = useState(10000); // 주식 현재가를 저장할 상태
   const [isBuyModalOpen, setIsBuyModalOpen] = useState(false); // 모달 상태 관리
   const [isSellModalOpen, setIsSellModalOpen] = useState(false); // 모달 상태 관리
@@ -25,13 +27,13 @@ function Chart(props) {
     total: 0,
   });
 
-  const moneyData = {
-    cash: 100000, //보유캐시
-    total_purchase: 35000616, //총 매수 금액
-    total_amount: 200000000, //총 자산
-    total_value: 151152125, //총 평가 금액
-    profitRate: -10.4, //평가수익률
-  };
+  // const moneyData = {
+  //   cash: 100000, //보유캐시
+  //   total_purchase: 35000616, //총 매수 금액
+  //   total_amount: 200000000, //총 자산
+  //   total_value: 151152125, //총 평가 금액
+  //   profitRate: -10.4, //평가수익률
+  // };
 
   const stompClient = useRef(null);
 
@@ -101,7 +103,7 @@ function Chart(props) {
             {activeTab === 1 && (
               <BuyBox
                 curPrice={curPrice}
-                moneyData={moneyData}
+                data={moneyData}
                 id={id}
                 setIsBuyModalOpen={setIsBuyModalOpen}
                 setOrderDetails={setOrderDetails}
