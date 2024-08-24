@@ -6,30 +6,30 @@ const KakaoRedirect = () => {
   const code = new URL(window.location.href).searchParams.get("code");
 
   useEffect(() => {
-    const fetchAccessToken = async () => {
-      if (code) {
-        try {
-          const response = await fetch(`https://heartfolio.site/oauth?code=${code}`);
-          const data = await response.json();
-
+    if (code) {
+      fetch(`https://heartfolio.site/oauth?code=${code}`)
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('서버 응답이 올바르지 않습니다.');
+          }
+          return response.json();
+        })
+        .then(data => {
+          console.log("Fetched data:", data);
           if (data && data.token && data.token.access_token) {
             localStorage.setItem('access_token', data.token.access_token);
             // localStorage.setItem('refresh_token', data.token.refresh_token);
-
-            // 토큰 저장 후 메인 페이지로 리다이렉트
-            navigate('/');
+            navigate('/');  // 로그인 후 메인 페이지로 리다이렉트
           } else {
-            console.error("토큰 없음", data);
+            console.error("토큰이 없습니다.", data);
           }
-        } catch (error) {
+        })
+        .catch(error => {
           console.error('로그인 실패', error);
-        }
-      } else {
-        console.log("URL에 코드가 없습니다.");
-      }
-    };
-
-    fetchAccessToken();
+        });
+    } else {
+      console.log("URL에서 코드를 찾을 수 없습니다.");
+    }
   }, [code, navigate]);
 
   return (
