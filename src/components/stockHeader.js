@@ -4,6 +4,17 @@ import { useNavigate, useParams } from "react-router-dom";
 function StockHeader(props) {
   const { id } = useParams();
   const navigate = useNavigate();
+
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+  useEffect(() => {
+    const token = localStorage.getItem("access_token");
+    if (token) {
+      setIsAuthenticated(true);
+      // 추가로 사용자 정보를 가져와서 상태로 저장 가능
+    }
+  }, []);
+
   const initialHeartImage =
     props.data?.likePresent === false
       ? "/assets/images/uninterest.png"
@@ -18,7 +29,7 @@ function StockHeader(props) {
         : "/assets/images/interest.png";
     setSrc(newHeartImage);
   }, [props.data?.likePresent]);
-  
+
   function handlefavorite() {
     if (src === "/assets/images/uninterest.png") {
       fetch("https://heartfolio.site/api/stock/favorites/" + id, {
@@ -60,11 +71,14 @@ function StockHeader(props) {
           <div onClick={() => navigate("/stock/" + id)}>
             {props.data?.symbol}
           </div>
-          <img
-            src={src}
-            className="h-[20px]"
-            onClick={() => handlefavorite()}
-          ></img>
+          {isAuthenticated && (
+            <img
+              src={src}
+              className="h-[20px]"
+              onClick={() => handlefavorite()}
+              alt="FavoriteHeart"
+            ></img>
+          )}
         </div>
       </div>
     </>
