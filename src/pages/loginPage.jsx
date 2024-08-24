@@ -11,10 +11,16 @@ const LoginPage = () => {
   }, []);
 
   const handleLogin = () => {
+    const redirectUri =
+      process.env.NODE_ENV === "production"
+        ? "https://heartfolio.site/oauth"  // 서버용 redirectUri
+        : "http://localhost:3000/oauth";  // 로컬 개발 환경용 redirectUri
+  
     window.Kakao.Auth.authorize({
-      redirectUri: `${window.location.origin}/oauth`,
+      redirectUri: redirectUri,
     });
   };
+  
 
   return (
     <>
