@@ -11,22 +11,20 @@ const KakaoRedirect = () => {
         .then(response => response.json())
         .then(data => {
           console.log("Fetched data:", data);
-
           if (data && data.token && data.token.access_token) {
             localStorage.setItem('access_token', data.token.access_token);
+            // localStorage.setItem('refresh_token', data.token.refresh_token);
             navigate('/');  // 로그인 후 메인 페이지로 리다이렉트
           } else {
-            console.error("Invalid token response:", data);
-            navigate('/login');  // 로그인 실패 시 로그인 페이지로 리다이렉트
+            console.error("토큰없음", data);
           }
         })
         .catch(error => {
-          console.error('Error during authentication:', error);
-          navigate('/login');  // 에러 발생 시 로그인 페이지로 리다이렉트
+          console.error('로그인 실패', error);
+          
         });
     } else {
       console.log("No code found in URL");
-      navigate('/login');  // 인가 코드가 없으면 로그인 페이지로 리다이렉트
     }
   }, [code, navigate]);
 
