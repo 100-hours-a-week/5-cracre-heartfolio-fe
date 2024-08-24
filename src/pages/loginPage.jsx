@@ -11,11 +11,10 @@ const LoginPage = () => {
   }, []);
 
   const handleLogin = () => {
-    const redirectUri = "https://heartfolio.site/oauth" // 서버용 redirectUri
-    console.log(redirectUri);
     window.Kakao.Auth.authorize({
-      redirectUri: redirectUri,
+      redirectUri: `${window.location.origin}/oauth`,
     });
+    console.log(`${window.location.origin}/oauth`);
   };
 
   // const handleLogin = () => {
