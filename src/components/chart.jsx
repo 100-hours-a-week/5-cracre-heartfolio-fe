@@ -122,11 +122,19 @@ function Chart(props) {
 
       {/* 매수 완료 모달 */}
       {isBuyModalOpen && (
-        <BuyModal orderDetails={orderDetails} onClick={closeBuyModal} />
+        <BuyModal orderDetails={orderDetails} 
+        onClick={() => {
+          closeBuyModal();
+          window.location.reload(); // 페이지 새로고침
+        }} />
       )}
       {/* 매도 완료 모달 */}
       {isSellModalOpen && (
-        <SellModal sellDetails={sellDetails} onClick={closeSellModal} />
+        <SellModal sellDetails={sellDetails} 
+        onClick={() => {
+          closeSellModal();
+          window.location.reload(); // 페이지 새로고침
+        }}/>
       )}
     </>
   );
