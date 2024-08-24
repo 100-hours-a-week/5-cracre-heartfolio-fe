@@ -1,10 +1,18 @@
 import { Disclosure } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function Header() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
+  useEffect(() => {
+    const token = localStorage.getItem("access_token");
+    if (token) {
+      setIsAuthenticated(true);
+      // 추가로 사용자 정보를 가져와서 상태로 저장 가능
+    }
+  }, []);
   return (
     <Disclosure
       as="nav"
@@ -15,17 +23,21 @@ function Header() {
         <div className="flex h-16 justify-between">
           <div className="flex">
             <div className="flex flex-shrink-0 items-center">
-              <a href="/" className=" flex content-center"> 
+              <a href="/" className=" flex content-center">
                 <img
                   alt="Logo"
                   src="/assets/images/heartfolioLogo.webp"
                   className="h-8 w-auto rounded-lg"
-                />           
+                />
                 <div className=" ml-4 mr-36 content-center">Heartfolio</div>
               </a>
             </div>
             <a href="/login" className="content-center">
-            <div className=" ml-5 mr-5 text-sm min-w-14" >로그인</div>
+              {isAuthenticated ? (
+                <div className=" ml-5 mr-5 text-sm min-w-14">로그아웃</div>
+              ) : (
+                <div className=" ml-5 mr-5 text-sm min-w-14">로그인</div>
+              )}
             </a>
           </div>
           <div className="flex ml-auto items-center">
