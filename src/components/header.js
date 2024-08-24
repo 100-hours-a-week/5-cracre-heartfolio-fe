@@ -1,10 +1,12 @@
 import { Disclosure } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const token = localStorage.getItem("access_token");
@@ -13,6 +15,14 @@ function Header() {
       // 추가로 사용자 정보를 가져와서 상태로 저장 가능
     }
   }, []);
+  function handleLogin(){
+    if (localStorage.getItem("access_token")) {
+      localStorage.removeItem("access_token");
+      window.location.reload();
+    }else{
+      navigate("/login");
+    }
+  }
   return (
     <Disclosure
       as="nav"
@@ -32,13 +42,13 @@ function Header() {
                 <div className=" ml-4 mr-36 content-center">Heartfolio</div>
               </a>
             </div>
-            <a href="/login" className="content-center">
+            <div onClick={()=> handleLogin()} className="content-center">
               {isAuthenticated ? (
                 <div className=" ml-5 mr-5 text-sm min-w-14">로그아웃</div>
               ) : (
                 <div className=" ml-5 mr-5 text-sm min-w-14">로그인</div>
               )}
-            </a>
+            </div>
           </div>
           <div className="flex ml-auto items-center">
             <Disclosure.Button
