@@ -15,11 +15,11 @@ function Header() {
       // 추가로 사용자 정보를 가져와서 상태로 저장 가능
     }
   }, []);
-  function handleLogin(){
+  function handleLogin() {
     if (localStorage.getItem("access_token")) {
       localStorage.removeItem("access_token");
       window.location.reload();
-    }else{
+    } else {
       navigate("/login");
     }
   }
@@ -42,7 +42,7 @@ function Header() {
                 <div className=" ml-4 mr-36 content-center">Heartfolio</div>
               </a>
             </div>
-            <div onClick={()=> handleLogin()} className="content-center">
+            <div onClick={() => handleLogin()} className="content-center">
               {isAuthenticated ? (
                 <div className=" ml-5 mr-5 text-sm min-w-14">로그아웃</div>
               ) : (

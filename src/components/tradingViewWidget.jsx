@@ -9,12 +9,12 @@ function TradingViewWidget(props) {
       console.warn("Invalid symbol:", props.symbol);
       return;
     }
-  
+
     const initializeWidget = () => {
       if (!container.current) return;
-  
+
       container.current.innerHTML = "";
-  
+
       const script = document.createElement("script");
       script.src =
         "https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js";
@@ -35,14 +35,14 @@ function TradingViewWidget(props) {
           "calendar": false,
           "support_host": "https://www.tradingview.com"
         }`;
-  
+
       scriptRef.current = script;
       container.current.appendChild(script);
     };
-  
+
     // setTimeout으로 DOM이 준비된 후 초기화
     const timer = setTimeout(initializeWidget, 100);
-  
+
     return () => {
       clearTimeout(timer); // 컴포넌트 언마운트 시 타이머 클리어
       if (container.current) {
@@ -53,7 +53,6 @@ function TradingViewWidget(props) {
       }
     };
   }, [props.symbol]);
-  
 
   return (
     <div className="tradingview-widget-container" ref={container}>
@@ -63,8 +62,7 @@ function TradingViewWidget(props) {
           href="https://www.tradingview.com/"
           rel="noopener nofollow"
           target="_blank"
-        >
-        </a>
+        ></a>
       </div>
     </div>
   );

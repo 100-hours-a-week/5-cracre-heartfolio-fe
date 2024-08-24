@@ -67,7 +67,11 @@ function StockHeader(props) {
             className="h-[20px]"
             onClick={() => navigate(-1)}
           ></img>
-          <div onClick={() => navigate("/stock/" + id)}>
+          <div
+            onClick={() => {
+              window.location.reload();
+            }}
+          >
             {props.data?.symbol}
           </div>
           <img
