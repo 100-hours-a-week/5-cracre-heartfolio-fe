@@ -22,11 +22,11 @@ function StockPage() {
   return (
     <>
       <Header />
-      <div className="mt-[71px]">
+      <div className="mt-[75px]">
         <StockHeader data={data} />
         <div
           role="tablist"
-          className="tabs tabs-boxed mx-auto max-w-[390px] bg-backColor mt-[20px]"
+          className="tabs tabs-boxed mx-auto max-w-[390px] bg-backColor mt-[10px]"
         >
           <a
             role="tab"

@@ -2362,6 +2362,14 @@ input.tab:checked + .tab-content,
   border-width: 0;
 }
 
+.visible {
+  visibility: visible;
+}
+
+.invisible {
+  visibility: hidden;
+}
+
 .fixed {
   position: fixed;
 }
@@ -2546,6 +2554,22 @@ input.tab:checked + .tab-content,
 
 .mt-\[90px\] {
   margin-top: 90px;
+}
+
+.mt-\[75px\] {
+  margin-top: 75px;
+}
+
+.mt-\[17px\] {
+  margin-top: 17px;
+}
+
+.mt-\[16px\] {
+  margin-top: 16px;
+}
+
+.mt-\[11px\] {
+  margin-top: 11px;
 }
 
 .block {

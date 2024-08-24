@@ -11,7 +11,6 @@ function StockHeader(props) {
     const token = localStorage.getItem("access_token");
     if (token) {
       setIsAuthenticated(true);
-      // 추가로 사용자 정보를 가져와서 상태로 저장 가능
     }
   }, []);
 
@@ -71,14 +70,12 @@ function StockHeader(props) {
           <div onClick={() => navigate("/stock/" + id)}>
             {props.data?.symbol}
           </div>
-          {isAuthenticated && (
-            <img
-              src={src}
-              className="h-[20px]"
-              onClick={() => handlefavorite()}
-              alt="FavoriteHeart"
-            ></img>
-          )}
+          <img
+            src={src}
+            className={`h-[20px] ${isAuthenticated ? "visible" : "invisible"}`}
+            onClick={() => handlefavorite()}
+            alt="FavoriteHeart"
+          ></img>
         </div>
       </div>
     </>
