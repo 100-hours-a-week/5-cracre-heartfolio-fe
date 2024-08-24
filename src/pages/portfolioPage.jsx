@@ -11,18 +11,6 @@ function Portfolio() {
   const [activeTab, setActiveTab] = useState(1);
   console.log("Active Tab:", activeTab);
 
-  // const {holdings_data, error, loading} = useFetch("https://heartfolio.site/api/portfolio/totalStocks");
-  // const cash_data = {
-  //   cash: 75121616,
-  //   total_purchase: 35000616,
-  //   total_amount: 200000000,
-  //   total_value: 151152125,
-  //   profitRate: -10.4,
-  // };
-
-
-  
-
   return (
     <>
       <Header />

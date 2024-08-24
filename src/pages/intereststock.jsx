@@ -109,7 +109,7 @@ function Intereststock() {
               <Eachintereststock
                 key={stock.stockId}
                 stockId={stock.stockId} // 주식별 고유 아이디(기본키)
-                stockName={stock.stockName} // 종목명
+                stockName={stock.englishName} // 종목명
                 currentPrice={stock.currentPrice} // 현재가
                 earningValue={stock.earningValue} // 전일대비 증가량
                 earningRate={stock.earningRate} // 수익률
