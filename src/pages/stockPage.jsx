@@ -11,7 +11,9 @@ function StockPage() {
   const [activeTab, setActiveTab] = useState(1);
   console.log("Active Tab:", activeTab);
   const { id } = useParams();
-  const {data, error, loading} = useFetch("https://heartfolio.site/api/stock/"+id);
+  const { data, error, loading } = useFetch(
+    "https://heartfolio.site/api/stock/" + id
+  );
   // const stock_info_data = {
   //   symbol: "NASDAQ:MSFT",
   //   name: "Microsoft",
@@ -56,7 +58,7 @@ function StockPage() {
         </div>
         <div className="mx-auto max-w-[390px] p-4 flex justify-center">
           <div role="tabpanel" className="tab-content block pb-[29px]">
-            {activeTab === 1 && <Chart data={data}/>}
+            {activeTab === 1 && <Chart data={data} />}
             {activeTab === 2 && <StockHistory />}
             {/* {activeTab === 3 && "3"} */}
           </div>

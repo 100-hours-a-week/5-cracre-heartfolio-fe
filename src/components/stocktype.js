@@ -1,7 +1,7 @@
 const tabs = [
   { name: "관심종목", href: "/intereststock", current: false, isIcon: false },
   { name: "인기종목", href: "/popularstock", current: false, isIcon: false },
-  { name: "search", href: "/search", isIcon: true, current: false } // 아이콘 항목 추가
+  { name: "search", href: "/search", isIcon: true, current: false }, // 아이콘 항목 추가
 ];
 
 function classNames(...classes) {

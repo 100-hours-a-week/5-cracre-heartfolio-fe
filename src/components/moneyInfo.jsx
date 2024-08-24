@@ -1,7 +1,9 @@
 import useFetch from "../hooks/useFetch";
 function MoneyInfo() {
   const userId = 1;
-  const {data, error, loading} = useFetch("https://heartfolio.site/api/portfolio/"+userId);
+  const { data, error, loading } = useFetch(
+    "https://heartfolio.site/api/portfolio/" + userId
+  );
   function money_change(money) {
     if (money === undefined || money === null) return "N/A";
     if (money >= 1000000000000) {
@@ -25,9 +27,7 @@ function MoneyInfo() {
         <div className="flex justify-around">
           <div>
             <div className="text-sm">총 자산</div>
-            <div className="text-base">
-              {money_change(data?.totalAmount)}
-            </div>
+            <div className="text-base">{money_change(data?.totalAmount)}</div>
           </div>
           <div>
             <div className="text-sm">보유 캐시(KRW)</div>
@@ -37,15 +37,11 @@ function MoneyInfo() {
         <div className="flex justify-around mt-[34px]">
           <div>
             <div className="text-sm">총 매수 금액(KRW)</div>
-            <div className="text-base">
-              {money_change(data?.totalPurchase)}
-            </div>
+            <div className="text-base">{money_change(data?.totalPurchase)}</div>
           </div>
           <div>
             <div className="text-sm">총 평가 금액(KRW)</div>
-            <div className="text-base">
-              {money_change(data?.totalValue)}
-            </div>
+            <div className="text-base">{money_change(data?.totalValue)}</div>
           </div>
           <div>
             <div className="text-sm">평가 수익률</div>

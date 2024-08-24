@@ -22,7 +22,7 @@ function ButtomNavigation() {
         >
           {isAuthenticated ? (
             <a className="material-symbols-outlined">logout</a>
-            ) : (
+          ) : (
             <a className="material-symbols-outlined">login</a>
           )}
         </button>

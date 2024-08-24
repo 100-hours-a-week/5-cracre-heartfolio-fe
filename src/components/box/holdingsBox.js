@@ -8,23 +8,31 @@ function HoldingsBox(props) {
             <div>
               <div className="flex items-center justify-between w-[130px]">
                 <div className="text-xs">평가손익</div>
-                <div className={`text-xs ${
+                <div
+                  className={`text-xs ${
                     props.evalProfit > 0
                       ? "text-redColor"
-                      : props.evalProfit<0
+                      : props.evalProfit < 0
                       ? "text-blueColor"
                       : "text-[#000000]"
-                  }`}>{props.evalProfit.toLocaleString()}</div>
+                  }`}
+                >
+                  {props.evalProfit.toLocaleString()}
+                </div>
               </div>
               <div className="flex items-center justify-between">
                 <div className="text-xs">수익률</div>
-                <div className={`text-xs ${
+                <div
+                  className={`text-xs ${
                     props.profitPercentage > 0
                       ? "text-redColor"
-                      : props.profitPercentage<0
+                      : props.profitPercentage < 0
                       ? "text-blueColor"
                       : "text-[#000000]"
-                  }`}>{props.profitPercentage.toFixed(2)}%</div>
+                  }`}
+                >
+                  {props.profitPercentage.toFixed(2)}%
+                </div>
               </div>
             </div>
           </div>
@@ -37,18 +45,24 @@ function HoldingsBox(props) {
               </div>
               <div className="flex justify-between">
                 <div className="text-sm">평가금액</div>
-                <div className="text-sm">{props.evalValue.toLocaleString()}</div>
+                <div className="text-sm">
+                  {props.evalValue.toLocaleString()}
+                </div>
               </div>
             </div>
             <div className="divider divider-horizontal m-0"></div>
             <div className=" h-[50px] flex-grow content-center px-1">
               <div className="flex justify-between ">
                 <div className="text-sm">매수금액</div>
-                <div className="text-sm">{props.totalPurchasePrice.toLocaleString()}</div>
+                <div className="text-sm">
+                  {props.totalPurchasePrice.toLocaleString()}
+                </div>
               </div>
               <div className="flex justify-between">
                 <div className="text-sm">매수평균가</div>
-                <div className="text-sm">{props.purchaseAvgPrice.toLocaleString()}</div>
+                <div className="text-sm">
+                  {props.purchaseAvgPrice.toLocaleString()}
+                </div>
               </div>
             </div>
           </div>

@@ -1,11 +1,12 @@
 import useFetch from "../hooks/useFetch";
-import PopularStockBox from "./box/popularStockBox";
 import Eachpopularstock from "./eachpopularstock";
 
 const items = [{ id: 1 }, { id: 2 }, { id: 3 }];
 
 function PopularChart() {
-  const {data, error, loading} = useFetch("https://heartfolio.site/api/stock/popular?limit="+5);
+  const { data, error, loading } = useFetch(
+    "https://heartfolio.site/api/stock/popular?limit=" + 5
+  );
 
   // 인기 종목 데이터 배열
   // const popular_data = {
@@ -98,7 +99,9 @@ function PopularChart() {
       <div className="flex justify-between">
         <div className="text-lg ml-[10px]">오늘의 인기 차트</div>
         <a href="/popularstock">
-          <div className="text-sm py-1 float-right mr-[5px] pt-[10px]">더보기</div>
+          <div className="text-sm py-1 float-right mr-[5px] pt-[10px]">
+            더보기
+          </div>
         </a>
       </div>
       <div className="mx-auto max-w-[390px] pb-[40px] mt-[6px] border-t border-gray-300">

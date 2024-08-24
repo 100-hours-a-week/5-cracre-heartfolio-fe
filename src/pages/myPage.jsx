@@ -10,7 +10,7 @@ function MyPage() {
           아직 제공되지 않는 서비스입니다.
         </div>
       </div>
-      <ButtomNavigation/>
+      <ButtomNavigation />
     </>
   );
 }

@@ -15,7 +15,7 @@ const LoginPage = () => {
       redirectUri: `${window.location.origin}/oauth`,
     });
   };
-  
+
   return (
     <>
       <div>
