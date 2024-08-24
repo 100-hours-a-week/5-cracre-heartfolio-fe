@@ -6,8 +6,9 @@ function BuyBox({
   id,
   setIsBuyModalOpen,
   setOrderDetails,
+  isLoggedIn,
 }) {
-    console.log("data",data?.cash);
+  console.log("data", data?.cash);
   const [quantity, setQuantity] = useState("");
 
   const handleQuantityChange = (e) => {
@@ -42,6 +43,9 @@ function BuyBox({
     console.log("price:", curPrice);
     if (quantity * curPrice > data?.cash) {
       alert("본인 캐시를 확인해주세요");
+      return;
+    } else if (!isLoggedIn) {
+      alert("로그인이 필요한 서비스입니다.");
       return;
     } else {
       fetch("https://heartfolio.site/api/invest/order", {

@@ -11,7 +11,11 @@ import useFetch from "../hooks/useFetch";
 function Chart(props) {
   const { id } = useParams();
   const userId = 1;
-  const {data:moneyData, error, loading} = useFetch("https://heartfolio.site/api/portfolio/"+userId);
+  const {
+    data: moneyData,
+    error,
+    loading,
+  } = useFetch("https://heartfolio.site/api/portfolio/" + userId);
   const [curPrice, setcurPrice] = useState(10000); // 주식 현재가를 저장할 상태
   const [isBuyModalOpen, setIsBuyModalOpen] = useState(false); // 모달 상태 관리
   const [isSellModalOpen, setIsSellModalOpen] = useState(false); // 모달 상태 관리
@@ -26,6 +30,7 @@ function Chart(props) {
     price: 0,
     total: 0,
   });
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   // const moneyData = {
   //   cash: 100000, //보유캐시
@@ -38,6 +43,13 @@ function Chart(props) {
   const stompClient = useRef(null);
 
   useEffect(() => {
+    const token = localStorage.getItem("access_token");
+    if (token) {
+      setIsLoggedIn(true);
+    } else {
+      setIsLoggedIn(false);
+    }
+
     const socket = new SockJS("https://heartfolio.site/heartfolio");
     stompClient.current = StompJs.Stomp.over(socket);
 
@@ -102,6 +114,7 @@ function Chart(props) {
           <div role="tabpanel" className="tab-content block">
             {activeTab === 1 && (
               <BuyBox
+                isLoggedIn={isLoggedIn}
                 curPrice={curPrice}
                 data={moneyData}
                 id={id}
@@ -111,6 +124,7 @@ function Chart(props) {
             )}
             {activeTab === 2 && (
               <SellBox
+                isLoggedIn={isLoggedIn}
                 curPrice={curPrice}
                 amount={props.data.amount}
                 id={id}
@@ -124,19 +138,23 @@ function Chart(props) {
 
       {/* 매수 완료 모달 */}
       {isBuyModalOpen && (
-        <BuyModal orderDetails={orderDetails} 
-        onClick={() => {
-          closeBuyModal();
-          window.location.reload(); // 페이지 새로고침
-        }} />
+        <BuyModal
+          orderDetails={orderDetails}
+          onClick={() => {
+            closeBuyModal();
+            window.location.reload(); // 페이지 새로고침
+          }}
+        />
       )}
       {/* 매도 완료 모달 */}
       {isSellModalOpen && (
-        <SellModal sellDetails={sellDetails} 
-        onClick={() => {
-          closeSellModal();
-          window.location.reload(); // 페이지 새로고침
-        }}/>
+        <SellModal
+          sellDetails={sellDetails}
+          onClick={() => {
+            closeSellModal();
+            window.location.reload(); // 페이지 새로고침
+          }}
+        />
       )}
     </>
   );
