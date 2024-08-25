@@ -4,6 +4,7 @@ import { useNavigate, useParams } from "react-router-dom";
 function StockHeader(props) {
   const { id } = useParams();
   const navigate = useNavigate();
+  const token = localStorage.getItem("access-token");
 
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
@@ -35,6 +36,7 @@ function StockHeader(props) {
         // credentials: "include",
         method: "POST",
         headers: {
+          Authorization: `Bearer ${token}`, // 토큰을 헤더에 추가
           "Content-Type": "application/json",
         },
       }).then((res) => {
@@ -48,6 +50,7 @@ function StockHeader(props) {
         // credentials: "include",
         method: "DELETE",
         headers: {
+          Authorization: `Bearer ${token}`, // 토큰을 헤더에 추가
           "Content-Type": "application/json",
         },
       }).then((res) => {

@@ -67,8 +67,15 @@ function AssetConfiguration() {
   //   },
   // };
   const userId = 1;
+  const token = localStorage.getItem("access-token");
   const { data, error, loading } = useFetch(
-    "https://heartfolio.site/api/portfolio/" + userId + "/stock"
+    "https://heartfolio.site/api/portfolio/" + userId + "/stock",
+    {
+      headers: {
+        Authorization: `Bearer ${token}`, // 토큰을 헤더에 추가
+        "Content-Type": "application/json", // 선택 사항, API 요구 사항에 따라 설정
+      },
+    }
   );
   const [chartData, setChartData] = useState({
     series: [],

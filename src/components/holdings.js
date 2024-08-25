@@ -54,10 +54,16 @@ function Holdings() {
   //     profitPercentage: 4.17,
   //   },
   // ];
+  const token = localStorage.getItem("access-token");
   const { data, error, loading } = useFetch(
-    "https://heartfolio.site/api/portfolio/totalStocks"
+    "https://heartfolio.site/api/portfolio/totalStocks",
+    {
+      headers: {
+        Authorization: `Bearer ${token}`, // 토큰을 헤더에 추가
+        "Content-Type": "application/json", // 선택 사항, API 요구 사항에 따라 설정
+      },
+    }
   );
-
   return (
     <>
       <div className="mx-auto max-w-[350px] py-4 pb-8">

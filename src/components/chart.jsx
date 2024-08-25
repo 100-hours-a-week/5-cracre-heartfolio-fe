@@ -11,11 +11,17 @@ import useFetch from "../hooks/useFetch";
 function Chart(props) {
   const { id } = useParams();
   const userId = 1;
+  const token = localStorage.getItem("access-token");
   const {
     data: moneyData,
     error,
     loading,
-  } = useFetch("https://heartfolio.site/api/portfolio/" + userId);
+  } = useFetch("https://heartfolio.site/api/portfolio/" + userId, {
+    headers: {
+      Authorization: `Bearer ${token}`, // 토큰을 헤더에 추가
+      "Content-Type": "application/json", // 선택 사항, API 요구 사항에 따라 설정
+    },
+  });
   const [curPrice, setcurPrice] = useState(10000); // 주식 현재가를 저장할 상태
   const [isBuyModalOpen, setIsBuyModalOpen] = useState(false); // 모달 상태 관리
   const [isSellModalOpen, setIsSellModalOpen] = useState(false); // 모달 상태 관리

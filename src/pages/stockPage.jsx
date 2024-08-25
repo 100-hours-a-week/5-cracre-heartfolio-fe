@@ -11,8 +11,15 @@ function StockPage() {
   const [activeTab, setActiveTab] = useState(1);
   console.log("Active Tab:", activeTab);
   const { id } = useParams();
+  const token = localStorage.getItem("access-token");
   const { data, error, loading } = useFetch(
-    "https://heartfolio.site/api/stock/" + id
+    "https://heartfolio.site/api/stock/" + id,
+    {
+      headers: {
+        Authorization: `Bearer ${token}`, // 토큰을 헤더에 추가
+        "Content-Type": "application/json", // 선택 사항, API 요구 사항에 따라 설정
+      },
+    }
   );
   // const stock_info_data = {
   //   symbol: "NASDAQ:MSFT",
