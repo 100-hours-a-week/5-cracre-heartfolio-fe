@@ -9,7 +9,7 @@ const KakaoRedirect = () => {
 
   useEffect(() => {
     if (code) {
-      fetch(`https://heartfolio.site/oauth?code=${code}`)
+      fetch(`https://heartfolio.site/api/oauth?code=${code}`)
         .then((response) => {
           if (!response.ok) {
             throw new Error("서버 응답이 올바르지 않습니다.");
