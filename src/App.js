@@ -16,7 +16,7 @@ function App() {
       <Routes>
         <Route path="/" element={<MainPage />} />
         <Route path="/login" element={<LoginPage />} />
-        <Route path="/oauth" element={<KakaoRedirect />} />
+        <Route path="/oauth-callback" element={<KakaoRedirect />} />
         <Route path="/portfolio" element={<PortfolioPage />} />
         <Route path="/intereststock" element={<Intereststock />} />
         <Route path="/popularstock" element={<Popularstock />} />
