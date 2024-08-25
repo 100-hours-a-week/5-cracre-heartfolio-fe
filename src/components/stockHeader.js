@@ -6,20 +6,20 @@ function StockHeader(props) {
   const navigate = useNavigate();
   const token = localStorage.getItem("access_token");
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [src, setSrc] = useState("/assets/images/uninterest.png"); // 기본값을 초기화
 
   useEffect(() => {
     if (token) {
       setIsAuthenticated(true);
     }
-  }, [token]);
+    if(props.data?.likePresent === false){
+      setSrc("/assets/images/uninterest.png");
+    }else if(props.data?.likePresent === true){
+      setSrc("/assets/images/interest.png");
+    }
+  }, [token, props.data?.likePresent]);
 
-  const initialHeartImage =
-    props.data?.likePresent === false
-      ? "/assets/images/uninterest.png"
-      : "/assets/images/interest.png";
   console.log("heart:", props.data?.likePresent);
-
-  const [src, setSrc] = useState(initialHeartImage);
 
   function handlefavorite() {
     if (src === "/assets/images/uninterest.png") {
