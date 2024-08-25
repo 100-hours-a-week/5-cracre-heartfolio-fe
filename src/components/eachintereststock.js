@@ -4,30 +4,29 @@ import { useNavigate } from "react-router-dom";
 // 관심종목의 각 주식
 export default function Eachintereststock(props) {
   const navigate = useNavigate();
+  const token = localStorage.getItem("access-token");
 
   // useState를 사용하여 이미지의 경로를 관리하는 상태를 선언합니다.초기값으로 'a.jpg'를 설정합니다.
   const [imageSrc, setImageSrc] = useState("/assets/images/interest.png");
 
   // 이미지 경로를 변경하는 함수를 정의.
-  const toggleImage = (id) => {
-    // setImageSrc를 사용하여 이미지 경로를 업데이트합니다.
-    // 조건부 연산자를 사용하여 이미지 바꾸는 로직을 구현.
-    setImageSrc(
-      imageSrc === "/assets/images/uninterest.png"
-        ? "/assets/images/interest.png"
-        : "/assets/images/uninterest.png"
-    );
+  const toggleImage = (stock_id) => {
 
-    //좋아요 되어있는거 클릭해서 없애기
-    // fetch("https://heartfolio.site/api/stock/favorites/" + stock_id, {
-    //     credentials: "include",
-    //     method: "DELETE",
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //     },
-    //   }).then((response) => {
-
-    //   });
+    // 좋아요 되어있는거 클릭해서 없애기
+    fetch("https://heartfolio.site/api/stock/favorites/" + stock_id, {
+      credentials: "include",
+      method: "DELETE",
+      headers: {
+        Authorization: `Bearer ${token}`, // 토큰을 헤더에 추가
+        "Content-Type": "application/json",
+      },
+    }).then((response) => {
+        if(response.ok){
+            navigate("/intereststock");
+        }
+        // 페이지 새로고침
+        window.location.reload();
+    });
   };
 
   // 각 주식 페이지 이동
