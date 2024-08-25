@@ -12,9 +12,8 @@ const LoginPage = () => {
 
   const handleLogin = () => {
     window.Kakao.Auth.authorize({
-      redirectUri: `${window.location.origin}/oauth`,
+      redirectUri: "https://heartfolio.site/oauth",
     });
-    console.log(window.location.origin)
   };
 
   return (
