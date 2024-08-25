@@ -14,6 +14,7 @@ const LoginPage = () => {
     window.Kakao.Auth.authorize({
       redirectUri: `${window.location.origin}/oauth`,
     });
+    console.log(window.location.origin)
   };
 
   return (
