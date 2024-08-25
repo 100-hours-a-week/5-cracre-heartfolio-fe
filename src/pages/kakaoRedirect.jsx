@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 const KakaoRedirect = () => {
   const navigate = useNavigate();
-  const code = new URL(window.location.href).searchParams.get("code");
+  const code = new URL(window.location.search).searchParams.get("code");
 
   useEffect(() => {
     if (code) {
