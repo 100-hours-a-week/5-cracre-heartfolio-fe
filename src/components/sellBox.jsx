@@ -10,6 +10,7 @@ function SellBox({
   isLoggedIn,
 }) {
   const [quantity, setQuantity] = useState("");
+  const token = localStorage.getItem("access-token");
 
   const handleQuantityChange = (e) => {
     if (e.target.value >= 0) {
@@ -62,6 +63,7 @@ function SellBox({
       fetch("https://heartfolio.site/api/invest/order", {
         method: "DELETE",
         headers: {
+          Authorization: `Bearer ${token}`,
           "Content-Type": "application/json",
         },
         body: JSON.stringify({

@@ -11,11 +11,17 @@ import useFetch from "../hooks/useFetch";
 function Chart(props) {
   const { id } = useParams();
   const userId = 1;
+  const token = localStorage.getItem("access-token");
   const {
     data: moneyData,
     error,
     loading,
-  } = useFetch("https://heartfolio.site/api/portfolio/" + userId);
+  } = useFetch("https://heartfolio.site/api/portfolio/" + userId, {
+    headers: {
+      Authorization: `Bearer ${token}`, // 토큰을 헤더에 추가
+      "Content-Type": "application/json", // 선택 사항, API 요구 사항에 따라 설정
+    },
+  });
   const [curPrice, setcurPrice] = useState(10000); // 주식 현재가를 저장할 상태
   const [isBuyModalOpen, setIsBuyModalOpen] = useState(false); // 모달 상태 관리
   const [isSellModalOpen, setIsSellModalOpen] = useState(false); // 모달 상태 관리
@@ -31,15 +37,6 @@ function Chart(props) {
     total: 0,
   });
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-
-  // const moneyData = {
-  //   cash: 100000, //보유캐시
-  //   total_purchase: 35000616, //총 매수 금액
-  //   total_amount: 200000000, //총 자산
-  //   total_value: 151152125, //총 평가 금액
-  //   profitRate: -10.4, //평가수익률
-  // };
-
   const stompClient = useRef(null);
 
   useEffect(() => {

@@ -14,13 +14,13 @@ const KakaoRedirect = () => {
           if (!response.ok) {
             throw new Error("서버 응답이 올바르지 않습니다.");
           }
-          console.log(response.data)
+          console.log("loginData",response.data)
           return response.json();
         })
         .then((data) => {
           console.log("Fetched data:", data);
-          if (data && data.token && data.token.access_token) {
-            localStorage.setItem("access_token", data.token.access_token);
+          if (data && data.access_token) {
+            localStorage.setItem("access_token", data.access_token);
             // localStorage.setItem('refresh_token', data.token.refresh_token);
             navigate("/"); // 로그인 후 메인 페이지로 리다이렉트
           } else {
@@ -36,7 +36,7 @@ const KakaoRedirect = () => {
   }, [code, navigate]);
 
   return (
-    <div>
+    <div className="mt-3 text-center">
       <p>로그인 중...</p>
     </div>
   );

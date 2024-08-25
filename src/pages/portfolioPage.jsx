@@ -5,7 +5,6 @@ import AssetConfiguration from "../components/assetConfiguration";
 import TransactionHistory from "../components/transactionHistory";
 import Holdings from "../components/holdings";
 import ButtomNavigation from "../components/bottomNavigation";
-import useFetch from "../hooks/useFetch";
 
 function Portfolio() {
   const [activeTab, setActiveTab] = useState(1);
