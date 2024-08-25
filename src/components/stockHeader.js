@@ -4,7 +4,7 @@ import { useNavigate, useParams } from "react-router-dom";
 function StockHeader(props) {
   const { id } = useParams();
   const navigate = useNavigate();
-  const token = localStorage.getItem("access-token");
+  const token = localStorage.getItem("access_token");
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   useEffect(() => {
