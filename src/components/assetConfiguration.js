@@ -11,7 +11,7 @@ function getRandomPastelColor() {
 
 function AssetConfiguration() {
   const userId = 1;
-  const token = localStorage.getItem("access-token");
+  const token = localStorage.getItem("access_token");
   const { data, error, loading } = useFetch(
     "https://heartfolio.site/api/portfolio/" + userId + "/stock",
     {

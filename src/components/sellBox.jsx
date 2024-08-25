@@ -10,7 +10,7 @@ function SellBox({
   isLoggedIn,
 }) {
   const [quantity, setQuantity] = useState("");
-  const token = localStorage.getItem("access-token");
+  const token = localStorage.getItem("access_token");
 
   const handleQuantityChange = (e) => {
     if (e.target.value >= 0) {

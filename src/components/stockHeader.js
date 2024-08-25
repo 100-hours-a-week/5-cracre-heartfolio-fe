@@ -4,16 +4,14 @@ import { useNavigate, useParams } from "react-router-dom";
 function StockHeader(props) {
   const { id } = useParams();
   const navigate = useNavigate();
-  const token = localStorage.getItem("access-token");
-
+  const token = localStorage.getItem("access_token");
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   useEffect(() => {
-    const token = localStorage.getItem("access_token");
     if (token) {
       setIsAuthenticated(true);
     }
-  }, []);
+  }, [token]);
 
   const initialHeartImage =
     props.data?.likePresent === false
@@ -22,13 +20,6 @@ function StockHeader(props) {
   console.log("heart:", props.data?.likePresent);
 
   const [src, setSrc] = useState(initialHeartImage);
-  useEffect(() => {
-    const newHeartImage =
-      props.data?.likePresent === false
-        ? "/assets/images/uninterest.png"
-        : "/assets/images/interest.png";
-    setSrc(newHeartImage);
-  }, [props.data?.likePresent]);
 
   function handlefavorite() {
     if (src === "/assets/images/uninterest.png") {

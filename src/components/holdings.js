@@ -2,7 +2,7 @@ import useFetch from "../hooks/useFetch";
 import HoldingsBox from "./box/holdingsBox";
 
 function Holdings() {
-  const token = localStorage.getItem("access-token");
+  const token = localStorage.getItem("access_token");
   const { data, error, loading } = useFetch(
     "https://heartfolio.site/api/portfolio/totalStocks",
     {

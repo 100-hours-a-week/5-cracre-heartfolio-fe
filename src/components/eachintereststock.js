@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 // 관심종목의 각 주식
 export default function Eachintereststock(props) {
   const navigate = useNavigate();
-  const token = localStorage.getItem("access-token");
+  const token = localStorage.getItem("access_token");
 
   // useState를 사용하여 이미지의 경로를 관리하는 상태를 선언합니다.초기값으로 'a.jpg'를 설정합니다.
   const [imageSrc, setImageSrc] = useState("/assets/images/interest.png");
