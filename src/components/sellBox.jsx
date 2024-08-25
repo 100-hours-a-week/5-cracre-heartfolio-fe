@@ -35,10 +35,11 @@ function SellBox({
   const buttonStyle = isDisabled ? "bg-[#FEF0F2]" : "bg-[#FFE7E9]";
 
   function sell() {
-    if (amount < quantity) {
+    if (!isLoggedIn) {
       Swal.fire({
-        icon: "error",
-        text: "본인의 보유 수량을 확인해주세요",
+        icon: "warning",
+        text: "로그인이 필요한 서비스입니다.",
+        footer: '<a href="/login">로그인 하러가기</a>',
         customClass: {
           confirmButton:
             "bg-btnNoClickColor w-[70px] h-[40px] text-gray-800 rounded hover:bg-btnClickColor", // Tailwind CSS 클래스 적용
@@ -46,11 +47,10 @@ function SellBox({
         buttonsStyling: false,
       });
       return;
-    } else if (!isLoggedIn) {
+    } else if (amount < quantity) {
       Swal.fire({
-        icon: "warning",
-        text: "로그인이 필요한 서비스입니다.",
-        footer: '<a href="/login">로그인 하러가기</a>',
+        icon: "error",
+        text: "본인의 보유 수량을 확인해주세요",
         customClass: {
           confirmButton:
             "bg-btnNoClickColor w-[70px] h-[40px] text-gray-800 rounded hover:bg-btnClickColor", // Tailwind CSS 클래스 적용
