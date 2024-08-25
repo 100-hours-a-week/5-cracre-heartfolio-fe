@@ -11,15 +11,10 @@ const LoginPage = () => {
   }, []);
 
   const handleLogin = () => {
-    try {
-      window.Kakao.Auth.authorize({
-        redirectUri: `${window.location.origin}/oauth`,
-      });
-      console.log(`Redirecting to: ${window.location.origin}/oauth`);
-    } catch (error) {
-      console.error("Kakao login error:", error);
-      alert("로그인에 실패했습니다. 다시 시도해주세요.");
-    }
+    window.Kakao.Auth.authorize({
+      redirectUri: `${window.location.origin}/oauth`,
+    });
+  console.log(window.location.origin)
   };
 
   return (
