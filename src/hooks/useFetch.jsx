@@ -18,7 +18,6 @@ function useFetch(url, options) {
           return;
         }
         const json = await res.json();
-        console.log(json);
         setData(json);
       } catch (err) {
         setError(err);

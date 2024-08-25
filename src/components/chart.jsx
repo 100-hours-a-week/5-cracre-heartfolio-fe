@@ -37,15 +37,6 @@ function Chart(props) {
     total: 0,
   });
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-
-  // const moneyData = {
-  //   cash: 100000, //보유캐시
-  //   total_purchase: 35000616, //총 매수 금액
-  //   total_amount: 200000000, //총 자산
-  //   total_value: 151152125, //총 평가 금액
-  //   profitRate: -10.4, //평가수익률
-  // };
-
   const stompClient = useRef(null);
 
   useEffect(() => {

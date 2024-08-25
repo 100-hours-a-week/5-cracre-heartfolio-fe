@@ -9,7 +9,6 @@ function BuyBox({
   setOrderDetails,
   isLoggedIn,
 }) {
-  console.log("data", data?.cash);
   const token = localStorage.getItem("access-token");
   const [quantity, setQuantity] = useState("");
 

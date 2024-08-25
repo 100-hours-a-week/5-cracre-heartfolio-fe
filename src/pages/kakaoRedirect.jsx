@@ -14,7 +14,7 @@ const KakaoRedirect = () => {
           if (!response.ok) {
             throw new Error("서버 응답이 올바르지 않습니다.");
           }
-          console.log(response.data)
+          console.log("loginData",response.data)
           return response.json();
         })
         .then((data) => {

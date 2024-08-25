@@ -9,7 +9,6 @@ import useFetch from "../hooks/useFetch";
 
 function StockPage() {
   const [activeTab, setActiveTab] = useState(1);
-  console.log("Active Tab:", activeTab);
   const { id } = useParams();
   const token = localStorage.getItem("access-token");
   const { data, error, loading } = useFetch(
@@ -21,12 +20,7 @@ function StockPage() {
       },
     }
   );
-  // const stock_info_data = {
-  //   symbol: "NASDAQ:MSFT",
-  //   name: "Microsoft",
-  //   likePresent: "false"
-  // };
-  console.log(data);
+  console.log("stockPage get : ",data);
 
   return (
     <>

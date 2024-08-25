@@ -10,62 +10,6 @@ function getRandomPastelColor() {
 }
 
 function AssetConfiguration() {
-  // const asset_data = {
-  //   data: {
-  //     stocks: [
-  //       {
-  //         id: 1,
-  //         stockName: "Apple",
-  //         percentage: 13.8,
-  //       },
-  //       {
-  //         id: 2,
-  //         stockName: "AMD",
-  //         percentage: 2.6,
-  //       },
-  //       {
-  //         id: 3,
-  //         stockName: "Tesla",
-  //         percentage: 8.5,
-  //       },
-  //       {
-  //         id: 4,
-  //         stockName: "Google",
-  //         percentage: 5.7,
-  //       },
-  //       {
-  //         id: 5,
-  //         stockName: "Microsoft",
-  //         percentage: 9.3,
-  //       },
-  //       {
-  //         id: 6,
-  //         stockName: "Samsung",
-  //         percentage: 7.1,
-  //       },
-  //       {
-  //         id: 7,
-  //         stockName: "Nvidia",
-  //         percentage: 11.4,
-  //       },
-  //       {
-  //         id: 8,
-  //         stockName: "Amazon",
-  //         percentage: 6.8,
-  //       },
-  //       {
-  //         id: 9,
-  //         stockName: "Facebook",
-  //         percentage: 4.9,
-  //       },
-  //       {
-  //         id: 10,
-  //         stockName: "Alibaba",
-  //         percentage: 3.9,
-  //       },
-  //     ],
-  //   },
-  // };
   const userId = 1;
   const token = localStorage.getItem("access-token");
   const { data, error, loading } = useFetch(
