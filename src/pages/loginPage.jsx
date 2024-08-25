@@ -4,23 +4,23 @@ import { useNavigate } from "react-router-dom";
 const LoginPage = () => {
   const navigate = useNavigate();
 
-  // useEffect(() => {
-  //   if (!window.Kakao.isInitialized()) {
-  //     window.Kakao.init(process.env.REACT_APP_REST_API_KEY);
-  //   }
-  // }, []);
+  useEffect(() => {
+    if (!window.Kakao.isInitialized()) {
+      window.Kakao.init(process.env.REACT_APP_REST_API_KEY);
+    }
+  }, []);
 
-  // const handleLogin = () => {
-  //   window.Kakao.Auth.authorize({
-  //     redirectUri: `${window.location.origin}/oauth`,
-  //   });
-  // console.log(window.location.origin)
-  // };
-  const REACT_APP_REDIRECT_URI='https://heartfolio.site/oauth'
-  const KAKAO_AUTH_URL = `https://kauth.kakao.com/oauth/authorize?client_id=${process.env.REACT_APP_REST_API_KEY}&redirect_uri=${REACT_APP_REDIRECT_URI}&response_type=code`;
   const handleLogin = () => {
-    window.location.href = KAKAO_AUTH_URL;
+    window.Kakao.Auth.authorize({
+      redirectUri: `${window.location.origin}/oauth`,
+    });
+  console.log(window.location.origin)
   };
+  // const REACT_APP_REDIRECT_URI='https://heartfolio.site/oauth'
+  // const KAKAO_AUTH_URL = `https://kauth.kakao.com/oauth/authorize?client_id=${process.env.REACT_APP_REST_API_KEY}&redirect_uri=${REACT_APP_REDIRECT_URI}&response_type=code`;
+  // const handleLogin = () => {
+  //   window.location.href = KAKAO_AUTH_URL;
+  // };
 
   return (
     <>
