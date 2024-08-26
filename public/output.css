@@ -985,6 +985,14 @@ html {
   .\!container {
     max-width: 1536px !important;
   }
+<<<<<<< Updated upstream
+=======
+
+  .container {
+    max-width: 1536px;
+  }
+}
+>>>>>>> Stashed changes
 
   .container {
     max-width: 1536px;
