@@ -12,20 +12,44 @@ function getRandomPastelColor() {
 function AssetConfiguration() {
   const userId = 1;
   const token = localStorage.getItem("access_token");
-  const { data, error, loading } = useFetch(
-    "https://heartfolio.site/api/portfolio/" + userId + "/stock",
-    {
-      headers: {
-        Authorization: `Bearer ${token}`, // 토큰을 헤더에 추가
-        "Content-Type": "application/json", // 선택 사항, API 요구 사항에 따라 설정
-      },
-    }
-  );
+  const [data, setData] = useState(null);
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(true);
+
   const [chartData, setChartData] = useState({
     series: [],
     labels: [],
     sortedData: [],
   });
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(
+          "https://heartfolio.site/api/portfolio/" + userId + "/stock",
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+              "Content-Type": "application/json",
+            },
+          }
+        );
+
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+
+        const result = await response.json();
+        setData(result);
+        setLoading(false);
+      } catch (error) {
+        setError(error);
+        setLoading(false);
+      }
+    };
+
+    fetchData(); // 컴포넌트가 마운트될 때 데이터 가져오기
+  }, []); // 빈 배열을 전달하여 이 효과가 한 번만 실행되도록 설정
 
   useEffect(() => {
     if (data?.stocks && data.stocks.length > 0) {
@@ -56,9 +80,18 @@ function AssetConfiguration() {
     }
   }, [data]);
 
+  if (loading) {
+    return <p>Loading...</p>;
+  }
+
+  if (error) {
+    return <p>There was an error loading the data: {error.message}</p>;
+  }
+
   if (data?.stocks?.length === 0) {
     return <p>아직 거래한 내역이 없습니다.</p>;
   }
+
   const colors = chartData.series.map(() => getRandomPastelColor());
 
   const options = {
