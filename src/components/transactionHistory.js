@@ -1,18 +1,45 @@
+import { useEffect, useState } from "react";
 import useFetch from "../hooks/useFetch";
 import HistoryBox from "./box/historyBox";
 
 function TransactionHistory() {
   const token = localStorage.getItem("access_token");
-  const { data, error, loading } = useFetch(
-    "https://heartfolio.site/api/portfolio/investInfo",
-    {
-      headers: {
-        Authorization: `Bearer ${token}`, // 토큰을 헤더에 추가
-        "Content-Type": "application/json", // 선택 사항, API 요구 사항에 따라 설정
-      },
-    }
-  );
-  console.log("transactionHistory fetch",data);
+  // 데이터를 가져오기 위한 상태 관리
+  const [data, setData] = useState(null);
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      setLoading(true); // 데이터를 가져오기 전 로딩 상태를 true로 설정
+      try {
+        const response = await fetch(
+          "https://heartfolio.site/api/portfolio/investInfo",
+          {
+            headers: {
+              Authorization: `Bearer ${token}`, // 토큰을 헤더에 추가
+              "Content-Type": "application/json", // 선택 사항, API 요구 사항에 따라 설정
+            },
+          }
+        );
+
+        if (!response.ok) {
+          throw new Error(response.statusText); // 응답이 정상적이지 않을 경우 에러 발생
+        }
+
+        const result = await response.json();
+        setData(result); // 가져온 데이터를 상태에 설정
+      } catch (err) {
+        setError(err); // 에러가 발생할 경우 에러 상태에 설정
+      } finally {
+        setLoading(false); // 데이터를 가져온 후 로딩 상태를 false로 설정
+      }
+    };
+
+    fetchData();
+  }, [token]); // 토큰이 변경될 때마다 데이터를 다시 가져옴
+
+  console.log("transactionHistory fetch", data);
   return (
     <>
       <div className="mx-auto max-w-[350px] pb-8">
