@@ -51,13 +51,12 @@ function Chart(props) {
           const data = JSON.parse(message.body);
           console.log("서버에서 받은 데이터:", data);
 
-          if (data && data.curPrice) {
-            setcurPrice(data.curPrice);
-          }
+          // if (data && data.curPrice) {
+          //   setcurPrice(data.curPrice);
+          // }
         }
       );
     });
-
     return () => {
       if (stompClient.current !== null) {
         stompClient.current.disconnect();
@@ -100,7 +99,7 @@ function Chart(props) {
     <>
       <div className="mx-auto max-w-[370px]">
         <div></div>
-        <p className="pb-2">{curPrice.toLocaleString()} KRW</p>
+        <p className="pb-2">{props.data?.curPrice.toLocaleString()} KRW</p>
         <TradingViewWidget symbol={props.data?.symbol} />
         <div
           role="tablist"
