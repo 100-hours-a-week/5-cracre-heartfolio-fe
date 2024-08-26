@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Header from "../components/header";
 import StockHeader from "../components/stockHeader";
 import StockHistory from "../components/stockHistory";
@@ -10,17 +10,30 @@ import useFetch from "../hooks/useFetch";
 function StockPage() {
   const [activeTab, setActiveTab] = useState(1);
   const { id } = useParams();
-  const token = localStorage.getItem("access_token");
-  const { data, error, loading } = useFetch(
-    "https://heartfolio.site/api/stock/" + id,
-    {
-      headers: {
-        Authorization: `Bearer ${token}`, // 토큰을 헤더에 추가
-        "Content-Type": "application/json", // 선택 사항, API 요구 사항에 따라 설정
-      },
-    }
-  );
-  console.log("stockPage get : ",data);
+  const [data, setData] = useState(null);
+  useEffect(() => {
+    const token = localStorage.getItem("access_token");
+
+    const fetchData = async () => {
+      const response = await fetch("https://heartfolio.site/api/stock/" + id, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+
+      const result = await response.json();
+      setData(result);
+    };
+
+    fetchData();
+  }, [id]);
+
+  console.log("stockPage get : ", data);
 
   return (
     <>

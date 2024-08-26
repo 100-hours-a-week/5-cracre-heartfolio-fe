@@ -12,16 +12,7 @@ function Chart(props) {
   const { id } = useParams();
   const userId = 1;
   const token = localStorage.getItem("access_token");
-  const {
-    data: moneyData,
-    error,
-    loading,
-  } = useFetch("https://heartfolio.site/api/portfolio/" + userId, {
-    headers: {
-      Authorization: `Bearer ${token}`, // 토큰을 헤더에 추가
-      "Content-Type": "application/json", // 선택 사항, API 요구 사항에 따라 설정
-    },
-  });
+  const [moneyData, setMoneyData] = useState(null);
   const [curPrice, setcurPrice] = useState(10000); // 주식 현재가를 저장할 상태
   const [isBuyModalOpen, setIsBuyModalOpen] = useState(false); // 모달 상태 관리
   const [isSellModalOpen, setIsSellModalOpen] = useState(false); // 모달 상태 관리
@@ -73,6 +64,29 @@ function Chart(props) {
       }
     };
   }, [props.data?.symbol]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await fetch(
+        `https://heartfolio.site/api/portfolio/${userId}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error(response.statusText);
+      }
+
+      const result = await response.json();
+      setMoneyData(result);
+    };
+
+    fetchData();
+  }, [userId, token]);
 
   function closeBuyModal() {
     setIsBuyModalOpen(false);
