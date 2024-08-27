@@ -35,7 +35,7 @@ jobs:
           host: ${{ secrets.WAS_HOST }}
           username: ${{ secrets.WAS_USERNAME }}
           key: ${{ secrets.SSH_KEY }}
-          port: ${{ secrets.WAS_SSH_PORT }}
+          port: ${{ secrets.SSH_PORT }}
           script: |
             docker stop frontend
             docker rm frontend
