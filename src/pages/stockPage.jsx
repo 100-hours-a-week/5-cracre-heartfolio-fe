@@ -15,7 +15,7 @@ function StockPage() {
     const token = localStorage.getItem("access_token");
 
     const fetchData = async () => {
-      const response = await fetch("https://heartfolio.site/api/stock/" + id, {
+      const response = await fetch("https://heartfolio.site/api/stock/order/" + id + "/details", {
         headers: {
           Authorization: `Bearer ${token}`,
           "Content-Type": "application/json",
