@@ -1,4 +1,4 @@
-function Accumulation() {
+function MonthlyEarnings() {
   const data = [
     {
       profile: "/profile/photo1",
@@ -8,12 +8,12 @@ function Accumulation() {
     {
       profile: "/profile/photo2",
       name: "Jane Smith",
-      percentage: "270%",
+      percentage: "260%",
     },
     {
       profile: "/profile/photo3",
       name: "Alice Johnson",
-      percentage: "240%",
+      percentage: "230%",
     },
     {
       profile: "/profile/photo4",
@@ -23,35 +23,34 @@ function Accumulation() {
     {
       profile: "/profile/photo5",
       name: "Emily Davis",
-      percentage: "180%",
+      percentage: "190%",
     },
     {
       profile: "/profile/photo6",
       name: "David Wilson",
-      percentage: "150%",
+      percentage: "170%",
     },
     {
       profile: "/profile/photo7",
       name: "Sophia Martinez",
-      percentage: "120%",
+      percentage: "140%",
     },
     {
       profile: "/profile/photo8",
       name: "James Anderson",
-      percentage: "90%",
+      percentage: "135%",
     },
     {
       profile: "/profile/photo9",
       name: "Olivia Taylor",
-      percentage: "60%",
+      percentage: "130%",
     },
     {
       profile: "/profile/photo10",
       name: "Benjamin Moore",
-      percentage: "30%",
+      percentage: "100%",
     },
   ];
-
   return (
     <>
       <div>
@@ -86,4 +85,4 @@ function Accumulation() {
   );
 }
 
-export default Accumulation;
+export default MonthlyEarnings;
