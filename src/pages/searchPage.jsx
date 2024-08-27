@@ -1,35 +1,52 @@
 import ButtomNavigation from "../components/bottomNavigation";
 import Header from "../components/header";
+import { useNavigate } from "react-router-dom";
+
 
 function SearchPage() {
+  const navigate = useNavigate();
+
+  // 검색창에서 엔터치면 searchPost()실행
+  const enterkeySearch = (event) => {
+    if (event.keyCode === 13) {
+      searchPost();
+    }
+  };
+
+  const searchPost = () => {
+    // 검색 기능을 수행하는 코드
+    console.log('Search initiated');
+  };
+
   return (
     <>
       <Header />
       <div className="mt-[80px] text-center">
         <div className="mx-auto max-w-[390px] px-3 mt-[34px]">
-            <div className="mx-auto max-w-[390px] h-[50px] px-3 items-center flex justify-between">
-            <img
+            <div className="flex ">
+              {/* 뒤로가기 */}
+              <img
                 src="/assets/images/back.png"
-                className="h-[20px]"
+                className="h-[20px] m-2 mx-6"
                 onClick={() => navigate(-1)}
-            ></img>
-            <div >
-                <input
-                        id="search"
-                        name="search"
-                        type="search"
-                        placeholder="Search"
-                        className="block w-full rounded-md border-0 bg-white py-1.5 pl-10 pr-3 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6"
-                    />
+              ></img>              
+
+              {/* 검색창 */}
+              <div class="search w-full">
+                <input  placeholder="검색어를 입력하세요"         
+                className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                onKeyDown={enterkeySearch()} 
+                />
+              </div> 
+
+              {/* 돋보기 */}
+              <span className="material-symbols-outlined  m-2 mx-4">
+                search
+              </span>
             </div>
-            <img
-                src={src}
-                className="h-[20px]"
-                onClick={() => handlefavorite()}
-            ></img>
-            </div>
+            {/* 검색목록 */}
             <div>
-                검색내용
+                검색목록
             </div>
         </div>
       </div>
