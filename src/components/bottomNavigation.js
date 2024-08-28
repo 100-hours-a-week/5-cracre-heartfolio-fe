@@ -16,22 +16,23 @@ function ButtomNavigation() {
   return (
     <div className="fixed bottom-0 left-1/2 transform -translate-x-1/2 w-[390px] bg-white shadow-lg">
       <div className="btm-nav flex justify-around h-[45px] items-center">
-        <button
-          className="bg-btnNoClickColor p-0"
-          onClick={() => navigate("/login")}
-        >
-          {isAuthenticated ? (
-            <a className="material-symbols-outlined">logout</a>
-          ) : (
-            <a className="material-symbols-outlined">login</a>
-          )}
-        </button>
-
-        <button
+                <button
           className="bg-btnNoClickColor p-0"
           onClick={() => navigate("/")}
         >
           <a className="material-symbols-rounded">home</a>
+        </button>
+        <button
+          className="bg-btnNoClickColor p-0"
+          onClick={() => navigate("/portfolio")}
+        >
+          <a className="material-symbols-rounded">description</a>
+        </button>
+        <button
+          className="bg-btnNoClickColor p-0"
+          onClick={() => navigate("/intereststock")}
+        >
+          <a className="material-symbols-outlined">monitoring</a>
         </button>
         <button
           className="bg-btnNoClickColor p-0"

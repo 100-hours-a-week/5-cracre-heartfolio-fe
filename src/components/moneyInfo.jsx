@@ -55,7 +55,10 @@ function MoneyInfo() {
   }
   return (
     <div className="max-w-full">
-      <div className="mx-auto max-w-[390px] px-3 mt-[34px]">
+      <div className="w-full flex justify-center">
+        <div className="w-[370px] text-lg">내 포트폴리오</div>
+      </div>
+      <div className="mx-auto max-w-[390px] px-3 mt-[16px]">
         <div className="flex justify-around">
           <div>
             <div className="text-sm">총 자산</div>
