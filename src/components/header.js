@@ -26,10 +26,10 @@ function Header() {
   return (
     <Disclosure
       as="nav"
-      className="fixed top-0 left-0 right-0 z-50 bg-white shadow-md"
+      className="fixed top-0 left-0 right-0 z-50 bg-white "
       onChange={(open) => setIsOpen(open)}
     >
-      <div className="mx-auto max-w-[390px] px-3 relative z-50">
+      <div className="mx-auto max-w-[390px] px-3 relative z-50 shadow-md">
         <div className="flex h-16 justify-between">
           <div className="flex">
             <div className="flex flex-shrink-0 items-center">

@@ -19,7 +19,7 @@ function StockPage() {
   return (
     <>
       <Header />
-      <div className="mt-[75px]">
+      <div className="pt-[75px] min-h-screen bg-white">
         <StockHeader data={data} />
         <div
           role="tablist"

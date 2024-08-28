@@ -13,7 +13,7 @@ function Portfolio() {
   return (
     <>
       <Header />
-      <div className="mt-[90px]">
+      <div className="pt-[90px] min-h-screen bg-white">
         <MoneyInfo />
         <div
           role="tablist"
