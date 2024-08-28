@@ -1,7 +1,7 @@
-import Header from "../components/header";
-import Stocktype from "../components/stocktype";
-import Eachpopularstock from "../components/eachpopularstock";
-import ButtomNavigation from "../components/bottomNavigation";
+import Header from "../components/common/header";
+import Stocktype from "../components/mock investment/stocktype";
+import EachpopularStockBox from "../components/commonBox/eachpopularstockBox";
+import ButtomNavigation from "../components/common/bottomNavigation";
 import useFetch from "../hooks/useFetch";
 
 function Popularstock() {
@@ -29,7 +29,7 @@ function Popularstock() {
         <div className="mx-auto max-w-[390px] pb-[40px] mt-[10px]">
           {/* map을 사용하여 상위 25개 종목 반복 렌더링 */}
           {data?.map((stock) => (
-            <Eachpopularstock
+            <EachpopularStockBox
               key={stock.stockId}
               stockId={stock.stockId} //주식별 고유 아이디(기본키)
               rank={stock.rank} //순위

@@ -6,7 +6,7 @@ import SockJS from "sockjs-client";
 import TradingViewWidget from "./tradingViewWidget";
 import SellBox from "./sellBox";
 import BuyBox from "./buyBox";
-import useFetch from "../hooks/useFetch";
+import useFetch from "../../hooks/useFetch";
 
 function Chart(props) {
   const { id } = useParams();

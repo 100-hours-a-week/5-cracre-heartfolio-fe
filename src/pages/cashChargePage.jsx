@@ -1,6 +1,6 @@
 import Lottie from "lottie-react";
-import ButtomNavigation from "../components/bottomNavigation";
-import Header from "../components/header";
+import ButtomNavigation from "../components/common/bottomNavigation";
+import Header from "../components/common/header";
 import ContructionAnimation from "../assets/animations/construction.json";
 
 function CashChargePage() {

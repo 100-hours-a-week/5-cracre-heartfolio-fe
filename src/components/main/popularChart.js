@@ -1,5 +1,5 @@
-import useFetch from "../hooks/useFetch";
-import Eachpopularstock from "./eachpopularstock";
+import useFetch from "../../hooks/useFetch";
+import EachpopularstockBox from "../commonBox/eachpopularstockBox";
 
 const items = [{ id: 1 }, { id: 2 }, { id: 3 }];
 
@@ -21,7 +21,7 @@ function PopularChart() {
       <div className="mx-auto max-w-[390px] pb-[40px] mt-[6px] border-t border-gray-300">
         {/* map을 사용하여 상위 5개 종목 반복 렌더링 */}
         {data?.map((stock) => (
-          <Eachpopularstock
+          <EachpopularstockBox
             key={stock.stockId}
             stockId={stock.stockId} //주식별 고유 아이디(기본키)
             rank={stock.rank} //순위
