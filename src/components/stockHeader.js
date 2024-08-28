@@ -67,7 +67,7 @@ function StockHeader(props) {
               window.location.reload();
             }}
           >
-            {props.data?.symbol}
+            {props.data?.koreanName} ({props.data?.englishName})
           </div>
           <img
             src={src}

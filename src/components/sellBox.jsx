@@ -105,20 +105,26 @@ function SellBox({
   return (
     <div>
       <div className="flex w-[350px] pt-5">
-        <div className="flex items-center w-[200px] justify-between">
-          <label className=" text-gray-600">수량</label>
+        <div className="flex items-center w-[170px] justify-between">
+          <label className="text-gray-600">수량</label>
           <div className="flex items-center">
             <input
               type="number"
               value={quantity}
               onChange={handleQuantityChange}
               placeholder="0"
-              className="h-[30px] w-[120px]  text-gray-600"
+              className="h-[30px] w-[100px] text-gray-600"
             ></input>
             <p className="text-gray-600 ml-1 ">주</p>
           </div>
         </div>
-        <div className="w-[150px] text-center">
+        <div className="w-[180px] text-center">
+          <button
+            className="text-center text-[10px] bg-boxBackgroundColor p-2 rounded-md mx-1 hover:bg-boxHoverColor"
+            onClick={() => setQuantity(0)}
+          >
+            0
+          </button>
           <button
             className="text-center text-[10px] bg-boxBackgroundColor p-2 rounded-md mx-1 hover:bg-boxHoverColor  text-gray-600"
             onClick={handle25PercentQuantity}

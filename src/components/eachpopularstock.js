@@ -17,13 +17,13 @@ export default function Eachpopularstock(props) {
       onClick={() => handleClick(props.stockId)}
     >
       {/* 순위 */}
-      <p className="text-gray-600 w-10 py-3 text-center font-bold text-xl">{props.rank}</p>
+      <p className="text-gray-600 w-10 py-3 text-center content-center font-bold text-xl">{props.rank}</p>
       {/* 내용 */}
       <div className="text-gray-600 ml-4 w-[300px]">
         {/* 종목이름 */}
-        <h1 className="text-gray-600 font-medium text-xl">{props.stockName}</h1>
+        <h1 className="text-gray-600 font-medium text-xl text-[15px]">{props.stockKorea} ({props.stockName})</h1>
         {/* 종목정보 */}
-        <div className="flex flex-row">
+        <div className="flex flex-row mt-1">
           {/* 현재가 */}
           <p className="mr-1">{props.currentPrice.toLocaleString()}</p>
           {/* 전일대비수익 */}
