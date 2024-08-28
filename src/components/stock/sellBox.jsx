@@ -120,7 +120,7 @@ function SellBox({
         </div>
         <div className="w-[180px] text-center">
           <button
-            className="text-center text-[10px] bg-boxBackgroundColor p-2 rounded-md mx-1 hover:bg-boxHoverColor"
+            className="text-center text-[10px] bg-boxBackgroundColor p-2 rounded-md mx-1 hover:bg-boxHoverColor text-gray-600"
             onClick={() => setQuantity(0)}
           >
             0
