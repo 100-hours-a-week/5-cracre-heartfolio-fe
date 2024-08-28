@@ -112,7 +112,7 @@ function BuyBox({
   return (
     <div>
       <div className="flex w-[350px] pt-5">
-        <div className="flex items-center w-[200px] justify-between">
+        <div className="flex items-center w-[170px] justify-between">
           <label>수량</label>
           <div className="flex items-center">
             <input
@@ -120,12 +120,18 @@ function BuyBox({
               value={quantity}
               onChange={handleQuantityChange}
               placeholder="0"
-              className="h-[30px] w-[120px]"
+              className="h-[30px] w-[100px]"
             ></input>
             <p className="text-gray-500 ml-1">주</p>
           </div>
         </div>
-        <div className="w-[150px] text-center">
+        <div className="w-[180px] text-center">
+          <button
+            className="text-center text-[10px] bg-boxBackgroundColor p-2 rounded-md mx-1 hover:bg-boxHoverColor"
+            onClick={()=>setQuantity(0)}
+          >
+            0
+          </button>
           <button
             className="text-center text-[10px] bg-boxBackgroundColor p-2 rounded-md mx-1 hover:bg-boxHoverColor"
             onClick={handle25PercentQuantity}
