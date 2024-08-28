@@ -3559,6 +3559,10 @@ input.tab:checked + .tab-content,
   font-size: 15px;
 }
 
+.text-\[11px\] {
+  font-size: 11px;
+}
+
 .font-bold {
   font-weight: 700;
 }

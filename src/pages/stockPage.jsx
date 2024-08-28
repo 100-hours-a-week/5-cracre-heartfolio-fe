@@ -10,28 +10,9 @@ import useFetch from "../hooks/useFetch";
 function StockPage() {
   const [activeTab, setActiveTab] = useState(1);
   const { id } = useParams();
-  const [data, setData] = useState(null);
-  useEffect(() => {
-    const token = localStorage.getItem("access_token");
-
-    const fetchData = async () => {
-      const response = await fetch("https://heartfolio.site/api/stock/order/" + id + "/details", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-Type": "application/json",
-        },
-      });
-
-      if (!response.ok) {
-        throw new Error("Network response was not ok");
-      }
-
-      const result = await response.json();
-      setData(result);
-    };
-
-    fetchData();
-  }, [id]);
+  const { data, error, loading } = useFetch(
+    "https://heartfolio.site/api/stock/order/" + id + "/details"
+  );
 
   console.log("stockPage get : ", data);
 
