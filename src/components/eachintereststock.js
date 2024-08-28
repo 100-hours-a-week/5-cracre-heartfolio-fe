@@ -11,7 +11,6 @@ export default function Eachintereststock(props) {
 
   // 이미지 경로를 변경하는 함수를 정의.
   const toggleImage = (stock_id) => {
-
     // 좋아요 되어있는거 클릭해서 없애기
     fetch("https://heartfolio.site/api/stock/favorites/" + stock_id, {
       credentials: "include",
@@ -21,11 +20,11 @@ export default function Eachintereststock(props) {
         "Content-Type": "application/json",
       },
     }).then((response) => {
-        if(response.ok){
-            navigate("/intereststock");
-        }
-        // 페이지 새로고침
-        window.location.reload();
+      if (response.ok) {
+        navigate("/intereststock");
+      }
+      // 페이지 새로고침
+      window.location.reload();
     });
   };
 
@@ -35,7 +34,7 @@ export default function Eachintereststock(props) {
   }
 
   return (
-    <div className="flex flex-rowmx-auto max-w-[390px] m-3 bg-white hover:bg-gray-50">
+    <div className="flex flex-rowmx-auto max-w-[390px] m-3 bg-white hover:bg-gray-50 content-center">
       {/* 하트 */}
       {/* 이 버튼은 클릭 시 toggleImage 함수를 호출하여 이미지가 바뀝니다. */}
       <button onClick={() => toggleImage(props.stockId)} className="px-3">
@@ -43,14 +42,13 @@ export default function Eachintereststock(props) {
         <img className="w-6 " src={imageSrc} alt="Heart Icon" />
       </button>
       {/* 내용 */}
-      <div
-        className="ml-4 w-[300px]"
-        onClick={() => handleClick(props.stockId)}
-      >
+      <div className="text-gray-600 ml-4 w-[300px]">
         {/* 종목이름 */}
-        <h1 className="">{props.stockName}</h1>
+        <h1 className="text-gray-600 text-[15px]">
+          {props.stockKorea} ({props.stockName})
+        </h1>
         {/* 종목정보 */}
-        <div className="flex flex-row">
+        <div className="flex flex-row mt-1">
           {/* 현재가 */}
           <p className="mr-1">{props.currentPrice.toLocaleString()}</p>
 

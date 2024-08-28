@@ -33,6 +33,7 @@ function Popularstock() {
               key={stock.stockId}
               stockId={stock.stockId} //주식별 고유 아이디(기본키)
               rank={stock.rank} //순위
+              stockKorea={stock.koreanName}
               stockName={stock.englishName} //종목명
               currentPrice={stock.currentPrice} //현재가
               earningValue={stock.earningValue} //전일대비 증가량

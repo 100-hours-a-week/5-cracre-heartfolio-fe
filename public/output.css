@@ -2834,6 +2834,10 @@ input.tab:checked + .tab-content,
   margin: 1.25rem;
 }
 
+.m-4 {
+  margin: 1rem;
+}
+
 .mx-1 {
   margin-left: 0.25rem;
   margin-right: 0.25rem;
@@ -3068,6 +3072,10 @@ input.tab:checked + .tab-content,
 
 .h-80 {
   height: 20rem;
+}
+
+.h-\[24px\] {
+  height: 24px;
 }
 
 .min-h-screen {
@@ -3351,6 +3359,14 @@ input.tab:checked + .tab-content,
   overflow-x: auto;
 }
 
+.text-ellipsis {
+  text-overflow: ellipsis;
+}
+
+.whitespace-nowrap {
+  white-space: nowrap;
+}
+
 .rounded {
   border-radius: 0.25rem;
 }
@@ -3590,6 +3606,14 @@ input.tab:checked + .tab-content,
   padding-top: 80px;
 }
 
+.pt-1 {
+  padding-top: 0.25rem;
+}
+
+.text-left {
+  text-align: left;
+}
+
 .text-center {
   text-align: center;
 }
@@ -3643,6 +3667,18 @@ input.tab:checked + .tab-content,
 
 .text-\[11px\] {
   font-size: 11px;
+}
+
+.text-\[1px\] {
+  font-size: 1px;
+}
+
+.text-\[12px\] {
+  font-size: 12px;
+}
+
+.text-\[13px\] {
+  font-size: 13px;
 }
 
 .font-bold {
@@ -3715,6 +3751,10 @@ input.tab:checked + .tab-content,
 .text-gray-600 {
   --tw-text-opacity: 1;
   color: rgb(75 85 99 / var(--tw-text-opacity));
+}
+
+.text-\[px\] {
+  color: px;
 }
 
 .opacity-0 {
