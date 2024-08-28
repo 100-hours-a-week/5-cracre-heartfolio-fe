@@ -113,16 +113,16 @@ function BuyBox({
     <div>
       <div className="flex w-[350px] pt-5">
         <div className="flex items-center w-[170px] justify-between">
-          <label>수량</label>
+          <label className=" text-gray-600">수량</label>
           <div className="flex items-center">
             <input
               type="number"
               value={quantity}
               onChange={handleQuantityChange}
               placeholder="0"
-              className="h-[30px] w-[100px]"
+              className="h-[30px] w-[100px] text-gray-600"
             ></input>
-            <p className="text-gray-500 ml-1">주</p>
+            <p className="text-gray-600 ml-1">주</p>
           </div>
         </div>
         <div className="w-[180px] text-center">
@@ -133,19 +133,19 @@ function BuyBox({
             0
           </button>
           <button
-            className="text-center text-[10px] bg-boxBackgroundColor p-2 rounded-md mx-1 hover:bg-boxHoverColor"
+            className="text-center text-[10px] bg-boxBackgroundColor p-2 rounded-md mx-1 hover:bg-boxHoverColor  text-gray-600"
             onClick={handle25PercentQuantity}
           >
             25%
           </button>
           <button
-            className="text-center text-[10px] bg-boxBackgroundColor p-2 rounded-md mx-1 hover:bg-boxHoverColor"
+            className="text-center text-[10px] bg-boxBackgroundColor p-2 rounded-md mx-1 hover:bg-boxHoverColor  text-gray-600"
             onClick={handle50PercentQuantity}
           >
             50%
           </button>
           <button
-            className="text-center text-[10px] bg-boxBackgroundColor p-2 rounded-md mx-1 hover:bg-boxHoverColor"
+            className="text-center text-[10px] bg-boxBackgroundColor p-2 rounded-md mx-1 hover:bg-boxHoverColor  text-gray-600"
             onClick={handleMaxQuantity}
           >
             최대
@@ -154,21 +154,21 @@ function BuyBox({
       </div>
       <div className="flex w-[350px] justify-between mt-5">
         <div className="flex items-center w-1/2">
-          <p>총액</p>
-          <p className="h-[30px] w-[120px] content-center text-right text-xs">
+          <p className=" text-gray-600">총액</p>
+          <p className="h-[30px] w-[120px] content-center text-right text-xs  text-gray-600">
             {money_change(total_money)} KRW
           </p>
         </div>
         <div className="flex items-center w-1/2">
-          <p>내 캐시</p>
-          <p className="h-[30px] w-[115px] content-center text-right text-xs">
+          <p className=" text-gray-600">내 캐시</p>
+          <p className="h-[30px] w-[115px] content-center text-right text-xs  text-gray-600">
             {money_change(data?.cash)} KRW
           </p>
         </div>
       </div>
       <div className="flex justify-center">
         <button
-          className={`${buttonStyle} h-10 w-[180px] mt-5 rounded-md text-sm`}
+          className={`${buttonStyle} h-10 w-[180px] mt-5 rounded-md text-sm  text-gray-600`}
           disabled={isDisabled}
           onClick={() => buy()}
         >

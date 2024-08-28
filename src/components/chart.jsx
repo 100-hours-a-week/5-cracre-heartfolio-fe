@@ -99,28 +99,28 @@ function Chart(props) {
     <>
       <div className="mx-auto max-w-[370px]">
         <div></div>
-        <p className="pb-2">{props.data?.curPrice.toLocaleString()} KRW</p>
+        <p className="pb-2 text-gray-600">{props.data?.curPrice.toLocaleString()} KRW</p>
         <TradingViewWidget symbol={props.data?.symbol} />
         <div
           role="tablist"
-          className="tabs tabs-bordered mx-auto max-w-[370px] mt-[34px]"
+          className="tabs tabs-bordered mx-auto max-w-[370px] mt-[34px] "
         >
           <div
             role="tab"
-            className={`tab h-[50px] ${activeTab === 1 ? "tab-active" : ""}`}
+            className={`tab h-[50px] ${activeTab === 1 ? "tab-active" : ""} text-gray-600`}
             onClick={() => setActiveTab(1)}
           >
             매수
           </div>
           <div
             role="tab"
-            className={`tab h-[50px] ${activeTab === 2 ? "tab-active" : ""}`}
+            className={`tab h-[50px] ${activeTab === 2 ? "tab-active" : ""} text-gray-600`}
             onClick={() => setActiveTab(2)}
           >
             매도
           </div>
         </div>
-        <div className="mx-auto max-w-[370px] p-4">
+        <div className="mx-auto max-w-[370px] p-4 pb-20">
           <div role="tabpanel" className="tab-content block">
             {activeTab === 1 && (
               <BuyBox

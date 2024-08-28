@@ -27,8 +27,8 @@ function HistoryBox(props) {
       <div className="w-[330px] h-[80px] flex justify-center items-center">
         <div className="flex w-[320px] justify-between items-center">
           <div className="w-[180px]">
-            <div className="text-sm">{formatDate(props.orderDate)}</div>
-            <div className="flex w-[140px] justify-between">
+            <div className="text-sm  text-gray-600">{formatDate(props.orderDate)}</div>
+            <div className="flex w-[140px] justify-between  text-gray-600">
               <div>{props.name}</div>
               <div
                 className={`${
@@ -43,15 +43,15 @@ function HistoryBox(props) {
           </div>
           <div className="w-[140px]">
             <div className="flex justify-between">
-              <div className="text-sm">평단가</div>
-              <div className="text-sm">{moneyChange(props.orderPrice)}</div>
+              <div className="text-sm  text-gray-600">평단가</div>
+              <div className="text-sm  text-gray-600">{moneyChange(props.orderPrice)}</div>
             </div>
             <div className="flex justify-between">
-              <div className="text-sm">체결수량</div>
-              <div className="text-sm">{props.orderAmount}</div>
+              <div className="text-sm  text-gray-600">체결수량</div>
+              <div className="text-sm  text-gray-600">{props.orderAmount}</div>
             </div>
             <div className="flex justify-between">
-              <div className="text-sm">체결금액</div>
+              <div className="text-sm  text-gray-600">체결금액</div>
               <div
                 className={`text-sm ${
                   props.orderCategory == "buy"

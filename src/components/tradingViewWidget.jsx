@@ -23,7 +23,7 @@ function TradingViewWidget(props) {
       script.innerHTML = `
         {
           "width": "370",
-          "height": "300",
+          "height": "400",
           "symbol": "${props.symbol}",
           "interval": "60",
           "timezone": "Etc/UTC",

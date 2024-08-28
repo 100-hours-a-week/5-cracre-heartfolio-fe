@@ -29,7 +29,7 @@ function Portfolio() {
                 role="tab"
                 className={`tab h-[50px] ${
                   activeTab === 1 ? "tab-active" : ""
-                }  text-gray-600`}
+                }  text-gray-600 font-semibold`}
                 onClick={() => setActiveTab(1)}
               >
                 자산 구성
@@ -38,7 +38,7 @@ function Portfolio() {
                 role="tab"
                 className={`tab h-[50px] ${
                   activeTab === 2 ? "tab-active" : ""
-                }  text-gray-600`}
+                }  text-gray-600 font-semibold`}
                 onClick={() => setActiveTab(2)}
               >
                 거래 내역
@@ -47,7 +47,7 @@ function Portfolio() {
                 role="tab"
                 className={`tab h-[50px] ${
                   activeTab === 3 ? "tab-active" : ""
-                } text-gray-600`}
+                } text-gray-600 font-semibold`}
                 onClick={() => setActiveTab(3)}
               >
                 보유 종목

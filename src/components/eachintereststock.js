@@ -50,7 +50,7 @@ export default function Eachintereststock(props) {
         {/* 종목정보 */}
         <div className="flex flex-row mt-1">
           {/* 현재가 */}
-          <p className="mr-1">{props.currentPrice.toLocaleString()}</p>
+          <p className="mr-1 text-gray-600">{props.currentPrice.toLocaleString()}</p>
 
           {/* 전일대비수익 */}
           <div
