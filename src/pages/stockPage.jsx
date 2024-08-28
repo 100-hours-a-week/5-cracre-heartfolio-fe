@@ -23,13 +23,13 @@ function StockPage() {
         <StockHeader data={data} />
         <div
           role="tablist"
-          className="tabs tabs-boxed mx-auto max-w-[390px] bg-backColor mt-[10px]"
+          className="tabs tabs-boxed mx-auto max-w-[390px] bg-backColor mt-[10px] "
         >
           <a
             role="tab"
             className={`tab h-[40px] ${
               activeTab === 1 ? "bg-btnClickColor" : ""
-            }`}
+            }  text-gray-600`}
             onClick={() => setActiveTab(1)}
           >
             차트
@@ -38,7 +38,7 @@ function StockPage() {
             role="tab"
             className={`tab h-[40px] ${
               activeTab === 2 ? "bg-btnClickColor" : ""
-            }`}
+            }  text-gray-600`}
             onClick={() => setActiveTab(2)}
           >
             거래 내역

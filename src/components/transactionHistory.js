@@ -44,7 +44,7 @@ function TransactionHistory() {
     <>
       <div className="mx-auto max-w-[350px] pb-8">
         {data?.length === 0 ? (
-          <div className="text-center text-gray-500">거래 내역이 없습니다.</div>
+          <div className="text-center text-gray-600">거래 내역이 없습니다.</div>
         ) : (
           <ul role="list" className="divide-y divide-gray-200">
             {data?.map((item) => (

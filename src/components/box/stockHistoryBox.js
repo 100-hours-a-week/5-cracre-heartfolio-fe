@@ -8,16 +8,16 @@ function StockHistoryBox(props) {
     <>
       <div className="w-[350px] mx-auto justify-between">
         <div className="flex w-fit">
-          <div>매도 일시 :</div>
-          <div className="ml-1">{formatDate(props.orderDate)}</div>
+          <div className="text-gray-600">매도 일시 :</div>
+          <div className="ml-1 text-gray-600">{formatDate(props.orderDate)}</div>
         </div>
         <div className="flex w-fit">
-          <div>거래 가격 :</div>
-          <div className="ml-1">{props.orderPrice.toLocaleString()}</div>
+          <div className="text-gray-600" >거래 가격 :</div>
+          <div className="ml-1 text-gray-600">{props.orderPrice.toLocaleString()}</div>
         </div>
         <div className="flex w-fit">
-          <div>수량 :</div>
-          <div className="ml-1">{props.orderAmount}</div>
+          <div className="text-gray-600">수량 :</div>
+          <div className="ml-1 text-gray-600">{props.orderAmount}</div>
         </div>
       </div>
     </>
