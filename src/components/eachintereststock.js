@@ -48,11 +48,11 @@ export default function Eachintereststock(props) {
         onClick={() => handleClick(props.stockId)}
       >
         {/* 종목이름 */}
-        <h1 className="">{props.stockName}</h1>
+        <h1 className="text-gray-600">{props.stockName}</h1>
         {/* 종목정보 */}
         <div className="flex flex-row">
           {/* 현재가 */}
-          <p className="mr-1">{props.currentPrice.toLocaleString()}</p>
+          <p className="mr-1 text-gray-600">{props.currentPrice.toLocaleString()}</p>
 
           {/* 전일대비수익 */}
           <div

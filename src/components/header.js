@@ -39,14 +39,14 @@ function Header() {
                   src="/assets/images/heartfolioLogo.webp"
                   className="h-8 w-auto rounded-lg"
                 />
-                <div className="text-gray-600 ml-4 mr-36 content-center">Heartfolio</div>
+                <div className="text-gray-600 ml-4 mr-36 content-center ">Heartfolio</div>
               </a>
             </div>
             <div onClick={() => handleLogin()} className="content-center">
               {isAuthenticated ? (
-                <div className=" ml-5 mr-5 text-sm min-w-14">로그아웃</div>
+                <div className=" ml-5 mr-5 text-sm min-w-14  text-gray-600">로그아웃</div>
               ) : (
-                <div className=" ml-5 mr-5 text-sm min-w-14">로그인</div>
+                <div className=" ml-5 mr-5 text-sm min-w-14  text-gray-600">로그인</div>
               )}
             </div>
           </div>

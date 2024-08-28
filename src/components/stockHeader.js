@@ -62,6 +62,7 @@ function StockHeader(props) {
             onClick={() => navigate(-1)}
           ></img>
           <div
+            className="text-gray-600"
             onClick={() => {
               window.location.reload();
             }}

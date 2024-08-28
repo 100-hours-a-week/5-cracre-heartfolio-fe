@@ -21,21 +21,21 @@ function Portfolio() {
         >
           <a
             role="tab"
-            className={`tab h-[50px] ${activeTab === 1 ? "tab-active" : ""}  text-gray-600`}
+            className={`tab h-[50px] ${activeTab === 1 ? "tab-active" : ""}  text-gray-600 font-semibold`}
             onClick={() => setActiveTab(1)}
           >
             자산 구성
           </a>
           <a
             role="tab"
-            className={`tab h-[50px] ${activeTab === 2 ? "tab-active" : ""}  text-gray-600`}
+            className={`tab h-[50px] ${activeTab === 2 ? "tab-active" : ""}  text-gray-600 font-semibold`}
             onClick={() => setActiveTab(2)}
           >
             거래 내역
           </a>
           <a
             role="tab"
-            className={`tab h-[50px] ${activeTab === 3 ? "tab-active" : ""} text-gray-600`}
+            className={`tab h-[50px] ${activeTab === 3 ? "tab-active" : ""} text-gray-600 font-semibold`}
             onClick={() => setActiveTab(3)}
           >
             보유 종목

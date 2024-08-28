@@ -41,7 +41,7 @@ function Holdings() {
   return (
     <>
       <div className="mx-auto max-w-[350px] py-4 pb-8">
-        <div className="text-xl">보유 종목(KRW)</div>
+        <div className="text-xl  text-gray-600">보유 종목(KRW)</div>
         {data?.length === 0 ? (
           <div className="text-center text-gray-500">보유 종목이 없습니다.</div>
         ) : (
