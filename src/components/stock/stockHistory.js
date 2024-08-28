@@ -1,8 +1,11 @@
+import { useParams } from "react-router-dom";
+import HistoryBox from "../commonBox/historyBox";
+import StockHistoryBox from "./stockHistoryBox";
+import useFetch from "../../hooks/useFetch";
 import { useEffect, useState } from "react";
-import useFetch from "../hooks/useFetch";
-import HoldingsBox from "./box/holdingsBox";
 
-function Holdings() {
+function StockHistory(props) {
+  const { id } = useParams();
   const token = localStorage.getItem("access_token");
   // 데이터 가져오기 상태 관리
   const [data, setData] = useState(null);
@@ -14,7 +17,7 @@ function Holdings() {
       setLoading(true); // 데이터 가져오기 시작 전에 로딩 상태 설정
       try {
         const response = await fetch(
-          "https://heartfolio.site/api/portfolio/totalStocks",
+          `https://heartfolio.site/api/stock/order/${id}/history`,
           {
             headers: {
               Authorization: `Bearer ${token}`, // 토큰을 헤더에 추가
@@ -37,34 +40,35 @@ function Holdings() {
     };
 
     fetchData();
-  }, [token]);
+  }, [id, token]);
   return (
     <>
-      <div className="mx-auto max-w-[350px] py-4 pb-8">
-        <div className="text-xl  text-gray-600">보유 종목(KRW)</div>
+      <div className="mx-auto max-w-[370px] py-2 flex flex-col justify-center">
         {data?.length === 0 ? (
-          <div className="text-center text-gray-500">보유 종목이 없습니다.</div>
+          <div className="text-center text-gray-600">거래 내역이 없습니다.</div>
         ) : (
-          <ul role="list">
-            {data?.stocks.map((item) => (
-              <li key={item.stockId} className="py-2">
-                <HoldingsBox
-                  stock_id={item.stockId}
-                  name={item.name}
-                  evalProfit={item.evalProfit}
-                  evalValue={item.evalValue}
-                  profitPercentage={item.profitPercentage}
-                  purchaseAvgPrice={item.purchaseAvgPrice}
-                  totalPurchasePrice={item.totalPurchasePrice}
-                  totalQuantity={item.totalQuantity}
-                />
-              </li>
-            ))}
-          </ul>
+          <>
+            <div className="text-xs mb-2 text-right text-gray-600">가격 단위(KRW)</div>
+            <ul role="list" className="space-y-3">
+              {data?.map((item) => (
+                <li
+                  key={item.id}
+                  className="overflow-hidden rounded-md bg-white p-4 shadow w-[350px] mx-auto"
+                >
+                  <StockHistoryBox
+                    orderCategory={item.orderCategory}
+                    orderAmount={item.orderAmount}
+                    orderDate={item.orderDate}
+                    orderPrice={item.orderPrice}
+                  />
+                </li>
+              ))}
+            </ul>
+          </>
         )}
       </div>
     </>
   );
 }
 
-export default Holdings;
+export default StockHistory;

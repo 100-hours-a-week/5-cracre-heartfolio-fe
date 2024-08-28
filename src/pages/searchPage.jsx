@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import ButtomNavigation from "../components/bottomNavigation";
-import Header from "../components/header";
+import ButtomNavigation from "../components/common/bottomNavigation";
+import Header from "../components/common/header";
 import { useNavigate } from "react-router-dom";
 
 // function SearchPage() {

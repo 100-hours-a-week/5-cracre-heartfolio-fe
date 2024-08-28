@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 // 인기종목의 각 주식
-export default function Eachpopularstock(props) {
+export default function EachpopularStockBox(props) {
   const navigate = useNavigate();
 
   // 각 주식 페이지 이동

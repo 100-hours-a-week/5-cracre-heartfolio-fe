@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import useFetch from "../hooks/useFetch";
+import useFetch from "../../hooks/useFetch";
 function MoneyInfo() {
   const userId = 1;
   const token = localStorage.getItem("access_token");

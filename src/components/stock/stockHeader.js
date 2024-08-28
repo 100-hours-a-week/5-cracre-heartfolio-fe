@@ -12,9 +12,9 @@ function StockHeader(props) {
     if (token) {
       setIsAuthenticated(true);
     }
-    if(props.data?.likePresent === false){
+    if (props.data?.likePresent === false) {
       setSrc("/assets/images/uninterest.png");
-    }else if(props.data?.likePresent === true){
+    } else if (props.data?.likePresent === true) {
       setSrc("/assets/images/interest.png");
     }
   }, [token, props.data?.likePresent]);
@@ -52,6 +52,11 @@ function StockHeader(props) {
       });
     }
   }
+
+  // 이름 길이에 따른 폰트 크기 설정
+  const combinedNameLength =
+    `${props.data?.koreanName} (${props.data?.englishName})`.length;
+
   return (
     <>
       <div>
@@ -62,12 +67,23 @@ function StockHeader(props) {
             onClick={() => navigate(-1)}
           ></img>
           <div
-            className="text-gray-600"
+            className="text-gray-600 text-center"
             onClick={() => {
               window.location.reload();
             }}
           >
-            {props.data?.koreanName} ({props.data?.englishName})
+            {/* 이름이 30자를 넘는 경우 */}
+            {combinedNameLength > 30 ? (
+              <>
+                <div>{props.data?.koreanName}</div>
+                <div className="text-sm">({props.data?.englishName})</div>
+              </>
+            ) : (
+              // 이름이 30자를 넘지 않는 경우
+              <div>
+                {props.data?.koreanName} ({props.data?.englishName})
+              </div>
+            )}
           </div>
           <img
             src={src}

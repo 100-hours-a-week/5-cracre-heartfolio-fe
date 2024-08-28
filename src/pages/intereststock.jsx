@@ -1,7 +1,7 @@
-import Header from "../components/header";
-import Stocktype from "../components/stocktype";
-import Eachintereststock from "../components/eachintereststock";
-import ButtomNavigation from "../components/bottomNavigation";
+import Header from "../components/common/header";
+import Stocktype from "../components/mock investment/stocktype";
+import Eachintereststock from "../components/mock investment/eachintereststock";
+import ButtomNavigation from "../components/common/bottomNavigation";
 import useFetch from "../hooks/useFetch";
 
 function Intereststock() {

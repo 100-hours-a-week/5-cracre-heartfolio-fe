@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
-import Header from "../components/header";
-import ButtomNavigation from "../components/bottomNavigation";
-import PopularChart from "../components/popularChart";
+import Header from "../components/common/header";
+import ButtomNavigation from "../components/common/bottomNavigation";
+import PopularChart from "../components/main/popularChart";
 
 function MainPage() {
   const navigate = useNavigate();

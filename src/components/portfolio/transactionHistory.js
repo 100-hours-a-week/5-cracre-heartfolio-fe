@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import useFetch from "../hooks/useFetch";
-import HistoryBox from "./box/historyBox";
+import useFetch from "../../hooks/useFetch";
+import HistoryBox from "../commonBox/historyBox";
 
 function TransactionHistory() {
   const token = localStorage.getItem("access_token");

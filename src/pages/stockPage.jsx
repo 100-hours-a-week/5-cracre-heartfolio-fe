@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import Header from "../components/header";
-import StockHeader from "../components/stockHeader";
-import StockHistory from "../components/stockHistory";
-import Chart from "../components/chart";
-import ButtomNavigation from "../components/bottomNavigation";
+import Header from "../components/common/header";
+import StockHeader from "../components/stock/stockHeader";
+import StockHistory from "../components/stock/stockHistory";
+import Chart from "../components/stock/chart";
+import ButtomNavigation from "../components/common/bottomNavigation";
 import { useParams } from "react-router-dom";
 import useFetch from "../hooks/useFetch";
 

@@ -1,18 +1,24 @@
-import { useState } from "react";
-import Header from "../components/header";
-import MoneyInfo from "../components/moneyInfo";
-import AssetConfiguration from "../components/assetConfiguration";
-import TransactionHistory from "../components/transactionHistory";
-import Holdings from "../components/holdings";
-import ButtomNavigation from "../components/bottomNavigation";
+import { useEffect, useState } from "react";
+import Header from "../components/common/header";
+import MoneyInfo from "../components/portfolio/moneyInfo";
+import AssetConfiguration from "../components/portfolio/assetConfiguration";
+import TransactionHistory from "../components/portfolio/transactionHistory";
+import Holdings from "../components/portfolio/holdings";
+import ButtomNavigation from "../components/common/bottomNavigation";
 import Lottie from "lottie-react";
 import alertAnimation from "../assets/animations/alert.json";
 
 function Portfolio() {
-  const token = localStorage.getItem("access_token");
   const [activeTab, setActiveTab] = useState(1);
   console.log("Active Tab:", activeTab);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+  useEffect(() => {
+    const token = localStorage.getItem("access_token");
+    if (token) {
+      setIsAuthenticated(true);
+    }
+  }, []);
 
   return (
     <>

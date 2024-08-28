@@ -1,6 +1,6 @@
 import { useState } from "react";
-import ButtomNavigation from "../components/bottomNavigation";
-import Header from "../components/header";
+import ButtomNavigation from "../components/common/bottomNavigation";
+import Header from "../components/common/header";
 import UserRanking from "../components/ranking/userRanking";
 import Lottie from "lottie-react";
 import ContructionAnimation from "../assets/animations/construction.json";

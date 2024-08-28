@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Chart from "react-apexcharts";
-import useFetch from "../hooks/useFetch";
+import useFetch from "../../hooks/useFetch";
 
 function getRandomPastelColor() {
   const r = Math.floor(Math.random() * 127) + 128; // 128 to 255
