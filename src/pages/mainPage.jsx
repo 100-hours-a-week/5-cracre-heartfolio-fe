@@ -6,9 +6,9 @@ import PopularChart from "../components/popularChart";
 function MainPage() {
   const navigate = useNavigate();
   return (
-    <div className="w-full">
+    <div className="w-full min-h-screen bg-white">
       <Header />
-      <div className="mt-[85px]">
+      <div className="pt-[85px]">
       <div className="mx-auto w-[390px] px-3 mt-[34px]">
         <div className="flex justify-around">
           <button className="text-sm" onClick={() => navigate("/portfolio")}>

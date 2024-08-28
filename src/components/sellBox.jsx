@@ -35,6 +35,24 @@ function SellBox({
   const isDisabled = quantity <= 0;
   const buttonStyle = isDisabled ? "bg-[#FEF0F2]" : "bg-[#FFE7E9]";
 
+  function money_change(money) {
+    if (money === undefined || money === null) return "N/A";
+    if (money >= 1000000000000) {
+      // 1조 이상
+      let trillion = Math.floor(money / 1_0000_0000_0000);
+      let billion = Math.floor((money % 1_0000_0000_0000) / 1_0000_0000);
+      let million = Math.floor((money % 1_0000_0000) / 10000);
+      return `${trillion}조 ${billion}억 ${million}만`;
+    } else if (money >= 100000000) {
+      // 1억 이상 1조 미만
+      let billion = Math.floor(money / 1_0000_0000);
+      let million = Math.floor((money % 1_0000_0000) / 10000);
+      return `${billion}억 ${million}만`;
+    } else {
+      return money.toLocaleString(); // 기본적으로 1,000 단위로 콤마를 추가
+    }
+  }
+
   function sell() {
     if (!isLoggedIn) {
       Swal.fire({
@@ -125,7 +143,7 @@ function SellBox({
         <div className="flex items-center w-1/2">
           <p>총액</p>
           <p className="h-[30px] w-[120px] content-center text-right text-xs">
-            {total_money.toLocaleString()} KRW
+            {money_change(total_money)} KRW
           </p>
         </div>
         <div className="flex items-center w-1/2">
