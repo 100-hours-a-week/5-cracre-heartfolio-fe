@@ -45,21 +45,25 @@ function Chart(props) {
       console.log("Connected: " + frame);
 
       // 특정 종목에 대한 구독
-      stompClient.current.subscribe(
-        `/from/stock/APPL`, // 일단 종목 APPL로 설정
-        function (message) {
-          const data = JSON.parse(message.body);
-          console.log("서버에서 받은 데이터:", data);
+      if (stompClient.current && props.data?.symbol) {
+        stompClient.current.subscribe(
+          `/from/stock/${props.data.symbol}`,
+          function (message) {
+            const data = JSON.parse(message.body);
+            console.log("서버에서 받은 데이터:", data);
 
-          // if (data && data.curPrice) {
-          //   setcurPrice(data.curPrice);
-          // }
-        }
-      );
+            if (data && data.curPrice) {
+              setcurPrice(data.curPrice);
+            }
+          }
+        );
+      }
     });
     return () => {
+      // 컴포넌트가 언마운트되거나 종목이 변경될 때 연결 해제
       if (stompClient.current !== null) {
         stompClient.current.disconnect();
+        stompClient.current = null;
       }
     };
   }, [props.data?.symbol]);
@@ -99,7 +103,7 @@ function Chart(props) {
     <>
       <div className="mx-auto max-w-[370px]">
         <div></div>
-        <p className="pb-2 text-gray-600">{props.data?.curPrice.toLocaleString()} KRW</p>
+        <p className="pb-2 text-gray-600">{curPrice.toLocaleString()} KRW</p>
         <TradingViewWidget symbol={props.data?.symbol} />
         <div
           role="tablist"
