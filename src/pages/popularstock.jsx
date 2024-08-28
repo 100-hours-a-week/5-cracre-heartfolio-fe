@@ -23,7 +23,7 @@ function Popularstock() {
   return (
     <>
       <Header />
-      <div className="mt-[80px]">
+      <div className="pt-[80px] min-h-screen bg-white">
         <Stocktype />
         {/* 인기종목리스트 */}
         <div className="mx-auto max-w-[390px] pb-[40px] mt-[10px]">

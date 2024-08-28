@@ -5,7 +5,7 @@ function MyPage() {
   return (
     <>
       <Header />
-      <div className="mt-[80px] text-center">
+      <div className="pt-[80px] min-h-screen bg-white text-center">
         <div className="mx-auto max-w-[390px] px-3 mt-[34px]">
           아직 제공되지 않는 서비스입니다.
         </div>
