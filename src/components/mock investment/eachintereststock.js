@@ -32,10 +32,8 @@ export default function Eachintereststock(props) {
   function handleClick(get_id) {
     navigate(`/stock/${get_id}`);
   }
-
   return (
-    <div className="flex flex-rowmx-auto max-w-[390px] m-3 bg-white hover:bg-gray-50 content-center"
-    >
+    <div className="flex flex-rowmx-auto max-w-[390px] m-3 bg-white hover:bg-gray-50 content-center">
       {/* 하트 */}
       {/* 이 버튼은 클릭 시 toggleImage 함수를 호출하여 이미지가 바뀝니다. */}
       <button onClick={() => toggleImage(props.stockId)} className="px-3">
@@ -44,8 +42,9 @@ export default function Eachintereststock(props) {
       </button>
 
       {/* 내용 */}
-      <div className="text-gray-600 ml-4 w-[300px]"
-      onClick={() => handleClick(props.stockId)}
+      <div
+        className="text-gray-600 ml-4 w-[300px]"
+        onClick={() => handleClick(props.stockId)}
       >
         {/* 종목이름 */}
         <h1 className="text-gray-600 text-[15px]">
@@ -54,7 +53,9 @@ export default function Eachintereststock(props) {
         {/* 종목정보 */}
         <div className="flex flex-row mt-1">
           {/* 현재가 */}
-          <p className="mr-1 text-gray-600">{props.currentPrice.toLocaleString()}</p>
+          <p className="mr-1 text-gray-600">
+            {props.currentPrice.toLocaleString()}
+          </p>
 
           {/* 전일대비수익 */}
           <div
