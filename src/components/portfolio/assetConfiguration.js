@@ -38,7 +38,7 @@ function AssetConfiguration() {
         }
 
         const result = await response.json();
-        
+
         // 데이터가 빈 객체인지 확인하고, 데이터가 있는 경우와 없는 경우를 처리
         if (Object.keys(result).length === 0 || !result.stocks) {
           setData({});
@@ -56,13 +56,12 @@ function AssetConfiguration() {
     fetchData(); // 컴포넌트가 마운트될 때 데이터 가져오기
   }, [token]); // 빈 배열을 전달하여 이 효과가 한 번만 실행되도록 설정
 
-  console.log("assetConfiguration : ", data?.stocks);
+  console.log("assetConfiguration : ", data);
 
   useEffect(() => {
     if (data && data.stocks && data.stocks.length > 0) {
       const series = data.stocks.map((stock) => stock.evalPrice);
       const labels = data.stocks.map((stock) => stock.stockName);
-  
       // 전체 합계 계산
       const total = series.reduce((acc, value) => acc + value, 0);
   
