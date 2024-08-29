@@ -5,7 +5,7 @@ import HistoryBox from "../commonBox/historyBox";
 function TransactionHistory() {
   const token = localStorage.getItem("access_token");
   // 데이터를 가져오기 위한 상태 관리
-  const [data, setData] = useState(null);
+  const [data, setData] = useState([]); // 초기 상태를 빈 배열로 설정
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -28,7 +28,13 @@ function TransactionHistory() {
         }
 
         const result = await response.json();
-        setData(result); // 가져온 데이터를 상태에 설정
+        
+        // 응답에서 body를 가져와서 설정
+        if (result && Array.isArray(result.body)) {
+          setData(result.body); // 가져온 데이터의 body 배열을 상태에 설정
+        } else {
+          setData([]); // body가 배열이 아닐 경우 빈 배열로 설정
+        }
       } catch (err) {
         setError(err); // 에러가 발생할 경우 에러 상태에 설정
       } finally {
@@ -43,14 +49,14 @@ function TransactionHistory() {
   return (
     <>
       <div className="mx-auto max-w-[350px] pb-8">
-        {data?.length === 0 ? (
+        {data.length === 0 ? (
           <div className="text-center text-gray-600">거래 내역이 없습니다.</div>
         ) : (
           <ul role="list" className="divide-y divide-gray-200">
-            {data?.map((item) => (
+            {data.map((item) => (
               <li key={item.orderId} className="py-2">
                 <HistoryBox
-                  stockId={item.stockId}
+                  stockId={item.orderId}
                   name={item.name}
                   orderCategory={item.orderCategory}
                   orderDate={item.orderDate}
