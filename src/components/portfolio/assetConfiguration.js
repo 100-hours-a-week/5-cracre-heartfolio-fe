@@ -90,7 +90,7 @@ function AssetConfiguration() {
     return <p>There was an error loading the data: {error.message}</p>;
   }
 
-  if (data?.data.stocks.length === 0) {
+  if (!data || !data.stocks || data.stocks.length === 0) {
     return <p>아직 거래한 내역이 없습니다.</p>;
   }
 
