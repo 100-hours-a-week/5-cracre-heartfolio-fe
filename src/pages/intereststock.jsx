@@ -4,6 +4,8 @@ import Eachintereststock from "../components/mock investment/eachintereststock";
 import ButtomNavigation from "../components/common/bottomNavigation";
 import useFetch from "../hooks/useFetch";
 import { useEffect, useState } from "react";
+import Lottie from "lottie-react";
+import heartAnimation from "../assets/animations/heart.json";
 
 function Intereststock() {  
   const token = localStorage.getItem("access_token");
@@ -52,9 +54,12 @@ function Intereststock() {
         <div className="mx-auto max-w-[390px] pb-[40px]">
           {/* If data array is empty, show the message */}
           {data?.length === 0 ? (
-            <div className="max-w-[370px] m-5 text-center mt-10">
-              추가한 관심종목이 없습니다
+            <div className="flex flex-col items-center justify-center">
+            <div className="w-60 h-60">
+              <Lottie animationData={heartAnimation} loop={true} />
             </div>
+            <div className="text-lg text-gray-600">관심있는 종목을 추가해주세요</div>
+          </div>
           ) : (
             data?.map((stock) => (
               <Eachintereststock
