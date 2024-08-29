@@ -1,3 +1,5 @@
+import Lottie from "lottie-react";
+import noInfoAnimation from "../../assets/animations/noInfo.json";
 import React, { useEffect, useState } from "react";
 import Chart from "react-apexcharts";
 
@@ -64,7 +66,7 @@ function AssetConfiguration() {
       const labels = data.stocks.map((stock) => stock.stockName);
       // 전체 합계 계산
       const total = series.reduce((acc, value) => acc + value, 0);
-  
+
       // percentage를 기준으로 series와 labels를 정렬
       const sortedData = series
         .map((value, index) => ({
@@ -73,11 +75,11 @@ function AssetConfiguration() {
           percentage: (value / total) * 100,
         }))
         .sort((a, b) => b.percentage - a.percentage); // percentage 기준으로 내림차순 정렬
-  
+
       // 정렬된 데이터를 기반으로 새로운 series와 labels 생성
       const sortedSeries = sortedData.map((data) => data.value);
       const sortedLabels = sortedData.map((data) => data.label);
-  
+
       setChartData({
         series: sortedSeries,
         labels: sortedLabels,
@@ -85,7 +87,6 @@ function AssetConfiguration() {
       });
     }
   }, [data]);
-  
 
   if (loading) {
     return <p>Loading...</p>;
@@ -96,7 +97,14 @@ function AssetConfiguration() {
   }
 
   if (!data || !data.stocks || data.stocks.length === 0) {
-    return <p>아직 거래한 내역이 없습니다.</p>;
+    return (
+      <div className="flex flex-col items-center h-screen max-h-[500px]">
+        <div className="w-80 h-80">
+          <Lottie animationData={noInfoAnimation} loop={true} />
+        </div>
+        <div className="text-lg text-gray-600">거래 내역이 아직 없습니다.</div>
+      </div>
+    );
   }
 
   const colors = chartData.series.map(() => getRandomPastelColor());
