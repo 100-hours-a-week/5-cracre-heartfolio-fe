@@ -2802,6 +2802,10 @@ input.tab:checked + .tab-content,
   height: 15rem;
 }
 
+.h-40 {
+  height: 10rem;
+}
+
 .max-h-\[500px\] {
   max-height: 500px;
 }
@@ -2912,6 +2916,10 @@ input.tab:checked + .tab-content,
 
 .w-60 {
   width: 15rem;
+}
+
+.w-40 {
+  width: 10rem;
 }
 
 .min-w-0 {

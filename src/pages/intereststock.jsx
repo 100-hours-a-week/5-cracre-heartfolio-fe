@@ -6,9 +6,18 @@ import useFetch from "../hooks/useFetch";
 import { useEffect, useState } from "react";
 import Lottie from "lottie-react";
 import heartAnimation from "../assets/animations/heart.json";
+import alertAnimation from "../assets/animations/alert.json";
 
 function Intereststock() {  
   const token = localStorage.getItem("access_token");
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+  useEffect(() => {
+    const token = localStorage.getItem("access_token");
+    if (token) {
+      setIsAuthenticated(true);
+    }
+  }, []);
 
     // 데이터 가져오기 상태 관리
     const [data, setData] = useState(null);
@@ -52,8 +61,8 @@ function Intereststock() {
         <Stocktype />
         {/* 관심종목리스트 */}
         <div className="mx-auto max-w-[390px] pb-[40px]">
-          {/* If data array is empty, show the message */}
-          {data?.length === 0 ? (
+        { isAuthenticated?(
+          data?.length === 0 ? (
             <div className="flex flex-col items-center justify-center">
             <div className="w-60 h-60">
               <Lottie animationData={heartAnimation} loop={true} />
@@ -72,7 +81,17 @@ function Intereststock() {
                 earningRate={stock.earningRate} // 수익률
               />
             ))
-          )}
+          )
+        ) : (
+          <div className="flex flex-col justify-center items-center h-full">
+          <div className="w-80 h-80">
+            <Lottie animationData={alertAnimation} loop={true} />
+          </div>
+          <div className="font-bold text-lg">
+            관심종목 등록은 로그인 후 가능합니다.
+          </div>
+        </div>
+        )}
         </div>
       </div>
       <ButtomNavigation />
