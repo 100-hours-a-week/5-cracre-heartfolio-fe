@@ -2678,10 +2678,6 @@ input.tab:checked + .tab-content,
   margin-top: 0.25rem;
 }
 
-.mt-10 {
-  margin-top: 2.5rem;
-}
-
 .mt-3 {
   margin-top: 0.75rem;
 }
@@ -2754,6 +2750,10 @@ input.tab:checked + .tab-content,
   height: 1.5rem;
 }
 
+.h-60 {
+  height: 15rem;
+}
+
 .h-8 {
   height: 2rem;
 }
@@ -2798,14 +2798,6 @@ input.tab:checked + .tab-content,
   height: 100vh;
 }
 
-.h-60 {
-  height: 15rem;
-}
-
-.h-40 {
-  height: 10rem;
-}
-
 .max-h-\[500px\] {
   max-height: 500px;
 }
@@ -2832,6 +2824,10 @@ input.tab:checked + .tab-content,
 
 .w-6 {
   width: 1.5rem;
+}
+
+.w-60 {
+  width: 15rem;
 }
 
 .w-80 {
@@ -2912,14 +2908,6 @@ input.tab:checked + .tab-content,
 
 .w-full {
   width: 100%;
-}
-
-.w-60 {
-  width: 15rem;
-}
-
-.w-40 {
-  width: 10rem;
 }
 
 .min-w-0 {
