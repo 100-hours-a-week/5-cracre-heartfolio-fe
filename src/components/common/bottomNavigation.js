@@ -32,7 +32,7 @@ function ButtomNavigation() {
         </button>
         <button
           className="bg-btnNoClickColor p-0 text-sm  text-gray-600"
-          onClick={() => navigate("/intereststock")}
+          onClick={() => navigate("/popularstock")}
         >
           <a className="material-symbols-outlined">monitoring</a>
           모의투자

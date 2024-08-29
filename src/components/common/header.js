@@ -94,6 +94,13 @@ function Header() {
                 </Disclosure.Button>
                 <Disclosure.Button
                   as="a"
+                  href="/popularstock"
+                  className="block border-transparent py-3 pl-3 pr-4 text-base font-medium text-center text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700"
+                >
+                  모의투자
+                </Disclosure.Button>
+                <Disclosure.Button
+                  as="a"
                   href="/ranking"
                   className="block border-transparent py-3 pl-3 pr-4 text-base font-medium text-center text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-black"
                 >
@@ -101,10 +108,10 @@ function Header() {
                 </Disclosure.Button>
                 <Disclosure.Button
                   as="a"
-                  href="/intereststock"
+                  href="/cashcharge"
                   className="block border-transparent py-3 pl-3 pr-4 text-base font-medium text-center text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700"
                 >
-                  모의투자
+                  캐시 충전
                 </Disclosure.Button>
                 <Disclosure.Button
                   as="a"
@@ -112,13 +119,6 @@ function Header() {
                   className="block border-transparent py-3 pl-3 pr-4 text-base font-medium text-center text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700"
                 >
                   마이페이지
-                </Disclosure.Button>
-                <Disclosure.Button
-                  as="a"
-                  href="/cashcharge"
-                  className="block border-transparent py-3 pl-3 pr-4 text-base font-medium text-center text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700"
-                >
-                  캐시 충전
                 </Disclosure.Button>
               </div>
             </div>

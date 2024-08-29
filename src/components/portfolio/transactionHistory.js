@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import useFetch from "../../hooks/useFetch";
 import HistoryBox from "../commonBox/historyBox";
+import Lottie from "lottie-react";
+import noInfoAnimation from "../../assets/animations/noInfo.json";
 
 function TransactionHistory() {
   const token = localStorage.getItem("access_token");
@@ -28,7 +30,7 @@ function TransactionHistory() {
         }
 
         const result = await response.json();
-        
+
         // 응답에서 body를 가져와서 설정
         if (result && Array.isArray(result.body)) {
           setData(result.body); // 가져온 데이터의 body 배열을 상태에 설정
@@ -50,7 +52,14 @@ function TransactionHistory() {
     <>
       <div className="mx-auto max-w-[350px] pb-8">
         {data.length === 0 ? (
-          <div className="text-center text-gray-600">거래 내역이 없습니다.</div>
+          <div className="flex flex-col items-center h-screen max-h-[500px]">
+            <div className="w-80 h-80">
+              <Lottie animationData={noInfoAnimation} loop={true} />
+            </div>
+            <div className="text-lg text-gray-600">
+              거래 내역이 아직 없습니다.
+            </div>
+          </div>
         ) : (
           <ul role="list" className="divide-y divide-gray-200">
             {data.map((item) => (
