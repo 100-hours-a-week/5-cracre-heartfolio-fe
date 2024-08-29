@@ -26,7 +26,7 @@ function AssetConfiguration() {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          "https://heartfolio.site/api/portfolio/" + userId + "/stock",
+          "https://heartfolio.site/api/portfolio/stock",
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -51,10 +51,12 @@ function AssetConfiguration() {
     fetchData(); // 컴포넌트가 마운트될 때 데이터 가져오기
   }, []); // 빈 배열을 전달하여 이 효과가 한 번만 실행되도록 설정
 
+  console.log("assetConfiguration : ", data?.data);
+  
   useEffect(() => {
-    if (data?.stocks && data.stocks.length > 0) {
-      const series = data.stocks.map((stock) => stock.evalPrice);
-      const labels = data.stocks.map((stock) => stock.stockName);
+    if (data?.data.stocks && data.data.stocks.length > 0) {
+      const series = data.data.stocks.map((stock) => stock.evalPrice);
+      const labels = data.data.stocks.map((stock) => stock.stockName);
 
       // 전체 합계 계산
       const total = series.reduce((acc, value) => acc + value, 0);
@@ -88,7 +90,7 @@ function AssetConfiguration() {
     return <p>There was an error loading the data: {error.message}</p>;
   }
 
-  if (data?.stocks?.length === 0) {
+  if (data?.data.stocks.length === 0) {
     return <p>아직 거래한 내역이 없습니다.</p>;
   }
 
