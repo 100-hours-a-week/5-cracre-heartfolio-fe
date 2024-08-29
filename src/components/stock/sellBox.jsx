@@ -36,7 +36,7 @@ function SellBox({
   const buttonStyle = isDisabled ? "bg-[#FEF0F2]" : "bg-[#FFE7E9]";
 
   function money_change(money) {
-    if (money === undefined || money === null) return "N/A";
+    if (money === undefined || money === null) return "0";
     if (money >= 1000000000000) {
       // 1조 이상
       let trillion = Math.floor(money / 1_0000_0000_0000);
