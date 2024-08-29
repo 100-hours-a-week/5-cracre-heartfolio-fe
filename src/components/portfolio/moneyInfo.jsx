@@ -37,7 +37,7 @@ function MoneyInfo() {
     fetchData();
   }, [userId, token]);
   function money_change(money) {
-    if (money === undefined || money === null) return "N/A";
+    if (money === undefined || money === null) return "0";
     if (money >= 1000000000000) {
       // 1조 이상
       let trillion = Math.floor(money / 1_0000_0000_0000);
