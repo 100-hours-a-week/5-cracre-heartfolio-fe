@@ -101,7 +101,7 @@ function Header() {
                 </Disclosure.Button>
                 <Disclosure.Button
                   as="a"
-                  href="/intereststock"
+                  href="/popularstock"
                   className="block border-transparent py-3 pl-3 pr-4 text-base font-medium text-center text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700"
                 >
                   모의투자
