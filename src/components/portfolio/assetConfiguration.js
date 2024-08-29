@@ -51,12 +51,12 @@ function AssetConfiguration() {
     fetchData(); // 컴포넌트가 마운트될 때 데이터 가져오기
   }, []); // 빈 배열을 전달하여 이 효과가 한 번만 실행되도록 설정
 
-  console.log("assetConfiguration : ", data?.data);
+  console.log("assetConfiguration : ", data);
   
   useEffect(() => {
-    if (data?.data.stocks && data.data.stocks.length > 0) {
-      const series = data.data.stocks.map((stock) => stock.evalPrice);
-      const labels = data.data.stocks.map((stock) => stock.stockName);
+    if (data?.stocks && data.stocks.length > 0) {
+      const series = data.stocks.map((stock) => stock.evalPrice);
+      const labels = data.stocks.map((stock) => stock.stockName);
 
       // 전체 합계 계산
       const total = series.reduce((acc, value) => acc + value, 0);
