@@ -10,7 +10,6 @@ function getRandomPastelColor() {
 }
 
 function AssetConfiguration() {
-  const userId = 1;
   const token = localStorage.getItem("access_token");
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
@@ -40,7 +39,14 @@ function AssetConfiguration() {
         }
 
         const result = await response.json();
-        setData(result);
+        
+        // 데이터가 빈 객체인지 확인하고, 데이터가 있는 경우와 없는 경우를 처리
+        if (Object.keys(result).length === 0 || !result.stocks) {
+          setData({});
+        } else {
+          setData(result);
+        }
+
         setLoading(false);
       } catch (error) {
         setError(error);
@@ -52,7 +58,7 @@ function AssetConfiguration() {
   }, []); // 빈 배열을 전달하여 이 효과가 한 번만 실행되도록 설정
 
   console.log("assetConfiguration : ", data?.stocks);
-  
+
   useEffect(() => {
     if (data?.stocks && data?.stocks.length > 0) {
       const series = data?.stocks.map((stock) => stock.evalPrice);
