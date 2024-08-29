@@ -25,8 +25,8 @@ function StockPage() {
           `https://heartfolio.site/api/stock/order/${id}/details`,
           {
             headers: {
-              Authorization: `Bearer ${token}`, // 토큰을 헤더에 추가
-              "Content-Type": "application/json", // 선택 사항, API 요구 사항에 따라 설정
+              Authorization: `Bearer ${token}`,
+              "Content-Type": "application/json",
             },
           }
         );
