@@ -33,6 +33,7 @@ function StockHeader(props) {
       }).then((res) => {
         if (res.ok) {
           setSrc("/assets/images/interest.png");
+          console.log("success post like")
           navigate(`/stock/${id}`);
         }
       });
@@ -47,6 +48,7 @@ function StockHeader(props) {
       }).then((res) => {
         if (res.ok) {
           setSrc("/assets/images/uninterest.png");
+          console.log("success delete like")
           navigate(`/stock/${id}`);
         }
       });
