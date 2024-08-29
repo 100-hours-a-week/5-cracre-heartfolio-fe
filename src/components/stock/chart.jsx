@@ -71,7 +71,7 @@ function Chart(props) {
   useEffect(() => {
     const fetchData = async () => {
       const response = await fetch(
-        `https://heartfolio.site/api/portfolio/${userId}`,
+        `https://heartfolio.site/api/portfolio`,
         {
           headers: {
             Authorization: `Bearer ${token}`,

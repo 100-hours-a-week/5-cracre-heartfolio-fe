@@ -12,7 +12,7 @@ function MoneyInfo() {
       setLoading(true); // 데이터 가져오기 시작 전에 로딩 상태 설정
       try {
         const response = await fetch(
-          `https://heartfolio.site/api/portfolio/${userId}`,
+          `https://heartfolio.site/api/portfolio`,
           {
             headers: {
               Authorization: `Bearer ${token}`, // 토큰을 헤더에 추가
