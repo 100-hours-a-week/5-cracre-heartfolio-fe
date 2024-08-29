@@ -24,7 +24,7 @@ function Portfolio() {
     <>
       <Header />
       <div className="pt-[90px] min-h-screen bg-white">
-        {isAuthenticated === false ? (
+        {isAuthenticated === true ? (
           <>
             <MoneyInfo />
             <div
