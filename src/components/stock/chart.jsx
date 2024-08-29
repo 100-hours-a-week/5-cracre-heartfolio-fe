@@ -31,7 +31,6 @@ function Chart(props) {
   const stompClient = useRef(null);
 
   useEffect(() => {
-    const token = localStorage.getItem("access_token");
     if (token) {
       setIsLoggedIn(true);
     } else {
@@ -70,22 +69,29 @@ function Chart(props) {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await fetch(
-        `https://heartfolio.site/api/portfolio`,
-        {
+      try {
+        if (!token) {
+          setMoneyData([]); // 토큰이 없을 경우 빈 데이터를 설정
+          return;
+        }
+
+        const response = await fetch(`https://heartfolio.site/api/portfolio`, {
           headers: {
             Authorization: `Bearer ${token}`,
             "Content-Type": "application/json",
           },
+        });
+
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status} - ${response.statusText}`);
         }
-      );
 
-      if (!response.ok) {
-        throw new Error(response.statusText);
+        const result = await response.json();
+        setMoneyData(result);
+      } catch (error) {
+        console.error("데이터를 가져오는 중 오류가 발생했습니다:", error);
+        setMoneyData([]); // 오류가 발생해도 빈 데이터를 설정하여 컴포넌트가 정상적으로 동작하도록 함
       }
-
-      const result = await response.json();
-      setMoneyData(result);
     };
 
     fetchData();
