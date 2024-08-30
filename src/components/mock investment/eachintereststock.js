@@ -54,7 +54,7 @@ export default function Eachintereststock(props) {
         <div className="flex flex-row mt-1">
           {/* 현재가 */}
           <p className="mr-1 text-gray-600">
-            {props.currentPrice.toLocaleString()}
+            {props.currentPrice.toLocaleString()}KRW
           </p>
 
           {/* 전일대비수익 */}
@@ -67,7 +67,7 @@ export default function Eachintereststock(props) {
                 : "text-[#000000]"
             }`}
           >
-            {props.earningValue}
+            {props.earningValue>0 ? (+(props.earningValue)) : (-(props.earningValue))}
           </div>
 
           {/* 수익률 */}
