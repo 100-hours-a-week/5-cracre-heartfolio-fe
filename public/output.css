@@ -2714,6 +2714,14 @@ input.tab:checked + .tab-content,
   margin-top: 90px;
 }
 
+.mr-7 {
+  margin-right: 1.75rem;
+}
+
+.mr-32 {
+  margin-right: 8rem;
+}
+
 .block {
   display: block;
 }
@@ -3271,6 +3279,10 @@ input.tab:checked + .tab-content,
   font-family: Ubuntu;
 }
 
+.font-TmoneyRoundWindExtraBold {
+  font-family: TmoneyRoundWindExtraBold;
+}
+
 .text-2xl {
   font-size: 1.5rem;
   line-height: 2rem;
@@ -3487,6 +3499,16 @@ input.tab:checked + .tab-content,
   src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2302_01@1.0/TheJamsil5Bold.woff2') format('woff2');
 
   font-weight: 300;
+
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'TmoneyRoundWindExtraBold';
+
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/TmoneyRoundWindExtraBold.woff') format('woff');
+
+  font-weight: normal;
 
   font-style: normal;
 }

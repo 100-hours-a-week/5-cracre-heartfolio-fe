@@ -6,6 +6,7 @@ module.exports = {
       "Ubuntu" : ["Ubuntu"],
       "DoHyeon" : ["Do Hyeon"],
       "TheJamsil5Bold" : ["TheJamsil5Bold"],
+      "TmoneyRoundWindExtraBold" : ["TmoneyRoundWindExtraBold"],
     },
     extend: {
       colors: {

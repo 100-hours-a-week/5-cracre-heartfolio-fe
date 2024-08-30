@@ -11,7 +11,7 @@ function PopularChart() {
   return (
     <div className="py-10">
       <div className="flex justify-between">
-        <div className="text-lg ml-[10px] text-gray-600 font-bold font-TheJamsil5Bold">오늘의 인기 차트</div>
+        <div className="text-lg ml-[10px] text-gray-600 font-bold font-TmoneyRoundWindExtraBold">오늘의 인기 차트</div>
         <a href="/popularstock">
           <div className="text-sm py-1 float-right mr-[5px] pt-[10px] text-gray-600">
             더보기
