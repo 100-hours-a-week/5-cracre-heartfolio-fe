@@ -3231,16 +3231,16 @@ input.tab:checked + .tab-content,
   padding-top: 10px;
 }
 
+.pt-\[60px\] {
+  padding-top: 60px;
+}
+
 .pt-\[75px\] {
   padding-top: 75px;
 }
 
 .pt-\[80px\] {
   padding-top: 80px;
-}
-
-.pt-\[85px\] {
-  padding-top: 85px;
 }
 
 .pt-\[90px\] {
@@ -3253,6 +3253,10 @@ input.tab:checked + .tab-content,
 
 .text-right {
   text-align: right;
+}
+
+.font-DoHyeon {
+  font-family: Do Hyeon;
 }
 
 .font-Ubuntu {
@@ -3275,6 +3279,10 @@ input.tab:checked + .tab-content,
 
 .text-\[15px\] {
   font-size: 15px;
+}
+
+.text-\[20px\] {
+  font-size: 20px;
 }
 
 .text-base {
@@ -3300,22 +3308,6 @@ input.tab:checked + .tab-content,
 .text-xs {
   font-size: 0.75rem;
   line-height: 1rem;
-}
-
-.text-\[32px\] {
-  font-size: 32px;
-}
-
-.text-\[17px\] {
-  font-size: 17px;
-}
-
-.text-\[18px\] {
-  font-size: 18px;
-}
-
-.text-\[20px\] {
-  font-size: 20px;
 }
 
 .font-bold {
@@ -3467,6 +3459,16 @@ input.tab:checked + .tab-content,
   src: url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
 
   font-weight: 400;
+
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Do Hyeon", sans-serif;
+
+  src: url('https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Ubuntu&display=swap');
+
+  font-weight: 800;
 
   font-style: normal;
 }

@@ -21,7 +21,7 @@ export default function EachpopularStockBox(props) {
       {/* 내용 */}
       <div className="text-gray-600 ml-4 w-[300px]">
         {/* 종목이름 */}
-        <h1 className="text-gray-600 font-medium text-lg text-[15px]">
+        <h1 className="text-gray-600 font-medium text-lg text-[15px] font-DoHyeon">
           {props.stockKorea} ({props.stockName})</h1>
         {/* 종목정보 */}
         <div className="flex flex-row mt-1">

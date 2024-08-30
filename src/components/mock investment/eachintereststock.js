@@ -47,7 +47,7 @@ export default function Eachintereststock(props) {
         onClick={() => handleClick(props.stockId)}
       >
         {/* 종목이름 */}
-        <h1 className="text-gray-600 text-[15px]">
+        <h1 className="text-gray-600 text-[15px] font-DoHyeon">
           {props.stockKorea} ({props.stockName})
         </h1>
         {/* 종목정보 */}

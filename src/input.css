@@ -8,3 +8,9 @@
     font-weight: 400;
     font-style: normal;
 }
+@font-face {
+    font-family: "Do Hyeon", sans-serif;
+    src: url('https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Ubuntu&display=swap');
+    font-weight: 800;
+    font-style: normal;
+}
