@@ -89,7 +89,8 @@ function MoneyInfo() {
                   : "text-[#000000]" // 0일 때, 검정색
               }`}
             >
-              {data?.profitRate}%
+              {/* {data.profitRate}% */}
+              {data?.profitRate === undefined ? 0 : (data?.profitRate)}%
             </div>
           </div>
         </div>
