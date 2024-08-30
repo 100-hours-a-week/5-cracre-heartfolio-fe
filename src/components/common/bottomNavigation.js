@@ -21,7 +21,7 @@ function ButtomNavigation() {
           onClick={() => navigate("/")}
         >
           <a className="material-symbols-rounded">home</a>
-          home
+          메인
         </button>
         <button
           className="bg-btnNoClickColor p-0 text-sm  text-gray-600"
