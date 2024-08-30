@@ -34,7 +34,7 @@ const KakaoRedirect = () => {
   }, [code, navigate]);
 
   return (
-    <div className="mt-3 text-center">
+    <div className="pt-3 text-center min-h-screen bg-white">
       <p>로그인 중...</p>
     </div>
   );

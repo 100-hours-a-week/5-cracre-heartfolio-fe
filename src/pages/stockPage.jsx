@@ -85,9 +85,9 @@ function StockPage() {
         <div className="mx-auto max-w-[390px] p-4 flex justify-center">
           <div role="tabpanel" className="tab-content block pb-[29px]">
             {loading ? (
-              <p>Loading...</p>
+              <p className="min-h-screen bg-white text-center">Loading...</p>
             ) : error ? (
-              <p>Error: {error.message}</p>
+              <p className="min-h-screen bg-white text-center">Error: {error.message}</p>
             ) : (
               <>
                 {activeTab === 1 && <Chart data={data} />}

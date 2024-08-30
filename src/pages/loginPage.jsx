@@ -23,17 +23,17 @@ const LoginPage = () => {
   };
 
   return (
-    <>
+    <div className="min-h-screen bg-white">
       <div>
-        <div className="flex flex-col justify-center items-center mx-auto max-w-[390px] px-3 my-[100px]">
+        <div className="flex flex-col justify-center items-center mx-auto max-w-[390px] py-[100px] px-3">
           <img
             src="/assets/images/heartfolioLogo.webp"
             alt="heartfolio logo"
             className="w-[180px] my-10 rounded-lg"
           />
 
-          <p className="text-3xl m-5 font-semibold">HeartFoilo</p>
-          <p className="m-2 font-medium ">
+          <p className="text-3xl m-5 font-semibold text-gray-600">HeartFoilo</p>
+          <p className="m-2 font-medium text-gray-400">
             기부로 마음을 공유할 수 있는 모의투자
           </p>
         </div>
@@ -49,11 +49,11 @@ const LoginPage = () => {
         <p id="token-result" className="mt-4 text-sm text-gray-700"></p>
       </div>
       <a href="/">
-        <p className="text-xs m-5 text-center text-slate-400	">
+        <p className="text-xs m-5 text-center text-gray-400">
           비회원으로 이용하기
         </p>
       </a>
-    </>
+    </div>
   );
 };
 
