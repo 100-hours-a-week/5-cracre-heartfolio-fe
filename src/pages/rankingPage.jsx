@@ -11,7 +11,7 @@ import ContructionAnimation from "../assets/animations/construction.json";
 //   return (
 //     <>
 //       <Header />
-//       <div className="mt-[90px] text-center">
+//       <div className="pt-[65px] text-center min-h-screen bg-white">
 //         <div className="mx-auto max-w-[390px] px-3 mt-[34px]">
 //           <div
 //             role="tablist"
@@ -19,7 +19,7 @@ import ContructionAnimation from "../assets/animations/construction.json";
 //           >
 //             <a
 //               role="tab"
-//               className={`tab h-[50px] text-base ${
+//               className={`tab h-[50px] text-gray-600 text-base border-solid border-2 border-btnClickColor ${
 //                 activeTab === 1 ? "bg-btnClickColor" : "bg-white"
 //               }`}
 //               onClick={() => setActiveTab(1)}
@@ -28,7 +28,7 @@ import ContructionAnimation from "../assets/animations/construction.json";
 //             </a>
 //             <a
 //               role="tab"
-//               className={`tab h-[50px] text-base ${
+//               className={`tab h-[50px] text-base text-gray-600 border-solid border-2 border-btnClickColor ${
 //                 activeTab === 2 ? "bg-btnClickColor" : "bg-white"
 //               }`}
 //               onClick={() => setActiveTab(2)}
@@ -37,7 +37,7 @@ import ContructionAnimation from "../assets/animations/construction.json";
 //             </a>
 //           </div>
 //           <div className="mx-auto max-w-[370px] p-1">
-//             <div role="tabpanel" className="tab-content block w-[370px]">
+//             <div role="tabpanel" className="tab-content block w-[350px]">
 //               {activeTab === 1 && <UserRanking />}
 //               {/* {activeTab === 2 && <TransactionHistory />} */}
 //             </div>

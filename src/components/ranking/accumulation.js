@@ -61,7 +61,7 @@ function Accumulation() {
               {data.map((item, index) => (
                 <tr key={index} className="border-b-1 border-gray-300">
                   <td>
-                    <div className="text-base">{index + 1}</div>
+                    <div className="text-base text-bold text-gray-800">{index + 1}</div>
                   </td>
                   <td>
                     <div className="flex items-center gap-3">
@@ -71,11 +71,11 @@ function Accumulation() {
                         </div>
                       </div>
                       <div>
-                        <div className="font-bold">{item.name}</div>
+                        <div className="font-bold text-gray-600">{item.name}</div>
                       </div>
                     </div>
                   </td>
-                  <td className="text-right">{item.percentage}</td>
+                  <td className="text-right text-gray-600">{item.percentage}</td>
                 </tr>
               ))}
             </tbody>
