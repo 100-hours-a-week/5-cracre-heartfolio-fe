@@ -39,7 +39,7 @@ function Header() {
                   src="/assets/images/heartfolioLogo.webp"
                   className="h-8 w-auto rounded-lg"
                 />
-                <div className="text-gray-600 ml-4 mr-36 content-center ">Heartfolio</div>
+                <div className="text-gray-600 ml-4 mr-36 content-center font-Ubuntu text-[20px]">Heartfolio</div>
               </a>
             </div>
             <div onClick={() => handleLogin()} className="content-center">
