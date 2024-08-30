@@ -13,7 +13,7 @@ function Chart(props) {
   const userId = 1;
   const token = localStorage.getItem("access_token");
   const [moneyData, setMoneyData] = useState(null);
-  const [curPrice, setcurPrice] = useState(0); // 주식 현재가를 저장할 상태
+  const [curPrice, setCurPrice] = useState(props.data?.curPrice); // 주식 현재가를 저장할 상태
   const [isBuyModalOpen, setIsBuyModalOpen] = useState(false); // 모달 상태 관리
   const [isSellModalOpen, setIsSellModalOpen] = useState(false); // 모달 상태 관리
   const [activeTab, setActiveTab] = useState(1);
@@ -52,7 +52,7 @@ function Chart(props) {
             console.log("서버에서 받은 데이터:", data);
 
             if (data && data.curPrice) {
-              setcurPrice(data.curPrice);
+              setCurPrice(data.curPrice);
             }
           }
         );

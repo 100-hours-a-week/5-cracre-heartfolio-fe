@@ -11,7 +11,7 @@ function StockPage() {
   const [activeTab, setActiveTab] = useState(1);
   const { id } = useParams();
   const token = localStorage.getItem("access_token");
-  
+
   // 데이터 가져오기 상태 관리
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
@@ -86,9 +86,16 @@ function StockPage() {
         </div>
         <div className="mx-auto max-w-[390px] p-4 flex justify-center">
           <div role="tabpanel" className="tab-content block pb-[29px]">
-            {activeTab === 1 && <Chart data={data} />}
-            {activeTab === 2 && <StockHistory />}
-            {/* {activeTab === 3 && "3"} */}
+            {loading ? (
+              <p>Loading...</p>
+            ) : error ? (
+              <p>Error: {error.message}</p>
+            ) : (
+              <>
+                {activeTab === 1 && <Chart data={data} />}
+                {activeTab === 2 && <StockHistory />}
+              </>
+            )}
           </div>
         </div>
       </div>
