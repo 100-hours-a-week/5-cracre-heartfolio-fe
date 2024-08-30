@@ -8,7 +8,7 @@ function MainPage() {
   return (
     <div className="w-full min-h-screen bg-white">
       <Header />
-      <div className="pt-[85px]">
+      <div className="pt-[60px]">
       <div className="mx-auto w-[390px] px-3 ">
         <div>
             <PopularChart/> 

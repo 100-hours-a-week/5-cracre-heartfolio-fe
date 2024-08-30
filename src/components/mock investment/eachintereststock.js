@@ -47,14 +47,14 @@ export default function Eachintereststock(props) {
         onClick={() => handleClick(props.stockId)}
       >
         {/* 종목이름 */}
-        <h1 className="text-gray-600 text-[15px]">
+        <h1 className="text-gray-600 text-[15px] font-DoHyeon">
           {props.stockKorea} ({props.stockName})
         </h1>
         {/* 종목정보 */}
         <div className="flex flex-row mt-1">
           {/* 현재가 */}
           <p className="mr-1 text-gray-600">
-            {props.currentPrice.toLocaleString()}
+            {props.currentPrice.toLocaleString()}KRW
           </p>
 
           {/* 전일대비수익 */}
@@ -67,7 +67,7 @@ export default function Eachintereststock(props) {
                 : "text-[#000000]"
             }`}
           >
-            {props.earningValue}
+            {props.earningValue>0 ? (+(props.earningValue)) : (-(props.earningValue))}
           </div>
 
           {/* 수익률 */}

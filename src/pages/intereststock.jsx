@@ -60,7 +60,7 @@ function Intereststock() {
       <div className="pt-[80px] min-h-screen bg-white">
         <Stocktype />
         {/* 관심종목리스트 */}
-        <div className="mx-auto max-w-[390px] pb-[40px]">
+        <div className="mx-auto max-w-[390px] pb-[65px]">
         { isAuthenticated?(
           data?.length === 0 ? (
             <div className="flex flex-col items-center justify-center">
