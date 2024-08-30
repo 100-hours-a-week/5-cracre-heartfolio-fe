@@ -2,6 +2,9 @@
 module.exports = {
   content: ["./src/**/*.{html,jsx,js}"],
   theme: {
+    fontFamily: {
+      "Ubuntu" : ["Ubuntu"],
+    },
     extend: {
       colors: {
         btnClickColor: "#FFBBC0",
