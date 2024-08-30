@@ -49,7 +49,6 @@ function Chart(props) {
           `/from/stock/${props.data.symbol}`,
           function (message) {
             const data = JSON.parse(message.body);
-            console.log("서버에서 받은 데이터:", data);
 
             if (data && data.curPrice) {
               setCurPrice(data.curPrice);

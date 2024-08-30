@@ -66,9 +66,6 @@ function BuyBox({
   }
 
   function buy() {
-    console.log("id:", id);
-    console.log("quantity:", quantity);
-    console.log("price:", curPrice);
     if (!isLoggedIn) {
       Swal.fire({
         icon: "warning",
