@@ -4,7 +4,8 @@ module.exports = {
   theme: {
     fontFamily: {
       "Ubuntu" : ["Ubuntu"],
-      "DoHyeon" : ["Do Hyeon"]
+      "DoHyeon" : ["Do Hyeon"],
+      "TheJamsil5Bold" : ["TheJamsil5Bold"],
     },
     extend: {
       colors: {

@@ -75,12 +75,12 @@ function StockHeader(props) {
             {/* 이름이 30자를 넘는 경우 */}
             {combinedNameLength > 30 ? (
               <>
-                <div>{props.data?.koreanName}</div>
+                <div className="font-TheJamsil5Bold">{props.data?.koreanName}</div>
                 <div className="text-sm">({props.data?.englishName})</div>
               </>
             ) : (
               // 이름이 30자를 넘지 않는 경우
-              <div>
+              <div className="font-TheJamsil5Bold">
                 {props.data?.koreanName} ({props.data?.englishName})
               </div>
             )}

@@ -3211,6 +3211,10 @@ input.tab:checked + .tab-content,
   padding-bottom: 40px;
 }
 
+.pb-\[65px\] {
+  padding-bottom: 65px;
+}
+
 .pl-3 {
   padding-left: 0.75rem;
 }
@@ -3247,34 +3251,6 @@ input.tab:checked + .tab-content,
   padding-top: 90px;
 }
 
-.pb-4 {
-  padding-bottom: 1rem;
-}
-
-.pb-5 {
-  padding-bottom: 1.25rem;
-}
-
-.pb-6 {
-  padding-bottom: 1.5rem;
-}
-
-.pb-\[50px\] {
-  padding-bottom: 50px;
-}
-
-.pb-\[55px\] {
-  padding-bottom: 55px;
-}
-
-.pb-\[60px\] {
-  padding-bottom: 60px;
-}
-
-.pb-\[65px\] {
-  padding-bottom: 65px;
-}
-
 .text-center {
   text-align: center;
 }
@@ -3285,6 +3261,10 @@ input.tab:checked + .tab-content,
 
 .font-DoHyeon {
   font-family: Do Hyeon;
+}
+
+.font-TheJamsil5Bold {
+  font-family: TheJamsil5Bold;
 }
 
 .font-Ubuntu {
@@ -3497,6 +3477,16 @@ input.tab:checked + .tab-content,
   src: url('https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Ubuntu&display=swap');
 
   font-weight: 800;
+
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'TheJamsil5Bold';
+
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2302_01@1.0/TheJamsil5Bold.woff2') format('woff2');
+
+  font-weight: 300;
 
   font-style: normal;
 }
