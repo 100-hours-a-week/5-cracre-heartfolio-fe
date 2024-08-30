@@ -21,16 +21,25 @@ function BuyBox({
   const handleMaxQuantity = () => {
     const maxQuantity = Math.floor(data?.cash / curPrice);
     setQuantity(maxQuantity);
+    if(!isLoggedIn){
+      setQuantity(0);
+    }
   };
 
   const handle50PercentQuantity = () => {
     const maxQuantity = Math.floor(data?.cash / curPrice);
     setQuantity(Math.floor(maxQuantity / 2));
+    if(!isLoggedIn){
+      setQuantity(0);
+    }
   };
 
   const handle25PercentQuantity = () => {
     const maxQuantity = Math.floor(data?.cash / curPrice);
     setQuantity(Math.floor(maxQuantity / 4));
+    if(!isLoggedIn){
+      setQuantity(0);
+    }
   };
 
   const total_money = curPrice * quantity;
