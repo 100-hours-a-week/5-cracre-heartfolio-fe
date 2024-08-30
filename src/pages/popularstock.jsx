@@ -9,11 +9,11 @@ function Popularstock() {
     "https://heartfolio.site/api/stock/popular?limit=" + 50
   );
   if (loading) {
-    return <div>Loading...</div>; // 로딩 중일 때 표시할 내용
+    return <div className="min-h-screen bg-white text-center">Loading...</div>; // 로딩 중일 때 표시할 내용
   }
 
   if (error) {
-    return <div>Error: {error.message}</div>; // 에러 발생 시 표시할 내용
+    return <div className="min-h-screen bg-white text-center">Error: {error.message}</div>; // 에러 발생 시 표시할 내용
   }
 
   if (!data || data.length === 0) {

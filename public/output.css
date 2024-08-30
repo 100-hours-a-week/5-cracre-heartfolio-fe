@@ -3264,6 +3264,10 @@ input.tab:checked + .tab-content,
   padding-top: 90px;
 }
 
+.pt-3 {
+  padding-top: 0.75rem;
+}
+
 .text-center {
   text-align: center;
 }

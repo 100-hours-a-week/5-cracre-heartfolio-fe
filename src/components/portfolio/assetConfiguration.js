@@ -87,11 +87,11 @@ function AssetConfiguration() {
   }, [data]);
 
   if (loading) {
-    return <p>Loading...</p>;
+    return <p className="min-h-screen bg-white text-center">Loading...</p>;
   }
 
   if (error) {
-    return <p>There was an error loading the data: {error.message}</p>;
+    return <p className="min-h-screen bg-white text-center">There was an error loading the data: {error.message}</p>;
   }
 
   if (!data || !data.stocks || data.stocks.length === 0) {

@@ -44,7 +44,7 @@ function Holdings() {
   return (
     <>
       {loading ? (
-        <div className="mx-auto max-w-[350px] py-4 pb-8">
+        <div className="mx-auto max-w-[350px] py-4 pb-8 min-h-screen bg-white">
           <div className="text-center text-gray-500">로딩 중...</div>
         </div>
       ) : !data ||
