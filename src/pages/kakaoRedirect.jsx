@@ -18,7 +18,6 @@ const KakaoRedirect = () => {
           return response.json();
         })
         .then((data) => {
-          console.log("Fetched data:", data);
           if (data && data.token && data.token.access_token) {
             localStorage.setItem("access_token", data.token.access_token);
             // localStorage.setItem('refresh_token', data.token.refresh_token);
