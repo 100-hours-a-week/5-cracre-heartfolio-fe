@@ -3330,6 +3330,10 @@ input.tab:checked + .tab-content,
   line-height: 1rem;
 }
 
+.text-\[14px\] {
+  font-size: 14px;
+}
+
 .font-bold {
   font-weight: 700;
 }
