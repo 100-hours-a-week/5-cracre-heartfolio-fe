@@ -19,8 +19,6 @@ function StockHeader(props) {
     }
   }, [token, props.data?.likePresent]);
 
-  console.log("heart:", props.data?.likePresent);
-
   function handlefavorite() {
     if (src === "/assets/images/uninterest.png") {
       fetch("https://heartfolio.site/api/stock/favorites/" + id, {

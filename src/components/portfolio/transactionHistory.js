@@ -47,7 +47,6 @@ function TransactionHistory() {
     fetchData();
   }, [token]); // 토큰이 변경될 때마다 데이터를 다시 가져옴
 
-  console.log("transactionHistory fetch", data);
   return (
     <>
       <div className="mx-auto max-w-[350px] pb-8">

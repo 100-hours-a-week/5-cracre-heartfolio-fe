@@ -47,8 +47,6 @@ function StockPage() {
     fetchData();
   }, [id]);
 
-  console.log("stockPage get : ", data);
-
   return (
     <>
       <Header />

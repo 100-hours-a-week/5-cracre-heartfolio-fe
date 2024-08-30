@@ -10,7 +10,6 @@ import alertAnimation from "../assets/animations/alert.json";
 
 function Portfolio() {
   const [activeTab, setActiveTab] = useState(1);
-  console.log("Active Tab:", activeTab);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   useEffect(() => {
