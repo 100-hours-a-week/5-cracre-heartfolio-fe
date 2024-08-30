@@ -78,7 +78,7 @@ function BuyBox({
         buttonsStyling: false,
       });
       return;
-    } else if (quantity * curPrice > data?.cash) {
+    } else if (data?.cash === undefined || data?.cash === null || data?.cash === 0 || quantity * curPrice > data?.cash) {
       Swal.fire({
         icon: "error",
         text: "본인 캐시를 확인해주세요",
