@@ -4,6 +4,7 @@ import Header from "../components/common/header";
 import UserRanking from "../components/ranking/userRanking";
 import Lottie from "lottie-react";
 import ContructionAnimation from "../assets/animations/construction.json";
+import MoneyRanking from "../components/ranking/moneyRanking";
 
 // function RankingPage() {
 //   const [activeTab, setActiveTab] = useState(1);
@@ -12,10 +13,10 @@ import ContructionAnimation from "../assets/animations/construction.json";
 //     <>
 //       <Header />
 //       <div className="pt-[65px] text-center min-h-screen bg-white">
-//         <div className="mx-auto max-w-[390px] px-3 mt-[34px]">
+//         <div className="mx-auto max-w-[390px] px-3 mt-[30px] flex flex-col">
 //           <div
 //             role="tablist"
-//             className="tabs tabs-boxed mx-auto max-w-[370px] mt-[34px] bg-white"
+//             className="tabs tabs-boxed max-w-[370px] bg-white"
 //           >
 //             <a
 //               role="tab"
@@ -39,7 +40,7 @@ import ContructionAnimation from "../assets/animations/construction.json";
 //           <div className="mx-auto max-w-[370px] p-1">
 //             <div role="tabpanel" className="tab-content block w-[350px]">
 //               {activeTab === 1 && <UserRanking />}
-//               {/* {activeTab === 2 && <TransactionHistory />} */}
+//               {activeTab === 2 && <MoneyRanking />}
 //             </div>
 //           </div>
 //         </div>
