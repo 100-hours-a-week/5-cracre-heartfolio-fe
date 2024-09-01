@@ -10,6 +10,8 @@ import CashChargePage from "./pages/cashChargePage";
 import MainPage from "./pages/mainPage";
 import LoginPage from "./pages/loginPage";
 import KakaoRedirect from "./pages/kakaoRedirect";
+import Legal from "./pages/license";
+import CashChargeAfterPage from "./pages/cashChargeAfterPage";
 
 function App() {
   return (
@@ -26,6 +28,8 @@ function App() {
         <Route path="/ranking" element={<RankingPage />} />
         <Route path="/mypage" element={<MyPage />} />
         <Route path="/cashcharge" element={<CashChargePage />} />
+        <Route path="/cashcharge/complete" element={<CashChargeAfterPage />} />
+        <Route path="/legal" element={<Legal />} />
       </Routes>
     </Router>
   );
