@@ -90,7 +90,7 @@ function MoneyInfo() {
               }`}
             >
               {/* {data.profitRate}% */}
-              {data?.profitRate === undefined ? 0 : (data?.profitRate)}%
+              {data?.profitRate === undefined ? 0 : (data?.profitRate.toFixed(2))}%
             </div>
           </div>
         </div>
