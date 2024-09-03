@@ -3,6 +3,7 @@ import ButtomNavigation from "../components/common/bottomNavigation";
 import Header from "../components/common/header";
 import ContructionAnimation from "../assets/animations/construction.json";
 import { useState } from "react";
+import InputBox from "../components/myInfo/inputBox";
 
 // function MyPage() {
 //   const data = {
@@ -25,9 +26,7 @@ import { useState } from "react";
 //       setHelperText("닉네임은 최대 7글자로 입력해주세요.");
 //     } else if (/[^가-힣a-zA-Z0-9]/.test(nickname)) {
 //       // 한글, 영어, 숫자를 제외한 특수문자, 공백, 띄어쓰기 등을 입력 시
-//       setHelperText(
-//         "특수문자, 공백, 띄어쓰기 등의 입력이 불가능합니다."
-//       );
+//       setHelperText("특수문자, 공백, 띄어쓰기 등의 입력이 불가능합니다.");
 //     } else {
 //       setHelperText("");
 //       // 닉네임 수정하는 로직
@@ -47,14 +46,8 @@ import { useState } from "react";
 //             </div>
 //           </div>
 //           <div className="flex flex-col items-center mt-8">
-//             <div className="flex justify-between w-[320px] mb-2">
-//               <div className="text-gray-600 text-lg">이름</div>
-//               <div className="text-gray-500">{data.name}</div>
-//             </div>
-//             <div className="flex justify-between w-[320px] mb-2">
-//               <div className="text-gray-600 text-lg">이메일</div>
-//               <div className="text-gray-500">{data.email}</div>
-//             </div>
+//             <InputBox text="이름" data={data.name} />
+//             <InputBox text="이메일" data={data.email} />
 //             <div className="flex flex-col w-[320px] mb-2">
 //               <div className="flex justify-between">
 //                 <div className="text-gray-600 text-lg">닉네임</div>
@@ -65,16 +58,12 @@ import { useState } from "react";
 //                   onChange={(e) => setNickname(e.target.value)}
 //                 ></input>
 //               </div>
-//               <h3 className="text-red-500 text-right text-[12px] pt-1">{helperText}</h3>
+//               <h3 className="text-red-500 text-right text-[12px] pt-1">
+//                 {helperText}
+//               </h3>
 //             </div>
-//             <div className="flex justify-between w-[320px] mb-2">
-//               <div className="text-gray-600 text-lg">내 캐시</div>
-//               <div className="text-gray-500">{data.cash.toLocaleString()}</div>
-//             </div>
-//             <div className="flex justify-between w-[320px] mb-2">
-//               <div className="text-gray-600 text-lg">기부한 금액</div>
-//               <div className="text-gray-500">{data.donate.toLocaleString()}</div>
-//             </div>
+//             <InputBox text="내 캐시" data={data.cash.toLocaleString()} />
+//             <InputBox text="기부한 금액" data={data.donate.toLocaleString()} />
 //           </div>
 //           <div className="pt-10 w-[350px] text-right">
 //             <button

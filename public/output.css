@@ -3496,6 +3496,22 @@ input.tab:checked + .tab-content,
   padding-top: 90px;
 }
 
+.pt-\[100px\] {
+  padding-top: 100px;
+}
+
+.pt-10 {
+  padding-top: 2.5rem;
+}
+
+.pt-1 {
+  padding-top: 0.25rem;
+}
+
+.pb-\[25px\] {
+  padding-bottom: 25px;
+}
+
 .text-center {
   text-align: center;
 }
@@ -3573,6 +3589,14 @@ input.tab:checked + .tab-content,
 .text-xs {
   font-size: 0.75rem;
   line-height: 1rem;
+}
+
+.text-\[12px\] {
+  font-size: 12px;
+}
+
+.text-\[13px\] {
+  font-size: 13px;
 }
 
 .font-bold {
