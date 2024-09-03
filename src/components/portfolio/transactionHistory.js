@@ -62,9 +62,8 @@ function TransactionHistory() {
         ) : (
           <ul role="list" className="divide-y divide-gray-200">
             {data.map((item) => (
-              <li key={item.orderId} className="py-2">
+              <li key={item.id} className="py-2">
                 <HistoryBox
-                  stockId={item.orderId}
                   name={item.name}
                   orderCategory={item.orderCategory}
                   orderDate={item.orderDate}
