@@ -91,7 +91,11 @@ function AssetConfiguration() {
   }
 
   if (error) {
-    return <p className="min-h-screen bg-white text-center">There was an error loading the data: {error.message}</p>;
+    return (
+      <p className="min-h-screen bg-white text-center">
+        There was an error loading the data: {error.message}
+      </p>
+    );
   }
 
   if (!data || !data.stocks || data.stocks.length === 0) {
@@ -115,7 +119,6 @@ function AssetConfiguration() {
     colors: colors,
     plotOptions: {
       pie: {
-        offsetX: -5, // 도넛 그래프를 왼쪽으로 이동
         donut: {
           labels: {
             show: true,
@@ -133,8 +136,8 @@ function AssetConfiguration() {
       },
     },
     legend: {
-      position: "right",
-      offsetY: -20, // 라벨을 위로 이동
+      position: "bottom",
+      offsetY: 10, // 라벨을 아래로 이동
       formatter: function (seriesName, opts) {
         const seriesIndex = opts.seriesIndex;
         const percentage =
@@ -148,13 +151,16 @@ function AssetConfiguration() {
   };
 
   return (
-    <div className="mx-auto max-w-[350px] py-4">
-      <Chart
-        options={options}
-        series={chartData.series}
-        type="donut"
-        height={350}
-      />
+    <div className="flex justify-center">
+      <div className="py-4">
+        <Chart
+          options={options}
+          series={chartData.series}
+          type="donut"
+          height={350}
+          width={370}
+        />
+      </div>
     </div>
   );
 }
