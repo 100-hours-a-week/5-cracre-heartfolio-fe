@@ -1775,10 +1775,6 @@ input.tab:checked + .tab-content,
   line-height: 1em;
 }
 
-.input-bordered {
-  border-color: var(--fallback-bc,oklch(var(--bc)/0.2));
-}
-
 .input:focus,
   .input:focus-within {
   box-shadow: none;
@@ -2871,6 +2867,10 @@ input.tab:checked + .tab-content,
   height: 6rem;
 }
 
+.h-32 {
+  height: 8rem;
+}
+
 .h-40 {
   height: 10rem;
 }
@@ -2933,18 +2933,6 @@ input.tab:checked + .tab-content,
 
 .h-screen {
   height: 100vh;
-}
-
-.h-36 {
-  height: 9rem;
-}
-
-.h-32 {
-  height: 8rem;
-}
-
-.h-5 {
-  height: 1.25rem;
 }
 
 .max-h-\[500px\] {
@@ -3051,6 +3039,10 @@ input.tab:checked + .tab-content,
   width: 370px;
 }
 
+.w-\[380px\] {
+  width: 380px;
+}
+
 .w-\[390px\] {
   width: 390px;
 }
@@ -3083,14 +3075,6 @@ input.tab:checked + .tab-content,
   width: 100%;
 }
 
-.w-36 {
-  width: 9rem;
-}
-
-.w-\[380px\] {
-  width: 380px;
-}
-
 .min-w-0 {
   min-width: 0px;
 }
@@ -3119,10 +3103,6 @@ input.tab:checked + .tab-content,
   max-width: 100%;
 }
 
-.max-w-xs {
-  max-width: 20rem;
-}
-
 .flex-none {
   flex: none;
 }
@@ -3132,10 +3112,6 @@ input.tab:checked + .tab-content,
 }
 
 .flex-grow {
-  flex-grow: 1;
-}
-
-.grow {
   flex-grow: 1;
 }
 
@@ -3195,10 +3171,6 @@ input.tab:checked + .tab-content,
 
 .gap-4 {
   gap: 1rem;
-}
-
-.gap-2 {
-  gap: 0.5rem;
 }
 
 .space-y-1 > :not([hidden]) ~ :not([hidden]) {
@@ -3335,6 +3307,11 @@ input.tab:checked + .tab-content,
   background-color: rgb(229 231 235 / var(--tw-bg-opacity));
 }
 
+.bg-gray-400 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(156 163 175 / var(--tw-bg-opacity));
+}
+
 .bg-indigo-500 {
   --tw-bg-opacity: 1;
   background-color: rgb(99 102 241 / var(--tw-bg-opacity));
@@ -3347,11 +3324,6 @@ input.tab:checked + .tab-content,
 .bg-white {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
-}
-
-.bg-gray-400 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(156 163 175 / var(--tw-bg-opacity));
 }
 
 .bg-opacity-50 {
@@ -3472,6 +3444,14 @@ input.tab:checked + .tab-content,
   padding-right: 1rem;
 }
 
+.pt-1 {
+  padding-top: 0.25rem;
+}
+
+.pt-10 {
+  padding-top: 2.5rem;
+}
+
 .pt-2 {
   padding-top: 0.5rem;
 }
@@ -3486,6 +3466,10 @@ input.tab:checked + .tab-content,
 
 .pt-5 {
   padding-top: 1.25rem;
+}
+
+.pt-\[100px\] {
+  padding-top: 100px;
 }
 
 .pt-\[10px\] {
@@ -3564,6 +3548,10 @@ input.tab:checked + .tab-content,
 
 .text-\[10px\] {
   font-size: 10px;
+}
+
+.text-\[12px\] {
+  font-size: 12px;
 }
 
 .text-\[15px\] {

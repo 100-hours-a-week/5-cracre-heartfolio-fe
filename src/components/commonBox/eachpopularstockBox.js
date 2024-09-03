@@ -37,7 +37,7 @@ export default function EachpopularStockBox(props) {
                 : "text-[#000000]"
             }`}
           >
-            {props.earningValue>0 ? (`+${props.earningValue}`) : (`-${props.earningValue}`)}
+            {props.earningValue>0 ? (`+${props.earningValue.toLocaleString()}`) : (`${props.earningValue.toLocaleString()}`)}
           </div>
 
           {/* 수익률 */}
@@ -50,7 +50,7 @@ export default function EachpopularStockBox(props) {
                 : "text-[#000000]"
             }`}
           >
-            ({props.earningRate}%)
+            ({props.earningRate.toFixed(2)}%)
           </div>
         </div>
       </div>
