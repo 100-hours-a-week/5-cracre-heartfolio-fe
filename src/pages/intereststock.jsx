@@ -1,123 +1,97 @@
-import Header from "../components/header";
-import Stocktype from "../components/stocktype";
-import Eachintereststock from "../components/eachintereststock";
-import ButtomNavigation from "../components/bottomNavigation";
+import Header from "../components/common/header";
+import Stocktype from "../components/mock investment/stocktype";
+import Eachintereststock from "../components/mock investment/eachintereststock";
+import ButtomNavigation from "../components/common/bottomNavigation";
 import useFetch from "../hooks/useFetch";
+import { useEffect, useState } from "react";
+import Lottie from "lottie-react";
+import heartAnimation from "../assets/animations/heart.json";
+import alertAnimation from "../assets/animations/alert.json";
 
-function Intereststock() {
-  const { data, error, loading } = useFetch(
-    "https://heartfolio.site/api/stock/favorites"
-  );
+function Intereststock() {  
+  const token = localStorage.getItem("access_token");
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
-  if (loading) {
-    return <div>Loading...</div>; // 로딩 중일 때 표시할 내용
-  }
+  useEffect(() => {
+    const token = localStorage.getItem("access_token");
+    if (token) {
+      setIsAuthenticated(true);
+    }
+  }, []);
 
-  if (error) {
-    return <div>Error: {error.message}</div>; // 에러 발생 시 표시할 내용
-  }
+    // 데이터 가져오기 상태 관리
+    const [data, setData] = useState(null);
+    const [error, setError] = useState(null);
+    const [loading, setLoading] = useState(true);
+  
+    useEffect(() => {
+      const fetchData = async () => {
+        setLoading(true); // 데이터 가져오기 시작 전에 로딩 상태 설정
+        try {
+          const response = await fetch(
+            "https://heartfolio.site/api/stock/favorites",
+            {
+              headers: {
+                Authorization: `Bearer ${token}`, // 토큰을 헤더에 추가
+                "Content-Type": "application/json", // 선택 사항, API 요구 사항에 따라 설정
+              },
+            }
+          );
+  
+          if (!response.ok) {
+            throw new Error(response.statusText); // 응답이 정상적이지 않으면 에러 발생
+          }
+  
+          const result = await response.json();
+          setData(result); // 가져온 데이터를 상태에 설정
+        } catch (err) {
+          setError(err); // 에러 발생 시 상태에 설정
+        } finally {
+          setLoading(false); // 데이터 가져오기 완료 후 로딩 상태 해제
+        }
+      };
+  
+      fetchData();
+    }, [token]);
 
-  if (!data) {
-    return <div>No data available</div>; // 데이터가 없을 때 표시할 내용
-  }
-
-  // 관심 종목 데이터 배열_목업데이터
-  // const data = [
-  //   {
-  //     stockId: 1,
-  //     stockName: "Apple Inc.", //종목명
-  //     currentPrice: 15000, //현재가
-  //     earningValue: 500, //전일대비 증가량
-  //     earningRate: "3.45", //수익률
-  //   },
-  //   {
-  //     stockId: 2,
-  //     stockName: "Alphabet Inc.",
-  //     currentPrice: 27500,
-  //     earningValue: 1200,
-  //     earningRate: "4.56",
-  //   },
-  //   {
-  //     stockId: 3,
-  //     stockName: "Amazon.com Inc.",
-  //     currentPrice: 34000,
-  //     earningValue: -300,
-  //     earningRate: "-0.88",
-  //   },
-  //   {
-  //     stockId: 4,
-  //     stockName: "Tesla Inc.",
-  //     currentPrice: 42000,
-  //     earningValue: 1500,
-  //     earningRate: "3.70",
-  //   },
-  //   {
-  //     stockId: 5,
-  //     stockName: "Microsoft Corp.",
-  //     currentPrice: 29000,
-  //     earningValue: 800,
-  //     earningRate: "2.83",
-  //   },
-  //   {
-  //     stockId: 6,
-  //     stockName: "Meta Platforms Inc.",
-  //     currentPrice: 21000,
-  //     earningValue: -450,
-  //     earningRate: "-2.10",
-  //   },
-  //   {
-  //     stockId: 7,
-  //     stockName: "Netflix Inc.",
-  //     currentPrice: 18000,
-  //     earningValue: 900,
-  //     earningRate: "5.26",
-  //   },
-  //   {
-  //     stockId: 8,
-  //     stockName: "NVIDIA Corp.",
-  //     currentPrice: 35000,
-  //     earningValue: 2000,
-  //     earningRate: "6.06",
-  //   },
-  //   {
-  //     stockId: 9,
-  //     stockName: "Adobe Inc.",
-  //     currentPrice: 14000,
-  //     earningValue: -200,
-  //     earningRate: "-1.41",
-  //   },
-  //   {
-  //     stockId: 10,
-  //     stockName: "Intel Corp.",
-  //     currentPrice: 10000,
-  //     earningValue: 300,
-  //     earningRate: "3.00",
-  //   },
-  // ];
   return (
     <>
       <Header />
-      <div className="mt-[80px]">
+      <div className="pt-[80px] min-h-screen bg-white">
         <Stocktype />
         {/* 관심종목리스트 */}
-        <div className="mx-auto max-w-[390px] pb-[40px]">
-          {/* If data array is empty, show the message */}
-          {data?.length === 0 ? (
-            <div className="max-w-[370px] m-5 text-center mt-10">
-              추가한 관심종목이 없습니다
+        <div className="mx-auto max-w-[390px] pb-[65px] cursor-pointer">
+        { isAuthenticated?(
+          data?.length === 0 ? (
+            <div className="flex flex-col items-center justify-center">
+            <div className="w-60 h-60">
+              <Lottie animationData={heartAnimation} loop={true} />
             </div>
+            <div className="text-lg text-gray-600">관심있는 종목을 추가해주세요</div>
+          </div>
           ) : (
             data?.map((stock) => (
               <Eachintereststock
                 key={stock.stockId}
                 stockId={stock.stockId} // 주식별 고유 아이디(기본키)
+                stockKorea={stock.koreanName} // 종목명 한국어
                 stockName={stock.englishName} // 종목명
                 currentPrice={stock.currentPrice} // 현재가
                 earningValue={stock.earningValue} // 전일대비 증가량
                 earningRate={stock.earningRate} // 수익률
               />
             ))
-          )}
+          )
+        ) : (
+          <div className="flex flex-col justify-center items-center h-full">
+          <div className="w-80 h-80">
+            <Lottie animationData={alertAnimation} loop={true} />
+          </div>
+          <div className="font-bold text-lg">
+            관심종목 등록은 로그인 후 가능합니다.
+          </div>
+        </div>
+        )}
         </div>
       </div>
       <ButtomNavigation />

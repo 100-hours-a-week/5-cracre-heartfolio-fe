@@ -2,7 +2,16 @@
 module.exports = {
   content: ["./src/**/*.{html,jsx,js}"],
   theme: {
+    fontFamily: {
+      "Ubuntu" : ["Ubuntu"],
+      "DoHyeon" : ["Do Hyeon"],
+      "TheJamsil5Bold" : ["TheJamsil5Bold"],
+      "TmoneyRoundWindExtraBold" : ["TmoneyRoundWindExtraBold"],
+    },
     extend: {
+      boxShadow: {
+        'custom': 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px',
+      },
       colors: {
         btnClickColor: "#FFBBC0",
         toastColor: "#FFA3B2",

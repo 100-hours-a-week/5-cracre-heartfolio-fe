@@ -1,33 +1,35 @@
 import { useNavigate } from "react-router-dom";
-import Header from "../components/header";
-import ButtomNavigation from "../components/bottomNavigation";
-import PopularChart from "../components/popularChart";
+import Header from "../components/common/header";
+import ButtomNavigation from "../components/common/bottomNavigation";
+import PopularChart from "../components/main/popularChart";
+import { MoneyRankTop3Box } from "../components/ranking/moneyRankBox";
+import TitleBox from "../components/commonBox/titleBox";
 
 function MainPage() {
   const navigate = useNavigate();
+  function seeMore(route, tab = 1) {
+    navigate(route, { state: { activeTab: tab } });
+  }
   return (
-    <div className="w-full">
+    <div className="w-full min-h-screen bg-white">
       <Header />
-      <div className="mt-[85px]">
-      <div className="mx-auto w-[390px] px-3 mt-[34px]">
-        <div className="flex justify-around">
-          <button className="text-sm" onClick={() => navigate("/portfolio")}>
-            <img src="./assets/images/profiles.png" className="size-14 m-3"></img>
-            내 포트폴리오
-          </button>
-          <button className="text-sm" onClick={() => navigate("/ranking")}>
-            <img src="./assets/images/ranking.png" className="size-14 m-3"></img>
-            랭킹
-          </button>
-          <button className="text-sm" onClick={() => navigate("/intereststock")}>
-            <img src="./assets/images/profits.png" className="size-14 m-3"></img>
-            모의투자
-          </button>
+      <div className="pt-[50px]">
+        <div className="mx-auto w-[390px] px-3">
+          <div>
+            {/* <TitleBox
+              title={"기부 랭킹 TOP3"}
+              onClick={() => seeMore("/ranking", 2)}
+            />
+            <div className="mx-auto max-w-[390px] mt-[6px] border-t border-gray-300" />
+            <MoneyRankTop3Box /> */}
+            <TitleBox
+              title={"오늘의 인기 차트"}
+              onClick={() => seeMore("/popularstock")}
+            />
+            <div className="mx-auto max-w-[390px] mt-[6px] border-t border-gray-300" />
+            <PopularChart />
+          </div>
         </div>
-        <div>
-            <PopularChart/> 
-        </div>
-      </div>
       </div>
       <ButtomNavigation />
     </div>
