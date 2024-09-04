@@ -65,7 +65,7 @@ function SearchPage() {
             {/* 뒤로가기 */}
             <img
               src="/assets/images/back.png"
-              className="h-[20px] m-2 mx-6"
+              className="h-[20px] m-2 mx-6 cursor-pointer"
               onClick={() => navigate(-1)}
             ></img>
 
