@@ -7,9 +7,11 @@ import Holdings from "../components/portfolio/holdings";
 import ButtomNavigation from "../components/common/bottomNavigation";
 import Lottie from "lottie-react";
 import alertAnimation from "../assets/animations/alert.json";
+import { useLocation } from "react-router-dom";
 
 function Portfolio() {
-  const [activeTab, setActiveTab] = useState(1);
+  const initialTab = parseInt(localStorage.getItem("activeTab")) || 1; // 로컬 스토리지에서 activeTab 불러오기
+  const [activeTab, setActiveTab] = useState(initialTab);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   useEffect(() => {
@@ -18,6 +20,10 @@ function Portfolio() {
       setIsAuthenticated(true);
     }
   }, []);
+
+  useEffect(() => {
+    localStorage.setItem("activeTab", activeTab); // activeTab을 로컬 스토리지에 저장
+  }, [activeTab]);
 
   return (
     <>
