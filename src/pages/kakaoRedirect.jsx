@@ -14,11 +14,9 @@ const KakaoRedirect = () => {
           if (!response.ok) {
             throw new Error("서버 응답이 올바르지 않습니다.");
           }
-          console.log(response.data)
           return response.json();
         })
         .then((data) => {
-          console.log("Fetched data:", data);
           if (data && data.token && data.token.access_token) {
             localStorage.setItem("access_token", data.token.access_token);
             // localStorage.setItem('refresh_token', data.token.refresh_token);
@@ -36,7 +34,7 @@ const KakaoRedirect = () => {
   }, [code, navigate]);
 
   return (
-    <div>
+    <div className="pt-3 text-center min-h-screen bg-white">
       <p>로그인 중...</p>
     </div>
   );

@@ -26,10 +26,10 @@ function Header() {
   return (
     <Disclosure
       as="nav"
-      className="fixed top-0 left-0 right-0 z-50 bg-white shadow-md"
+      className="fixed top-0 left-0 right-0 z-50 bg-white "
       onChange={(open) => setIsOpen(open)}
     >
-      <div className="mx-auto max-w-[390px] px-3 relative z-50">
+      <div className="mx-auto max-w-[390px] px-3 relative z-50 shadow-md">
         <div className="flex h-16 justify-between">
           <div className="flex">
             <div className="flex flex-shrink-0 items-center">
@@ -39,14 +39,14 @@ function Header() {
                   src="/assets/images/heartfolioLogo.webp"
                   className="h-8 w-auto rounded-lg"
                 />
-                <div className=" ml-4 mr-36 content-center">Heartfolio</div>
+                <div className="text-gray-600 ml-4 mr-32 content-center font-Ubuntu text-[20px]">Heartfolio</div>
               </a>
             </div>
             <div onClick={() => handleLogin()} className="content-center">
               {isAuthenticated ? (
-                <div className=" ml-5 mr-5 text-sm min-w-14">로그아웃</div>
+                <div className=" ml-5 mr-5 text-sm min-w-14 text-gray-600 cursor-pointer">로그아웃</div>
               ) : (
-                <div className=" ml-5 mr-5 text-sm min-w-14">로그인</div>
+                <div className=" ml-5 mr-5 text-sm min-w-14  text-gray-600 cursor-pointer">로그인</div>
               )}
             </div>
           </div>
@@ -94,6 +94,13 @@ function Header() {
                 </Disclosure.Button>
                 <Disclosure.Button
                   as="a"
+                  href="/popularstock"
+                  className="block border-transparent py-3 pl-3 pr-4 text-base font-medium text-center text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700"
+                >
+                  모의투자
+                </Disclosure.Button>
+                <Disclosure.Button
+                  as="a"
                   href="/ranking"
                   className="block border-transparent py-3 pl-3 pr-4 text-base font-medium text-center text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-black"
                 >
@@ -101,10 +108,10 @@ function Header() {
                 </Disclosure.Button>
                 <Disclosure.Button
                   as="a"
-                  href="/intereststock"
+                  href="/cashcharge"
                   className="block border-transparent py-3 pl-3 pr-4 text-base font-medium text-center text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700"
                 >
-                  모의투자
+                  캐시 충전
                 </Disclosure.Button>
                 <Disclosure.Button
                   as="a"
@@ -112,13 +119,6 @@ function Header() {
                   className="block border-transparent py-3 pl-3 pr-4 text-base font-medium text-center text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700"
                 >
                   마이페이지
-                </Disclosure.Button>
-                <Disclosure.Button
-                  as="a"
-                  href="/cashcharge"
-                  className="block border-transparent py-3 pl-3 pr-4 text-base font-medium text-center text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700"
-                >
-                  캐시 충전
                 </Disclosure.Button>
               </div>
             </div>
