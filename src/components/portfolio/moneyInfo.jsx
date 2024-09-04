@@ -55,38 +55,39 @@ function MoneyInfo() {
   }
   return (
     <div className="max-w-full">
-      <div className="w-full flex justify-center">
-        <div className="w-[370px] text-lg text-gray-600 font-bold">내 포트폴리오</div>
+      <div className="w-full flex justify-center ">
+        <div className="w-[300px] text-lg text-gray-600 font-bold font-TmoneyRoundWindExtraBold text-left">내 포트폴리오</div>
+        <div className=" w-[70px] text-xs text-gray-500 pt-10 text-right"> 단위 (KRW)</div>
       </div>
-      <div className="mx-auto max-w-[390px] px-3 mt-[16px]">
+      <div className="mx-auto max-w-[390px] px-3 mt-[10px]">
         <div className="flex justify-around">
           <div>
-            <div className="text-sm text-gray-600">총 자산</div>
+            <div className="text-sm text-gray-600 font-semibold">총 자산</div>
             <div className="text-base text-gray-600">{money_change(data?.totalAmount)}</div>
           </div>
           <div>
-            <div className="text-sm text-gray-600">보유 캐시(KRW)</div>
+            <div className="text-sm text-gray-600 font-semibold">보유 캐시</div>
             <div className="text-base text-gray-600">{money_change(data?.cash)}</div>
           </div>
         </div>
         <div className="flex justify-around mt-[34px]">
           <div>
-            <div className="text-sm text-gray-600">총 매수 금액(KRW)</div>
+            <div className="text-sm text-gray-600 font-semibold">총 매수 금액</div>
             <div className="text-base text-gray-600">{money_change(data?.totalPurchase)}</div>
           </div>
           <div>
-            <div className="text-sm text-gray-600">총 평가 금액(KRW)</div>
+            <div className="text-sm text-gray-600 font-semibold">총 평가 금액</div>
             <div className="text-base text-gray-600">{money_change(data?.totalValue)}</div>
           </div>
           <div>
-            <div className="text-sm text-gray-600">평가 수익률</div>
+            <div className="text-sm text-gray-600 font-semibold">평가 수익률</div>
             <div
               className={`text-base ${
                 data?.profitRate > 0
                   ? "text-redColor" // 양수일 때, 빨강색
                   : data?.profitRate < 0
                   ? "text-blueColor" // 음수일 때, 파랑색
-                  : "text-[#000000]" // 0일 때, 검정색
+                  : " text-gray-600" // 0일 때, 검정색
               }`}
             >
               {/* {data.profitRate}% */}

@@ -15,7 +15,7 @@ function SearchPage() {
   const [searchTerm, setSearchTerm] = useState(""); // 검색어 상태 추가
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-
+  
   // 검색창에서 값이 변경될 때마다 searchTerm 상태 업데이트
   const handleInputChange = (event) => {
     setSearchTerm(event.target.value);
@@ -43,7 +43,6 @@ function SearchPage() {
           setLoading(false); // 데이터 가져오기 완료 후 로딩 상태 해제
         }
       };
-
       fetchData();
     }
   }, [searchTerm]); // searchTerm이 변경될 때마다 useEffect 실행
@@ -129,5 +128,4 @@ function SearchPage() {
     </>
   );
 }
-
 export default SearchPage;

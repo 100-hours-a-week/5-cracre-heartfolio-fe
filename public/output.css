@@ -3095,10 +3095,6 @@ input.tab:checked + .tab-content,
   width: 100%;
 }
 
-.w-\[\DF 390px\] {
-  width: ß390px;
-}
-
 .w-\[250px\] {
   width: 250px;
 }
@@ -3440,6 +3436,9 @@ input.tab:checked + .tab-content,
   padding-bottom: 100px;
 }
 
+.py-9 {
+  padding-top: 2.25rem;
+  padding-bottom: 2.25rem;
 .px-5 {
   padding-left: 1.25rem;
   padding-right: 1.25rem;
@@ -3553,6 +3552,14 @@ input.tab:checked + .tab-content,
 
 .pt-\[90px\] {
   padding-top: 90px;
+}
+
+.pt-\[30px\] {
+  padding-top: 30px;
+}
+
+.pt-6 {
+  padding-top: 1.5rem;
 }
 
 .pt-\[70px\] {

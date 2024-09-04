@@ -60,20 +60,23 @@ function TransactionHistory() {
             </div>
           </div>
         ) : (
-          <ul role="list" className="divide-y divide-gray-200">
-            {data.map((item) => (
-              <li key={item.id} className="py-2">
-                <HistoryBox
-                  name={item.name}
-                  orderCategory={item.orderCategory}
-                  orderDate={item.orderDate}
-                  orderAmount={item.orderAmount}
-                  orderPrice={item.orderPrice}
-                  totalAmount={item.totalAmount}
-                />
-              </li>
-            ))}
-          </ul>
+          <div>
+            <div className=" w-[70px] text-xs text-gray-500 pt-10 text-right"> 단위 (KRW)</div>
+            <ul role="list" className="divide-y divide-gray-200">
+              {data.map((item) => (
+                <li key={item.id} className="py-2">
+                  <HistoryBox
+                    name={item.name}
+                    orderCategory={item.orderCategory}
+                    orderDate={item.orderDate}
+                    orderAmount={item.orderAmount}
+                    orderPrice={item.orderPrice}
+                    totalAmount={item.totalAmount}
+                  />
+                </li>
+              ))}
+            </ul>
+          </div>
         )}
       </div>
     </>
