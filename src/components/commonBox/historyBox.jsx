@@ -29,7 +29,7 @@ function HistoryBox(props) {
           <div className="w-[180px]">
             <div className="text-sm  text-gray-600">{formatDate(props.orderDate)}</div>
             <div className="flex w-[140px] justify-between  text-gray-600">
-              <div className={`${props.name.length>9 ? "text-[13px]" : "text-base"}`}>{props.name}</div>
+              <div className={`${props.name.length>9 ? "text-[13px]" : "text-base"} font-semibold`}>{props.name}</div>
               <div
                 className={`${
                   props.orderCategory == "buy"
