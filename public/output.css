@@ -3071,6 +3071,10 @@ input.tab:checked + .tab-content,
   width: 100%;
 }
 
+.w-\[370px\] {
+  width: 370px;
+}
+
 .min-w-0 {
   min-width: 0px;
 }

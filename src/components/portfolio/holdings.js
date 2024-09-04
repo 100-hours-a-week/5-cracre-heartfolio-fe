@@ -63,7 +63,9 @@ function Holdings() {
         </div>
       ) : (
         <div className="mx-auto max-w-[350px] py-4 pb-8">
-          <div className=" w-[70px] text-xs text-gray-500 pt-10 text-right"> 단위 (KRW)</div>
+          <div className="text-xs mb-2 text-right text-gray-600">
+            가격 단위(KRW)
+            </div>
           <ul role="list">
             {data.stocks.map((item) => (
               <li key={item.stockId} className="py-2">

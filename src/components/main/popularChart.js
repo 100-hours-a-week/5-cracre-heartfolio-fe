@@ -9,7 +9,7 @@ function PopularChart() {
   );
 
   return (
-    <div className="">
+    <div className="cursor-pointer">
       {/* map을 사용하여 상위 5개 종목 반복 렌더링 */}
       {data?.map((stock) => (
         <EachpopularstockBox
