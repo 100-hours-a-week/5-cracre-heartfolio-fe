@@ -51,12 +51,12 @@ function SearchPage() {
   const { data: popularstock } = useFetch(
     "https://heartfolio.site/api/stock/popular?limit=" + 5
   );
-function handleSearch(){
-  setSearchTerm("");
-}
-function handleStock(get_id){
-  navigate(`/stock/${get_id}`);
-}
+  function handleSearch() {
+    setSearchTerm("");
+  }
+  function handleStock(get_id) {
+    navigate(`/stock/${get_id}`);
+  }
   return (
     <>
       <Header />
@@ -81,7 +81,18 @@ function handleStock(get_id){
             </div>
 
             {/* 돋보기 */}
-            {searchTerm.length == 0 ? (<span className="material-symbols-outlined m-2 mx-4 cursor-pointer">search</span>) : (<div className="cursor-pointer content-center ml-3 text-gray-400" onClick={handleSearch}>취소</div>)}
+            {searchTerm.length == 0 ? (
+              <span className="material-symbols-outlined m-2 mx-4 cursor-pointer">
+                search
+              </span>
+            ) : (
+              <div
+                className="cursor-pointer content-center ml-3 text-gray-400"
+                onClick={handleSearch}
+              >
+                취소
+              </div>
+            )}
           </div>
 
           {/* 검색목록 */}
@@ -104,7 +115,7 @@ function handleStock(get_id){
                   <SearchBox
                     engName={item.englishName}
                     korName={item.koreanName}
-                    onClick={()=>handleStock(item.stockId)}
+                    onClick={() => handleStock(item.stockId)}
                   />
                 </div>
               ))
