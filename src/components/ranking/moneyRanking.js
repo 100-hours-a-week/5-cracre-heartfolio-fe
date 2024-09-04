@@ -1,4 +1,4 @@
-import MoneyRankBox from "./moneyRankBox";
+import { MoneyRankBox, MoneyRankTop3Box } from "./moneyRankBox";
 
 function MoneyRanking() {
   return (
@@ -12,6 +12,7 @@ function MoneyRanking() {
       </div>
       <hr className="mt-1 border-black w-[350px]" />
       <div className="mx-auto max-w-[350px] pb-16">
+        <MoneyRankTop3Box />
         <MoneyRankBox />
       </div>
     </div>

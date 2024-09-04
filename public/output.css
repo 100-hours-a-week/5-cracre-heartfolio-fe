@@ -2590,6 +2590,10 @@ input.tab:checked + .tab-content,
   border-width: 0;
 }
 
+.pointer-events-auto {
+  pointer-events: auto;
+}
+
 .visible {
   visibility: visible;
 }
@@ -3075,6 +3079,10 @@ input.tab:checked + .tab-content,
   width: 100%;
 }
 
+.w-\[\DF 390px\] {
+  width: ß390px;
+}
+
 .min-w-0 {
   min-width: 0px;
 }
@@ -3400,6 +3408,11 @@ input.tab:checked + .tab-content,
   padding-bottom: 100px;
 }
 
+.px-5 {
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+}
+
 .pb-16 {
   padding-bottom: 4rem;
 }
@@ -3498,6 +3511,30 @@ input.tab:checked + .tab-content,
 
 .pt-\[90px\] {
   padding-top: 90px;
+}
+
+.pt-\[70px\] {
+  padding-top: 70px;
+}
+
+.pt-\[20px\] {
+  padding-top: 20px;
+}
+
+.pt-\[50px\] {
+  padding-top: 50px;
+}
+
+.pt-\[30px\] {
+  padding-top: 30px;
+}
+
+.pt-\[40px\] {
+  padding-top: 40px;
+}
+
+.pt-\[35px\] {
+  padding-top: 35px;
 }
 
 .text-center {
@@ -3789,6 +3826,10 @@ input.tab:checked + .tab-content,
 .placeholder\:text-gray-400::placeholder {
   --tw-text-opacity: 1;
   color: rgb(156 163 175 / var(--tw-text-opacity));
+}
+
+.hover\:pointer-events-auto:hover {
+  pointer-events: auto;
 }
 
 .hover\:border-gray-300:hover {

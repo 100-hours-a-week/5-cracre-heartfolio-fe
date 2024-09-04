@@ -5,9 +5,11 @@ import UserRanking from "../components/ranking/userRanking";
 import Lottie from "lottie-react";
 import ContructionAnimation from "../assets/animations/construction.json";
 import MoneyRanking from "../components/ranking/moneyRanking";
+import { useLocation } from "react-router-dom";
 
 // function RankingPage() {
-//   const [activeTab, setActiveTab] = useState(1);
+//   const location = useLocation();
+//   const [activeTab, setActiveTab] = useState(location.state?.activeTab || 1);
 
 //   return (
 //     <>
