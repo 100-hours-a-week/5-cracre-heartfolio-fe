@@ -4,16 +4,36 @@ import ButtomNavigation from "../components/common/bottomNavigation";
 import PopularChart from "../components/main/popularChart";
 import { MoneyRankTop3Box } from "../components/ranking/moneyRankBox";
 import TitleBox from "../components/commonBox/titleBox";
+import NewsBox from "../components/main/newsBox";
+import useFetch from "../hooks/useFetch";
 
 function MainPage() {
   const navigate = useNavigate();
   function seeMore(route, tab = 1) {
     navigate(route, { state: { activeTab: tab } });
   }
+
+  const { data, error, loading } = useFetch("https://heartfolio.site/api/news");
+  if (loading) {
+    return <div className="min-h-screen bg-white text-center">Loading...</div>; // 로딩 중일 때 표시할 내용
+  }
+
+  if (error) {
+    return (
+      <div className="min-h-screen bg-white text-center">
+        Error: {error.message}
+      </div>
+    ); // 에러 발생 시 표시할 내용
+  }
+
+  if (!data || data.length === 0) {
+    return <div>No data available</div>; // 데이터가 없을 때 표시할 내용
+  }
+  console.log(data?.items);
   return (
     <div className="w-full min-h-screen bg-white">
       <Header />
-      <div className="pt-[50px]">
+      <div className="py-[80px]">
         <div className="mx-auto w-[390px] px-3">
           <div>
             {/* <TitleBox
@@ -28,9 +48,8 @@ function MainPage() {
             />
             <div className="mx-auto max-w-[390px] mt-[6px] border-t border-gray-300" />
             <PopularChart />
-            <TitleBox
-              title={"오늘의 경제 뉴스"}
-              seeMore="none"/>
+            <TitleBox title={"오늘의 경제 뉴스"} seeMore="none" />
+            <NewsBox data={data?.items} />
           </div>
         </div>
       </div>
