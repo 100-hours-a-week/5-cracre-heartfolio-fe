@@ -1,5 +1,4 @@
 import { useState } from "react";
-import ReactPaginate from "react-paginate";
 
 function NewsBox(props) {
   const [currentPage, setCurrentPage] = useState(0); // 현재 페이지 수
