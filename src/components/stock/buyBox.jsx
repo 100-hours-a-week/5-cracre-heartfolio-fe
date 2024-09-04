@@ -174,7 +174,7 @@ function BuyBox({
       </div>
       <div className="flex justify-center">
         <button
-          className={`${buttonStyle} h-10 w-[180px] mt-5 rounded-md text-sm  text-gray-600`}
+          className={`${buttonStyle} h-10 w-[180px] mt-5 rounded-md text-sm  text-gray-600 cursor-pointer`}
           disabled={isDisabled}
           onClick={() => buy()}
         >

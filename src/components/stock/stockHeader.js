@@ -63,7 +63,7 @@ function StockHeader(props) {
         <div className="mx-auto max-w-[390px] h-[50px] px-3 items-center flex justify-between">
           <img
             src="/assets/images/back.png"
-            className="h-[20px]"
+            className="h-[20px] cursor-pointer"
             onClick={() => navigate(-1)}
           ></img>
           <div
