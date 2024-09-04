@@ -2590,6 +2590,10 @@ input.tab:checked + .tab-content,
   border-width: 0;
 }
 
+.pointer-events-auto {
+  pointer-events: auto;
+}
+
 .visible {
   visibility: visible;
 }
@@ -2827,6 +2831,10 @@ input.tab:checked + .tab-content,
   margin-top: 80px;
 }
 
+.ml-3 {
+  margin-left: 0.75rem;
+}
+
 .block {
   display: block;
 }
@@ -2935,8 +2943,20 @@ input.tab:checked + .tab-content,
   height: 100vh;
 }
 
+.h-5 {
+  height: 1.25rem;
+}
+
+.h-20 {
+  height: 5rem;
+}
+
 .max-h-\[500px\] {
   max-height: 500px;
+}
+
+.max-h-screen {
+  max-height: 100vh;
 }
 
 .min-h-screen {
@@ -3075,8 +3095,16 @@ input.tab:checked + .tab-content,
   width: 100%;
 }
 
-.w-\[30px\] {
-  width: 30px;
+.w-\[250px\] {
+  width: 250px;
+}
+
+.w-\[200px\] {
+  width: 200px;
+}
+
+.w-\[220px\] {
+  width: 220px;
 }
 
 .min-w-0 {
@@ -3248,6 +3276,10 @@ input.tab:checked + .tab-content,
   border-top-width: 1px;
 }
 
+.border-b-2 {
+  border-bottom-width: 2px;
+}
+
 .border-solid {
   border-style: solid;
 }
@@ -3407,6 +3439,19 @@ input.tab:checked + .tab-content,
 .py-9 {
   padding-top: 2.25rem;
   padding-bottom: 2.25rem;
+.px-5 {
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+}
+
+.px-2 {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+.py-5 {
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem;
 }
 
 .pb-16 {
@@ -3515,6 +3560,42 @@ input.tab:checked + .tab-content,
 
 .pt-6 {
   padding-top: 1.5rem;
+}
+
+.pt-\[70px\] {
+  padding-top: 70px;
+}
+
+.pt-\[20px\] {
+  padding-top: 20px;
+}
+
+.pt-\[50px\] {
+  padding-top: 50px;
+}
+
+.pt-\[30px\] {
+  padding-top: 30px;
+}
+
+.pt-\[40px\] {
+  padding-top: 40px;
+}
+
+.pt-\[35px\] {
+  padding-top: 35px;
+}
+
+.pt-4 {
+  padding-top: 1rem;
+}
+
+.pb-10 {
+  padding-bottom: 2.5rem;
+}
+
+.pb-14 {
+  padding-bottom: 3.5rem;
 }
 
 .text-left {
@@ -3810,6 +3891,10 @@ input.tab:checked + .tab-content,
 .placeholder\:text-gray-400::placeholder {
   --tw-text-opacity: 1;
   color: rgb(156 163 175 / var(--tw-text-opacity));
+}
+
+.hover\:pointer-events-auto:hover {
+  pointer-events: auto;
 }
 
 .hover\:border-gray-300:hover {
