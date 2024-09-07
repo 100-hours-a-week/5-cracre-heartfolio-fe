@@ -3433,6 +3433,31 @@ input.tab:checked + .tab-content,
   padding-bottom: 80px;
 }
 
+.px-2 {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+.py-\[75px\] {
+  padding-top: 75px;
+  padding-bottom: 75px;
+}
+
+.py-\[60px\] {
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
+
+.py-\[65px\] {
+  padding-top: 65px;
+  padding-bottom: 65px;
+}
+
+.py-\[70px\] {
+  padding-top: 70px;
+  padding-bottom: 70px;
+}
+
 .pb-14 {
   padding-bottom: 3.5rem;
 }
