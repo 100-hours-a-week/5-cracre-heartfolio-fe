@@ -33,15 +33,15 @@ function MainPage() {
   return (
     <div className="w-full min-h-screen bg-white">
       <Header />
-      <div className="py-[80px]">
+      <div className="py-[70px]">
         <div className="mx-auto w-[390px] px-3">
           <div>
-            {/* <TitleBox
+            <TitleBox
               title={"기부 랭킹 TOP3"}
               onClick={() => seeMore("/ranking", 2)}
             />
             <div className="mx-auto max-w-[390px] mt-[6px] border-t border-gray-300" />
-            <MoneyRankTop3Box /> */}
+            <MoneyRankTop3Box />
             <TitleBox
               title={"오늘의 인기 차트"}
               onClick={() => seeMore("/popularstock")}
