@@ -29,7 +29,7 @@ function MainPage() {
   if (!data || data.length === 0) {
     return <div>No data available</div>; // 데이터가 없을 때 표시할 내용
   }
-  console.log(data?.items);
+  
   return (
     <div className="w-full min-h-screen bg-white">
       <Header />
