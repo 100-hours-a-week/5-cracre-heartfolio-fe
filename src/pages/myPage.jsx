@@ -4,6 +4,8 @@ import Header from "../components/common/header";
 import ContructionAnimation from "../assets/animations/construction.json";
 import { useState } from "react";
 import InputBox from "../components/myInfo/inputBox";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function MyPage() {
   const data = {
@@ -30,6 +32,11 @@ function MyPage() {
     } else {
       setHelperText("");
       // 닉네임 수정하는 로직
+      toast.success("수정완료");
+
+      setTimeout(function () {
+        window.location.assign("/mypage");
+      }, 3000);
     }
   };
 
@@ -76,6 +83,7 @@ function MyPage() {
         </div>
       </div>
       <ButtomNavigation />
+      <ToastContainer position="top-center" />
     </>
   );
 }
