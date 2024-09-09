@@ -28,25 +28,7 @@ function NewsBox(props) {
   };
   return (
     <>
-      <div className="flex justify-end"></div>
-      {/* 커스텀 Pagination 컴포넌트 */}
-      <div className="flex justify-end">
-        <div className="flex justify-around w-24">
-          <button
-            onClick={handlePreviousClick}
-            className="text-gray-600 hover:text-black cursor-pointer"
-          >
-            이전
-          </button>
-          <button
-            onClick={handleNextClick}
-            className="text-gray-600 hover:text-black cursor-pointer"
-          >
-            다음
-          </button>
-        </div>
-      </div>
-      <div className="news-list w-[370px] flex flex-col items-center">
+      <div className="news-list w-[370px] flex flex-col items-center pt-2">
         {currentItems.map((item, index) => (
           <div
             key={index}
@@ -63,6 +45,26 @@ function NewsBox(props) {
             </div>
           </div>
         ))}
+      </div>
+      {/* 커스텀 Pagination 컴포넌트 */}
+      <div className="flex justify-center py-3">
+        <div className="flex justify-around w-36">
+          <button
+            onClick={handlePreviousClick}
+            className="text-gray-600 hover:text-black cursor-pointer"
+          >
+            이전
+          </button>
+          <div className="text-gray-500">
+            {currentPage + 1} / {pageCount}
+          </div>
+          <button
+            onClick={handleNextClick}
+            className="text-gray-600 hover:text-black cursor-pointer"
+          >
+            다음
+          </button>
+        </div>
       </div>
     </>
   );

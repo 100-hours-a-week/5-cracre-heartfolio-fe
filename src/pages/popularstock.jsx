@@ -6,7 +6,7 @@ import useFetch from "../hooks/useFetch";
 
 function Popularstock() {
   const { data, error, loading } = useFetch(
-    "https://heartfolio.site/api/stock/popular?limit=" + 50
+    "https://heartfolio.site/api/stock/popular?limit=" + 25
   );
   if (loading) {
     return <div className="min-h-screen bg-white text-center">Loading...</div>; // 로딩 중일 때 표시할 내용
