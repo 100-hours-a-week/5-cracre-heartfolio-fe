@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
 
 function StockHeader(props) {
   const { id } = useParams();
@@ -20,7 +21,13 @@ function StockHeader(props) {
   }, [token, props.data?.likePresent]);
 
   function handlefavorite() {
-    if (src === "/assets/images/uninterest.png") {
+    if(isAuthenticated == false){
+      toast.error("로그인이 필요한 서비스입니다.", { autoClose: 2000 });
+
+      setTimeout(function () {
+        window.location.assign("/login");
+      }, 2000);
+    }else if (src === "/assets/images/uninterest.png") {
       fetch("https://heartfolio.site/api/stock/favorites/" + id, {
         // credentials: "include",
         method: "POST",
@@ -87,12 +94,13 @@ function StockHeader(props) {
           </div>
           <img
             src={src}
-            className={`h-[20px] ${isAuthenticated ? "visible" : "invisible"}`}
+            className="h-[20px]"
             onClick={() => handlefavorite()}
             alt="FavoriteHeart"
           ></img>
         </div>
       </div>
+      <ToastContainer position="top-center" />
     </>
   );
 }
