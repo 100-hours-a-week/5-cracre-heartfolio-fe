@@ -49,12 +49,12 @@ function UserRanking() {
     {
       profile: "/profile/photo9",
       name: "Olivia Taylor",
-      percentage: "60%",
+      percentage: "50%",
     },
     {
       profile: "/profile/photo10",
       name: "Benjamin Moore",
-      percentage: "30%",
+      percentage: "-30%",
     },
   ];
 
@@ -98,17 +98,17 @@ function UserRanking() {
     {
       profile: "/profile/photo8",
       name: "James Anderson",
-      percentage: "135%",
+      percentage: "100%",
     },
     {
       profile: "/profile/photo9",
       name: "Olivia Taylor",
-      percentage: "130%",
+      percentage: "0%",
     },
     {
       profile: "/profile/photo10",
       name: "Benjamin Moore",
-      percentage: "100%",
+      percentage: "-10%",
     },
   ];
 
