@@ -77,10 +77,10 @@ function Portfolio() {
             <div className="w-80 h-80">
               <Lottie animationData={alertAnimation} loop={true} />
             </div>
-            <div className="font-bold text-lg">
+            <div className="font-bold text-lg text-gray-400">
               로그인 후 본인 만의 포트폴리오를 확인해보세요
             </div>
-            <a href="/login" className="pt-5">로그인 하러가기</a>
+            <a href="/login" className="pt-5 text-gray-400 hover:text-gray-600">로그인 하러가기</a>
           </div>
         )}
       </div>
