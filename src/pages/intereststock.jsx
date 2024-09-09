@@ -90,6 +90,7 @@ function Intereststock() {
           <div className="font-bold text-lg">
             관심종목 등록은 로그인 후 가능합니다.
           </div>
+          <a href="/login" className="pt-5">로그인 하러가기</a>
         </div>
         )}
         </div>

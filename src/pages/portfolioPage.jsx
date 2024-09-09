@@ -78,8 +78,9 @@ function Portfolio() {
               <Lottie animationData={alertAnimation} loop={true} />
             </div>
             <div className="font-bold text-lg">
-              로그인이 필요한 페이지입니다.
+              로그인 후 본인 만의 포트폴리오를 확인해보세요
             </div>
+            <a href="/login" className="pt-5">로그인 하러가기</a>
           </div>
         )}
       </div>
