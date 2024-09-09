@@ -32,11 +32,11 @@ function MyPage() {
     } else {
       setHelperText("");
       // 닉네임 수정하는 로직
-      toast.success("수정완료");
+      toast.success("수정완료", { autoClose: 2000 });
 
       setTimeout(function () {
         window.location.assign("/mypage");
-      }, 3000);
+      }, 2000);
     }
   };
 
