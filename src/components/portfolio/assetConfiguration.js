@@ -130,6 +130,9 @@ function AssetConfiguration() {
               show: true,
               fontSize: "15px",
               offsetY: -3,
+              formatter: function (val) {
+                return val.toLocaleString();
+              },
             },
           },
         },
