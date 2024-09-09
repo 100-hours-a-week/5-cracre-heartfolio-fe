@@ -13,7 +13,7 @@ function SellBox({
   const token = localStorage.getItem("access_token");
 
   const handleQuantityChange = (e) => {
-    if (e.target.value >= 0) {
+    if (e.target.value >= 0 && e.target.value <= 100000) {
       setQuantity(e.target.value);
     }
   };
@@ -148,7 +148,7 @@ function SellBox({
       <div className="flex w-[350px] justify-between mt-5">
         <div className="flex items-center w-1/2">
           <p className=" text-gray-600">총액</p>
-          <p className="h-[30px] w-[120px] content-center text-right text-xs  text-gray-600">
+          <p className={`${total_money>100000000 ? 'text-xs' : 'text-sm'} h-[30px] w-[120px] content-center text-right text-gray-600`}>
             {money_change(total_money)} KRW
           </p>
         </div>
