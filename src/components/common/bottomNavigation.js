@@ -16,7 +16,7 @@ function ButtomNavigation() {
   return (
     <div className="fixed bottom-0 left-1/2 transform -translate-x-1/2 w-[390px] bg-white shadow-lg">
       <div className="btm-nav flex justify-around h-[70px] items-center ">
-                <button
+        <button
           className="bg-btnNoClickColor p-0 text-sm text-gray-600"
           onClick={() => navigate("/")}
         >
@@ -27,8 +27,7 @@ function ButtomNavigation() {
           className="bg-btnNoClickColor p-0 text-sm  text-gray-600"
           onClick={() => navigate("/portfolio")}
         >
-          <a className="material-symbols-rounded">description</a>
-          내 포트폴리오
+          <a className="material-symbols-rounded">description</a>내 포트폴리오
         </button>
         <button
           className="bg-btnNoClickColor p-0 text-sm  text-gray-600"
