@@ -21,13 +21,13 @@ function StockHeader(props) {
   }, [token, props.data?.likePresent]);
 
   function handlefavorite() {
-    if(isAuthenticated == false){
+    if (isAuthenticated == false) {
       toast.error("로그인이 필요한 서비스입니다.", { autoClose: 2000 });
 
       setTimeout(function () {
         window.location.assign("/login");
       }, 2000);
-    }else if (src === "/assets/images/uninterest.png") {
+    } else if (src === "/assets/images/uninterest.png") {
       fetch("https://heartfolio.site/api/stock/favorites/" + id, {
         // credentials: "include",
         method: "POST",
@@ -38,7 +38,7 @@ function StockHeader(props) {
       }).then((res) => {
         if (res.ok) {
           setSrc("/assets/images/interest.png");
-          console.log("success post like")
+          console.log("success post like");
           navigate(`/stock/${id}`);
         }
       });
@@ -53,7 +53,7 @@ function StockHeader(props) {
       }).then((res) => {
         if (res.ok) {
           setSrc("/assets/images/uninterest.png");
-          console.log("success delete like")
+          console.log("success delete like");
           navigate(`/stock/${id}`);
         }
       });
@@ -82,7 +82,9 @@ function StockHeader(props) {
             {/* 이름이 30자를 넘는 경우 */}
             {combinedNameLength > 30 ? (
               <>
-                <div className="font-TheJamsil5Bold">{props.data?.koreanName}</div>
+                <div className="font-TheJamsil5Bold">
+                  {props.data?.koreanName}
+                </div>
                 <div className="text-sm">({props.data?.englishName})</div>
               </>
             ) : (
