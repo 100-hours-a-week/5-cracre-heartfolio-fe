@@ -62,7 +62,7 @@ function Holdings() {
           에러가 발생했습니다: {error.message}
         </div>
       ) : (
-        <div className="mx-auto max-w-[350px] py-4 pb-8">
+        <div className="mx-auto max-w-[350px] pb-8">
           <div className="text-xs mb-2 text-right text-gray-600">
             가격 단위(KRW)
           </div>

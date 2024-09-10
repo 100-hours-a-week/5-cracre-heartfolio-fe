@@ -53,13 +53,8 @@ function MoneyInfo() {
   return (
     <div className="max-w-full">
       <div className="w-full flex justify-center ">
-        <div className="w-[300px] text-lg text-gray-600 font-bold font-TmoneyRoundWindExtraBold text-left">
-          내 포트폴리오
-        </div>
-        <div className=" w-[70px] text-xs text-gray-500 pt-10 text-right">
-          {" "}
-          가격 단위 (KRW)
-        </div>
+        <div className="w-[300px] text-lg text-gray-600 font-bold font-TmoneyRoundWindExtraBold text-left">내 포트폴리오</div>
+        <div className=" w-[70px] text-xs text-gray-500 pt-10 text-right">가격 단위 (KRW)</div>
       </div>
       <div className="mx-auto max-w-[390px] px-3 mt-[10px]">
         <div className="flex justify-around">
