@@ -67,8 +67,10 @@ export default function Eachintereststock(props) {
                 : "text-[#000000]"
             }`}
           >
-            {props.earningValue>0 ? (`+${props.earningValue.toLocaleString()}`) : (`${props.earningValue.toLocaleString()}`)}
-            </div>
+            {props.earningValue > 0
+              ? `+${props.earningValue.toLocaleString()}`
+              : `${props.earningValue.toLocaleString()}`}
+          </div>
 
           {/* 수익률 */}
           <div

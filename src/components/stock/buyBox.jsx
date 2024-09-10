@@ -21,7 +21,7 @@ function BuyBox({
   const handleMaxQuantity = () => {
     const maxQuantity = Math.floor(data?.cash / curPrice);
     setQuantity(maxQuantity);
-    if(!isLoggedIn){
+    if (!isLoggedIn) {
       setQuantity(0);
     }
   };
@@ -29,7 +29,7 @@ function BuyBox({
   const handle50PercentQuantity = () => {
     const maxQuantity = Math.floor(data?.cash / curPrice);
     setQuantity(Math.floor(maxQuantity / 2));
-    if(!isLoggedIn){
+    if (!isLoggedIn) {
       setQuantity(0);
     }
   };
@@ -37,7 +37,7 @@ function BuyBox({
   const handle25PercentQuantity = () => {
     const maxQuantity = Math.floor(data?.cash / curPrice);
     setQuantity(Math.floor(maxQuantity / 4));
-    if(!isLoggedIn){
+    if (!isLoggedIn) {
       setQuantity(0);
     }
   };
@@ -78,7 +78,12 @@ function BuyBox({
         buttonsStyling: false,
       });
       return;
-    } else if (data?.cash === undefined || data?.cash === null || data?.cash === 0 || quantity * curPrice > data?.cash) {
+    } else if (
+      data?.cash === undefined ||
+      data?.cash === null ||
+      data?.cash === 0 ||
+      quantity * curPrice > data?.cash
+    ) {
       Swal.fire({
         icon: "error",
         text: "본인 캐시를 확인해주세요",
@@ -134,7 +139,7 @@ function BuyBox({
         <div className="w-[180px] text-center">
           <button
             className="text-center text-[10px] bg-boxBackgroundColor p-2 rounded-md mx-1 hover:bg-boxHoverColor text-gray-600"
-            onClick={()=>setQuantity(0)}
+            onClick={() => setQuantity(0)}
           >
             0
           </button>
@@ -161,13 +166,21 @@ function BuyBox({
       <div className="flex w-[350px] justify-between mt-5">
         <div className="flex items-center w-1/2">
           <p className=" text-gray-600">총액</p>
-          <p className={`${total_money>100000000 ? 'text-xs' : 'text-sm'} h-[30px] w-[120px] content-center text-right text-gray-600`}>
+          <p
+            className={`${
+              total_money > 100000000 ? "text-xs" : "text-sm"
+            } h-[30px] w-[120px] content-center text-right text-gray-600`}
+          >
             {money_change(total_money)} KRW
           </p>
         </div>
         <div className="flex items-center w-1/2">
           <p className=" text-gray-600">내 캐시</p>
-          <p className={`${data?.cash>100000000 ? 'text-xs' : 'text-sm'} h-[30px] w-[115px] content-center text-right text-gray-600`}>
+          <p
+            className={`${
+              data?.cash > 100000000 ? "text-xs" : "text-sm"
+            } h-[30px] w-[115px] content-center text-right text-gray-600`}
+          >
             {money_change(data?.cash)} KRW
           </p>
         </div>

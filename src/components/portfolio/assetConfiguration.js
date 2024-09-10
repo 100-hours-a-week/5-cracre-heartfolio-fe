@@ -131,7 +131,7 @@ function AssetConfiguration() {
               fontSize: "15px",
               offsetY: -3,
               formatter: function (value) {
-                const numericValue = Number(value)
+                const numericValue = Number(value);
                 return numericValue.toLocaleString();
               },
             },

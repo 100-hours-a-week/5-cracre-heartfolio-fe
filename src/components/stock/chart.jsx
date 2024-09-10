@@ -82,7 +82,9 @@ function Chart(props) {
         });
 
         if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status} - ${response.statusText}`);
+          throw new Error(
+            `HTTP error! status: ${response.status} - ${response.statusText}`
+          );
         }
 
         const result = await response.json();
@@ -108,7 +110,9 @@ function Chart(props) {
     <>
       <div className="mx-auto max-w-[370px]">
         <div></div>
-        <p className="pb-2 text-gray-600 text-lg">{curPrice.toLocaleString()} KRW</p>
+        <p className="pb-2 text-gray-600 text-lg">
+          {curPrice.toLocaleString()} KRW
+        </p>
         <TradingViewWidget symbol={props.data?.symbol} />
         <div
           role="tablist"
@@ -116,14 +120,18 @@ function Chart(props) {
         >
           <div
             role="tab"
-            className={`tab h-[50px] ${activeTab === 1 ? "tab-active" : ""} text-gray-600`}
+            className={`tab h-[50px] ${
+              activeTab === 1 ? "tab-active" : ""
+            } text-gray-600`}
             onClick={() => setActiveTab(1)}
           >
             매수
           </div>
           <div
             role="tab"
-            className={`tab h-[50px] ${activeTab === 2 ? "tab-active" : ""} text-gray-600`}
+            className={`tab h-[50px] ${
+              activeTab === 2 ? "tab-active" : ""
+            } text-gray-600`}
             onClick={() => setActiveTab(2)}
           >
             매도
