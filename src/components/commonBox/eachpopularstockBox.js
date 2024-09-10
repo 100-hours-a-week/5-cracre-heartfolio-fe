@@ -17,12 +17,15 @@ export default function EachpopularStockBox(props) {
       onClick={() => handleClick(props.stockId)}
     >
       {/* 순위 */}
-      <p className="text-gray-600 w-10 py-3 text-center content-center font-semibold text-lg">{props.rank}</p>
+      <p className="text-gray-600 w-10 py-3 text-center content-center font-semibold text-lg">
+        {props.rank}
+      </p>
       {/* 내용 */}
       <div className="text-gray-600 ml-4 w-[300px]">
         {/* 종목이름 */}
         <h1 className="text-gray-600 font-medium text-lg text-[15px] font-bold">
-          {props.stockKorea} ({props.stockName})</h1>
+          {props.stockKorea} ({props.stockName})
+        </h1>
         {/* 종목정보 */}
         <div className="flex flex-row mt-1">
           {/* 현재가 */}
@@ -37,7 +40,9 @@ export default function EachpopularStockBox(props) {
                 : "text-[#000000]"
             }`}
           >
-            {props.earningValue>0 ? (`+${props.earningValue.toLocaleString()}`) : (`${props.earningValue.toLocaleString()}`)}
+            {props.earningValue > 0
+              ? `+${props.earningValue.toLocaleString()}`
+              : `${props.earningValue.toLocaleString()}`}
           </div>
 
           {/* 수익률 */}
