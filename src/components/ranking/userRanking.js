@@ -58,7 +58,7 @@ function UserRanking() {
     },
   ];
 
-// 월별 수익률 목데이터
+  // 월별 수익률 목데이터
   const monthly_data = [
     {
       profile: "/profile/photo1",
@@ -144,7 +144,7 @@ function UserRanking() {
       <div className="mx-auto max-w-[350px] pb-16">
         <div role="tabpanel" className="tab-content block">
           {activeTab === 1 && <UserRankingBox data={accumulation_data} />}
-          {activeTab === 2 && <UserRankingBox data={monthly_data}/>}
+          {activeTab === 2 && <UserRankingBox data={monthly_data} />}
         </div>
       </div>
     </div>
