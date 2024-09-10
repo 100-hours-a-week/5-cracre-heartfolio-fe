@@ -9,8 +9,14 @@ function CashChargeAfterPage() {
       <Header />
       <div className="pt-[90px] min-h-screen bg-white text-center flex flex-col items-center">
         <div className="flex flex-col items-center pt-5">
-          <img src="/assets/images/heart-rate.png" alt="heart" className="w-40 h-40"></img>
-          <div className="text-gray-600 mt-10">여러분의 따뜻한 마음이 잘 전달되었습니다</div>
+          <img
+            src="/assets/images/heart-rate.png"
+            alt="heart"
+            className="w-40 h-40"
+          ></img>
+          <div className="text-gray-600 mt-10">
+            여러분의 따뜻한 마음이 잘 전달되었습니다
+          </div>
         </div>
       </div>
       <ButtomNavigation />

@@ -13,13 +13,17 @@ function Popularstock() {
   }
 
   if (error) {
-    return <div className="min-h-screen bg-white text-center">Error: {error.message}</div>; // 에러 발생 시 표시할 내용
+    return (
+      <div className="min-h-screen bg-white text-center">
+        Error: {error.message}
+      </div>
+    ); // 에러 발생 시 표시할 내용
   }
 
   if (!data || data.length === 0) {
     return <div>No data available</div>; // 데이터가 없을 때 표시할 내용
   }
-  
+
   return (
     <>
       <Header />

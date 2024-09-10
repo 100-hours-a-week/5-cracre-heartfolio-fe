@@ -5,7 +5,7 @@ const KakaoRedirect = () => {
   const navigate = useNavigate();
   // const code = new URLSearchParams(window.location.search).get("code");
   const params = new URL(document.URL).searchParams;
-  const code = params.get('code');
+  const code = params.get("code");
 
   useEffect(() => {
     if (code) {

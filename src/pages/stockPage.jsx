@@ -87,7 +87,9 @@ function StockPage() {
             {loading ? (
               <p className="min-h-screen bg-white text-center">Loading...</p>
             ) : error ? (
-              <p className="min-h-screen bg-white text-center">Error: {error.message}</p>
+              <p className="min-h-screen bg-white text-center">
+                Error: {error.message}
+              </p>
             ) : (
               <>
                 {activeTab === 1 && <Chart data={data} />}

@@ -17,7 +17,7 @@ function RankingPage() {
       setActiveTab(location.state.activeTab);
     }
   }, [location.state?.activeTab]);
-  
+
   return (
     <>
       <Header />

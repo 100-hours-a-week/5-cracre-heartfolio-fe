@@ -15,7 +15,7 @@ function SearchPage() {
   const [searchTerm, setSearchTerm] = useState(""); // 검색어 상태 추가
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  
+
   // 검색창에서 값이 변경될 때마다 searchTerm 상태 업데이트
   const handleInputChange = (event) => {
     setSearchTerm(event.target.value);
