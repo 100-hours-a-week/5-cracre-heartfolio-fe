@@ -39,7 +39,7 @@ function StockHeader(props) {
         if (res.ok) {
           setSrc("/assets/images/interest.png");
           console.log("success post like");
-          navigate(`/stock/${id}`);
+          window.location.reload();
         }
       });
     } else if (src == "/assets/images/interest.png") {
@@ -54,7 +54,7 @@ function StockHeader(props) {
         if (res.ok) {
           setSrc("/assets/images/uninterest.png");
           console.log("success delete like");
-          navigate(`/stock/${id}`);
+          window.location.reload();
         }
       });
     }
