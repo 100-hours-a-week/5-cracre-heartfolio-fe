@@ -1,6 +1,6 @@
 function TitleBox(props) {
   return (
-    <div className="flex justify-between pt-[35px]">
+    <div className="flex justify-between pt-[20px]">
       <p className="text-lg ml-[10px] text-gray-600 font-bold font-TmoneyRoundWindExtraBold">
         {props.title}
       </p>

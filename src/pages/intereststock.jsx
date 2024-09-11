@@ -10,6 +10,7 @@ import alertAnimation from "../assets/animations/alert.json";
 
 function Intereststock() {
   const token = localStorage.getItem("access_token");
+
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   useEffect(() => {
