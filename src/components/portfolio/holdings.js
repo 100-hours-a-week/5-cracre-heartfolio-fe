@@ -3,9 +3,11 @@ import useFetch from "../../hooks/useFetch";
 import HoldingsBox from "./holdingsBox";
 import noInfoAnimation from "../../assets/animations/noInfo.json";
 import Lottie from "lottie-react";
+import { useNavigate } from "react-router-dom";
 
 function Holdings() {
   const token = localStorage.getItem("access_token");
+  const navigate = useNavigate();
   // 데이터 가져오기 상태 관리
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
@@ -71,6 +73,7 @@ function Holdings() {
               <li key={item.stockId} className="py-2">
                 <HoldingsBox
                   stock_id={item.stockId}
+                  onClick={()=>{navigate(`/stock/${item.stockId}`)}}
                   name={item.name}
                   evalProfit={item.evalProfit}
                   evalValue={item.evalValue}
