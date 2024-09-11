@@ -2829,6 +2829,10 @@ input.tab:checked + .tab-content,
   margin-left: 10px;
 }
 
+.ml-\[22px\] {
+  margin-left: 22px;
+}
+
 .ml-auto {
   margin-left: auto;
 }
@@ -2843,6 +2847,10 @@ input.tab:checked + .tab-content,
 
 .mr-5 {
   margin-right: 1.25rem;
+}
+
+.mr-6 {
+  margin-right: 1.5rem;
 }
 
 .mr-\[5px\] {
@@ -2895,30 +2903,6 @@ input.tab:checked + .tab-content,
 
 .mt-\[6px\] {
   margin-top: 6px;
-}
-
-.ml-\[22px\] {
-  margin-left: 22px;
-}
-
-.mr-2 {
-  margin-right: 0.5rem;
-}
-
-.mr-6 {
-  margin-right: 1.5rem;
-}
-
-.mr-8 {
-  margin-right: 2rem;
-}
-
-.mr-12 {
-  margin-right: 3rem;
-}
-
-.mr-10 {
-  margin-right: 2.5rem;
 }
 
 .block {
@@ -3175,18 +3159,6 @@ input.tab:checked + .tab-content,
 
 .w-full {
   width: 100%;
-}
-
-.w-\[40px\] {
-  width: 40px;
-}
-
-.w-\[28px\] {
-  width: 28px;
-}
-
-.w-\[200px\] {
-  width: 200px;
 }
 
 .min-w-0 {
@@ -3617,8 +3589,8 @@ input.tab:checked + .tab-content,
   padding-top: 10px;
 }
 
-.pt-\[35px\] {
-  padding-top: 35px;
+.pt-\[20px\] {
+  padding-top: 20px;
 }
 
 .pt-\[60px\] {
@@ -3641,22 +3613,6 @@ input.tab:checked + .tab-content,
   padding-top: 90px;
 }
 
-.pt-\[30px\] {
-  padding-top: 30px;
-}
-
-.pt-\[25px\] {
-  padding-top: 25px;
-}
-
-.pt-\[25p\] {
-  padding-top: 25p;
-}
-
-.pt-\[20px\] {
-  padding-top: 20px;
-}
-
 .text-left {
   text-align: left;
 }
@@ -3667,10 +3623,6 @@ input.tab:checked + .tab-content,
 
 .text-right {
   text-align: right;
-}
-
-.font-DoHyeon {
-  font-family: Do Hyeon;
 }
 
 .font-TheJamsil5Bold {

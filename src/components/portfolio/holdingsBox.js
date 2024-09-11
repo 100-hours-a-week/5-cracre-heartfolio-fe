@@ -1,7 +1,7 @@
 function HoldingsBox(props) {
   return (
     <>
-      <div className="overflow-hidden rounded-lg bg-white shadow">
+      <div className="overflow-hidden rounded-lg bg-white shadow hover:cursor-pointer" onClick={props.onClick}>
         <div className="p-4">
           <div className="flex justify-between">
             <div className="text-lg  text-gray-600 font-semibold">
