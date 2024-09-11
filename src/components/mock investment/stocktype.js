@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const tabs = [
   { name: "인기종목", href: "/popularstock", current: false, isIcon: false },
   { name: "관심종목", href: "/intereststock", current: false, isIcon: false },
@@ -17,9 +19,9 @@ export default function Stocktype() {
           className="isolate flex divide-x divide-gray-200 shadow"
         >
           {tabs.map((tab, tabIdx) => (
-            <a
+            <Link
               key={tab.name}
-              href={tab.href}
+              to={tab.href}
               aria-current={tab.current ? "page" : undefined}
               className={classNames(
                 tab.current
@@ -45,7 +47,7 @@ export default function Stocktype() {
                   "absolute inset-x-0 bottom-0 h-0.5"
                 )}
               />
-            </a>
+            </Link>
           ))}
         </nav>
       </div>
