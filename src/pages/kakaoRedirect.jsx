@@ -19,7 +19,7 @@ const KakaoRedirect = () => {
         .then((data) => {
           if (data && data.token && data.token.access_token) {
             localStorage.setItem("access_token", data.token.access_token);
-            // localStorage.setItem('refresh_token', data.token.refresh_token);
+            localStorage.setItem('refresh_token', data.token.refresh_token);
             navigate("/"); // 로그인 후 메인 페이지로 리다이렉트
           } else {
             console.error("토큰이 없습니다.", data);
