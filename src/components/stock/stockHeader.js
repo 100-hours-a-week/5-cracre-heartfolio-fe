@@ -8,6 +8,7 @@ function StockHeader(props) {
   const token = localStorage.getItem("access_token");
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [src, setSrc] = useState("/assets/images/uninterest.png"); // 기본값을 초기화
+  const [isProcessing, setIsProcessing] = useState(false); // 클릭 상태 관리
 
   useEffect(() => {
     if (token) {
@@ -21,13 +22,19 @@ function StockHeader(props) {
   }, [token, props.data?.likePresent]);
 
   function handlefavorite() {
+    // 클릭 중이면 더 이상 실행되지 않도록 함
+    if (isProcessing) {
+      return;
+    }
+    // 클릭이 처리 중임을 표시
+    setIsProcessing(true);
     if (isAuthenticated == false) {
       toast.error("로그인이 필요한 서비스입니다.", { autoClose: 2000 });
 
       setTimeout(function () {
         window.location.assign("/login");
       }, 2000);
-    } else if (src === "/assets/images/uninterest.png") {
+    }else if (src === "/assets/images/uninterest.png") {
       fetch("https://heartfolio.site/api/stock/favorites/" + id, {
         // credentials: "include",
         method: "POST",
@@ -35,13 +42,19 @@ function StockHeader(props) {
           Authorization: `Bearer ${token}`, // 토큰을 헤더에 추가
           "Content-Type": "application/json",
         },
-      }).then((res) => {
-        if (res.ok) {
-          setSrc("/assets/images/interest.png");
-          console.log("success post like");
-          window.location.reload();
-        }
-      });
+      })
+        .then((res) => {
+          if (res.ok) {
+            setSrc("/assets/images/interest.png");
+            console.log("success post like");
+            window.location.reload();
+          }
+          // 클릭 처리 완료 후 상태를 false로 변경
+          setIsProcessing(false);
+        })
+        .catch(() => {
+          setIsProcessing(false);
+        });
     } else if (src == "/assets/images/interest.png") {
       fetch("https://heartfolio.site/api/stock/favorites/" + id, {
         // credentials: "include",
@@ -50,13 +63,18 @@ function StockHeader(props) {
           Authorization: `Bearer ${token}`, // 토큰을 헤더에 추가
           "Content-Type": "application/json",
         },
-      }).then((res) => {
-        if (res.ok) {
-          setSrc("/assets/images/uninterest.png");
-          console.log("success delete like");
-          window.location.reload();
-        }
-      });
+      })
+        .then((res) => {
+          if (res.ok) {
+            setSrc("/assets/images/uninterest.png");
+            console.log("success delete like");
+            window.location.reload();
+          } // 클릭 처리 완료 후 상태를 false로 변경
+          setIsProcessing(false);
+        })
+        .catch(() => {
+          setIsProcessing(false);
+        });
     }
   }
 
@@ -96,9 +114,11 @@ function StockHeader(props) {
           </div>
           <img
             src={src}
-            className="h-[20px]"
+            className="h-[20px] hover:cursor-pointer"
             onClick={() => handlefavorite()}
             alt="FavoriteHeart"
+            // 클릭 중이면 비활성화
+            style={{ pointerEvents: isProcessing ? "none" : "auto" }}
           ></img>
         </div>
       </div>
