@@ -20,7 +20,7 @@ function BuyBox({
 
   function handlePercentQuantity(percent) {
     const maxQuantity = Math.floor(data?.cash / curPrice);
-    setQuantity(Math.floor(maxQuantity * (percent/100)));
+    setQuantity(Math.floor(maxQuantity * (percent / 100)));
     if (!isLoggedIn) {
       setQuantity(0);
       Swal.fire({
@@ -34,8 +34,19 @@ function BuyBox({
         buttonsStyling: false,
       });
       return;
+    } else if (maxQuantity < 1) {
+      Swal.fire({
+        icon: "error",
+        text: "본인 캐시를 확인해주세요",
+        customClass: {
+          confirmButton:
+            "bg-btnNoClickColor w-[70px] h-[40px] text-gray-800 rounded hover:bg-btnClickColor", // Tailwind CSS 클래스 적용
+        },
+        buttonsStyling: false,
+      });
+      return;
     }
-  };
+  }
 
   const total_money = curPrice * quantity;
 
@@ -140,19 +151,19 @@ function BuyBox({
           </button>
           <button
             className="text-center text-[10px] bg-boxBackgroundColor p-2 rounded-md mx-1 hover:bg-boxHoverColor  text-gray-600"
-            onClick={()=>handlePercentQuantity(25)}
+            onClick={() => handlePercentQuantity(25)}
           >
             25%
           </button>
           <button
             className="text-center text-[10px] bg-boxBackgroundColor p-2 rounded-md mx-1 hover:bg-boxHoverColor  text-gray-600"
-            onClick={()=>handlePercentQuantity(50)}
+            onClick={() => handlePercentQuantity(50)}
           >
             50%
           </button>
           <button
             className="text-center text-[10px] bg-boxBackgroundColor p-2 rounded-md mx-1 hover:bg-boxHoverColor  text-gray-600"
-            onClick={()=>handlePercentQuantity(100)}
+            onClick={() => handlePercentQuantity(100)}
           >
             최대
           </button>
