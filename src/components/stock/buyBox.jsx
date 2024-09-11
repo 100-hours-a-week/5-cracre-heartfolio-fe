@@ -18,27 +18,22 @@ function BuyBox({
     }
   };
 
-  const handleMaxQuantity = () => {
+  function handlePercentQuantity(percent) {
     const maxQuantity = Math.floor(data?.cash / curPrice);
-    setQuantity(maxQuantity);
+    setQuantity(Math.floor(maxQuantity * (percent/100)));
     if (!isLoggedIn) {
       setQuantity(0);
-    }
-  };
-
-  const handle50PercentQuantity = () => {
-    const maxQuantity = Math.floor(data?.cash / curPrice);
-    setQuantity(Math.floor(maxQuantity / 2));
-    if (!isLoggedIn) {
-      setQuantity(0);
-    }
-  };
-
-  const handle25PercentQuantity = () => {
-    const maxQuantity = Math.floor(data?.cash / curPrice);
-    setQuantity(Math.floor(maxQuantity / 4));
-    if (!isLoggedIn) {
-      setQuantity(0);
+      Swal.fire({
+        icon: "warning",
+        text: "로그인이 필요한 서비스입니다.",
+        footer: '<a href="/login">로그인 하러가기</a>',
+        customClass: {
+          confirmButton:
+            "bg-btnNoClickColor w-[70px] h-[40px] text-gray-800 rounded hover:bg-btnClickColor", // Tailwind CSS 클래스 적용
+        },
+        buttonsStyling: false,
+      });
+      return;
     }
   };
 
@@ -145,19 +140,19 @@ function BuyBox({
           </button>
           <button
             className="text-center text-[10px] bg-boxBackgroundColor p-2 rounded-md mx-1 hover:bg-boxHoverColor  text-gray-600"
-            onClick={handle25PercentQuantity}
+            onClick={()=>handlePercentQuantity(25)}
           >
             25%
           </button>
           <button
             className="text-center text-[10px] bg-boxBackgroundColor p-2 rounded-md mx-1 hover:bg-boxHoverColor  text-gray-600"
-            onClick={handle50PercentQuantity}
+            onClick={()=>handlePercentQuantity(50)}
           >
             50%
           </button>
           <button
             className="text-center text-[10px] bg-boxBackgroundColor p-2 rounded-md mx-1 hover:bg-boxHoverColor  text-gray-600"
-            onClick={handleMaxQuantity}
+            onClick={()=>handlePercentQuantity(100)}
           >
             최대
           </button>
