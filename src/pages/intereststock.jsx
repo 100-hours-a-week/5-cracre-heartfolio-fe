@@ -9,11 +9,14 @@ import heartAnimation from "../assets/animations/heart.json";
 import alertAnimation from "../assets/animations/alert.json";
 
 function Intereststock() {
-  const token = localStorage.getItem("access_token");
+  // const token = localStorage.getItem("access_token");
+  const token = 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIzNjc3MTE1MTY2IiwiZXhwIjoxNzI2MDQxNzQ4fQ.jjtMu3QwNE0ltaAXz-4cwoRATXXJVdv808WW-uEdvAgr-hoFRsQkAMOuz1EXYjl007zmLVEe1Okk4vE-GVKBAw';
+
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   useEffect(() => {
-    const token = localStorage.getItem("access_token");
+    // const token = localStorage.getItem("access_token");
+    const token = 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIzNjc3MTE1MTY2IiwiZXhwIjoxNzI2MDQxNzQ4fQ.jjtMu3QwNE0ltaAXz-4cwoRATXXJVdv808WW-uEdvAgr-hoFRsQkAMOuz1EXYjl007zmLVEe1Okk4vE-GVKBAw';
     if (token) {
       setIsAuthenticated(true);
     }
