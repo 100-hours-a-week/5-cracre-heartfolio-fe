@@ -2897,6 +2897,30 @@ input.tab:checked + .tab-content,
   margin-top: 6px;
 }
 
+.ml-\[22px\] {
+  margin-left: 22px;
+}
+
+.mr-2 {
+  margin-right: 0.5rem;
+}
+
+.mr-6 {
+  margin-right: 1.5rem;
+}
+
+.mr-8 {
+  margin-right: 2rem;
+}
+
+.mr-12 {
+  margin-right: 3rem;
+}
+
+.mr-10 {
+  margin-right: 2.5rem;
+}
+
 .block {
   display: block;
 }
@@ -3151,6 +3175,18 @@ input.tab:checked + .tab-content,
 
 .w-full {
   width: 100%;
+}
+
+.w-\[40px\] {
+  width: 40px;
+}
+
+.w-\[28px\] {
+  width: 28px;
+}
+
+.w-\[200px\] {
+  width: 200px;
 }
 
 .min-w-0 {
@@ -3605,6 +3641,22 @@ input.tab:checked + .tab-content,
   padding-top: 90px;
 }
 
+.pt-\[30px\] {
+  padding-top: 30px;
+}
+
+.pt-\[25px\] {
+  padding-top: 25px;
+}
+
+.pt-\[25p\] {
+  padding-top: 25p;
+}
+
+.pt-\[20px\] {
+  padding-top: 20px;
+}
+
 .text-left {
   text-align: left;
 }
@@ -3920,19 +3972,14 @@ input.tab:checked + .tab-content,
   color: rgb(107 114 128 / var(--tw-text-opacity));
 }
 
-.hover\:text-gray-700:hover {
-  --tw-text-opacity: 1;
-  color: rgb(55 65 81 / var(--tw-text-opacity));
-}
-
-.hover\:text-gray-800:hover {
-  --tw-text-opacity: 1;
-  color: rgb(31 41 55 / var(--tw-text-opacity));
-}
-
 .hover\:text-gray-600:hover {
   --tw-text-opacity: 1;
   color: rgb(75 85 99 / var(--tw-text-opacity));
+}
+
+.hover\:text-gray-700:hover {
+  --tw-text-opacity: 1;
+  color: rgb(55 65 81 / var(--tw-text-opacity));
 }
 
 .hover\:underline:hover {
