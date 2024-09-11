@@ -12,10 +12,10 @@ export default function EachpopularStockBox(props) {
 
   return (
     <div
-      className="flex mx-auto max-w-[350px] m-3 mb-2 bg-white hover:bg-gray-50 flex-col"
+      className="flex mx-auto max-w-[350px] m-3 mb-2 bg-white flex-col"
       onClick={() => handleClick(props.stockId)}
     >
-      <div className="flex">
+      <div className="flex hover:bg-gray-50">
         {/* 순위 */}
         <p className="text-gray-600 w-10 py-3 text-center content-center font-semibold text-lg">
           {props.rank}

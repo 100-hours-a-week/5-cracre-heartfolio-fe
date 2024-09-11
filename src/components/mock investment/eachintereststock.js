@@ -34,8 +34,8 @@ export default function Eachintereststock(props) {
     navigate(`/stock/${get_id}`);
   }
   return (
-    <div className="flex mx-auto max-w-[350px] m-3 mb-2 bg-white hover:bg-gray-50 flex-col">
-      <div className="flex">
+    <div className="flex mx-auto max-w-[350px] m-3 mb-2 bg-white flex-col">
+      <div className="flex hover:bg-gray-50">
         {/* 하트 */}
         {/* 이 버튼은 클릭 시 toggleImage 함수를 호출하여 이미지가 바뀝니다. */}
         <button onClick={() => toggleImage(props.stockId)} className="px-3">
