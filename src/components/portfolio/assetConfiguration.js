@@ -24,8 +24,9 @@ function AssetConfiguration() {
 
   useEffect(() => {
     const fetchData = async () => {
+      setLoading(true);
       try {
-        const response = await fetch(
+        let response = await fetch(
           "https://heartfolio.site/api/portfolio/stock",
           {
             headers: {
@@ -34,12 +35,48 @@ function AssetConfiguration() {
             },
           }
         );
+        console.log("First request response:", response);
 
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
+        if (response.status === 401) {
+          // Access token 만료 -> refresh token으로 새 access token 요청
+          const refreshToken = localStorage.getItem("refresh_token");
+          const refreshResponse = await fetch(
+            "https://heartfolio.site/api/auth/refresh-token",
+            {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ refreshToken: refreshToken }),
+            }
+          );
+
+          if (refreshResponse.status === 200) {
+            const data = await refreshResponse.json();
+            localStorage.setItem("access_token", data.accessToken); // 새 access token 저장
+
+            // 새로운 access token으로 원래 요청 다시 시도
+            response = await fetch(
+              "https://heartfolio.site/api/portfolio/stock",
+              {
+                headers: {
+                  Authorization: `Bearer ${localStorage.getItem(
+                    "access_token"
+                  )}`, // 새 access token 사용
+                  "Content-Type": "application/json",
+                },
+              }
+            );
+            console.log(
+              "Second request response with new access token:",
+              response
+            );
+          } else {
+            // refresh token도 만료되거나 오류가 있으면 로그인 페이지로 이동
+            window.location.href = "/login";
+            return;
+          }
         }
-
-        const result = await response.json();
+        let result = null;
+        result = await response.json();
 
         // 데이터가 빈 객체인지 확인하고, 데이터가 있는 경우와 없는 경우를 처리
         if (Object.keys(result).length === 0 || !result.stocks) {
@@ -49,8 +86,8 @@ function AssetConfiguration() {
         }
 
         setLoading(false);
-      } catch (error) {
-        setError(error);
+      } catch (err) {
+        setError(err);
         setLoading(false);
       }
     };
