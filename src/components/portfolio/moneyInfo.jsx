@@ -18,8 +18,43 @@ function MoneyInfo() {
           },
         });
 
-        if (!response.ok) {
-          throw new Error(response.statusText); // 응답이 정상적이지 않으면 에러 발생
+        if (response.status === 401) {
+          // Access token 만료 -> refresh token으로 새 access token 요청
+          const refreshToken = localStorage.getItem("refresh_token");
+          const refreshResponse = await fetch(
+            "https://heartfolio.site/api/auth/refresh-token",
+            {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ refreshToken: refreshToken }),
+            }
+          );
+
+          if (refreshResponse.status === 200) {
+            const data = await refreshResponse.json();
+            localStorage.setItem("access_token", data.accessToken); // 새 access token 저장
+
+            // 새로운 access token으로 원래 요청 다시 시도
+            response = await fetch(
+              "https://heartfolio.site/api/portfolio",
+              {
+                headers: {
+                  Authorization: `Bearer ${localStorage.getItem(
+                    "access_token"
+                  )}`, // 새 access token 사용
+                  "Content-Type": "application/json",
+                },
+              }
+            );
+            console.log(
+              "Second request response with new access token:",
+              response
+            );
+          } else {
+            // refresh token도 만료되거나 오류가 있으면 로그인 페이지로 이동
+            window.location.href = "/login";
+            return;
+          }
         }
 
         const result = await response.json();
@@ -33,6 +68,7 @@ function MoneyInfo() {
 
     fetchData();
   }, [userId, token]);
+  
   function money_change(money) {
     if (money === undefined || money === null) return "0";
     if (money >= 1000000000000) {
@@ -53,8 +89,12 @@ function MoneyInfo() {
   return (
     <div className="max-w-full">
       <div className="w-full flex justify-center ">
-        <div className="w-[250px] text-lg text-gray-600 font-bold font-TmoneyRoundWindExtraBold text-left ml-[22px]">내 포트폴리오</div>
-        <div className=" w-[90px] text-xs text-gray-500 pt-10 text-right mr-6">가격 단위 (KRW)</div>
+        <div className="w-[250px] text-lg text-gray-600 font-bold font-TmoneyRoundWindExtraBold text-left ml-[22px]">
+          내 포트폴리오
+        </div>
+        <div className=" w-[90px] text-xs text-gray-500 pt-10 text-right mr-6">
+          가격 단위 (KRW)
+        </div>
       </div>
       <div className="mx-auto max-w-[390px] px-3 mt-[10px]">
         <div className="flex justify-around">
