@@ -53,7 +53,7 @@ function SellBox({
     }
   }
 
-  function sell() {
+  async function sell() {
     if (!isLoggedIn) {
       Swal.fire({
         icon: "warning",
@@ -78,27 +78,76 @@ function SellBox({
       });
       return;
     } else {
-      fetch("https://heartfolio.site/api/invest/order", {
-        method: "DELETE",
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          stockId: id,
-          quantity: quantity,
-          price: curPrice,
-        }),
-      }).then((res) => {
-        if (res.ok) {
+      try {
+        let response = await fetch("https://heartfolio.site/api/invest/order", {
+          method: "DELETE",
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            stockId: id,
+            quantity: quantity,
+            price: curPrice,
+          }),
+        });
+        if (response.ok) {
           setSellDetails({
             quantity: quantity,
             price: curPrice,
             total: quantity * curPrice,
           });
           setIsSellModalOpen(true);
+          return;
         }
-      });
+        // 토큰 만료 처리
+        if (response.status === 401) {
+          const refreshToken = localStorage.getItem("refresh_token");
+          const refreshResponse = await fetch(
+            "https://heartfolio.site/api/auth/refresh-token",
+            {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ refreshToken: refreshToken }),
+            }
+          );
+
+          if (refreshResponse.status === 200) {
+            const data = await refreshResponse.json();
+            localStorage.setItem("access_token", data.accessToken);
+
+            // 새로운 access token으로 요청 다시 시도
+            response = await fetch("https://heartfolio.site/api/invest/order", {
+              method: "DELETE",
+              headers: {
+                Authorization: `Bearer ${localStorage.getItem("access_token")}`,
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                stockId: id,
+                quantity: quantity,
+                price: curPrice,
+              }),
+            });
+
+            if (response.ok) {
+              setSellDetails({
+                quantity: quantity,
+                price: curPrice,
+                total: quantity * curPrice,
+              });
+              setIsSellModalOpen(true);
+            }
+          } else {
+            // refresh token도 만료되거나 오류가 있으면 로그인 페이지로 이동
+            localStorage.removeItem("access_token");
+            window.location.href = "/login";
+            return;
+          }
+        }
+      } catch (error) {
+        console.error("error:", error);
+      }
     }
   }
 
