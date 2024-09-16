@@ -71,6 +71,7 @@ function AssetConfiguration() {
             );
           } else {
             // refresh token도 만료되거나 오류가 있으면 로그인 페이지로 이동
+            localStorage.removeItem("access_token");
             window.location.href = "/login";
             return;
           }

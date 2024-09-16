@@ -3,7 +3,7 @@ import ButtomNavigation from "../components/common/bottomNavigation";
 import Header from "../components/common/header";
 import ContructionAnimation from "../assets/animations/construction.json";
 
-function CashChargeAfterPage() {
+function CashChargeSuccessPage() {
   return (
     <>
       <Header />
@@ -41,4 +41,4 @@ function CashChargeAfterPage() {
 //   );
 // }
 
-export default CashChargeAfterPage;
+export default CashChargeSuccessPage;

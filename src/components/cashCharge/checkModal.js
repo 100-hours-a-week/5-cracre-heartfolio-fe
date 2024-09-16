@@ -1,7 +1,6 @@
 import { useNavigate } from "react-router-dom";
 
 function CheckModal(props) {
-  const navigate = useNavigate();
   return (
     <div className="modal-overlay fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
       <div className="modal-box bg-white w-[400px] h-[250px] content-center relative">
@@ -14,7 +13,7 @@ function CheckModal(props) {
             <div className="modal-action">
               <button
                 className="btn bg-btnClickColor text-gray-600 border-0 hover:bg-[#ff99a1] w-32"
-                onClick={() => navigate("/cashcharge/complete")}
+                onClick={props.clickYes}
               >
                 예
               </button>
