@@ -13,16 +13,25 @@ function CashChargePage() {
   const [isCheckModalOpen, setIsCheckModalOpen] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [orderUid, setOrderUid] = useState(null);
+  const [buyerName, setBuyerName] = useState('');
+  
 
   useEffect(() => {
-    const token = localStorage.getItem("access_token");
+    // const token = localStorage.getItem("access_token");
+    const token = "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIzNjc2NTcwMjEyIiwiZXhwIjoxNzI2NDk0NDczfQ.-mLMO2iwrt8P3NzelhTE3gv-XjCqtiZeCVuLQ0XTTD0l-C9dAsX3zseruF2_wRDvM3_9N56L2IvlCPfaz7erfg";
     if (token) {
       setIsAuthenticated(true);
     }
+
+    const { IMP } = window;
+    IMP.init(`${process.env.REACT_APP_IMP_CODE}`);
   }, []);
 
   const showModal = (amount) => {
     setSelectedAmount(amount);
+    setOrderUid(`order_${new Date().getTime()}`); // 주문 번호 생성
+    setBuyerName('홍길동'); // 로그인된 사용자 이름 설정
     setIsCategoryModalOpen(true); // 모달을 열기 위해 상태 업데이트
   };
 
@@ -35,6 +44,47 @@ function CashChargePage() {
   const handleCheckModalClose = () => {
     setIsCheckModalOpen(false); // 확인 모달 닫기
   };
+
+  const handleCharge = (amount)=>{
+    setIsCheckModalOpen(false); // 확인 모달 닫기
+    const {IMP} = window;
+    IMP.init(process.env.REACT_APP_IMP_CODE);
+    IMP.request_pay({
+      pg:'html5_inicis.INIpayTest',
+      pay_method : 'card',
+      merchant_uid: orderUid, // 주문 번호
+      name: '캐시충전',
+      amount : amount, // 상품 가격
+      buyer_email : 'test1@example.com',
+      buyer_name : buyerName, // 구매자 이름
+    },function(rsp){
+      if (rsp.success) {
+        fetch('https://heartfolio.site/api/payment/success', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            payment_uid: rsp.imp_uid,
+            order_uid: rsp.merchant_uid,
+          }),
+        })
+        .then(response => response.json())
+        .then(data => {
+          console.log(data);
+          window.location.href = "/success-payment";
+        })
+        .catch(error => {
+          console.error('Error:', error);
+          alert('결제 정보 전달 실패');
+        });
+      } else {
+        window.location.href = "/fail-payment";
+        alert('결제 실패');
+      }
+      
+    })
+  }
 
   return (
     <>
@@ -87,6 +137,7 @@ function CashChargePage() {
         <CheckModal
           amount={selectedAmount}
           category={selectedCategory}
+          clickYes={()=>handleCharge(selectedAmount)}
           onClose={handleCheckModalClose}
         />
       )}
