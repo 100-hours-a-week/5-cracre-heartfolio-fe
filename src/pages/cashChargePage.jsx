@@ -53,7 +53,7 @@ function CashChargePage() {
       pg:'html5_inicis.INIpayTest',
       pay_method : 'card',
       merchant_uid: orderUid, // 주문 번호
-      name: '캐시충전',
+      name: 'Heartfolio 캐시 충전',
       amount : amount, // 상품 가격
       buyer_email : 'test1@example.com',
       buyer_name : buyerName, // 구매자 이름
