@@ -13,7 +13,7 @@ function MainPage() {
     navigate(route, { state: { activeTab: tab } });
   }
 
-  const { data, error, loading } = useFetch(`${process.env.REACT_APP_API_URI}/news`);
+  const { data, error, loading } = useFetch("https://heartfolio.site/api/news");
   if (loading) {
     return <div className="min-h-screen bg-white text-center">Loading...</div>; // 로딩 중일 때 표시할 내용
   }

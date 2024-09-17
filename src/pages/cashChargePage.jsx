@@ -59,7 +59,7 @@ function CashChargePage() {
       buyer_name : buyerName, // 구매자 이름
     },function(rsp){
       if (rsp.success) {
-        fetch(`${process.env.REACT_APP_API_URI}/payment/success`, {
+        fetch('https://heartfolio.site/api/payment/success', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

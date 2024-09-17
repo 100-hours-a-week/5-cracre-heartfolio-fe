@@ -22,7 +22,7 @@ function StockPage() {
       setLoading(true); // 데이터 가져오기 시작 전에 로딩 상태 설정
       try {
         const response = await fetch(
-          `${process.env.REACT_APP_API_URI}/stock/order/${id}/details`,
+          `https://heartfolio.site/api/stock/order/${id}/details`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -35,7 +35,7 @@ function StockPage() {
           // Access token 만료 -> refresh token으로 새 access token 요청
           const refreshToken = localStorage.getItem("refresh_token");
           const refreshResponse = await fetch(
-            `${process.env.REACT_APP_API_URI}/auth/refresh-token`,
+            "https://heartfolio.site/api/auth/refresh-token",
             {
               method: "POST",
               headers: { "Content-Type": "application/json" },
@@ -49,7 +49,7 @@ function StockPage() {
 
             // 새로운 access token으로 원래 요청 다시 시도
             response = await fetch(
-              `${process.env.REACT_APP_API_URI}/stock/order/${id}/details`,
+              `https://heartfolio.site/api/stock/order/${id}/details`,
               {
                 headers: {
                   Authorization: `Bearer ${localStorage.getItem(

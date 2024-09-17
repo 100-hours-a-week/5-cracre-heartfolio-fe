@@ -79,7 +79,7 @@ function SellBox({
       return;
     } else {
       try {
-        let response = await fetch(`${process.env.REACT_APP_API_URI}/invest/order`, {
+        let response = await fetch("https://heartfolio.site/api/invest/order", {
           method: "DELETE",
           headers: {
             Authorization: `Bearer ${token}`,
@@ -104,7 +104,7 @@ function SellBox({
         if (response.status === 401) {
           const refreshToken = localStorage.getItem("refresh_token");
           const refreshResponse = await fetch(
-            `${process.env.REACT_APP_API_URI}/auth/refresh-token`,
+            "https://heartfolio.site/api/auth/refresh-token",
             {
               method: "POST",
               headers: { "Content-Type": "application/json" },
@@ -117,7 +117,7 @@ function SellBox({
             localStorage.setItem("access_token", data.accessToken);
 
             // 새로운 access token으로 요청 다시 시도
-            response = await fetch(`${process.env.REACT_APP_API_URI}/invest/order`, {
+            response = await fetch("https://heartfolio.site/api/invest/order", {
               method: "DELETE",
               headers: {
                 Authorization: `Bearer ${localStorage.getItem("access_token")}`,

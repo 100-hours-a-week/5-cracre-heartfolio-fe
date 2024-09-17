@@ -16,7 +16,7 @@ function TransactionHistory() {
       setLoading(true); // 데이터를 가져오기 전 로딩 상태를 true로 설정
       try {
         const response = await fetch(
-          `${process.env.REACT_APP_API_URI}/portfolio/investInfo`,
+          "https://heartfolio.site/api/portfolio/investInfo",
           {
             headers: {
               Authorization: `Bearer ${token}`, // 토큰을 헤더에 추가
@@ -29,7 +29,7 @@ function TransactionHistory() {
           // Access token 만료 -> refresh token으로 새 access token 요청
           const refreshToken = localStorage.getItem("refresh_token");
           const refreshResponse = await fetch(
-            `${process.env.REACT_APP_API_URI}/auth/refresh-token`,
+            "https://heartfolio.site/api/auth/refresh-token",
             {
               method: "POST",
               headers: { "Content-Type": "application/json" },
@@ -43,7 +43,7 @@ function TransactionHistory() {
 
             // 새로운 access token으로 원래 요청 다시 시도
             response = await fetch(
-              `${process.env.REACT_APP_API_URI}/portfolio/investInfo`,
+              "https://heartfolio.site/api/portfolio/investInfo",
               {
                 headers: {
                   Authorization: `Bearer ${localStorage.getItem(
