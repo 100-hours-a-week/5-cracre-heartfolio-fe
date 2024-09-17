@@ -1,10 +1,12 @@
 function HoldingsBox(props) {
   return (
     <>
-      <div className="overflow-hidden rounded-lg bg-white shadow">
+      <div className="overflow-hidden rounded-lg bg-white shadow hover:cursor-pointer" onClick={props.onClick}>
         <div className="p-4">
           <div className="flex justify-between">
-            <div className="text-lg  text-gray-600 font-semibold">{props.name}</div>
+            <div className="text-lg  text-gray-600 font-semibold">
+              {props.name}
+            </div>
             <div>
               <div className="flex items-center justify-between w-[130px]">
                 <div className="text-xs  text-gray-600">평가손익</div>
@@ -41,7 +43,9 @@ function HoldingsBox(props) {
             <div className=" h-[50px] flex-grow content-center px-1">
               <div className="flex justify-between">
                 <div className="text-sm text-gray-600">보유수량</div>
-                <div className="text-sm  text-gray-600">{props.totalQuantity}</div>
+                <div className="text-sm  text-gray-600">
+                  {props.totalQuantity}
+                </div>
               </div>
               <div className="flex justify-between">
                 <div className="text-sm  text-gray-600">평가금액</div>

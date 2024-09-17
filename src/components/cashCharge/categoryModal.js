@@ -4,7 +4,10 @@ function CategoryModal(props) {
   return (
     <div className="modal-overlay fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
       <div className="modal-box bg-white w-[460px]">
-        <button onClick={props.onClose} className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
+        <button
+          onClick={props.onClose}
+          className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
+        >
           ✕
         </button>
         <h3 className="font-bold font-TmoneyRoundWindExtraBold text-center text-gray-600 text-[25px]">

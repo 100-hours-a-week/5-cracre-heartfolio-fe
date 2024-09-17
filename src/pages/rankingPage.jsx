@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ButtomNavigation from "../components/common/bottomNavigation";
 import Header from "../components/common/header";
 import UserRanking from "../components/ranking/userRanking";
@@ -9,7 +9,14 @@ import { useLocation } from "react-router-dom";
 
 // function RankingPage() {
 //   const location = useLocation();
-//   const [activeTab, setActiveTab] = useState(location.state?.activeTab || 1);
+//   // activeTab이 없을 때 기본값 1로 설정
+//   const [activeTab, setActiveTab] = useState(1);
+
+//   useEffect(() => {
+//     if (location.state?.activeTab) {
+//       setActiveTab(location.state.activeTab);
+//     }
+//   }, [location.state?.activeTab]);
 
 //   return (
 //     <>

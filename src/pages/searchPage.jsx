@@ -15,7 +15,7 @@ function SearchPage() {
   const [searchTerm, setSearchTerm] = useState(""); // 검색어 상태 추가
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  
+
   // 검색창에서 값이 변경될 때마다 searchTerm 상태 업데이트
   const handleInputChange = (event) => {
     setSearchTerm(event.target.value);
@@ -28,7 +28,7 @@ function SearchPage() {
         setLoading(true); // 데이터 가져오기 시작 전에 로딩 상태 설정
         try {
           const response = await fetch(
-            `https://heartfolio.site/api/stock/search?keyword=${searchTerm}`
+            `${process.env.REACT_APP_API_URI}/stock/search?keyword=${searchTerm}`
           );
 
           if (!response.ok) {
@@ -48,7 +48,7 @@ function SearchPage() {
   }, [searchTerm]); // searchTerm이 변경될 때마다 useEffect 실행
 
   const { data: popularstock } = useFetch(
-    "https://heartfolio.site/api/stock/popular?limit=" + 5
+    `${process.env.REACT_APP_API_URI}/stock/popular?limit=` + 5
   );
   function handleSearch() {
     setSearchTerm("");
