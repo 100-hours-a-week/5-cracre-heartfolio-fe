@@ -18,8 +18,7 @@ function CashChargePage() {
   
 
   useEffect(() => {
-    // const token = localStorage.getItem("access_token");
-    const token = "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIzNjc2NTcwMjEyIiwiZXhwIjoxNzI2NDk0NDczfQ.-mLMO2iwrt8P3NzelhTE3gv-XjCqtiZeCVuLQ0XTTD0l-C9dAsX3zseruF2_wRDvM3_9N56L2IvlCPfaz7erfg";
+    const token = localStorage.getItem("access_token");
     if (token) {
       setIsAuthenticated(true);
     }
