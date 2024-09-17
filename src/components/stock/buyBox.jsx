@@ -102,7 +102,7 @@ function BuyBox({
       return;
     } else {
       try {
-        let response = await fetch("https://heartfolio.site/api/invest/order", {
+        let response = await fetch(`${process.env.REACT_APP_API_URI}/invest/order`, {
           method: "POST",
           headers: {
             Authorization: `Bearer ${token}`, // 토큰을 헤더에 추가
@@ -127,7 +127,7 @@ function BuyBox({
         if (response.status === 401) {
           const refreshToken = localStorage.getItem("refresh_token");
           const refreshResponse = await fetch(
-            "https://heartfolio.site/api/auth/refresh-token",
+            `${process.env.REACT_APP_API_URI}/auth/refresh-token`,
             {
               method: "POST",
               headers: { "Content-Type": "application/json" },
@@ -140,7 +140,7 @@ function BuyBox({
             localStorage.setItem("access_token", data.accessToken);
 
             // 새로운 access token으로 요청 다시 시도
-            response = await fetch("https://heartfolio.site/api/invest/order", {
+            response = await fetch(`${process.env.REACT_APP_API_URI}/invest/order`, {
               method: "POST",
               headers: {
                 Authorization: `Bearer ${localStorage.getItem("access_token")}`,
