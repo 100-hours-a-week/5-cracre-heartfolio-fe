@@ -1,0 +1,43 @@
+name: CI/CD
+
+on:
+  push:
+    branches:
+      - develop
+
+jobs:
+  backend-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      # SOURCE 단계 - 저장소 Checkout
+      - name: Checkout-source code
+        uses: actions/checkout@v3
+
+      # docker image 빌드
+      - name: Build docker image
+        run: docker build -t limzzum/heartfolio_f:0.0.1 .
+
+      # docker hub 로그인
+      - name: Login docker hub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKER_HUB_USERNAME }}
+          password: ${{ secrets.DOCKER_HUB_PASSWORD }}
+
+      # docker hub 퍼블리시
+      - name: Publish to docker hub
+        run: docker push limzzum/heartfolio_f:0.0.1
+
+      # WAS 인스턴스 접속 & 애플리케이션 실행
+      - name: Connect to WAS & Execute Application
+        uses: appleboy/ssh-action@v0.1.6
+        with:
+          host: ${{ secrets.WAS_HOST }}
+          username: ${{ secrets.WAS_USERNAME }}
+          key: ${{ secrets.SSH_KEY }}
+          port: ${{ secrets.WAS_SSH_PORT }}
+          script: |
+            docker stop frontend
+            docker rm frontend
+            docker pull limzzum/heartfolio_f:0.0.1
+            docker run -d -p 3000:3000 --name frontend limzzum/heartfolio_f:0.0.1

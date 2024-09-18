@@ -58,7 +58,7 @@ import alertAnimation from "../assets/animations/alert.json";
 //       buyer_name : buyerName, // 구매자 이름
 //     },function(rsp){
 //       if (rsp.success) {
-//         fetch(`${process.env.REACT_API_URI}/payment/success`, {
+//         fetch(`${process.env.REACT_APP_API_URI}/payment/success`, {
 //           method: 'POST',
 //           headers: {
 //             'Content-Type': 'application/json',
