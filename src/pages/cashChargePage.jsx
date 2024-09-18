@@ -43,7 +43,7 @@ function CashChargePage() {
   const handleCheckModalClose = () => {
     setIsCheckModalOpen(false); // 확인 모달 닫기
   };
-
+  
   const handleCharge = (amount)=>{
     setIsCheckModalOpen(false); // 확인 모달 닫기
     const {IMP} = window;
@@ -58,7 +58,7 @@ function CashChargePage() {
       buyer_name : buyerName, // 구매자 이름
     },function(rsp){
       if (rsp.success) {
-        fetch(`${process.env.REACT_API_URI}/payment/success`, {
+        fetch(`${process.env.REACT_APP_API_URI}/payment/success`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -81,7 +81,6 @@ function CashChargePage() {
         window.location.href = "/fail-payment";
         alert('결제 실패');
       }
-      
     })
   }
 
