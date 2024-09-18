@@ -1,5 +1,6 @@
 import React from "react";
 import Header from "../components/common/header";
+import ButtomNavigation from "../components/common/bottomNavigation";
 
 const Legal = () => {
   return (
@@ -44,6 +45,7 @@ const Legal = () => {
           </a>
         </div>
       </section>
+      <ButtomNavigation />
     </div>
   );
 };

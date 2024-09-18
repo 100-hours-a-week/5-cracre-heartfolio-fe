@@ -18,7 +18,7 @@ jobs:
 
       # 서브모듈의 파일을 resources 디렉토리에 복사
       - name: Copy submodule files to resources
-        run: cp secrets/.env ./
+        run: cp secrets/develop/.env ./
 
       # docker image 빌드
       - name: Build docker image
