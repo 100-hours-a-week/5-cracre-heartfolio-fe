@@ -1,6 +1,15 @@
+import useFetch from "../../hooks/useFetch";
 import { MoneyRankBox, MoneyRankTop3Box } from "./moneyRankBox";
 
 function MoneyRanking() {
+  const { data, loading } = useFetch(`${process.env.REACT_APP_API_URI}/rank/donation`);
+  
+  // 데이터 구조가 유효한지 확인
+  const userRanking = data?.userRanking || [];
+
+  // 상위 3개 아이템 추출
+  const topThree = userRanking.slice(0, 3);
+
   return (
     <div>
       <div className="flex justify-between w-full max-w-[350px] my-2">
@@ -12,8 +21,8 @@ function MoneyRanking() {
       </div>
       <hr className="mt-1 border-black w-[350px]" />
       <div className="mx-auto max-w-[350px] pb-16">
-        <MoneyRankTop3Box />
-        <MoneyRankBox />
+        <MoneyRankTop3Box topThree={topThree}/>
+        <MoneyRankBox userRanking={userRanking}/>
       </div>
     </div>
   );
