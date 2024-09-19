@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
+import { fetchWithToken } from '../utils/api';
 
-function useFetch(url, options) {
+function useFetch(url) {
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -8,17 +9,9 @@ function useFetch(url, options) {
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
-      const newOptions = { ...options };
-
       try {
-        const res = await fetch(url, newOptions);
-        if (!res.ok) {
-          setError(new Error(res.statusText));
-          setLoading(false);
-          return;
-        }
-        const json = await res.json();
-        setData(json);
+        const res = await fetchWithToken(url);
+        setData(res);
       } catch (err) {
         setError(err);
       }
@@ -26,7 +19,7 @@ function useFetch(url, options) {
     };
 
     fetchData();
-  }, [url, options]);
+  }, [url]);
 
   return { data, error, loading };
 }

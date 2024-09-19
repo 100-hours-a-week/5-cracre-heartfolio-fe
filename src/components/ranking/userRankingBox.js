@@ -16,7 +16,7 @@ function UserRankingBox(props) {
                     <div className="flex items-center gap-3">
                       <div className="avatar">
                         <div className="mask mask-squircle h-12 w-12">
-                          <img src={""} alt="profile image" />
+                          <img src={item.profile} alt="profile image" />
                         </div>
                       </div>
                       <div>
@@ -35,7 +35,7 @@ function UserRankingBox(props) {
                         : "text-gray-600"
                     } text-right`}
                   >
-                    {item.percentage}
+                    {item.percentage}%
                   </td>
                 </tr>
               ))}
