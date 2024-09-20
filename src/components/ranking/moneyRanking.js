@@ -16,7 +16,7 @@ function MoneyRanking() {
         <div className="text-gray-600 text-xl">이달의 기부왕</div>
         <div className="flex items-center">
           <div className="text-gray-600 text-sm">내 순위 :</div>
-          <div className="text-gray-600 text-sm">34위</div>
+          <div className="text-gray-600 text-sm">{data?.personalRank>0 ? data?.personalRank+"위" : "순위 없음"}</div>
         </div>
       </div>
       <hr className="mt-1 border-black w-[350px]" />
