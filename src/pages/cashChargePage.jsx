@@ -14,24 +14,83 @@ function CashChargePage() {
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [orderUid, setOrderUid] = useState(null);
-  const [buyerName, setBuyerName] = useState('');
-  
+  const [buyerName, setBuyerName] = useState("");
+  const [token, setToken] = useState("");
 
   useEffect(() => {
-    const token = localStorage.getItem("access_token");
-    if (token) {
+    const storedToken = localStorage.getItem("access_token");
+    if (storedToken) {
       setIsAuthenticated(true);
+      setToken(storedToken); // 상태로 토큰 저장
     }
 
     const { IMP } = window;
     IMP.init(`${process.env.REACT_APP_IMP_CODE}`);
   }, []);
 
-  const showModal = (amount) => {
+  const showModal = async (amount) => {
     setSelectedAmount(amount);
-    setOrderUid(`order_${new Date().getTime()}`); // 주문 번호 생성
-    setBuyerName('홍길동'); // 로그인된 사용자 이름 설정
+    // setOrderUid(`order_${new Date().getTime()}`); // 주문 번호 생성
+    setBuyerName("홍길동"); // 로그인된 사용자 이름 설정
     setIsCategoryModalOpen(true); // 모달을 열기 위해 상태 업데이트
+    let response = await fetch(
+      `${process.env.REACT_APP_API_URI}/donation/order`,
+      {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${token}`, // 토큰을 헤더에 추가
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          price: amount,
+        }),
+      }
+    );
+    let data = await response.json();
+    // 응답에서 orderUid를 추출
+    if (response.ok && data.orderUid) {
+      setOrderUid(data.orderUid);
+      console.log(data.orderUid); // orderUid 확인
+    } else {
+      console.error("orderUid가 응답에 포함되지 않았습니다.");
+    }
+    // 토큰 만료 처리
+    if (response.status === 401) {
+      const refreshToken = localStorage.getItem("refresh_token");
+      const refreshResponse = await fetch(
+        `${process.env.REACT_APP_API_URI}/auth/refresh-token`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ refreshToken: refreshToken }),
+        }
+      );
+
+      if (refreshResponse.status === 200) {
+        const data = await refreshResponse.json();
+        localStorage.setItem("access_token", data.accessToken);
+
+        // 새로운 access token으로 요청 다시 시도
+        response = await fetch(
+          `${process.env.REACT_APP_API_URI}/donation/order`,
+          {
+            method: "POST",
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("access_token")}`,
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              price: amount,
+            }),
+          }
+        );
+      } else {
+        // refresh token도 만료되거나 오류가 있으면 로그인 페이지로 이동
+        localStorage.removeItem("access_token");
+        window.location.href = "/login";
+        return;
+      }
+    }
   };
 
   const handleonSelectCategory = (category) => {
@@ -43,46 +102,56 @@ function CashChargePage() {
   const handleCheckModalClose = () => {
     setIsCheckModalOpen(false); // 확인 모달 닫기
   };
-  
-  const handleCharge = (amount)=>{
+
+  const handleCharge = async (amount) => {
     setIsCheckModalOpen(false); // 확인 모달 닫기
-    const {IMP} = window;
+
+    let response = await fetch(
+      `${process.env.REACT_APP_API_URI}/donation/payment/${orderUid}`
+    );
+    let data = await response.json();
+    setBuyerName(data.buyer_name);
+
+    const { IMP } = window;
     IMP.init(process.env.REACT_APP_IMP_CODE);
-    IMP.request_pay({
-      pg:'html5_inicis.INIpayTest',
-      pay_method : 'card',
-      merchant_uid: orderUid, // 주문 번호
-      name: 'Heartfolio 캐시 충전',
-      amount : amount, // 상품 가격
-      buyer_email : 'test1@example.com',
-      buyer_name : buyerName, // 구매자 이름
-    },function(rsp){
-      if (rsp.success) {
-        fetch(`${process.env.REACT_APP_API_URI}/payment/success`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            payment_uid: rsp.imp_uid,
-            order_uid: rsp.merchant_uid,
-          }),
-        })
-        .then(response => response.json())
-        .then(data => {
-          console.log(data);
-          window.location.href = "/success-payment";
-        })
-        .catch(error => {
-          console.error('Error:', error);
-          alert('결제 정보 전달 실패');
-        });
-      } else {
-        window.location.href = "/fail-payment";
-        alert('결제 실패');
+    IMP.request_pay(
+      {
+        pg: "html5_inicis.INIpayTest",
+        pay_method: "card",
+        merchant_uid: orderUid, // 주문 번호
+        name: "Heartfolio 캐시 충전",
+        amount: amount, // 상품 가격
+        buyer_name: buyerName, // 구매자 이름
+        buyer_tel: "010-0000-0000",
+      },
+      function (rsp) {
+        if (rsp.success) {
+          fetch(`${process.env.REACT_APP_API_URI}/donation/payment/success`, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              payment_uid: rsp.imp_uid,
+              order_uid: rsp.merchant_uid,
+            }),
+          })
+            .then((response) => response.json())
+            .then((data) => {
+              console.log(data);
+              window.location.href = "/success-payment";
+            })
+            .catch((error) => {
+              console.error("Error:", error);
+              alert("결제 정보 전달 실패");
+            });
+        } else {
+          window.location.href = "/fail-payment";
+          alert("결제 실패");
+        }
       }
-    })
-  }
+    );
+  };
 
   return (
     <>
@@ -135,7 +204,7 @@ function CashChargePage() {
         <CheckModal
           amount={selectedAmount}
           category={selectedCategory}
-          clickYes={()=>handleCharge(selectedAmount)}
+          clickYes={() => handleCharge(selectedAmount)}
           onClose={handleCheckModalClose}
         />
       )}
