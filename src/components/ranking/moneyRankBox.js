@@ -54,11 +54,36 @@
 function MoneyRankTop3Box(props) {
   // 보여줄 순위를 커스텀하여 설정
   const customRanks = [2, 1, 3];
+
+  // 데이터가 없을 경우 기본 placeholder 데이터 사용
+  const defaultTopThree = [
+    {
+      profile: "/assets/images/profileDefault.png",
+      name: "Unknown",
+      amount: "0",
+    },
+    {
+      profile: "/assets/images/profileDefault.png",
+      name: "Unknown",
+      amount: "0",
+    },
+    {
+      profile: "/assets/images/profileDefault.png",
+      name: "Unknown",
+      amount: "0",
+    },
+  ];
+  // topThree 배열이 3개 미만이면 나머지를 기본값으로 채워줌
+  const topThree = [...(props.topThree || []), ...defaultTopThree].slice(0, 3);
+
+  // 1위를 가운데로 배치하고 나머지를 좌우에 배치
+  const reorderedTopThree = [topThree[1], topThree[0], topThree[2]];
+
   return (
     <>
       {/* Top 3 */}
       <div className="flex justify-center items-end mt-5 mb-3 gap-4">
-        {props.topThree?.map((item, index) => (
+        {reorderedTopThree?.map((item, index) => (
           <div key={index} className="flex flex-col items-center">
             <div className="text-center text-lg text-gray-800 font-bold">
               {customRanks[index]}
