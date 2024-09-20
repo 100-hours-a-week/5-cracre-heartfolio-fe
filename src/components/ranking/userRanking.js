@@ -5,8 +5,12 @@ import useFetch from "../../hooks/useFetch";
 function UserRanking() {
   const token = localStorage.getItem("access_token");
   const [activeTab, setActiveTab] = useState(1);
-  const { data: accumulationData, loading: accumulationLoading } = useFetch(`${process.env.REACT_APP_API_URI}/rank/cumulativeRevenue`);
-  const { data: monthlyData, loading: monthlyLoading } = useFetch(`${process.env.REACT_APP_API_URI}/rank/month`);
+  const { data: accumulationData, loading: accumulationLoading } = useFetch(
+    `${process.env.REACT_APP_API_URI}/rank/cumulativeRevenue`
+  );
+  const { data: monthlyData, loading: monthlyLoading } = useFetch(
+    `${process.env.REACT_APP_API_URI}/rank/month`
+  );
 
   // 누적 수익률 목데이터
   // const accumulation_data = [
@@ -141,7 +145,15 @@ function UserRanking() {
         </div>
         <div className="flex items-center">
           <div className="text-sm text-gray-600">내 순위 :</div>
-          <div className="text-sm text-gray-600">12위</div>
+          <div className="text-sm text-gray-600">
+            {activeTab === 1
+              ? monthlyData?.personalRank === -1
+                ? "순위 없음"
+                : monthlyData?.personalRank
+              : accumulationData?.personalRank === -1
+                ? "순위 없음"
+                : accumulationData?.personalRank}
+          </div>
         </div>
       </div>
       <hr className="mt-1 border-black w-[360px]" />
