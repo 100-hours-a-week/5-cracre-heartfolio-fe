@@ -12,9 +12,16 @@ function MainPage() {
   function seeMore(route, tab = 1) {
     navigate(route, { state: { activeTab: tab } });
   }
-
+  const { data:moneyData, moneyLoading } = useFetch(`${process.env.REACT_APP_API_URI}/rank/donation`);
   const { data, error, loading } = useFetch(`${process.env.REACT_APP_API_URI}/news`);
-  if (loading) {
+
+  // 데이터 구조가 유효한지 확인
+  const userRanking = moneyData?.userRanking || [];
+
+  // 상위 3개 아이템 추출
+  const topThree = userRanking.slice(0, 3);
+
+  if (loading || moneyLoading) {
     return <div className="min-h-screen bg-white text-center">Loading...</div>; // 로딩 중일 때 표시할 내용
   }
 
@@ -26,7 +33,7 @@ function MainPage() {
     ); // 에러 발생 시 표시할 내용
   }
 
-  if (!data || data.length === 0) {
+  if (!data || data.length === 0 || !moneyData || moneyData.length === 0) {
     return <div>No data available</div>; // 데이터가 없을 때 표시할 내용
   }
 
@@ -41,7 +48,7 @@ function MainPage() {
               onClick={() => seeMore("/ranking", 2)}
             />
             <div className="mx-auto max-w-[390px] mt-[6px] border-t border-gray-300" />
-            <MoneyRankTop3Box />
+            <MoneyRankTop3Box topThree={topThree}/>
             <TitleBox
               title={"오늘의 인기 차트"}
               onClick={() => seeMore("/popularstock")}
