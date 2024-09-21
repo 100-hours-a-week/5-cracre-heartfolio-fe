@@ -5,8 +5,6 @@ import { useNavigate } from "react-router-dom";
 import Lottie from "lottie-react";
 import ContructionAnimation from "../assets/animations/construction.json";
 import SearchBox from "../components/mock investment/searchBox";
-import Popularstock from "./popularstock";
-import PopularChart from "../components/main/popularChart";
 import useFetch from "../hooks/useFetch";
 
 function SearchPage() {
