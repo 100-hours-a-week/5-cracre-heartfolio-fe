@@ -15,7 +15,6 @@ function Portfolio() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   useEffect(() => {
-    localStorage.setItem("access_token", "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIzNjc2NTcwMjEyIiwiZXhwIjoxNzI2OTkzMTYzfQ.CYkSIxTdwcKWp2QoXE42CLoA9SxHmAvcHTAaRiw3kM8R8MtuZ6qUfe_2l0Cugh9M4Jv6Zw-cMz2TpgeqFX5zaw");
     const token = localStorage.getItem("access_token");
     if (token) {
       setIsAuthenticated(true);
