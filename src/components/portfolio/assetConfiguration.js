@@ -2,6 +2,7 @@ import Lottie from "lottie-react";
 import noInfoAnimation from "../../assets/animations/noInfo.json";
 import React, { useEffect, useState } from "react";
 import Chart from "react-apexcharts";
+import useFetch from "../../hooks/useFetch";
 
 function getRandomPastelColor() {
   const r = Math.floor(Math.random() * 127) + 128; // 128 to 255
@@ -12,89 +13,15 @@ function getRandomPastelColor() {
 
 function AssetConfiguration() {
   const token = localStorage.getItem("access_token");
-  const [data, setData] = useState(null);
   const [error, setError] = useState(null);
-  const [loading, setLoading] = useState(true);
 
   const [chartData, setChartData] = useState({
     series: [],
     labels: [],
     sortedData: [],
   });
-
-  useEffect(() => {
-    const fetchData = async () => {
-      setLoading(true);
-      try {
-        let response = await fetch(
-          `${process.env.REACT_APP_API_URI}/portfolio/stock`,
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-              "Content-Type": "application/json",
-            },
-          }
-        );
-        console.log("First request response:", response);
-
-        if (response.status === 401) {
-          // Access token 만료 -> refresh token으로 새 access token 요청
-          const refreshToken = localStorage.getItem("refresh_token");
-          const refreshResponse = await fetch(
-            `${process.env.REACT_APP_API_URI}/auth/refresh-token`,
-            {
-              method: "POST",
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify({ refreshToken: refreshToken }),
-            }
-          );
-
-          if (refreshResponse.status === 200) {
-            const data = await refreshResponse.json();
-            localStorage.setItem("access_token", data.accessToken); // 새 access token 저장
-
-            // 새로운 access token으로 원래 요청 다시 시도
-            response = await fetch(
-              `${process.env.REACT_APP_API_URI}/portfolio/stock`,
-              {
-                headers: {
-                  Authorization: `Bearer ${localStorage.getItem(
-                    "access_token"
-                  )}`, // 새 access token 사용
-                  "Content-Type": "application/json",
-                },
-              }
-            );
-            console.log(
-              "Second request response with new access token:",
-              response
-            );
-          } else {
-            // refresh token도 만료되거나 오류가 있으면 로그인 페이지로 이동
-            localStorage.removeItem("access_token");
-            window.location.href = "/login";
-            return;
-          }
-        }
-        let result = null;
-        result = await response.json();
-
-        // 데이터가 빈 객체인지 확인하고, 데이터가 있는 경우와 없는 경우를 처리
-        if (Object.keys(result).length === 0 || !result.stocks) {
-          setData({});
-        } else {
-          setData(result);
-        }
-
-        setLoading(false);
-      } catch (err) {
-        setError(err);
-        setLoading(false);
-      }
-    };
-
-    fetchData(); // 컴포넌트가 마운트될 때 데이터 가져오기
-  }, [token]);
+  
+  const {data, loading} = useFetch( `${process.env.REACT_APP_API_URI}/portfolio/stock`);
 
   useEffect(() => {
     if (data && data.stocks && data.stocks.length > 0) {
