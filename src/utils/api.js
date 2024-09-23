@@ -1,9 +1,11 @@
-export const fetchWithToken = async (url) => {
+export const fetchWithToken = async (url, options = {}) => {
     let token = localStorage.getItem("access_token");
     let response = await fetch(url, {
+      ...options,
       headers: {
+        ...options.headers,
         Authorization: `Bearer ${token}`,
-        "Content-Type": "application/json",
+        "Content-Type": "application/json", // 항상 Content-Type을 포함
       },
     });
   

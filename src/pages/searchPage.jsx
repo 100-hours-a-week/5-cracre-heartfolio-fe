@@ -9,45 +9,28 @@ import useFetch from "../hooks/useFetch";
 
 function SearchPage() {
   const navigate = useNavigate();
-  const [data, setData] = useState(null);
   const [searchTerm, setSearchTerm] = useState(""); // 검색어 상태 추가
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
+  const [searchUrl, setSearchUrl] = useState(""); // 검색 API URL 관리
+  const { data, error, loading } = useFetch(searchUrl); // 검색 결과에 따라 fetch
 
   // 검색창에서 값이 변경될 때마다 searchTerm 상태 업데이트
   const handleInputChange = (event) => {
     setSearchTerm(event.target.value);
   };
 
-  // 검색어가 변경될 때마다 검색 수행
-  useEffect(() => {
-    if (searchTerm) {
-      const fetchData = async () => {
-        setLoading(true); // 데이터 가져오기 시작 전에 로딩 상태 설정
-        try {
-          const response = await fetch(
-            `${process.env.REACT_APP_API_URI}/stock/search?keyword=${searchTerm}`
-          );
-
-          if (!response.ok) {
-            throw new Error(response.statusText); // 응답이 정상적이지 않으면 에러 발생
-          }
-
-          const result = await response.json();
-          setData(result); // 가져온 데이터를 상태에 설정
-        } catch (err) {
-          setError(err); // 에러 발생 시 상태에 설정
-        } finally {
-          setLoading(false); // 데이터 가져오기 완료 후 로딩 상태 해제
-        }
-      };
-      fetchData();
-    }
-  }, [searchTerm]); // searchTerm이 변경될 때마다 useEffect 실행
-
   const { data: popularstock } = useFetch(
     `${process.env.REACT_APP_API_URI}/stock/popular?limit=` + 5
   );
+
+  // 검색어가 변경될 때마다 searchUrl 업데이트
+  useEffect(() => {
+    if (searchTerm.trim().length > 0) {
+      setSearchUrl(`${process.env.REACT_APP_API_URI}/stock/search?keyword=${searchTerm}`);
+    } else {
+      setSearchUrl("");
+    }
+  }, [searchTerm]);
+
   function handleSearch() {
     setSearchTerm("");
   }
