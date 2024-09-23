@@ -10,14 +10,6 @@ import "react-toastify/dist/ReactToastify.css";
 import useFetch from "../hooks/useFetch";
 
 function MyPage() {
-  // const data = {
-  //   name: "하트폴리오",
-  //   email: "cracre@example.com",
-  //   nickname: "레로스앨웬",
-  //   profile: "/profile/photo",
-  //   cash: 1500000,
-  //   donate: 5000,
-  // };
   const { data, error, loading } = useFetch(
     `${process.env.REACT_APP_API_URI}/user/info`
   );
