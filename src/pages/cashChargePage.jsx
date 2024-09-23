@@ -6,6 +6,7 @@ import ContructionAnimation from "../assets/animations/construction.json";
 import CategoryModal from "../components/cashCharge/categoryModal";
 import CheckModal from "../components/cashCharge/checkModal";
 import alertAnimation from "../assets/animations/alert.json";
+import { fetchWithToken } from "../utils/api";
 
 function CashChargePage() {
   const [selectedAmount, setSelectedAmount] = useState(null);
@@ -14,31 +15,28 @@ function CashChargePage() {
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [orderUid, setOrderUid] = useState(null);
-  const [buyerName, setBuyerName] = useState("");
-  const [token, setToken] = useState("");
-
+  
   useEffect(() => {
     const storedToken = localStorage.getItem("access_token");
     if (storedToken) {
       setIsAuthenticated(true);
-      setToken(storedToken); // 상태로 토큰 저장
     }
 
     const { IMP } = window;
-    IMP.init(`${process.env.REACT_APP_IMP_CODE}`);
+    if (IMP && process.env.REACT_APP_IMP_CODE) {
+      IMP.init(`${process.env.REACT_APP_IMP_CODE}`);
+    }
   }, []);
 
   const showModal = async (amount) => {
     setSelectedAmount(amount);
-    // setOrderUid(`order_${new Date().getTime()}`); // 주문 번호 생성
-    setBuyerName("홍길동"); // 로그인된 사용자 이름 설정
     setIsCategoryModalOpen(true); // 모달을 열기 위해 상태 업데이트
-    let response = await fetch(
+    // fetchWithToken 함수 사용 (POST 요청)
+    const response = await fetchWithToken(
       `${process.env.REACT_APP_API_URI}/donation/order`,
       {
         method: "POST",
         headers: {
-          Authorization: `Bearer ${token}`, // 토큰을 헤더에 추가
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
@@ -46,50 +44,11 @@ function CashChargePage() {
         }),
       }
     );
-    let data = await response.json();
     // 응답에서 orderUid를 추출
-    if (response.ok && data.orderUid) {
-      setOrderUid(data.orderUid);
-      console.log(data.orderUid); // orderUid 확인
+    if (response && response.orderUid) {
+      setOrderUid(response.orderUid);
     } else {
       console.error("orderUid가 응답에 포함되지 않았습니다.");
-    }
-    // 토큰 만료 처리
-    if (response.status === 401) {
-      const refreshToken = localStorage.getItem("refresh_token");
-      const refreshResponse = await fetch(
-        `${process.env.REACT_APP_API_URI}/auth/refresh-token`,
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ refreshToken: refreshToken }),
-        }
-      );
-
-      if (refreshResponse.status === 200) {
-        const data = await refreshResponse.json();
-        localStorage.setItem("access_token", data.accessToken);
-
-        // 새로운 access token으로 요청 다시 시도
-        response = await fetch(
-          `${process.env.REACT_APP_API_URI}/donation/order`,
-          {
-            method: "POST",
-            headers: {
-              Authorization: `Bearer ${localStorage.getItem("access_token")}`,
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              price: amount,
-            }),
-          }
-        );
-      } else {
-        // refresh token도 만료되거나 오류가 있으면 로그인 페이지로 이동
-        localStorage.removeItem("access_token");
-        window.location.href = "/login";
-        return;
-      }
     }
   };
 
@@ -110,7 +69,6 @@ function CashChargePage() {
       `${process.env.REACT_APP_API_URI}/donation/payment/${orderUid}`
     );
     let data = await response.json();
-    setBuyerName(data.buyer_name);
 
     const { IMP } = window;
     IMP.init(process.env.REACT_APP_IMP_CODE);
@@ -118,10 +76,10 @@ function CashChargePage() {
       {
         pg: "html5_inicis.INIpayTest",
         pay_method: "card",
-        merchant_uid: orderUid, // 주문 번호
+        merchant_uid: data?.order_uid, // 주문 번호
         name: "Heartfolio 캐시 충전",
-        amount: amount, // 상품 가격
-        buyer_name: buyerName, // 구매자 이름
+        amount: data?.payment_price, // 상품 가격
+        buyer_name: data?.buyer_name,
         buyer_tel: "010-0000-0000",
       },
       function (rsp) {
@@ -138,7 +96,6 @@ function CashChargePage() {
           })
             .then((response) => response.json())
             .then((data) => {
-              console.log(data);
               window.location.href = "/success-payment";
             })
             .catch((error) => {
@@ -147,7 +104,6 @@ function CashChargePage() {
             });
         } else {
           window.location.href = "/fail-payment";
-          alert("결제 실패");
         }
       }
     );
