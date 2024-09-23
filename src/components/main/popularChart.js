@@ -1,8 +1,6 @@
 import useFetch from "../../hooks/useFetch";
 import EachpopularstockBox from "../commonBox/eachpopularstockBox";
 
-const items = [{ id: 1 }, { id: 2 }, { id: 3 }];
-
 function PopularChart() {
   const { data, error, loading } = useFetch(
     `${process.env.REACT_APP_API_URI}/stock/popular?limit=` + 5

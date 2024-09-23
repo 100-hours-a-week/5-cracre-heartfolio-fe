@@ -6,8 +6,8 @@ import Lottie from "lottie-react";
 import { useNavigate } from "react-router-dom";
 
 function Holdings() {
-  const token = localStorage.getItem("access_token");
   const navigate = useNavigate();
+  
   // 데이터 가져오기 상태 관리
   const {data, error, loading} = useFetch(`${process.env.REACT_APP_API_URI}/portfolio/totalStocks`)
 

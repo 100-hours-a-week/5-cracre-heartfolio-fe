@@ -3,15 +3,6 @@ import { useNavigate } from "react-router-dom";
 
 function ButtomNavigation() {
   const navigate = useNavigate();
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-
-  useEffect(() => {
-    const token = localStorage.getItem("access_token");
-    if (token) {
-      setIsAuthenticated(true);
-      // 추가로 사용자 정보를 가져와서 상태로 저장 가능
-    }
-  }, []);
 
   return (
     <div className="fixed bottom-0 left-1/2 transform -translate-x-1/2 w-[390px] bg-white shadow-lg">

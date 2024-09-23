@@ -18,10 +18,6 @@ function MyPage() {
   //   cash: 1500000,
   //   donate: 5000,
   // };
-  localStorage.setItem(
-    "access_token",
-    "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIzNjc2NTcwMjEyIiwiZXhwIjoxNzI3MDA1MTM0fQ.9dUWX4466Wjbfw4Je1gX3x-uAwx_H0VK4upFq65Q6P0TwzHVn6HwDe7phDrLjUMElSyK2Yn8CNKcD_JEoTdEqg"
-  );
   const { data, error, loading } = useFetch(
     `${process.env.REACT_APP_API_URI}/user/info`
   );
