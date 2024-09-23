@@ -56,7 +56,7 @@ function MainPage() {
             <div className="mx-auto max-w-[390px] mt-[6px] border-t border-gray-300" />
             <PopularChart />
             <TitleBox title={"오늘의 경제 뉴스"} seeMore="none" />
-            <NewsBox data={data?.items} />
+            <NewsBox data={data?.items || []} />
           </div>
         </div>
       </div>
