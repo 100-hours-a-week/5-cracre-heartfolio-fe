@@ -41,78 +41,77 @@ function MyPage() {
       setHelperText("특수문자, 공백, 띄어쓰기 등의 입력이 불가능합니다.");
     } else {
       setHelperText("");
-      try {
-        // 닉네임 수정하는 로직
-        let response = await fetch(
-          `${process.env.REACT_APP_API_URI}/user/fixNickname`,
+      // 닉네임 수정하는 로직
+      let response = await fetch(
+        `${process.env.REACT_APP_API_URI}/user/fixNickname`,
+        {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${token}`, // 토큰을 헤더에 추가
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            nickname: nickname,
+          }),
+        }
+      );
+      // 요청이 성공적인 경우 처리
+      if (response.ok) {
+        toast.success("수정완료", { autoClose: 2000 });
+
+        setTimeout(function () {
+          window.location.assign("/mypage");
+        }, 2000);
+        return;
+      } else if (response.status === 409) {
+        setHelperText("중복된 닉네임입니다.");
+        return;
+      }
+      // 토큰 만료인 경우 처리
+      if (response.status === 401) {
+        // Access token 만료 -> refresh token으로 새 access token 요청
+        const refreshToken = localStorage.getItem("refresh_token");
+        const refreshResponse = await fetch(
+          `${process.env.REACT_APP_API_URI}/auth/refresh-token`,
           {
             method: "POST",
-            headers: {
-              Authorization: `Bearer ${token}`, // 토큰을 헤더에 추가
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              nickname: nickname,
-            }),
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ refreshToken: refreshToken }),
           }
         );
-        console.log("this", response);
-        // 요청이 성공적인 경우 처리
-        if (response.ok) {
-          toast.success("수정완료", { autoClose: 2000 });
 
-          setTimeout(function () {
-            window.location.assign("/mypage");
-          }, 2000);
-          return;
-        }
-        // 토큰 만료인 경우 처리
-        if (response.status === 401) {
-          // Access token 만료 -> refresh token으로 새 access token 요청
-          const refreshToken = localStorage.getItem("refresh_token");
-          const refreshResponse = await fetch(
-            `${process.env.REACT_APP_API_URI}/auth/refresh-token`,
+        if (refreshResponse.status === 200) {
+          const data = refreshResponse.json();
+          localStorage.setItem("access_token", data.accessToken); // 새 access token 저장
+          // 새로운 access token으로 원래 요청 다시 시도
+          response = await fetch(
+            `${process.env.REACT_APP_API_URI}/user/fixNickname`,
             {
               method: "POST",
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify({ refreshToken: refreshToken }),
+              headers: {
+                Authorization: `Bearer ${localStorage.getItem("access_token")}`,
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                nickname: nickname,
+              }),
             }
           );
-
-          if (refreshResponse.status === 200) {
-            const data = refreshResponse.json();
-            localStorage.setItem("access_token", data.accessToken); // 새 access token 저장
-            // 새로운 access token으로 원래 요청 다시 시도
-            response = await fetch(
-              `${process.env.REACT_APP_API_URI}/user/fixNickname`,
-              {
-                method: "POST",
-                headers: {
-                  Authorization: `Bearer ${localStorage.getItem(
-                    "access_token"
-                  )}`,
-                  "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                  nickname: nickname,
-                }),
-              }
-            );
-            if (response.ok) {
-              toast.success("수정완료", { autoClose: 2000 });
-              setTimeout(function () {
-                window.location.assign("/mypage");
-              }, 2000);
-            }
-          } else {
-            // refresh token도 만료되거나 오류가 있으면 로그인 페이지로 이동
-            localStorage.removeItem("access_token");
-            window.location.href = "/login";
+          if (response.ok) {
+            toast.success("수정완료", { autoClose: 2000 });
+            setTimeout(function () {
+              window.location.assign("/mypage");
+            }, 2000);
+          } else if (response.status === 409) {
+            setHelperText("중복된 닉네임입니다.");
             return;
           }
+        } else {
+          // refresh token도 만료되거나 오류가 있으면 로그인 페이지로 이동
+          localStorage.removeItem("access_token");
+          window.location.href = "/login";
+          return;
         }
-      } catch (error) {
-        console.error("Error:", error);
       }
     }
   };
