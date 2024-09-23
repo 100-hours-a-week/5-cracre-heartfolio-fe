@@ -12,16 +12,13 @@ function getRandomPastelColor() {
 }
 
 function AssetConfiguration() {
-  const token = localStorage.getItem("access_token");
-  const [error, setError] = useState(null);
-
   const [chartData, setChartData] = useState({
     series: [],
     labels: [],
     sortedData: [],
   });
-  
-  const {data, loading} = useFetch( `${process.env.REACT_APP_API_URI}/portfolio/stock`);
+
+  const {data, error, loading} = useFetch( `${process.env.REACT_APP_API_URI}/portfolio/stock`);
 
   useEffect(() => {
     if (data && data.stocks && data.stocks.length > 0) {

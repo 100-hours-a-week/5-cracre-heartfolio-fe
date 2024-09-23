@@ -10,18 +10,6 @@ import "react-toastify/dist/ReactToastify.css";
 import useFetch from "../hooks/useFetch";
 
 function MyPage() {
-  // const data = {
-  //   name: "하트폴리오",
-  //   email: "cracre@example.com",
-  //   nickname: "레로스앨웬",
-  //   profile: "/profile/photo",
-  //   cash: 1500000,
-  //   donate: 5000,
-  // };
-  localStorage.setItem(
-    "access_token",
-    "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIzNjc2NTcwMjEyIiwiZXhwIjoxNzI3MDA1MTM0fQ.9dUWX4466Wjbfw4Je1gX3x-uAwx_H0VK4upFq65Q6P0TwzHVn6HwDe7phDrLjUMElSyK2Yn8CNKcD_JEoTdEqg"
-  );
   const { data, error, loading } = useFetch(
     `${process.env.REACT_APP_API_URI}/user/info`
   );

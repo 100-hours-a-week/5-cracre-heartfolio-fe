@@ -1,8 +1,6 @@
 import { useEffect, useState } from "react";
 import useFetch from "../../hooks/useFetch";
 function MoneyInfo() {
-  const userId = 1;
-  const token = localStorage.getItem("access_token");
   // 데이터 가져오기 상태 관리
   const { data, error, loading } = useFetch(
     `${process.env.REACT_APP_API_URI}/portfolio`
