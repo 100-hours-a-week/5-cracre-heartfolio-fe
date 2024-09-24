@@ -11,7 +11,10 @@ function useFetch(url) {
       setLoading(true);
       try {
         const res = await fetchWithToken(url);
-        setData(res);
+        // 응답이 null이 아닌 경우에만 데이터를 설정
+        if (res !== null) {
+          setData(res);
+        }
       } catch (err) {
         setError(err);
       }
