@@ -18,6 +18,7 @@ function Header() {
   function handleLogin() {
     if (localStorage.getItem("access_token")) {
       localStorage.removeItem("access_token");
+      localStorage.removeItem("refresh_token");
       window.location.reload();
     } else {
       navigate("/login");
