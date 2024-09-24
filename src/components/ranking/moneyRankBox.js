@@ -49,7 +49,7 @@ function MoneyRankTop3Box(props) {
                 </div>
               </div>
             </div>
-            <div className="text-center font-bold text-gray-700 pt-2 w-24">
+            <div className="text-center font-bold text-gray-700 pt-2 w-[100px]">
               {item.name}
             </div>
             <div className="text-center text-sm text-gray-700">
@@ -62,7 +62,6 @@ function MoneyRankTop3Box(props) {
   );
 }
 function MoneyRankBox(props) {
-  console.log(props.userRanking)
   return (
     <>
       <div className="flex flex-col items-center">

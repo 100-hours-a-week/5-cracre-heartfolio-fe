@@ -11,7 +11,6 @@ function UserRanking() {
   const { data: monthlyData, loading: monthlyLoading } = useFetch(
     `${process.env.REACT_APP_API_URI}/rank/month`
   );
-
   return (
     <div className="flex flex-col items-center">
       <div className="flex justify-between w-full max-w-[350px]">
