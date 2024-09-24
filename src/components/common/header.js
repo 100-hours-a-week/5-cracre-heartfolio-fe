@@ -46,11 +46,11 @@ function Header() {
             </div>
             <div onClick={() => handleLogin()} className="content-center">
               {isAuthenticated ? (
-                <div className=" ml-5 mr-5 text-sm min-w-14 text-gray-600 cursor-pointer">
+                <div className=" ml-5 mr-5 text-sm text-center min-w-14 border-solid border-2 border-gray-400 text-gray-600 cursor-pointer">
                   로그아웃
                 </div>
               ) : (
-                <div className=" ml-5 mr-5 text-sm min-w-14  text-gray-600 cursor-pointer">
+                <div className=" ml-5 mr-5 text-sm text-center min-w-14 border-solid border-2 border-gray-400 text-gray-600 cursor-pointer">
                   로그인
                 </div>
               )}
