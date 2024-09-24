@@ -41,10 +41,10 @@ function UserRanking() {
             {activeTab === 1
               ? monthlyData?.personalRank === -1
                 ? "순위 없음"
-                : monthlyData?.personalRank
+                : monthlyData?.personalRank+"위"
               : accumulationData?.personalRank === -1
                 ? "순위 없음"
-                : accumulationData?.personalRank}
+                : accumulationData?.personalRank+"위"}
           </div>
         </div>
       </div>

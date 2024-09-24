@@ -25,7 +25,6 @@ function MoneyRankTop3Box(props) {
 
   // 1위를 가운데로 배치하고 나머지를 좌우에 배치
   const reorderedTopThree = [topThree[1], topThree[0], topThree[2]];
-
   return (
     <>
       {/* Top 3 */}
@@ -63,6 +62,7 @@ function MoneyRankTop3Box(props) {
   );
 }
 function MoneyRankBox(props) {
+  console.log(props.userRanking)
   return (
     <>
       <div className="flex flex-col items-center">
@@ -81,7 +81,7 @@ function MoneyRankBox(props) {
                     <div className="flex items-center gap-3">
                       <div className="avatar">
                         <div className="mask mask-squircle h-12 w-12">
-                          <img src={""} alt="profile image" />
+                          <img src={item.profile} alt="profile image" />
                         </div>
                       </div>
                       <div>
