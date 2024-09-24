@@ -62,7 +62,6 @@ function MoneyRankTop3Box(props) {
   );
 }
 function MoneyRankBox(props) {
-  console.log(props.userRanking)
   return (
     <>
       <div className="flex flex-col items-center">
