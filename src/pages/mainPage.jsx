@@ -3,6 +3,7 @@ import Header from "../components/common/header";
 import ButtomNavigation from "../components/common/bottomNavigation";
 import PopularChart from "../components/main/popularChart";
 import { MoneyRankTop3Box } from "../components/ranking/moneyRankBox";
+import LuckyBox from "../components/main/luckyBox";
 import TitleBox from "../components/commonBox/titleBox";
 import NewsBox from "../components/main/newsBox";
 import useFetch from "../hooks/useFetch";
@@ -48,6 +49,9 @@ function MainPage() {
       <div className="py-[70px]">
         <div className="mx-auto w-[390px] px-3">
           <div>
+            <LuckyBox
+              title={"오늘의 운세"}
+            />
             <TitleBox
               title={"기부 랭킹 TOP3"}
               onClick={() => seeMore("/ranking", 2)}
