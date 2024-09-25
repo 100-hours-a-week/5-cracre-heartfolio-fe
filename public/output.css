@@ -3151,6 +3151,10 @@ input.tab:checked + .tab-content,
   height: 100vh;
 }
 
+.h-\[150px\] {
+  height: 150px;
+}
+
 .max-h-\[500px\] {
   max-height: 500px;
 }
@@ -3309,6 +3313,14 @@ input.tab:checked + .tab-content,
 
 .w-28 {
   width: 7rem;
+}
+
+.w-44 {
+  width: 11rem;
+}
+
+.w-96 {
+  width: 24rem;
 }
 
 .min-w-0 {

@@ -6,14 +6,19 @@ import { MoneyRankTop3Box } from "../components/ranking/moneyRankBox";
 import TitleBox from "../components/commonBox/titleBox";
 import NewsBox from "../components/main/newsBox";
 import useFetch from "../hooks/useFetch";
+import TradingViewMini from "../components/main/tradingViewMini";
 
 function MainPage() {
   const navigate = useNavigate();
   function seeMore(route, tab = 1) {
     navigate(route, { state: { activeTab: tab } });
   }
-  const { data:moneyData, moneyLoading } = useFetch(`${process.env.REACT_APP_API_URI}/rank/donation`);
-  const { data, error, loading } = useFetch(`${process.env.REACT_APP_API_URI}/news`);
+  const { data: moneyData, moneyLoading } = useFetch(
+    `${process.env.REACT_APP_API_URI}/rank/donation`
+  );
+  const { data, error, loading } = useFetch(
+    `${process.env.REACT_APP_API_URI}/news`
+  );
 
   // 데이터 구조가 유효한지 확인
   const userRanking = moneyData?.userRanking || [];
@@ -48,7 +53,11 @@ function MainPage() {
               onClick={() => seeMore("/ranking", 2)}
             />
             <div className="mx-auto max-w-[390px] mt-[6px] border-t border-gray-300" />
-            <MoneyRankTop3Box topThree={topThree}/>
+            <MoneyRankTop3Box topThree={topThree} />
+            <div className="flex justify-between">
+              {/* <TradingViewMini symbol={"AMEX:SPY"} /> */}
+              {/* <TradingViewMini symbol={"NASDAQ.USD.100"} /> */}
+            </div>
             <TitleBox
               title={"오늘의 인기 차트"}
               onClick={() => seeMore("/popularstock")}
