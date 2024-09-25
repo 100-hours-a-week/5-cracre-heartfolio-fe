@@ -12,7 +12,7 @@ function UserRankingBox(props) {
                       {index + 1}
                     </div>
                   </td>
-                  <td onClick={()=>props.onClick(item.userId)}>
+                  <td onClick={()=>props.onClick(item.userId)} className="cursor-pointer">
                     <div className="flex items-center gap-3">
                       <div className="avatar">
                         <div className="mask mask-squircle h-12 w-12">
