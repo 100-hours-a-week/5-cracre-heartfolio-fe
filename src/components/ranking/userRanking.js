@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 import UserRankingBox from "./userRankingBox";
 import useFetch from "../../hooks/useFetch";
+import { useNavigate } from "react-router-dom";
 
 function UserRanking() {
+  const navigate = useNavigate();
   const token = localStorage.getItem("access_token");
   const [activeTab, setActiveTab] = useState(1);
   const { data: accumulationData, loading: accumulationLoading } = useFetch(
@@ -11,6 +13,9 @@ function UserRanking() {
   const { data: monthlyData, loading: monthlyLoading } = useFetch(
     `${process.env.REACT_APP_API_URI}/rank/month`
   );
+  function handlePortfolio(get_id) {
+    navigate(`/portfolio/${get_id}`);
+  }
   return (
     <div className="flex flex-col items-center">
       <div className="flex justify-between w-full max-w-[350px]">
@@ -51,7 +56,7 @@ function UserRanking() {
       <div className="mx-auto max-w-[350px] pb-16">
         <div role="tabpanel" className="tab-content block">
           {activeTab === 1 && (
-            <UserRankingBox data={monthlyData?.userRanking} />
+            <UserRankingBox data={monthlyData?.userRanking} onClick={handlePortfolio}/>
           )}
           {activeTab === 2 && (
             <UserRankingBox data={accumulationData?.userRanking} />

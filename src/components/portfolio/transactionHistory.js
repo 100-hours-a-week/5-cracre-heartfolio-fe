@@ -4,11 +4,14 @@ import HistoryBox from "../commonBox/historyBox";
 import Lottie from "lottie-react";
 import noInfoAnimation from "../../assets/animations/noInfo.json";
 
-function TransactionHistory() {
-  // 데이터를 가져오기 위한 상태 관리
-  const { data, error, loading } = useFetch(
-    `${process.env.REACT_APP_API_URI}/portfolio/investInfo`
-  );
+function TransactionHistory(props) {
+    // URL 설정
+    const url = props.id
+    ? `${process.env.REACT_APP_API_URI}/portfolio/investInfo/${props.id}`
+    : `${process.env.REACT_APP_API_URI}/portfolio/investInfo`;
+
+  // 데이터 가져오기 위한 상태 관리
+  const { data, error, loading } = useFetch(url);
 
   // data가 배열인지 확인
   const transactionData = Array.isArray(data?.body) ? data.body : [];

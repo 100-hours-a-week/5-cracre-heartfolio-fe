@@ -7,13 +7,14 @@ import Holdings from "../components/portfolio/holdings";
 import ButtomNavigation from "../components/common/bottomNavigation";
 import Lottie from "lottie-react";
 import alertAnimation from "../assets/animations/alert.json";
-import { useLocation } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 
 function Portfolio() {
   const initialTab = parseInt(localStorage.getItem("activeTab")) || 1; // 로컬 스토리지에서 activeTab 불러오기
   const [activeTab, setActiveTab] = useState(initialTab);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-
+  const {id} = useParams();
+  
   useEffect(() => {
     const token = localStorage.getItem("access_token");
     if (token) {
@@ -31,7 +32,7 @@ function Portfolio() {
       <div className="pt-[90px] min-h-screen bg-white">
         {isAuthenticated === true ? (
           <>
-            <MoneyInfo />
+            <MoneyInfo id={id}/>
             <div
               role="tablist"
               className="tabs tabs-bordered mx-auto max-w-[370px] bg-backColor mt-[34px]"
@@ -66,9 +67,9 @@ function Portfolio() {
             </div>
             <div className="mx-auto max-w-[370px] bg-backColor p-4 pb-[40px]">
               <div role="tabpanel" className="tab-content block">
-                {activeTab === 1 && <AssetConfiguration />}
-                {activeTab === 2 && <TransactionHistory />}
-                {activeTab === 3 && <Holdings />}
+                {activeTab === 1 && <AssetConfiguration id={id}/>}
+                {activeTab === 2 && <TransactionHistory id={id}/>}
+                {activeTab === 3 && <Holdings id={id}/>}
               </div>
             </div>
           </>
