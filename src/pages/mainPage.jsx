@@ -54,10 +54,15 @@ function MainPage() {
             />
             <div className="mx-auto max-w-[390px] mt-[6px] border-t border-gray-300" />
             <MoneyRankTop3Box topThree={topThree} />
-            <div className="flex justify-between">
-              {/* <TradingViewMini symbol={"AMEX:SPY"} /> */}
-              {/* <TradingViewMini symbol={"NASDAQ.USD.100"} /> */}
-            </div>
+            {/* <div className="flex justify-around w-[350px]">
+              <div className="w-[170px] aspect-[3/4]">
+                <TradingViewMini symbol={"AMEX:SPY"} />
+              </div>
+              aspect => width:height
+              <div className="w-[170px] aspect-[3/4]">
+                <TradingViewMini symbol={"NASDAQ.USD.100"} />
+              </div>
+            </div> */}
             <TitleBox
               title={"오늘의 인기 차트"}
               onClick={() => seeMore("/popularstock")}

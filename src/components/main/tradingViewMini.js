@@ -22,27 +22,22 @@ function TradingViewMini(props) {
       script.async = true;
       script.innerHTML = `
         {
-          "width": "350",
-          "height": "200",
           "symbol": "${props.symbol}",
           "locale": "en",
-          "dateRange":"1M",
+          "dateRange":"1D",
           "colorTheme":"light",
           "isTransparent":false,
-          "autosize":false,
-          "largeChartUrl":"",
-          "chartOnly":false
+          "autosize":false
         }`;
 
       scriptRef.current = script;
       container.current.appendChild(script);
     };
 
-    // setTimeout으로 DOM이 준비된 후 초기화
     const timer = setTimeout(initializeWidget, 100);
 
     return () => {
-      clearTimeout(timer); // 컴포넌트 언마운트 시 타이머 클리어
+      clearTimeout(timer);
       if (container.current) {
         container.current.innerHTML = "";
       }
@@ -53,15 +48,8 @@ function TradingViewMini(props) {
   }, [props.symbol]);
 
   return (
-    <div className="tradingview-widget-container" ref={container}>
+    <div className="tradingview-widget-container w-[170px] h-full w-full" ref={container}>
       <div className="tradingview-widget-container__widget"></div>
-      <div className="tradingview-widget-copyright">
-        <a
-          href="https://www.tradingview.com/"
-          rel="noopener nofollow"
-          target="_blank"
-        ></a>
-      </div>
     </div>
   );
 }
