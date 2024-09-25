@@ -94,7 +94,7 @@ function Chart(props) {
         <p className="pb-2 text-gray-600 text-lg">
           {curPrice.toLocaleString()} KRW
         </p>
-        <TradingViewWidget symbol={props.data?.symbol} />
+        <TradingViewWidget symbol={props.data?.symbol} width={370} height={400}/>
         <div
           role="tablist"
           className="tabs tabs-bordered mx-auto max-w-[370px] mt-[34px] "

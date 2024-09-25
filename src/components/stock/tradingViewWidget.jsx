@@ -22,8 +22,8 @@ function TradingViewWidget(props) {
       script.async = true;
       script.innerHTML = `
         {
-          "width": "370",
-          "height": "400",
+          "width": "${props.width}",
+          "height": "${props.height}",
           "symbol": "${props.symbol}",
           "interval": "60",
           "timezone": "Etc/UTC",
