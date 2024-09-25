@@ -14,7 +14,7 @@ function Portfolio() {
   const [activeTab, setActiveTab] = useState(initialTab);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const {id} = useParams();
-  
+
   useEffect(() => {
     const token = localStorage.getItem("access_token");
     if (token) {
@@ -25,6 +25,13 @@ function Portfolio() {
   useEffect(() => {
     localStorage.setItem("activeTab", activeTab); // activeTab을 로컬 스토리지에 저장
   }, [activeTab]);
+
+    // 페이지 떠날 때 activeTab을 1로 설정
+    useEffect(() => {
+      return () => {
+        localStorage.setItem("activeTab", 1); // 언마운트 시 activeTab을 1로 설정
+      };
+    }, []);
 
   return (
     <>
