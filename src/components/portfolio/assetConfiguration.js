@@ -11,14 +11,19 @@ function getRandomPastelColor() {
   return `rgb(${r}, ${g}, ${b})`;
 }
 
-function AssetConfiguration() {
+function AssetConfiguration(props) {
   const [chartData, setChartData] = useState({
     series: [],
     labels: [],
     sortedData: [],
   });
+    // URL 설정
+    const url = props.id
+    ? `${process.env.REACT_APP_API_URI}/portfolio/stock/${props.id}`
+    : `${process.env.REACT_APP_API_URI}/portfolio/stock`;
 
-  const {data, error, loading} = useFetch( `${process.env.REACT_APP_API_URI}/portfolio/stock`);
+  // 데이터 가져오기 위한 상태 관리
+  const { data, error, loading } = useFetch(url);
 
   useEffect(() => {
     if (data && data.stocks && data.stocks.length > 0) {

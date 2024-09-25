@@ -5,12 +5,16 @@ import noInfoAnimation from "../../assets/animations/noInfo.json";
 import Lottie from "lottie-react";
 import { useNavigate } from "react-router-dom";
 
-function Holdings() {
+function Holdings(props) {
   const navigate = useNavigate();
-  
-  // 데이터 가져오기 상태 관리
-  const {data, error, loading} = useFetch(`${process.env.REACT_APP_API_URI}/portfolio/totalStocks`)
+    // URL 설정
+    const url = props.id
+    ? `${process.env.REACT_APP_API_URI}/portfolio/totalStocks/${props.id}`
+    : `${process.env.REACT_APP_API_URI}/portfolio/totalStocks`;
 
+  // 데이터 가져오기 위한 상태 관리
+  const { data, error, loading } = useFetch(url);
+  
   return (
     <>
       {loading ? (

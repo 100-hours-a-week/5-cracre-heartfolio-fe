@@ -22,6 +22,7 @@ function App() {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/oauth" element={<KakaoRedirect />} />
         <Route path="/portfolio" element={<PortfolioPage />} />
+        <Route path="/portfolio/:id" element={<PortfolioPage />} />
         <Route path="/intereststock" element={<Intereststock />} />
         <Route path="/popularstock" element={<Popularstock />} />
         <Route path="/search" element={<SearchPage />} />

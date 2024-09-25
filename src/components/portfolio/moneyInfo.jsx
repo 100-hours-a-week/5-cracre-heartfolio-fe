@@ -1,10 +1,13 @@
 import { useEffect, useState } from "react";
 import useFetch from "../../hooks/useFetch";
-function MoneyInfo() {
+function MoneyInfo(props) {
+  // URL 설정
+  const url = props.id
+    ? `${process.env.REACT_APP_API_URI}/portfolio/${props.id}`
+    : `${process.env.REACT_APP_API_URI}/portfolio`;
+
   // 데이터 가져오기 상태 관리
-  const { data, error, loading } = useFetch(
-    `${process.env.REACT_APP_API_URI}/portfolio`
-  );
+  const { data, error, loading } = useFetch(url);
 
   function money_change(money) {
     if (money === undefined || money === null) return "0";
@@ -27,7 +30,7 @@ function MoneyInfo() {
     <div className="max-w-full">
       <div className="w-full flex justify-center ">
         <div className="w-[250px] text-lg text-gray-600 font-bold font-TmoneyRoundWindExtraBold text-left ml-[22px]">
-          내 포트폴리오
+          {props.id ? "포트폴리오" : "내 포트폴리오"}
         </div>
         <div className=" w-[90px] text-xs text-gray-500 pt-10 text-right mr-6">
           가격 단위 (KRW)
