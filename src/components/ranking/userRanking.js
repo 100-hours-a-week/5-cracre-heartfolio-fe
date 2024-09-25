@@ -45,10 +45,10 @@ function UserRanking() {
             {activeTab === 1
               ? monthlyData?.personalRank === -1
                 ? "순위 없음"
-                : monthlyData?.personalRank+"위"
+                : monthlyData?.personalRank + "위"
               : accumulationData?.personalRank === -1
-                ? "순위 없음"
-                : accumulationData?.personalRank+"위"}
+              ? "순위 없음"
+              : accumulationData?.personalRank + "위"}
           </div>
         </div>
       </div>
@@ -56,10 +56,16 @@ function UserRanking() {
       <div className="mx-auto max-w-[350px] pb-16">
         <div role="tabpanel" className="tab-content block">
           {activeTab === 1 && (
-            <UserRankingBox data={monthlyData?.userRanking} onClick={handlePortfolio}/>
+            <UserRankingBox
+              data={monthlyData?.userRanking}
+              onClick={handlePortfolio}
+            />
           )}
           {activeTab === 2 && (
-            <UserRankingBox data={accumulationData?.userRanking} />
+            <UserRankingBox
+              data={accumulationData?.userRanking}
+              onClick={handlePortfolio}
+            />
           )}
         </div>
       </div>
