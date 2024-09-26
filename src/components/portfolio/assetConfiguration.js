@@ -71,7 +71,7 @@ function AssetConfiguration(props) {
         <div className="w-80 h-80">
           <Lottie animationData={noInfoAnimation} loop={true} />
         </div>
-        <div className="text-lg text-gray-600">거래 내역이 아직 없습니다.</div>
+        <div className="text-lg text-gray-600">보유한 자산이 없습니다.</div>
       </div>
     );
   }
