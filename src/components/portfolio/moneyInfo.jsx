@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import useFetch from "../../hooks/useFetch";
+import { moneyChange } from "../../utils/moneyUtils";
 function MoneyInfo(props) {
   // URL 설정
   const url = props.id
@@ -9,23 +10,6 @@ function MoneyInfo(props) {
   // 데이터 가져오기 상태 관리
   const { data, error, loading } = useFetch(url);
 
-  function money_change(money) {
-    if (money === undefined || money === null) return "0";
-    if (money >= 1000000000000) {
-      // 1조 이상
-      let trillion = Math.floor(money / 1_0000_0000_0000);
-      let billion = Math.floor((money % 1_0000_0000_0000) / 1_0000_0000);
-      let million = Math.floor((money % 1_0000_0000) / 10000);
-      return `${trillion}조 ${billion}억 ${million}만`;
-    } else if (money >= 100000000) {
-      // 1억 이상 1조 미만
-      let billion = Math.floor(money / 1_0000_0000);
-      let million = Math.floor((money % 1_0000_0000) / 10000);
-      return `${billion}억 ${million}만`;
-    } else {
-      return money.toLocaleString(); // 기본적으로 1,000 단위로 콤마를 추가
-    }
-  }
   return (
     <div className="max-w-full">
       <div className="w-full flex justify-center ">
@@ -46,7 +30,7 @@ function MoneyInfo(props) {
             <div>
               <div className="text-sm text-gray-600 font-semibold">총 자산</div>
               <div className="text-base text-gray-600">
-                {money_change(data?.totalAmount)}
+                {moneyChange(data?.totalAmount)}
               </div>
             </div>
             <div>
@@ -54,7 +38,7 @@ function MoneyInfo(props) {
                 보유 캐시
               </div>
               <div className="text-base text-gray-600">
-                {money_change(data?.cash)}
+                {moneyChange(data?.cash)}
               </div>
             </div>
           </div>
@@ -64,7 +48,7 @@ function MoneyInfo(props) {
                 총 매수 금액
               </div>
               <div className="text-base text-gray-600">
-                {money_change(data?.totalPurchase)}
+                {moneyChange(data?.totalPurchase)}
               </div>
             </div>
             <div>
@@ -72,7 +56,7 @@ function MoneyInfo(props) {
                 총 평가 금액
               </div>
               <div className="text-base text-gray-600">
-                {money_change(data?.totalValue)}
+                {moneyChange(data?.totalValue)}
               </div>
             </div>
             <div>

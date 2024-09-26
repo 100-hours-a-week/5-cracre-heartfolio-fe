@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Swal from "sweetalert2";
+import { moneyChange } from "../../utils/moneyUtils";
 
 function SellBox({
   curPrice,
@@ -34,24 +35,6 @@ function SellBox({
 
   const isDisabled = quantity <= 0;
   const buttonStyle = isDisabled ? "bg-[#FEF0F2]" : "bg-[#FFE7E9]";
-
-  function money_change(money) {
-    if (money === undefined || money === null) return "0";
-    if (money >= 1000000000000) {
-      // 1조 이상
-      let trillion = Math.floor(money / 1_0000_0000_0000);
-      let billion = Math.floor((money % 1_0000_0000_0000) / 1_0000_0000);
-      let million = Math.floor((money % 1_0000_0000) / 10000);
-      return `${trillion}조 ${billion}억 ${million}만`;
-    } else if (money >= 100000000) {
-      // 1억 이상 1조 미만
-      let billion = Math.floor(money / 1_0000_0000);
-      let million = Math.floor((money % 1_0000_0000) / 10000);
-      return `${billion}억 ${million}만`;
-    } else {
-      return money.toLocaleString(); // 기본적으로 1,000 단위로 콤마를 추가
-    }
-  }
 
   async function sell() {
     if (!isLoggedIn) {
@@ -202,7 +185,7 @@ function SellBox({
               total_money > 100000000 ? "text-xs" : "text-sm"
             } h-[30px] w-[120px] content-center text-right text-gray-600`}
           >
-            {money_change(total_money)} KRW
+            {moneyChange(total_money)} KRW
           </p>
         </div>
         <div className="flex items-center w-1/2">
