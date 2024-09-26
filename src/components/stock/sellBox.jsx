@@ -19,18 +19,33 @@ function SellBox({
     }
   };
 
-  const handleMaxQuantity = () => {
-    setQuantity(amount);
-  };
-
-  const handle50PercentQuantity = () => {
-    setQuantity(Math.floor(amount / 2));
-  };
-
-  const handle25PercentQuantity = () => {
-    setQuantity(Math.floor(amount / 4));
-  };
-
+  function handlePercentQuantity(percent) {
+    setQuantity(Math.floor(amount * (percent / 100)));
+    if (!isLoggedIn) {
+      Swal.fire({
+        icon: "warning",
+        text: "로그인이 필요한 서비스입니다.",
+        footer: '<a href="/login">로그인 하러가기</a>',
+        customClass: {
+          confirmButton:
+            "bg-btnNoClickColor w-[70px] h-[40px] text-gray-800 rounded hover:bg-btnClickColor", // Tailwind CSS 클래스 적용
+        },
+        buttonsStyling: false,
+      });
+      return;
+    } else if (amount < quantity) {
+      Swal.fire({
+        icon: "error",
+        text: "본인의 보유 수량을 확인해주세요",
+        customClass: {
+          confirmButton:
+            "bg-btnNoClickColor w-[70px] h-[40px] text-gray-800 rounded hover:bg-btnClickColor", // Tailwind CSS 클래스 적용
+        },
+        buttonsStyling: false,
+      });
+      return;
+    }
+  }
   const total_money = curPrice * quantity;
 
   const isDisabled = quantity <= 0;
@@ -159,19 +174,19 @@ function SellBox({
           </button>
           <button
             className="text-center text-[10px] bg-boxBackgroundColor p-2 rounded-md mx-1 hover:bg-boxHoverColor  text-gray-600"
-            onClick={handle25PercentQuantity}
+            onClick={()=>handlePercentQuantity(25)}
           >
             25%
           </button>
           <button
             className="text-center text-[10px] bg-boxBackgroundColor p-2 rounded-md mx-1 hover:bg-boxHoverColor  text-gray-600"
-            onClick={handle50PercentQuantity}
+            onClick={()=>handlePercentQuantity(50)}
           >
             50%
           </button>
           <button
             className="text-center text-[10px] bg-boxBackgroundColor p-2 rounded-md mx-1 hover:bg-boxHoverColor  text-gray-600"
-            onClick={handleMaxQuantity}
+            onClick={()=>handlePercentQuantity(100)}
           >
             최대
           </button>
