@@ -22,7 +22,7 @@ function RankingPage() {
     <>
       <Header />
       <div className="pt-[65px] text-center min-h-screen bg-white">
-        <div className="mx-auto max-w-[390px] px-3 mt-[30px] flex flex-col">
+        <div className="mx-auto max-w-[390px] px-3 mt-[15px] flex flex-col">
           <div
             role="tablist"
             className="tabs tabs-boxed max-w-[370px] bg-white"
