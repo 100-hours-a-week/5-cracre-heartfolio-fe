@@ -40,24 +40,34 @@ function Header() {
                   src="/assets/images/heartfolioLogo.webp"
                   className="h-8 w-auto rounded-lg"
                 />
-                <div className="text-gray-600 ml-4 mr-32 content-center font-Ubuntu text-[20px]">
+                <div className="text-gray-600 ml-4 mr-28 content-center font-TmoneyRoundWindExtraBold text-[20px]">
                   Heartfolio
                 </div>
               </a>
             </div>
             <div onClick={() => handleLogin()} className="content-center">
               {isAuthenticated ? (
-                <div className=" ml-5 mr-5 text-sm text-center min-w-14 border-solid border-[1px] border-gray-400 text-gray-600 cursor-pointer">
+                <div className=" text-sm text-center min-w-14 border-solid border-[1px] rounded-lg border-gray-400 text-gray-600 cursor-pointer">
                   로그아웃
                 </div>
               ) : (
-                <div className=" ml-5 mr-5 text-sm text-center min-w-14 border-solid border-[1px] border-gray-400 text-gray-600 cursor-pointer">
+                <div className="text-sm text-center min-w-14 border-solid border-[1px] rounded-lg border-gray-400 text-gray-600 cursor-pointer">
                   로그인
                 </div>
               )}
             </div>
+
+            {/* 마이페이지 버튼*/}
+            <button
+              className="p-3 text-sm  text-gray-600"
+              onClick={() => navigate("/mypage")}
+            >
+              <a className="material-symbols-outlined">person</a>
+            </button>
           </div>
-          <div className="flex ml-auto items-center">
+
+          {/* 햄버거 버튼 */}
+          {/* <div className="flex ml-auto items-center">
             <Disclosure.Button
               className={`relative inline-flex rounded-md text-gray-400 hover:bg-gray-100 hover:text-gray-500 transition-transform duration-300 ${
                 isOpen ? "rotate-180" : ""
@@ -78,11 +88,12 @@ function Header() {
                 aria-hidden="true"
               />
             </Disclosure.Button>
-          </div>
+          </div> */}
         </div>
       </div>
 
-      {isOpen && (
+      {/* 햄버거 버튼 안 내용 */}
+      {/* {isOpen && (
         <>
           <div
             className="fixed inset-0 top-16 z-40 bg-black opacity-50"
@@ -131,7 +142,7 @@ function Header() {
             </div>
           </Disclosure.Panel>
         </>
-      )}
+      )} */}
     </Disclosure>
   );
 }
