@@ -50,7 +50,7 @@ function StockPage() {
           정보
         </a> */}
         </div>
-        <div className="mx-auto max-w-[390px] p-4 flex justify-center">
+        <div className="mx-auto max-w-[390px] p-4 pt-0 flex justify-center">
           <div role="tabpanel" className="tab-content block pb-[29px]">
             {loading ? (
               <p className="min-h-screen bg-white text-center">Loading...</p>

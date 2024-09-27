@@ -89,8 +89,7 @@ function Chart(props) {
 
   return (
     <>
-      <div className="mx-auto max-w-[370px]">
-        <div></div>
+      <div className="mx-auto max-w-[370px] h-[650px] overflow-y-auto scrollbar-hide">
         <p className="pb-2 text-gray-600 text-lg">
           {curPrice.toLocaleString()} KRW
         </p>
@@ -118,7 +117,7 @@ function Chart(props) {
             매도
           </div>
         </div>
-        <div className="mx-auto max-w-[370px] p-4 pb-20">
+        <div className="mx-auto max-w-[370px] p-4">
           <div role="tabpanel" className="tab-content block">
             {activeTab === 1 && (
               <BuyBox
