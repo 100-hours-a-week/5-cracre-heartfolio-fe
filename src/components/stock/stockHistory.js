@@ -38,7 +38,7 @@ function StockHistory(props) {
               <div className="text-xs mb-2 text-right text-gray-600">
                 가격 단위(KRW)
               </div>
-              <ul role="list" className="space-y-3">
+              <ul role="list" className="space-y-3 pb-4 h-[640px] overflow-y-auto scrollbar-hide">
                 {data?.map((item) => (
                   <li
                     key={item.id}

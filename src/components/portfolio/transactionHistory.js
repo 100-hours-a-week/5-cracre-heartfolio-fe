@@ -5,8 +5,8 @@ import Lottie from "lottie-react";
 import noInfoAnimation from "../../assets/animations/noInfo.json";
 
 function TransactionHistory(props) {
-    // URL 설정
-    const url = props.id
+  // URL 설정
+  const url = props.id
     ? `${process.env.REACT_APP_API_URI}/portfolio/investInfo/${props.id}`
     : `${process.env.REACT_APP_API_URI}/portfolio/investInfo`;
 
@@ -39,25 +39,27 @@ function TransactionHistory(props) {
             </div>
           </div>
         ) : (
-          <div>
+          <>
             <div className="text-xs mb-2 text-right text-gray-600">
               가격 단위(KRW)
             </div>
-            <ul role="list" className="divide-y divide-gray-200">
-              {transactionData.map((item) => (
-                <li key={item.id} className="py-2">
-                  <HistoryBox
-                    name={item.name}
-                    orderCategory={item.orderCategory}
-                    orderDate={item.orderDate}
-                    orderAmount={item.orderAmount}
-                    orderPrice={item.orderPrice}
-                    totalAmount={item.totalAmount}
-                  />
-                </li>
-              ))}
-            </ul>
-          </div>
+            <div className="h-[440px] overflow-y-auto scrollbar-hide">
+              <ul role="list" className="divide-y divide-gray-200">
+                {transactionData.map((item) => (
+                  <li key={item.id} className="py-2">
+                    <HistoryBox
+                      name={item.name}
+                      orderCategory={item.orderCategory}
+                      orderDate={item.orderDate}
+                      orderAmount={item.orderAmount}
+                      orderPrice={item.orderPrice}
+                      totalAmount={item.totalAmount}
+                    />
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </>
         )}
       </div>
     </>

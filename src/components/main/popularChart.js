@@ -5,11 +5,14 @@ function PopularChart() {
   const { data, error, loading } = useFetch(
     `${process.env.REACT_APP_API_URI}/stock/popular?limit=` + 5
   );
+  
+  // data가 배열이 아닌 경우 빈 배열로 처리
+  const stocks = Array.isArray(data) ? data : [];
 
   return (
     <div className="cursor-pointer">
       {/* map을 사용하여 상위 5개 종목 반복 렌더링 */}
-      {data?.map((stock) => (
+      {stocks?.map((stock) => (
         <EachpopularstockBox
           key={stock.stockId}
           stockId={stock.stockId} //주식별 고유 아이디(기본키)

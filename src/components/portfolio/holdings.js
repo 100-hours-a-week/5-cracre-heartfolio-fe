@@ -7,14 +7,14 @@ import { useNavigate } from "react-router-dom";
 
 function Holdings(props) {
   const navigate = useNavigate();
-    // URL 설정
-    const url = props.id
+  // URL 설정
+  const url = props.id
     ? `${process.env.REACT_APP_API_URI}/portfolio/totalStocks/${props.id}`
     : `${process.env.REACT_APP_API_URI}/portfolio/totalStocks`;
 
   // 데이터 가져오기 위한 상태 관리
   const { data, error, loading } = useFetch(url);
-  
+
   return (
     <>
       {loading ? (
@@ -33,28 +33,32 @@ function Holdings(props) {
           에러가 발생했습니다: {error.message}
         </div>
       ) : (
-        <div className="mx-auto max-w-[350px] pb-8">
+        <>
           <div className="text-xs mb-2 text-right text-gray-600">
             가격 단위(KRW)
           </div>
-          <ul role="list">
-            {data.stocks.map((item) => (
-              <li key={item.stockId} className="py-2">
-                <HoldingsBox
-                  stock_id={item.stockId}
-                  onClick={()=>{navigate(`/stock/${item.stockId}`)}}
-                  name={item.name}
-                  evalProfit={item.evalProfit}
-                  evalValue={item.evalValue}
-                  profitPercentage={item.profitPercentage}
-                  purchaseAvgPrice={item.purchaseAvgPrice}
-                  totalPurchasePrice={item.totalPurchasePrice}
-                  totalQuantity={item.totalQuantity}
-                />
-              </li>
-            ))}
-          </ul>
-        </div>
+          <div className="mx-auto max-w-[350px] pb-7 h-[470px] overflow-y-auto scrollbar-hide">
+            <ul role="list">
+              {data.stocks.map((item) => (
+                <li key={item.stockId} className="py-2">
+                  <HoldingsBox
+                    stock_id={item.stockId}
+                    onClick={() => {
+                      navigate(`/stock/${item.stockId}`);
+                    }}
+                    name={item.name}
+                    evalProfit={item.evalProfit}
+                    evalValue={item.evalValue}
+                    profitPercentage={item.profitPercentage}
+                    purchaseAvgPrice={item.purchaseAvgPrice}
+                    totalPurchasePrice={item.totalPurchasePrice}
+                    totalQuantity={item.totalQuantity}
+                  />
+                </li>
+              ))}
+            </ul>
+          </div>
+        </>
       )}
     </>
   );
