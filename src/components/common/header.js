@@ -59,7 +59,7 @@ function Header() {
 
             {/* 마이페이지 버튼*/}
             <button
-              className="p-3 text-sm  text-gray-600"
+              className="p-3 text-sm  text-gray-600 flex items-center"
               onClick={() => navigate("/mypage")}
             >
               <a className="material-symbols-outlined">person</a>
