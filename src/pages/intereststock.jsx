@@ -27,7 +27,7 @@ function Intereststock() {
       <div className="pt-[80px] min-h-screen bg-white">
         <Stocktype />
         {/* 관심종목리스트 */}
-        <div className="mx-auto max-w-[390px] pb-[65px] cursor-pointer">
+        <div className="mx-auto max-w-[390px] cursor-pointer h-[720px] overflow-y-auto scrollbar-hide">
           {isAuthenticated ? (
             data?.length === 0 ? (
               <div className="flex flex-col items-center justify-center">
