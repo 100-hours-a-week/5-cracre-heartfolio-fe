@@ -3147,6 +3147,54 @@ input.tab:checked + .tab-content,
   height: 100vh;
 }
 
+.h-\[100px\] {
+  height: 100px;
+}
+
+.h-\[400px\] {
+  height: 400px;
+}
+
+.h-\[500px\] {
+  height: 500px;
+}
+
+.h-\[450px\] {
+  height: 450px;
+}
+
+.h-\[430px\] {
+  height: 430px;
+}
+
+.h-\[440px\] {
+  height: 440px;
+}
+
+.h-\[438px\] {
+  height: 438px;
+}
+
+.h-\[435px\] {
+  height: 435px;
+}
+
+.h-\[448px\] {
+  height: 448px;
+}
+
+.h-\[445px\] {
+  height: 445px;
+}
+
+.h-\[480px\] {
+  height: 480px;
+}
+
+.h-\[470px\] {
+  height: 470px;
+}
+
 .max-h-\[500px\] {
   max-height: 500px;
 }
@@ -3789,6 +3837,14 @@ input.tab:checked + .tab-content,
 
 .pt-\[90px\] {
   padding-top: 90px;
+}
+
+.pb-6 {
+  padding-bottom: 1.5rem;
+}
+
+.pb-7 {
+  padding-bottom: 1.75rem;
 }
 
 .text-left {
