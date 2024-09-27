@@ -25,6 +25,12 @@ module.exports = {
         redColor: "#DF1525",
         backColor: "#FFF7F8"
       },
+      height: {
+        'real-screen': 'calc(var(--vh) * 100)',
+      },
+    },
+    minHeight: {
+      'real-screen': 'calc(var(--vh) * 100)',
     },
   },
   container: {
