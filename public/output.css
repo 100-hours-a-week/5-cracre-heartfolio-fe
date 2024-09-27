@@ -3023,6 +3023,21 @@ input.tab:checked + .tab-content,
   margin-top: 6px;
 }
 
+.mt-3 {
+  margin-top: 0.75rem;
+}
+
+.mr-28 {
+  margin-right: 7rem;
+}
+
+.mr-24 {
+  margin-right: 6rem;
+
+.mb-6 {
+margin-bottom: 1.5rem;
+}
+
 .block {
   display: block;
 }
@@ -3877,6 +3892,9 @@ input.tab:checked + .tab-content,
 
 .pb-4 {
   padding-bottom: 1rem;
+  
+.pt-\[25px\] {
+  padding-top: 25px;
 }
 
 .text-left {
