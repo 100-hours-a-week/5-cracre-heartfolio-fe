@@ -3171,6 +3171,30 @@ input.tab:checked + .tab-content,
   height: 100vh;
 }
 
+.h-\[600px\] {
+  height: 600px;
+}
+
+.h-\[610px\] {
+  height: 610px;
+}
+
+.h-\[620px\] {
+  height: 620px;
+}
+
+.h-\[590px\] {
+  height: 590px;
+}
+
+.h-\[595px\] {
+  height: 595px;
+}
+
+.h-\[588px\] {
+  height: 588px;
+}
+
 .max-h-\[500px\] {
   max-height: 500px;
 }

@@ -57,7 +57,7 @@ function UserRanking() {
         </div>
       </div>
       <hr className="mt-1 border-black w-[360px]" />
-      <div className="mx-auto max-w-[350px] h-[670px] pb-3 overflow-y-auto scrollbar-hide">
+      <div className="mx-auto max-w-[350px] h-[595px] pb-5 overflow-y-auto scrollbar-hide">
         <div role="tabpanel" className="tab-content block">
           {activeTab === 1 && (
             <UserRankingBox

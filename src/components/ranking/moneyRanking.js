@@ -28,7 +28,7 @@ function MoneyRanking() {
         </div>
       </div>
       <hr className="mt-1 border-black w-[350px]" />
-      <div className="mx-auto max-w-[350px] h-[660px] pb-5 overflow-y-auto scrollbar-hide">
+      <div className="mx-auto max-w-[350px] h-[588px] pb-5 overflow-y-auto scrollbar-hide">
         <MoneyRankTop3Box topThree={topThree} />
         <MoneyRankBox userRanking={userRanking} />
       </div>
