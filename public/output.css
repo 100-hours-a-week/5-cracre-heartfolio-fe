@@ -3171,6 +3171,82 @@ input.tab:checked + .tab-content,
   height: 100vh;
 }
 
+.h-\[600px\] {
+  height: 600px;
+}
+
+.h-\[610px\] {
+  height: 610px;
+}
+
+.h-\[620px\] {
+  height: 620px;
+}
+
+.h-\[590px\] {
+  height: 590px;
+}
+
+.h-\[595px\] {
+  height: 595px;
+}
+
+.h-\[588px\] {
+  height: 588px;
+}
+
+.h-\[550px\] {
+  height: 550px;
+}
+
+.h-\[580px\] {
+  height: 580px;
+}
+
+.h-\[575px\] {
+  height: 575px;
+}
+
+.h-\[572px\] {
+  height: 572px;
+}
+
+.h-\[570px\] {
+  height: 570px;
+}
+
+.h-\[560px\] {
+  height: 560px;
+}
+
+.h-\[400px\] {
+  height: 400px;
+}
+
+.h-\[350px\] {
+  height: 350px;
+}
+
+.h-\[340px\] {
+  height: 340px;
+}
+
+.h-\[345px\] {
+  height: 345px;
+}
+
+.h-\[615px\] {
+  height: 615px;
+}
+
+.h-\[618px\] {
+  height: 618px;
+}
+
+.h-\[623px\] {
+  height: 623px;
+}
+
 .max-h-\[500px\] {
   max-height: 500px;
 }
@@ -3829,6 +3905,14 @@ input.tab:checked + .tab-content,
 
 .pt-\[90px\] {
   padding-top: 90px;
+}
+
+.pb-\[30px\] {
+  padding-bottom: 30px;
+}
+
+.pb-\[20px\] {
+  padding-bottom: 20px;
 }
 
 .text-left {
