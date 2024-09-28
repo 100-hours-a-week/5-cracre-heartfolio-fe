@@ -3027,6 +3027,10 @@ input.tab:checked + .tab-content,
   margin-top: 15px;
 }
 
+.mt-3 {
+  margin-top: 0.75rem;
+}
+
 .block {
   display: block;
 }
@@ -3169,6 +3173,14 @@ input.tab:checked + .tab-content,
 
 .h-screen {
   height: 100vh;
+}
+
+.h-\[210px\] {
+  height: 210px;
+}
+
+.h-28 {
+  height: 7rem;
 }
 
 .max-h-\[500px\] {
@@ -3321,6 +3333,14 @@ input.tab:checked + .tab-content,
 
 .w-full {
   width: 100%;
+}
+
+.w-20 {
+  width: 5rem;
+}
+
+.w-28 {
+  width: 7rem;
 }
 
 .min-w-0 {

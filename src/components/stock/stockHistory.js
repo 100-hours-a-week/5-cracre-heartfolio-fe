@@ -6,13 +6,14 @@ import { useEffect, useState } from "react";
 import noInfoAnimation from "../../assets/animations/noInfo.json";
 import alertAnimation from "../../assets/animations/alert.json";
 import Lottie from "lottie-react";
+import loadingAnimation from "../../assets/animations/loading.json";
 
 function StockHistory(props) {
   const { id } = useParams();
   const token = localStorage.getItem("access_token");
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
-  useEffect(() => {  
+  useEffect(() => {
     const token = localStorage.getItem("access_token");
     if (token) {
       setIsAuthenticated(true);
@@ -20,13 +21,21 @@ function StockHistory(props) {
   }, []);
 
   // 데이터 가져오기 상태 관리
-  const {data, error, loading} = useFetch(`${process.env.REACT_APP_API_URI}/stock/order/${id}/history`);
+  const { data, loading } = useFetch(
+    `${process.env.REACT_APP_API_URI}/stock/order/${id}/history`
+  );
 
   return (
     <>
       <div className="mx-auto max-w-[370px] py-2 flex flex-col justify-center">
         {isAuthenticated ? (
-          data?.length === 0 ? (
+          loading ? (
+            <div className="flex h-[210px] justify-center">
+              <div className="w-28 h-28 mt-8">
+                <Lottie animationData={loadingAnimation} loop={true} />
+              </div>
+            </div>
+          ) : data?.length === 0 ? (
             <div className="flex flex-col items-center">
               <div className="w-80 h-80">
                 <Lottie animationData={noInfoAnimation} loop={true} />
@@ -38,7 +47,10 @@ function StockHistory(props) {
               <div className="text-xs mb-2 text-right text-gray-600">
                 가격 단위(KRW)
               </div>
-              <ul role="list" className="space-y-3 pb-4 h-[640px] overflow-y-auto scrollbar-hide">
+              <ul
+                role="list"
+                className="space-y-3 pb-4 h-[640px] overflow-y-auto scrollbar-hide"
+              >
                 {data?.map((item) => (
                   <li
                     key={item.id}

@@ -10,7 +10,6 @@ import useFetch from "../../hooks/useFetch";
 
 function Chart(props) {
   const { id } = useParams();
-  const userId = 1;
   const token = localStorage.getItem("access_token");
   const [moneyData, setMoneyData] = useState(null);
   const [curPrice, setCurPrice] = useState(props.data?.curPrice); // 주식 현재가를 저장할 상태
@@ -66,7 +65,7 @@ function Chart(props) {
     };
   }, [props.data?.symbol]);
 
-  const { data, error, loading } = useFetch(
+  const { data } = useFetch(
     `${process.env.REACT_APP_API_URI}/portfolio`
   );
 

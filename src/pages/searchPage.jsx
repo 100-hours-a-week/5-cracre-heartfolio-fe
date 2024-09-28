@@ -6,12 +6,13 @@ import Lottie from "lottie-react";
 import ContructionAnimation from "../assets/animations/construction.json";
 import SearchBox from "../components/mock investment/searchBox";
 import useFetch from "../hooks/useFetch";
+import loadingAnimation from "../assets/animations/loading.json";
 
 function SearchPage() {
   const navigate = useNavigate();
   const [searchTerm, setSearchTerm] = useState(""); // 검색어 상태 추가
   const [searchUrl, setSearchUrl] = useState(""); // 검색 API URL 관리
-  const { data, error, loading } = useFetch(searchUrl); // 검색 결과에 따라 fetch
+  const { data, loading } = useFetch(searchUrl); // 검색 결과에 따라 fetch
 
   // 검색창에서 값이 변경될 때마다 searchTerm 상태 업데이트
   const handleInputChange = (event) => {
@@ -25,7 +26,9 @@ function SearchPage() {
   // 검색어가 변경될 때마다 searchUrl 업데이트
   useEffect(() => {
     if (searchTerm.trim().length > 0) {
-      setSearchUrl(`${process.env.REACT_APP_API_URI}/stock/search?keyword=${searchTerm}`);
+      setSearchUrl(
+        `${process.env.REACT_APP_API_URI}/stock/search?keyword=${searchTerm}`
+      );
     } else {
       setSearchUrl("");
     }
@@ -87,7 +90,11 @@ function SearchPage() {
                 ))}
               </div>
             ) : loading ? (
-              <p>Loading...</p>
+              <div className="flex h-[210px] justify-center">
+                <div className="w-28 h-28 mt-5">
+                  <Lottie animationData={loadingAnimation} loop={true} />
+                </div>
+              </div>
             ) : data && data.length > 0 ? (
               data.map((item) => (
                 <div key={item.stockId} className="w-[250px] pb-3">

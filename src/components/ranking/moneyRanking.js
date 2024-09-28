@@ -2,8 +2,10 @@ import useFetch from "../../hooks/useFetch";
 import { MoneyRankBox, MoneyRankTop3Box } from "./moneyRankBox";
 
 function MoneyRanking() {
-  const { data, loading } = useFetch(`${process.env.REACT_APP_API_URI}/rank/donation`);
-  
+  const { data, loading } = useFetch(
+    `${process.env.REACT_APP_API_URI}/rank/donation`
+  );
+
   // 데이터 구조가 유효한지 확인
   const userRanking = data?.userRanking || [];
 
@@ -16,13 +18,19 @@ function MoneyRanking() {
         <div className="text-gray-600 text-xl">이달의 기부왕</div>
         <div className="flex items-center">
           <div className="text-gray-600 text-sm">내 순위 :</div>
-          <div className="text-gray-600 text-sm">{data?.personalRank>0 ? data?.personalRank+"위" : "순위 없음"}</div>
+          {loading ? (
+            <div className="text-gray-600 text-sm">순위 없음</div>
+          ) : (
+            <div className="text-gray-600 text-sm">
+              {data?.personalRank > 0 ? data?.personalRank + "위" : "순위 없음"}
+            </div>
+          )}
         </div>
       </div>
       <hr className="mt-1 border-black w-[350px]" />
       <div className="mx-auto max-w-[350px] h-[660px] pb-5 overflow-y-auto scrollbar-hide">
-        <MoneyRankTop3Box topThree={topThree}/>
-        <MoneyRankBox userRanking={userRanking}/>
+        <MoneyRankTop3Box topThree={topThree} />
+        <MoneyRankBox userRanking={userRanking} />
       </div>
     </div>
   );
