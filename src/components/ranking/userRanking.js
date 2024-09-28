@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import UserRankingBox from "./userRankingBox";
 import useFetch from "../../hooks/useFetch";
 import { useNavigate } from "react-router-dom";
+import { Loading } from "../common/loading";
 
 function UserRanking() {
   const navigate = useNavigate();
@@ -59,18 +60,24 @@ function UserRanking() {
       <hr className="mt-1 border-black w-[360px]" />
       <div className="mx-auto max-w-[350px] h-[595px] pb-5 overflow-y-auto scrollbar-hide">
         <div role="tabpanel" className="tab-content block">
-          {activeTab === 1 && (
-            <UserRankingBox
-              data={monthlyData?.userRanking}
-              onClick={handlePortfolio}
-            />
-          )}
-          {activeTab === 2 && (
-            <UserRankingBox
-              data={accumulationData?.userRanking}
-              onClick={handlePortfolio}
-            />
-          )}
+          {activeTab === 1 &&
+            (monthlyLoading ? (
+              <Loading />
+            ) : (
+              <UserRankingBox
+                data={monthlyData?.userRanking}
+                onClick={handlePortfolio}
+              />
+            ))}
+          {activeTab === 2 &&
+            (accumulationLoading ? (
+              <Loading />
+            ) : (
+              <UserRankingBox
+                data={accumulationData?.userRanking}
+                onClick={handlePortfolio}
+              />
+            ))}
         </div>
       </div>
     </div>
