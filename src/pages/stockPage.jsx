@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Header from "../components/common/header";
 import StockHeader from "../components/stock/stockHeader";
 import StockHistory from "../components/stock/stockHistory";
@@ -6,13 +6,12 @@ import Chart from "../components/stock/chart";
 import ButtomNavigation from "../components/common/bottomNavigation";
 import { useParams } from "react-router-dom";
 import useFetch from "../hooks/useFetch";
-import Lottie from "lottie-react";
-import loadingAnimation from "../assets/animations/loading.json";
+import { Loading } from "../components/common/loading";
 
 function StockPage() {
   const [activeTab, setActiveTab] = useState(1);
   const { id } = useParams();
-  
+
   // 데이터 가져오기 상태 관리
   const { data, error, loading } = useFetch(
     `${process.env.REACT_APP_API_URI}/stock/order/${id}/details`
@@ -56,11 +55,7 @@ function StockPage() {
         <div className="mx-auto max-w-[390px] p-4 pt-0 flex justify-center">
           <div role="tabpanel" className="tab-content block pb-[29px]">
             {loading ? (
-              <div className="flex h-[210px] justify-center">
-                <div className="w-28 h-28 mt-8">
-                  <Lottie animationData={loadingAnimation} loop={true} />
-                </div>
-              </div>
+              <Loading />
             ) : error ? (
               <p className="min-h-screen bg-white text-center">
                 Error: {error.message}

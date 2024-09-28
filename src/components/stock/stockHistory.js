@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import noInfoAnimation from "../../assets/animations/noInfo.json";
 import alertAnimation from "../../assets/animations/alert.json";
 import Lottie from "lottie-react";
-import loadingAnimation from "../../assets/animations/loading.json";
+import { Loading } from "../common/loading";
 
 function StockHistory(props) {
   const { id } = useParams();
@@ -30,11 +30,7 @@ function StockHistory(props) {
       <div className="mx-auto max-w-[370px] py-2 flex flex-col justify-center">
         {isAuthenticated ? (
           loading ? (
-            <div className="flex h-[210px] justify-center">
-              <div className="w-28 h-28 mt-8">
-                <Lottie animationData={loadingAnimation} loop={true} />
-              </div>
-            </div>
+            <Loading/>
           ) : data?.length === 0 ? (
             <div className="flex flex-col items-center">
               <div className="w-80 h-80">

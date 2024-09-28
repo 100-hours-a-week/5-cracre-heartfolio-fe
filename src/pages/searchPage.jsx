@@ -6,7 +6,7 @@ import Lottie from "lottie-react";
 import ContructionAnimation from "../assets/animations/construction.json";
 import SearchBox from "../components/mock investment/searchBox";
 import useFetch from "../hooks/useFetch";
-import loadingAnimation from "../assets/animations/loading.json";
+import { Loading } from "../components/common/loading";
 
 function SearchPage() {
   const navigate = useNavigate();
@@ -90,11 +90,7 @@ function SearchPage() {
                 ))}
               </div>
             ) : loading ? (
-              <div className="flex h-[210px] justify-center">
-                <div className="w-28 h-28 mt-5">
-                  <Lottie animationData={loadingAnimation} loop={true} />
-                </div>
-              </div>
+              <Loading/>
             ) : data && data.length > 0 ? (
               data.map((item) => (
                 <div key={item.stockId} className="w-[250px] pb-3">
