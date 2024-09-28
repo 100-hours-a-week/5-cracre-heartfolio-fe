@@ -41,15 +41,19 @@ function UserRanking() {
         </div>
         <div className="flex items-center">
           <div className="text-sm text-gray-600">내 순위 :</div>
-          <div className="text-sm text-gray-600">
-            {activeTab === 1
-              ? monthlyData?.personalRank === -1
+          {accumulationLoading || monthlyLoading ? (
+            <div className="text-sm text-gray-600">순위 없음</div>
+          ) : (
+            <div className="text-sm text-gray-600">
+              {activeTab === 1
+                ? monthlyData?.personalRank === -1
+                  ? "순위 없음"
+                  : monthlyData?.personalRank + "위"
+                : accumulationData?.personalRank === -1
                 ? "순위 없음"
-                : monthlyData?.personalRank + "위"
-              : accumulationData?.personalRank === -1
-              ? "순위 없음"
-              : accumulationData?.personalRank + "위"}
-          </div>
+                : accumulationData?.personalRank + "위"}
+            </div>
+          )}
         </div>
       </div>
       <hr className="mt-1 border-black w-[360px]" />
