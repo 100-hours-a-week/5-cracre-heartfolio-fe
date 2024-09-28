@@ -79,7 +79,7 @@ function SearchPage() {
           </div>
 
           {/* 검색목록 */}
-          <div className="flex flex-col py-5 pb-14">
+          <div className="flex flex-col pt-5 h-[623px] overflow-y-auto scrollbar-hide">
             {searchTerm.length == 0 ? (
               <div className="flex flex-col">
                 <div className="text-gray-600 text-lg pb-3">추천 검색어</div>
