@@ -3235,6 +3235,14 @@ input.tab:checked + .tab-content,
   height: 345px;
 }
 
+.h-\[615px\] {
+  height: 615px;
+}
+
+.h-\[618px\] {
+  height: 618px;
+}
+
 .max-h-\[500px\] {
   max-height: 500px;
 }
