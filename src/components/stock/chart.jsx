@@ -88,7 +88,7 @@ function Chart(props) {
 
   return (
     <>
-      <div className="mx-auto max-w-[370px] h-[650px] overflow-y-auto scrollbar-hide">
+      <div className="mx-auto max-w-[370px] h-[572px] overflow-y-auto scrollbar-hide">
         <p className="pb-2 text-gray-600 text-lg">
           {curPrice.toLocaleString()} KRW
         </p>
