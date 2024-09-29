@@ -3,6 +3,7 @@ import useFetch from "../../hooks/useFetch";
 import HistoryBox from "../commonBox/historyBox";
 import Lottie from "lottie-react";
 import noInfoAnimation from "../../assets/animations/noInfo.json";
+import dotLoadingAnimation from "../../assets/animations/dotLoading.json";
 
 function TransactionHistory(props) {
   // URL 설정
@@ -20,9 +21,7 @@ function TransactionHistory(props) {
     <>
       <div className="mx-auto max-w-[350px] pb-8">
         {loading ? (
-          <div className="flex justify-center h-screen">
-            <div className="spinner">Loading...</div>
-          </div>
+          <Lottie animationData={dotLoadingAnimation} loop={true} />
         ) : error ? (
           // 에러 상태 처리
           <div className="text-center text-red-500">

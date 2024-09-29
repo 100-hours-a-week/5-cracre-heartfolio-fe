@@ -3,6 +3,7 @@ import noInfoAnimation from "../../assets/animations/noInfo.json";
 import React, { useEffect, useState } from "react";
 import Chart from "react-apexcharts";
 import useFetch from "../../hooks/useFetch";
+import dotLoadingAnimation from "../../assets/animations/dotLoading.json";
 
 function getRandomPastelColor() {
   const r = Math.floor(Math.random() * 127) + 128; // 128 to 255
@@ -17,8 +18,8 @@ function AssetConfiguration(props) {
     labels: [],
     sortedData: [],
   });
-    // URL 설정
-    const url = props.id
+  // URL 설정
+  const url = props.id
     ? `${process.env.REACT_APP_API_URI}/portfolio/stock/${props.id}`
     : `${process.env.REACT_APP_API_URI}/portfolio/stock`;
 
@@ -52,29 +53,6 @@ function AssetConfiguration(props) {
       });
     }
   }, [data]);
-
-  if (loading) {
-    return <p className="min-h-screen bg-white text-center">Loading...</p>;
-  }
-
-  if (error) {
-    return (
-      <p className="min-h-screen bg-white text-center">
-        There was an error loading the data: {error.message}
-      </p>
-    );
-  }
-
-  if (!data || !data.stocks || data.stocks.length === 0) {
-    return (
-      <div className="flex flex-col items-center h-screen max-h-[500px]">
-        <div className="w-80 h-80">
-          <Lottie animationData={noInfoAnimation} loop={true} />
-        </div>
-        <div className="text-lg text-gray-600">보유한 자산이 없습니다.</div>
-      </div>
-    );
-  }
 
   const colors = chartData.series.map(() => getRandomPastelColor());
 
@@ -122,17 +100,34 @@ function AssetConfiguration(props) {
   };
 
   return (
-    <div className="flex justify-center">
-      <div className="py-4 pb-11">
-        <Chart
-          options={options}
-          series={chartData.series}
-          type="donut"
-          height={350}
-          width={370}
-        />
-      </div>
-    </div>
+    <>
+      {loading ? (
+        <Lottie animationData={dotLoadingAnimation} loop={true} />
+      ) : !data || !data.stocks || data.stocks.length === 0 ? (
+        <div className="flex flex-col items-center h-screen max-h-[500px]">
+          <div className="w-80 h-80">
+            <Lottie animationData={noInfoAnimation} loop={true} />
+          </div>
+          <div className="text-lg text-gray-600">보유한 자산이 없습니다.</div>
+        </div>
+      ) : error ? (
+        <div className="text-center text-red-500">
+          에러가 발생했습니다: {error.message}
+        </div>
+      ) : (
+        <div className="flex justify-center">
+          <div className="py-4 pb-11">
+            <Chart
+              options={options}
+              series={chartData.series}
+              type="donut"
+              height={350}
+              width={370}
+            />
+          </div>
+        </div>
+      )}
+    </>
   );
 }
 
