@@ -8,12 +8,22 @@ import ButtomNavigation from "../components/common/bottomNavigation";
 import Lottie from "lottie-react";
 import alertAnimation from "../assets/animations/alert.json";
 import { useLocation, useParams } from "react-router-dom";
+import useFetch from "../hooks/useFetch";
+import { Loading } from "../components/common/loading";
 
 function Portfolio() {
   const initialTab = parseInt(localStorage.getItem("activeTab")) || 1; // 로컬 스토리지에서 activeTab 불러오기
   const [activeTab, setActiveTab] = useState(initialTab);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const {id} = useParams();
+  const { id } = useParams();
+
+  // URL 설정
+  const url = id
+    ? `${process.env.REACT_APP_API_URI}/portfolio/${id}`
+    : `${process.env.REACT_APP_API_URI}/portfolio`;
+
+  // 데이터 가져오기 상태 관리
+  const { data, loading } = useFetch(url);
 
   useEffect(() => {
     const token = localStorage.getItem("access_token");
@@ -26,60 +36,64 @@ function Portfolio() {
     localStorage.setItem("activeTab", activeTab); // activeTab을 로컬 스토리지에 저장
   }, [activeTab]);
 
-    // 페이지 떠날 때 activeTab을 1로 설정
-    useEffect(() => {
-      return () => {
-        localStorage.setItem("activeTab", 1); // 언마운트 시 activeTab을 1로 설정
-      };
-    }, []);
+  // 페이지 떠날 때 activeTab을 1로 설정
+  useEffect(() => {
+    return () => {
+      localStorage.setItem("activeTab", 1); // 언마운트 시 activeTab을 1로 설정
+    };
+  }, []);
 
   return (
     <>
       <Header />
       <div className="pt-[90px] min-h-screen bg-white">
         {isAuthenticated === true ? (
-          <>
-            <MoneyInfo id={id}/>
-            <div
-              role="tablist"
-              className="tabs tabs-bordered mx-auto max-w-[370px] bg-backColor mt-[34px]"
-            >
-              <a
-                role="tab"
-                className={`tab h-[50px] ${
-                  activeTab === 1 ? "tab-active" : ""
-                }  text-gray-600 font-semibold`}
-                onClick={() => setActiveTab(1)}
+          loading ? (
+            <Loading />
+          ) : (
+            <>
+              <MoneyInfo data={data} />
+              <div
+                role="tablist"
+                className="tabs tabs-bordered mx-auto max-w-[370px] bg-backColor mt-[34px]"
               >
-                자산 구성
-              </a>
-              <a
-                role="tab"
-                className={`tab h-[50px] ${
-                  activeTab === 2 ? "tab-active" : ""
-                }  text-gray-600 font-semibold`}
-                onClick={() => setActiveTab(2)}
-              >
-                거래 내역
-              </a>
-              <a
-                role="tab"
-                className={`tab h-[50px] ${
-                  activeTab === 3 ? "tab-active" : ""
-                } text-gray-600 font-semibold`}
-                onClick={() => setActiveTab(3)}
-              >
-                보유 종목
-              </a>
-            </div>
-            <div className="mx-auto max-w-[370px] bg-backColor p-4">
-              <div role="tabpanel" className="tab-content block">
-                {activeTab === 1 && <AssetConfiguration id={id}/>}
-                {activeTab === 2 && <TransactionHistory id={id}/>}
-                {activeTab === 3 && <Holdings id={id}/>}
+                <a
+                  role="tab"
+                  className={`tab h-[50px] ${
+                    activeTab === 1 ? "tab-active" : ""
+                  }  text-gray-600 font-semibold`}
+                  onClick={() => setActiveTab(1)}
+                >
+                  자산 구성
+                </a>
+                <a
+                  role="tab"
+                  className={`tab h-[50px] ${
+                    activeTab === 2 ? "tab-active" : ""
+                  }  text-gray-600 font-semibold`}
+                  onClick={() => setActiveTab(2)}
+                >
+                  거래 내역
+                </a>
+                <a
+                  role="tab"
+                  className={`tab h-[50px] ${
+                    activeTab === 3 ? "tab-active" : ""
+                  } text-gray-600 font-semibold`}
+                  onClick={() => setActiveTab(3)}
+                >
+                  보유 종목
+                </a>
               </div>
-            </div>
-          </>
+              <div className="mx-auto max-w-[370px] bg-backColor p-4">
+                <div role="tabpanel" className="tab-content block">
+                  {activeTab === 1 && <AssetConfiguration id={id} />}
+                  {activeTab === 2 && <TransactionHistory id={id} />}
+                  {activeTab === 3 && <Holdings id={id} />}
+                </div>
+              </div>
+            </>
+          )
         ) : (
           <div className="flex flex-col justify-center items-center h-full">
             <div className="w-80 h-80">

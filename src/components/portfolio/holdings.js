@@ -4,6 +4,7 @@ import HoldingsBox from "./holdingsBox";
 import noInfoAnimation from "../../assets/animations/noInfo.json";
 import Lottie from "lottie-react";
 import { useNavigate } from "react-router-dom";
+import dotLoadingAnimation from "../../assets/animations/dotLoading.json";
 
 function Holdings(props) {
   const navigate = useNavigate();
@@ -18,9 +19,7 @@ function Holdings(props) {
   return (
     <>
       {loading ? (
-        <div className="mx-auto max-w-[350px] py-4 pb-8 min-h-screen bg-white">
-          <div className="text-center text-gray-500">로딩 중...</div>
-        </div>
+        <Lottie animationData={dotLoadingAnimation} loop={true} />
       ) : !data || !data.stocks || data.stocks.length === 0 ? (
         <div className="flex flex-col items-center h-screen max-h-[500px]">
           <div className="w-80 h-80">
