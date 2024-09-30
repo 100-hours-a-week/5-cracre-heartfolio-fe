@@ -45,17 +45,20 @@ function Header() {
                 </div>
               </a>
             </div>
-            <div onClick={() => handleLogin()} className="flex content-center items-center">
-              {isAuthenticated ? (
-                <div className=" text-sm text-center min-w-14 border-solid border-[1px] rounded-lg border-gray-400 text-gray-600 cursor-pointer">
-                  로그아웃
-                </div>
-              ) : (
-                <div className="text-sm text-center min-w-14 border-solid border-[1px] rounded-lg border-gray-400 text-gray-600 cursor-pointer">
-                  로그인
-                </div>
-              )}
+            <div className="flex content-center items-center">
+              <div onClick={() => handleLogin()} className="h-6">
+                {isAuthenticated ? (
+                  <div className=" text-sm text-center min-w-14 border-solid border-[1px] rounded-lg border-gray-400 text-gray-600 cursor-pointer">
+                    로그아웃
+                  </div>
+                ) : (
+                  <div className="text-sm text-center min-w-14 border-solid border-[1px] rounded-lg border-gray-400 text-gray-600 cursor-pointer">
+                    로그인
+                  </div>
+                )}
+              </div>
             </div>
+
 
             {/* 마이페이지 버튼*/}
             <button
