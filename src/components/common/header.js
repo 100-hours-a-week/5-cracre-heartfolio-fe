@@ -34,7 +34,7 @@ function Header() {
         <div className="flex h-16 justify-between">
           <div className="flex">
             <div className="flex flex-shrink-0 items-center">
-              <a href="/" className=" flex content-center">
+              <a href="/" className="flex content-center">
                 <img
                   alt="Logo"
                   src="/assets/images/heartfolioLogo.webp"
@@ -45,7 +45,7 @@ function Header() {
                 </div>
               </a>
             </div>
-            <div onClick={() => handleLogin()} className="content-center">
+            <div onClick={() => handleLogin()} className="flex content-center items-center">
               {isAuthenticated ? (
                 <div className=" text-sm text-center min-w-14 border-solid border-[1px] rounded-lg border-gray-400 text-gray-600 cursor-pointer">
                   로그아웃
