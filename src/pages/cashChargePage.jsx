@@ -7,6 +7,7 @@ import CategoryModal from "../components/cashCharge/categoryModal";
 import CheckModal from "../components/cashCharge/checkModal";
 import alertAnimation from "../assets/animations/alert.json";
 import { fetchWithToken } from "../utils/api";
+import { Loading } from "../components/common/loading";
 
 function CashChargePage() {
   const [selectedAmount, setSelectedAmount] = useState(null);
@@ -15,8 +16,10 @@ function CashChargePage() {
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [orderUid, setOrderUid] = useState(null);
-  
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
+    setLoading(true);
     const storedToken = localStorage.getItem("access_token");
     if (storedToken) {
       setIsAuthenticated(true);
@@ -26,6 +29,7 @@ function CashChargePage() {
     if (IMP && process.env.REACT_APP_IMP_CODE) {
       IMP.init(`${process.env.REACT_APP_IMP_CODE}`);
     }
+    setLoading(false);
   }, []);
 
   const showModal = async (amount) => {
@@ -113,7 +117,9 @@ function CashChargePage() {
     <>
       <Header />
       <div className="pt-[90px] min-h-screen bg-white text-center flex flex-col items-center">
-        {isAuthenticated == true ? (
+        {loading ? (
+          <Loading />
+        ) : isAuthenticated == true ? (
           <>
             <div className="text-xl text-gray-600 font-TmoneyRoundWindExtraBold">
               캐시충전 서비스
