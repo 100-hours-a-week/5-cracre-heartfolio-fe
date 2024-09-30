@@ -8,6 +8,7 @@ import TitleBox from "../components/commonBox/titleBox";
 import NewsBox from "../components/main/newsBox";
 import useFetch from "../hooks/useFetch";
 import TradingViewMini from "../components/main/tradingViewMini";
+import { Loading } from "../components/common/loading";
 
 function MainPage() {
   const navigate = useNavigate();
@@ -27,57 +28,54 @@ function MainPage() {
   // 상위 3개 아이템 추출
   const topThree = userRanking.slice(0, 3);
 
-  if (loading || moneyLoading) {
-    return <div className="min-h-screen bg-white text-center">Loading...</div>; // 로딩 중일 때 표시할 내용
-  }
-
-  if (error) {
-    return (
-      <div className="min-h-screen bg-white text-center">
-        Error: {error.message}
-      </div>
-    ); // 에러 발생 시 표시할 내용
-  }
-
-  if (!data || data.length === 0 || !moneyData || moneyData.length === 0) {
-    return <div>No data available</div>; // 데이터가 없을 때 표시할 내용
-  }
-
   return (
     <div className="w-full min-h-screen bg-white">
       <Header />
       <div className="py-[70px]">
         <div className="mx-auto w-[390px] px-3">
-          <div>
-            <LuckyBox
-              title={"오늘의 운세"}
-            />
-            <TitleBox
-              title={"기부 랭킹 TOP3"}
-              onClick={() => seeMore("/ranking", 2)}
-            />
-            <div className="mx-auto max-w-[390px] mt-[6px] border-t border-gray-300" />
-            <MoneyRankTop3Box topThree={topThree} />
-            <div className="mx-auto max-w-[390px] mt-10 border-t border-gray-300" />
-            <div className="flex justify-around w-[370px] mt-4 pb-3 bg-gray-100">
-              <div className="w-[175px] aspect-[7/8]">
-                <div className="text-left font-bold pt-2 mb-2">S&P 500 (SPY ETF)</div>
-                <TradingViewMini symbol={"AMEX:SPY"} />
-              </div>
-              <div className="w-[175px] aspect-[7/8]">
-                <div className="text-left font-bold pt-2 mb-2">나스닥</div>
-                <TradingViewMini symbol={"NASDAQ.USD.100"} />
-              </div>
+          {loading || moneyLoading ? (
+            <Loading />
+          ) : error ? (
+            <div className="min-h-screen bg-white text-center">
+              Error : {error.message}
             </div>
-            <TitleBox
-              title={"오늘의 인기 차트"}
-              onClick={() => seeMore("/popularstock")}
-            />
-            <div className="mx-auto max-w-[390px] mt-[6px] border-t border-gray-300" />
-            <PopularChart />
-            <TitleBox title={"오늘의 경제 뉴스"} seeMore="none" />
-            <NewsBox data={data?.items || []} />
-          </div>
+          ) : !data ||
+            data.length === 0 ||
+            !moneyData ||
+            moneyData.length === 0 ? (
+            <div className="text-center pt-5"> No data available</div>
+          ) : (
+            <div>
+              <LuckyBox title={"오늘의 운세"} />
+              <TitleBox
+                title={"기부 랭킹 TOP3"}
+                onClick={() => seeMore("/ranking", 2)}
+              />
+              <div className="mx-auto max-w-[390px] mt-[6px] border-t border-gray-300" />
+              <MoneyRankTop3Box topThree={topThree} />
+              <div className="mx-auto max-w-[390px] mt-10 border-t border-gray-300" />
+              <div className="flex justify-around w-[370px] mt-4 pb-3 bg-gray-100">
+                <div className="w-[175px] aspect-[7/8]">
+                  <div className="text-left font-bold pt-2 mb-2">
+                    S&P 500 (SPY ETF)
+                  </div>
+                  <TradingViewMini symbol={"AMEX:SPY"} />
+                </div>
+                <div className="w-[175px] aspect-[7/8]">
+                  <div className="text-left font-bold pt-2 mb-2">나스닥</div>
+                  <TradingViewMini symbol={"NASDAQ.USD.100"} />
+                </div>
+              </div>
+              <TitleBox
+                title={"오늘의 인기 차트"}
+                onClick={() => seeMore("/popularstock")}
+              />
+              <div className="mx-auto max-w-[390px] mt-[6px] border-t border-gray-300" />
+              <PopularChart />
+              <TitleBox title={"오늘의 경제 뉴스"} seeMore="none" />
+              <NewsBox data={data?.items || []} />
+            </div>
+          )}
         </div>
       </div>
       <ButtomNavigation />
