@@ -3247,6 +3247,14 @@ input.tab:checked + .tab-content,
   height: 623px;
 }
 
+.h-\[700px\] {
+  height: 700px;
+}
+
+.h-\[500px\] {
+  height: 500px;
+}
+
 .max-h-\[500px\] {
   max-height: 500px;
 }
@@ -3913,6 +3921,14 @@ input.tab:checked + .tab-content,
 
 .pb-\[20px\] {
   padding-bottom: 20px;
+}
+
+.pb-9 {
+  padding-bottom: 2.25rem;
+}
+
+.pb-10 {
+  padding-bottom: 2.5rem;
 }
 
 .text-left {
