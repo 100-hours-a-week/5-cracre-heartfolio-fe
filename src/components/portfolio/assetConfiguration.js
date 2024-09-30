@@ -116,7 +116,7 @@ function AssetConfiguration(props) {
         </div>
       ) : (
         <div className="flex justify-center">
-          <div className="py-4 pb-11">
+          <div className="pt-4 pb-8">
             <Chart
               options={options}
               series={chartData.series}
