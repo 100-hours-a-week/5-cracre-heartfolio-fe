@@ -14,8 +14,8 @@ function MoneyRanking() {
   const topThree = userRanking.slice(0, 3);
 
   return (
-    <div>
-      <div className="flex justify-between w-full max-w-[350px] my-2">
+    <div className="w-[350px]">
+      <div className="flex justify-between w-full max-w-[360px]">
         <div className="text-gray-600 text-xl">이달의 기부왕</div>
         <div className="flex items-center">
           <div className="text-gray-600 text-sm">내 순위 :</div>

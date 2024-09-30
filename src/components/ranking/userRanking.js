@@ -57,8 +57,8 @@ function UserRanking() {
           )}
         </div>
       </div>
-      <hr className="mt-1 border-black w-[360px]" />
-      <div className="mx-auto max-w-[350px] overflow-y-auto scrollbar-hide" style={{ height: "calc(100dvh - 247px)" }}>
+      <hr className="mt-1 border-black w-[350px]"/>
+      <div className="mx-auto max-w-[360px] overflow-y-auto scrollbar-hide" style={{ height: "calc(100dvh - 247px)" }}>
         <div role="tabpanel" className="tab-content block">
           {activeTab === 1 &&
             (monthlyLoading ? (

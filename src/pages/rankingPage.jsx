@@ -46,7 +46,7 @@ function RankingPage() {
               기부 랭킹
             </a>
           </div>
-          <div className="mx-auto max-w-[370px] p-1">
+          <div className="mx-auto max-w-[370px] p-1" style={{height : "calc(100dvh - 140px)"}}>
             <div role="tabpanel" className="tab-content block w-[350px]">
               {activeTab === 1 && <UserRanking />}
               {activeTab === 2 && <MoneyRanking />}
