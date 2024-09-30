@@ -19,7 +19,7 @@ function TransactionHistory(props) {
 
   return (
     <>
-      <div className="mx-auto max-w-[350px] pb-8">
+      <div className="mx-auto max-w-[350px]" style={{ height: "calc(100dvh - 450px)" }}>
         {loading ? (
           <Lottie animationData={dotLoadingAnimation} loop={true} />
         ) : error ? (
@@ -42,7 +42,7 @@ function TransactionHistory(props) {
             <div className="text-xs mb-2 text-right text-gray-600">
               가격 단위(KRW)
             </div>
-            <div className="overflow-y-auto scrollbar-hide pb-2" style={{ height: "calc(100dvh - 453px)" }}>
+            <div className="overflow-y-auto scrollbar-hide" style={{ height : "calc(100dvh - 453px)" }}>
               <ul role="list" className="divide-y divide-gray-200">
                 {transactionData.map((item) => (
                   <li key={item.id} className="py-2">
