@@ -30,7 +30,7 @@ function Popularstock() {
       <div className="pt-[80px] min-h-dvh bg-white">
         <Stocktype />
         {/* 인기종목리스트 */}
-        <div className="mx-auto max-w-[390px] cursor-pointer overflow-y-auto scrollbar-hide" style={{ height: "calc(100vh - 206px)" }}>
+        <div className="mx-auto max-w-[390px] cursor-pointer overflow-y-auto scrollbar-hide" style={{ height: "calc(100dvh - 206px)" }}>
           {/* map을 사용하여 상위 50개 종목 반복 렌더링 */}
           {data?.map((stock) => (
             <EachpopularStockBox
