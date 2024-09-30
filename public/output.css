@@ -3195,6 +3195,17 @@ input.tab:checked + .tab-content,
   height: 100vh;
 }
 
+.h-4 {
+  height: 1rem;
+}
+
+.h-5 {
+  height: 1.25rem;
+}
+
+.h-9 {
+  height: 2.25rem;
+  
 .h-\[75vh\] {
   height: 75vh;
 }
