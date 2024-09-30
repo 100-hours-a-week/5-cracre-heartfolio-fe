@@ -85,7 +85,7 @@ function Portfolio() {
                   보유 종목
                 </a>
               </div>
-              <div className="mx-auto max-w-[370px] bg-backColor p-4">
+              <div className="mx-auto max-w-[370px] bg-backColor p-4 pb-0" style={{height: "calc(100dvh - 140px)"}}>
                 <div role="tabpanel" className="tab-content block">
                   {activeTab === 1 && <AssetConfiguration id={id} />}
                   {activeTab === 2 && <TransactionHistory id={id} />}

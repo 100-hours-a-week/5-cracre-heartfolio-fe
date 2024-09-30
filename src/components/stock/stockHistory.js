@@ -45,7 +45,7 @@ function StockHistory(props) {
               </div>
               <ul
                 role="list"
-                className="space-y-3 pb-4 h-[550px] overflow-y-auto scrollbar-hide"
+                className="space-y-3 pb-5 h-[550px] overflow-y-auto scrollbar-hide" style={{ height: "calc(100dvh - 270px)" }}
               >
                 {data?.map((item) => (
                   <li

@@ -3019,6 +3019,26 @@ input.tab:checked + .tab-content,
   margin-top: 6px;
 }
 
+.mb-12 {
+  margin-bottom: 3rem;
+}
+
+.mb-10 {
+  margin-bottom: 2.5rem;
+}
+
+.mb-8 {
+  margin-bottom: 2rem;
+}
+
+.mb-5 {
+  margin-bottom: 1.25rem;
+}
+
+.mb-6 {
+  margin-bottom: 1.5rem;
+}
+
 .block {
   display: block;
 }
@@ -3185,14 +3205,73 @@ input.tab:checked + .tab-content,
 
 .h-9 {
   height: 2.25rem;
+  
+.h-\[75vh\] {
+  height: 75vh;
+}
+
+.h-\[76\.5vh\] {
+  height: 76.5vh;
+}
+
+.h-\[660px\] {
+  height: 660px;
+}
+
+.h-\[600px\] {
+  height: 600px;
+}
+
+.h-\[75dvh\] {
+  height: 75dvh;
+}
+
+.h-\[80dvh\] {
+  height: 80dvh;
+}
+
+.h-\[78dvh\] {
+  height: 78dvh;
+}
+
+.h-\[70dvh\] {
+  height: 70dvh;
+}
+
+.h-\[76dvh\] {
+  height: 76dvh;
+}
+
+.h-\[78vh\] {
+  height: 78vh;
+}
+
+.h-\[77vh\] {
+  height: 77vh;
 }
 
 .max-h-\[500px\] {
   max-height: 500px;
 }
 
+.max-h-\[76\.5vh\] {
+  max-height: 76.5vh;
+}
+
+.max-h-\[600px\] {
+  max-height: 600px;
+}
+
 .min-h-screen {
   min-height: 100vh;
+}
+
+.min-h-screen-vh {
+  min-height: 100vh;
+}
+
+.min-h-dvh {
+  min-height: 100dvh;
 }
 
 .w-1\/2 {
