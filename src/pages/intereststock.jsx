@@ -24,10 +24,10 @@ function Intereststock() {
   return (
     <>
       <Header />
-      <div className="pt-[80px] min-h-screen bg-white">
+      <div className="pt-[80px] min-h-dvh bg-white">
         <Stocktype />
         {/* 관심종목리스트 */}
-        <div className="mx-auto max-w-[390px] cursor-pointer h-[618px] overflow-y-auto scrollbar-hide">
+        <div className="mx-auto max-w-[390px] cursor-pointer overflow-y-auto scrollbar-hide"  style={{ height: "calc(100dvh - 206px)" }}>
           {isAuthenticated ? (
             data?.length === 0 ? (
               <div className="flex flex-col items-center justify-center">

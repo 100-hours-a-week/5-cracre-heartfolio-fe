@@ -42,7 +42,7 @@ function TransactionHistory(props) {
             <div className="text-xs mb-2 text-right text-gray-600">
               가격 단위(KRW)
             </div>
-            <div className="h-[350px] overflow-y-auto scrollbar-hide">
+            <div className="overflow-y-auto scrollbar-hide pb-2" style={{ height: "calc(100dvh - 453px)" }}>
               <ul role="list" className="divide-y divide-gray-200">
                 {transactionData.map((item) => (
                   <li key={item.id} className="py-2">
