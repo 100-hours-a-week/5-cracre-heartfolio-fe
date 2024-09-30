@@ -36,7 +36,7 @@ function Holdings(props) {
           <div className="text-xs mb-2 text-right text-gray-600">
             가격 단위(KRW)
           </div>
-          <div className="mx-auto max-w-[350px] mb-5 overflow-y-auto scrollbar-hide" style={{ height: "calc(100dvh - 470px)" }}>
+          <div className="mx-auto max-w-[350px] mb-5 overflow-y-auto scrollbar-hide" style={{ height: "calc(100dvh - 250px)" }}>
             <ul role="list">
               {data.stocks.map((item) => (
                 <li key={item.stockId} className="py-2">
