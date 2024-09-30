@@ -116,12 +116,13 @@ function AssetConfiguration(props) {
         </div>
       ) : (
         <div className="flex justify-center">
-          <div className="pt-4 pb-8">
+          <div className="pt-4">
             <Chart
               options={options}
               series={chartData.series}
               type="donut"
-              height={320}
+              height={350}
+              width={370}
             />
           </div>
         </div>
