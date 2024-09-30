@@ -8,8 +8,11 @@ import InputBox from "../components/myInfo/inputBox";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import useFetch from "../hooks/useFetch";
+import { Loading } from "../components/common/loading";
+import { useNavigate } from "react-router-dom";
 
 function MyPage() {
+  const navigate = useNavigate();
   const { data, error, loading } = useFetch(
     `${process.env.REACT_APP_API_URI}/user/info`
   );
@@ -122,9 +125,7 @@ function MyPage() {
       <div className="pt-[100px] min-h-screen bg-white text-center flex flex-col items-center">
         {isAuthenticated === true ? (
           loading ? (
-            <div className="mx-auto max-w-[350px] py-4 pb-8 min-h-screen bg-white">
-              <div className="text-center text-gray-500">로딩 중...</div>
-            </div>
+            <Loading />
           ) : (
             <div className="mx-auto max-w-[390px] w-[380px] pb-[65px]">
               <div>
@@ -135,7 +136,7 @@ function MyPage() {
                 </div>
               </div>
               <div className="flex flex-col items-center mt-8">
-                <InputBox text="이름" data={data?.name} />
+                <InputBox text="이름" data={data?.name} width="w-[320px]"/>
                 {/* <InputBox text="이메일" data={data?.email} /> */}
                 <div className="flex flex-col w-[320px] mb-2">
                   <div className="flex justify-between">
@@ -151,13 +152,25 @@ function MyPage() {
                     {helperText}
                   </h3>
                 </div>
-                <InputBox
-                  text="내 캐시"
-                  data={data?.cash ? data.cash.toLocaleString() : "0"}
-                />
+                <div className="flex w-[320px] justify-between">
+                  <InputBox
+                    text="내 캐시"
+                    data={data?.cash ? data.cash.toLocaleString() : "0"}
+                    width="w-[245px]"
+                  />
+                  <div className="text-right">
+                    <button
+                      className="h-[25px] border-solid border-[1px] border-gray-200 w-[65px] text-sm rounded-lg"
+                      onClick={() => navigate("/cashCharge")}
+                    >
+                      캐시 충전
+                    </button>
+                  </div>
+                </div>
                 <InputBox
                   text="기부한 금액"
                   data={data?.donation ? data.donation.toLocaleString() : "0"}
+                  width="w-[320px]"
                 />
               </div>
               <div className="pt-10 w-[350px] text-right">

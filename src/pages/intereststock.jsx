@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import Lottie from "lottie-react";
 import heartAnimation from "../assets/animations/heart.json";
 import alertAnimation from "../assets/animations/alert.json";
+import { Loading } from "../components/common/loading";
 
 function Intereststock() {
   const token = localStorage.getItem("access_token");
@@ -19,7 +20,9 @@ function Intereststock() {
   }, []);
 
   // 데이터 가져오기 상태 관리
-  const {data, error, loading} = useFetch(`${process.env.REACT_APP_API_URI}/stock/favorites`);
+  const { data, error, loading } = useFetch(
+    `${process.env.REACT_APP_API_URI}/stock/favorites`
+  );
 
   return (
     <>
@@ -27,9 +30,18 @@ function Intereststock() {
       <div className="pt-[80px] min-h-dvh bg-white">
         <Stocktype />
         {/* 관심종목리스트 */}
-        <div className="mx-auto max-w-[390px] cursor-pointer overflow-y-auto scrollbar-hide"  style={{ height: "calc(100dvh - 206px)" }}>
+        <div
+          className="mx-auto max-w-[390px] cursor-pointer overflow-y-auto scrollbar-hide"
+          style={{ height: "calc(100dvh - 206px)" }}
+        >
           {isAuthenticated ? (
-            data?.length === 0 ? (
+            loading ? (
+              <Loading />
+            ) : error ? (
+              <div className="min-h-screen bg-white text-center">
+                Error : {error.message}
+              </div>
+            ) : data?.length === 0 ? (
               <div className="flex flex-col items-center justify-center">
                 <div className="w-60 h-60">
                   <Lottie animationData={heartAnimation} loop={true} />
@@ -52,7 +64,7 @@ function Intereststock() {
               ))
             )
           ) : (
-            <div className="flex flex-col justify-center items-center h-full">
+            <div className="flex flex-col items-center h-full">
               <div className="w-80 h-80">
                 <Lottie animationData={alertAnimation} loop={true} />
               </div>
