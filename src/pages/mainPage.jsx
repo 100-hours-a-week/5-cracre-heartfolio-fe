@@ -9,6 +9,7 @@ import NewsBox from "../components/main/newsBox";
 import useFetch from "../hooks/useFetch";
 import TradingViewMini from "../components/main/tradingViewMini";
 import { Loading } from "../components/common/loading";
+import MyLuck from "../components/main/myLuck";
 
 function MainPage() {
   const navigate = useNavigate();
@@ -22,6 +23,15 @@ function MainPage() {
     `${process.env.REACT_APP_API_URI}/news`
   );
 
+  const {
+    data: fortuneData,
+    error: fortuneError,
+    loading: fortuneLoading,
+  } = useFetch(`${process.env.REACT_APP_API_URI}/fortune`);
+
+  // 운세 데이터 확인
+  const hasSeenLuck = fortuneData && fortuneData !== ""; // 운세를 확인한 경우
+
   // 데이터 구조가 유효한지 확인
   const userRanking = moneyData?.userRanking || [];
 
@@ -33,9 +43,9 @@ function MainPage() {
       <Header />
       <div className="py-[70px]">
         <div className="mx-auto w-[390px] px-3">
-          {loading || moneyLoading ? (
+          {loading || moneyLoading  ? (
             <Loading />
-          ) : error ? (
+          ) : error  ? (
             <div className="min-h-screen bg-white text-center">
               Error : {error.message}
             </div>
@@ -46,7 +56,11 @@ function MainPage() {
             <div className="text-center pt-5"> No data available</div>
           ) : (
             <div>
-              <LuckyBox title={"오늘의 운세"} />
+              {hasSeenLuck ? (
+                <MyLuck data={fortuneData} />
+              ) : (
+                <LuckyBox />
+              )}
               <TitleBox
                 title={"기부 랭킹 TOP3"}
                 onClick={() => seeMore("/ranking", 2)}

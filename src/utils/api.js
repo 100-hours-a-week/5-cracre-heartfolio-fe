@@ -36,22 +36,20 @@ export const fetchWithToken = async (url, options = {}) => {
     } else {
       localStorage.removeItem("access_token");
       localStorage.removeItem("refresh_token");
-      window.location.href = "/login";
       return null;
     }
   }
-  // JSON 응답이 없는 경우 처리
-  if (
-    response.status === 204 ||
-    response.headers.get("Content-Length") === "0"
-  ) {
-    return null; // No content (빈 응답 처리)
-  }
-
-  try {
-    return await response.json(); // JSON 파싱 시도
-  } catch (error) {
-    console.error("Error parsing JSON response:", error);
-    return null; // JSON 파싱 오류 처리
+  // 응답이 JSON이 아닌 경우 텍스트로 처리
+  const contentType = response.headers.get("Content-Type");
+  if (contentType && contentType.includes("application/json")) {
+    try {
+      return await response.json(); // JSON 파싱 시도
+    } catch (error) {
+      console.error("Error parsing JSON response:", error);
+      return null; // JSON 파싱 오류 처리
+    }
+  } else {
+    // JSON이 아닌 응답은 텍스트로 처리
+    return await response.text();
   }
 };
