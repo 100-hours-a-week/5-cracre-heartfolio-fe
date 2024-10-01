@@ -91,7 +91,7 @@ function SearchPage() {
               </div>
             ) : loading ? (
               <Loading/>
-            ) : data && data.length > 0 ? (
+            ) : Array.isArray(data) && data.length > 0 ? (
               data.map((item) => (
                 <div key={item.stockId} className="w-[250px] pb-3">
                   {/* 데이터를 출력하는 부분 */}
