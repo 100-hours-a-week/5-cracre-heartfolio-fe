@@ -47,34 +47,37 @@ function UserRanking() {
           ) : (
             <div className="text-sm text-gray-600">
               {activeTab === 1
-                ? monthlyData?.personalRank === -1
+                ? accumulationData?.personalRank === -1
                   ? "순위 없음"
-                  : monthlyData?.personalRank + "위"
-                : accumulationData?.personalRank === -1
+                  : accumulationData?.personalRank + "위"
+                : monthlyData?.personalRank === -1
                 ? "순위 없음"
-                : accumulationData?.personalRank + "위"}
+                : monthlyData?.personalRank + "위"}
             </div>
           )}
         </div>
       </div>
-      <hr className="mt-1 border-black w-[350px]"/>
-      <div className="mx-auto max-w-[360px] overflow-y-auto scrollbar-hide" style={{ height: "calc(100dvh - 247px)" }}>
+      <hr className="mt-1 border-black w-[350px]" />
+      <div
+        className="mx-auto max-w-[360px] overflow-y-auto scrollbar-hide"
+        style={{ height: "calc(100dvh - 247px)" }}
+      >
         <div role="tabpanel" className="tab-content block">
           {activeTab === 1 &&
-            (monthlyLoading ? (
-              <Loading />
-            ) : (
-              <UserRankingBox
-                data={monthlyData?.userRanking}
-                onClick={handlePortfolio}
-              />
-            ))}
-          {activeTab === 2 &&
             (accumulationLoading ? (
               <Loading />
             ) : (
               <UserRankingBox
                 data={accumulationData?.userRanking}
+                onClick={handlePortfolio}
+              />
+            ))}
+          {activeTab === 2 &&
+            (monthlyLoading ? (
+              <Loading />
+            ) : (
+              <UserRankingBox
+                data={monthlyData?.userRanking}
                 onClick={handlePortfolio}
               />
             ))}
