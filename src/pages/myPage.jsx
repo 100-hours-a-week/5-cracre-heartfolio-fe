@@ -2,6 +2,7 @@ import Lottie from "lottie-react";
 import alertAnimation from "../assets/animations/alert.json";
 import ButtomNavigation from "../components/common/bottomNavigation";
 import Header from "../components/common/header";
+import ContructionAnimation from "../assets/animations/construction.json";
 import { useEffect, useState } from "react";
 import InputBox from "../components/myInfo/inputBox";
 import { ToastContainer, toast } from "react-toastify";
@@ -12,28 +13,20 @@ import { useNavigate } from "react-router-dom";
 
 function MyPage() {
   const navigate = useNavigate();
-  const [nickname, setNickname] = useState("");
+  const { data, error, loading } = useFetch(
+    `${process.env.REACT_APP_API_URI}/user/info`
+  );
+  const [nickname, setNickname] = useState(data?.nickname);
   const [helperText, setHelperText] = useState("*helper text");
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [canFetch, setCanFetch] = useState(false); // 데이터 fetch 여부 관리
   const token = localStorage.getItem("access_token");
 
-  // token 값에 따라 로그인 상태 설정
   useEffect(() => {
     if (token) {
       setIsAuthenticated(true);
-      setCanFetch(true); // 로그인 상태일 때만 fetch 가능
-    } else {
-      setIsAuthenticated(false);
-      setCanFetch(false); // 로그인되지 않았으면 fetch 중단
     }
-  }, [token]);
+  }, []);
 
-  // 로그인 상태일 때만 API 요청
-  const { data, error, loading } = useFetch(
-    canFetch ? `${process.env.REACT_APP_API_URI}/user/info` : null
-  );
-  console.log("isAuthenticated:",isAuthenticated,"data:",data,"nickname",nickname)
   useEffect(() => {
     if (data) {
       setNickname(data.nickname);
@@ -42,7 +35,7 @@ function MyPage() {
 
   const handleNickname = async () => {
     // 중복 불가 추가 필요!!
-    if (nickname === "") {
+    if (nickname == "") {
       setHelperText("닉네임을 입력해주세요.");
     } else if (nickname.length > 7) {
       setHelperText("닉네임은 최대 7글자로 입력해주세요.");
