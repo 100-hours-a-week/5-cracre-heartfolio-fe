@@ -13,10 +13,7 @@ import { useNavigate } from "react-router-dom";
 
 function MyPage() {
   const navigate = useNavigate();
-  const { data, error, loading } = useFetch(
-    `${process.env.REACT_APP_API_URI}/user/info`
-  );
-  const [nickname, setNickname] = useState(data?.nickname);
+  const [nickname, setNickname] = useState("");
   const [helperText, setHelperText] = useState("*helper text");
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const token = localStorage.getItem("access_token");
@@ -26,6 +23,10 @@ function MyPage() {
       setIsAuthenticated(true);
     }
   }, []);
+
+  const { data, error, loading } = useFetch(
+    isAuthenticated ? `${process.env.REACT_APP_API_URI}/user/info` : null
+  );
 
   useEffect(() => {
     if (data) {
@@ -136,7 +137,7 @@ function MyPage() {
                 </div>
               </div>
               <div className="flex flex-col items-center mt-8">
-                <InputBox text="이름" data={data?.name} width="w-[320px]"/>
+                <InputBox text="이름" data={data?.name} width="w-[320px]" />
                 {/* <InputBox text="이메일" data={data?.email} /> */}
                 <div className="flex flex-col w-[320px] mb-2">
                   <div className="flex justify-between">
