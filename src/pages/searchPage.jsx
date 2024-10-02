@@ -16,7 +16,10 @@ function SearchPage() {
 
   // 검색창에서 값이 변경될 때마다 searchTerm 상태 업데이트
   const handleInputChange = (event) => {
-    setSearchTerm(event.target.value);
+    const value = event.target.value;
+    // 정규식으로 기호를 제거 (영문, 숫자, 한글만 허용)
+    const filteredValue = value.replace(/[^a-zA-Z0-9ㄱ-ㅎㅏ-ㅣ가-힣 ]/g, "");
+    setSearchTerm(filteredValue);
   };
 
   const { data: popularstock } = useFetch(
