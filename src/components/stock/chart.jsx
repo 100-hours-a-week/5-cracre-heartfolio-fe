@@ -67,7 +67,7 @@ function Chart(props) {
         stompClient.current = null;
       }
     };
-  }, [props.data?.symbol]);
+  }, [props.data?.symbol, token]);
 
   const { data } = useFetch(
     isAuthenticated ? `${process.env.REACT_APP_API_URI}/portfolio` : null

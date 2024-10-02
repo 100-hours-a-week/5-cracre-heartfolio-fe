@@ -22,7 +22,7 @@ function MyPage() {
     if (token) {
       setIsAuthenticated(true);
     }
-  }, []);
+  }, [token]);
 
   const { data, error, loading } = useFetch(
     isAuthenticated ? `${process.env.REACT_APP_API_URI}/user/info` : null
