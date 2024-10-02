@@ -36,7 +36,7 @@ function Chart(props) {
       setIsAuthenticated(false);
     }
 
-    const socket = new SockJS("https://heartfolio.site/heartfolio");
+    const socket = new SockJS(`${process.env.REACT_APP_API_HOST}/heartfolio`);
     stompClient.current = StompJs.Stomp.over(socket);
 
     stompClient.current.connect({}, function (frame) {
@@ -55,7 +55,11 @@ function Chart(props) {
           }
         );
       }
-    });
+    },
+      function (error) {
+        console.log("WebSocket connection error handled");
+      }
+    );
     return () => {
       // 컴포넌트가 언마운트되거나 종목이 변경될 때 연결 해제
       if (stompClient.current !== null) {
