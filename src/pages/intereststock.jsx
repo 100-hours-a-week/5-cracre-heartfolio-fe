@@ -68,7 +68,7 @@ function Intereststock() {
               <div className="w-80 h-80">
                 <Lottie animationData={alertAnimation} loop={true} />
               </div>
-              <div className="font-bold text-lg text-gray-400">
+              <div className="font-bold text-lg text-gray-500">
                 관심종목 등록은 로그인 후 가능합니다.
               </div>
               <a
