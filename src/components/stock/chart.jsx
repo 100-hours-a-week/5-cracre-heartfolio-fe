@@ -16,6 +16,7 @@ function Chart(props) {
   const [isBuyModalOpen, setIsBuyModalOpen] = useState(false); // 모달 상태 관리
   const [isSellModalOpen, setIsSellModalOpen] = useState(false); // 모달 상태 관리
   const [activeTab, setActiveTab] = useState(1);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [orderDetails, setOrderDetails] = useState({
     quantity: 0,
     price: 0,
@@ -26,14 +27,13 @@ function Chart(props) {
     price: 0,
     total: 0,
   });
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const stompClient = useRef(null);
 
   useEffect(() => {
     if (token) {
-      setIsLoggedIn(true);
+      setIsAuthenticated(true);
     } else {
-      setIsLoggedIn(false);
+      setIsAuthenticated(false);
     }
 
     const socket = new SockJS("https://heartfolio.site/heartfolio");
@@ -66,7 +66,7 @@ function Chart(props) {
   }, [props.data?.symbol]);
 
   const { data } = useFetch(
-    `${process.env.REACT_APP_API_URI}/portfolio`
+    isAuthenticated ? `${process.env.REACT_APP_API_URI}/portfolio` : null
   );
 
   // 로그인이 되어 있지 않다면 빈 데이터를 설정
@@ -88,11 +88,18 @@ function Chart(props) {
 
   return (
     <>
-      <div className="mx-auto max-w-[370px] overflow-y-auto scrollbar-hide" style={{ height: "calc(100dvh - 243px)" }}>
+      <div
+        className="mx-auto max-w-[370px] overflow-y-auto scrollbar-hide"
+        style={{ height: "calc(100dvh - 243px)" }}
+      >
         <p className="pb-2 text-gray-600 text-lg">
           {curPrice.toLocaleString()} KRW
         </p>
-        <TradingViewWidget symbol={props.data?.symbol} width={370} height={400}/>
+        <TradingViewWidget
+          symbol={props.data?.symbol}
+          width={370}
+          height={400}
+        />
         <div
           role="tablist"
           className="tabs tabs-bordered mx-auto max-w-[370px] mt-[34px] "
@@ -120,7 +127,7 @@ function Chart(props) {
           <div role="tabpanel" className="tab-content block">
             {activeTab === 1 && (
               <BuyBox
-                isLoggedIn={isLoggedIn}
+                isLoggedIn={isAuthenticated}
                 curPrice={curPrice}
                 data={moneyData}
                 id={id}
@@ -130,7 +137,7 @@ function Chart(props) {
             )}
             {activeTab === 2 && (
               <SellBox
-                isLoggedIn={isLoggedIn}
+                isLoggedIn={isAuthenticated}
                 curPrice={curPrice}
                 amount={props.data.amount}
                 id={id}

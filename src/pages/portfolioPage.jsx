@@ -22,8 +22,8 @@ function Portfolio() {
     ? `${process.env.REACT_APP_API_URI}/portfolio/${id}`
     : `${process.env.REACT_APP_API_URI}/portfolio`;
 
-  // 데이터 가져오기 상태 관리
-  const { data, loading } = useFetch(url);
+  // 데이터 가져오기 상태 관리 (초기 상태 정의)
+  const { data, loading } = useFetch(isAuthenticated ? url : null);
 
   useEffect(() => {
     const token = localStorage.getItem("access_token");
@@ -85,7 +85,10 @@ function Portfolio() {
                   보유 종목
                 </a>
               </div>
-              <div className="mx-auto max-w-[370px] bg-backColor p-4 pb-0" style={{height: "calc(100dvh - 140px)"}}>
+              <div
+                className="mx-auto max-w-[370px] bg-backColor p-4 pb-0"
+                style={{ height: "calc(100dvh - 140px)" }}
+              >
                 <div role="tabpanel" className="tab-content block">
                   {activeTab === 1 && <AssetConfiguration id={id} />}
                   {activeTab === 2 && <TransactionHistory id={id} />}
@@ -99,7 +102,7 @@ function Portfolio() {
             <div className="w-80 h-80">
               <Lottie animationData={alertAnimation} loop={true} />
             </div>
-            <div className="font-bold text-lg text-gray-400">
+            <div className="font-bold text-lg text-gray-500">
               로그인 후 포트폴리오를 확인해보세요
             </div>
             <a href="/login" className="pt-5 text-gray-400 hover:text-gray-600">

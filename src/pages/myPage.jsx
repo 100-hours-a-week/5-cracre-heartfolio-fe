@@ -13,10 +13,7 @@ import { useNavigate } from "react-router-dom";
 
 function MyPage() {
   const navigate = useNavigate();
-  const { data, error, loading } = useFetch(
-    `${process.env.REACT_APP_API_URI}/user/info`
-  );
-  const [nickname, setNickname] = useState(data?.nickname);
+  const [nickname, setNickname] = useState("");
   const [helperText, setHelperText] = useState("*helper text");
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const token = localStorage.getItem("access_token");
@@ -26,6 +23,10 @@ function MyPage() {
       setIsAuthenticated(true);
     }
   }, []);
+
+  const { data, error, loading } = useFetch(
+    isAuthenticated ? `${process.env.REACT_APP_API_URI}/user/info` : null
+  );
 
   useEffect(() => {
     if (data) {
@@ -136,7 +137,7 @@ function MyPage() {
                 </div>
               </div>
               <div className="flex flex-col items-center mt-8">
-                <InputBox text="이름" data={data?.name} width="w-[320px]"/>
+                <InputBox text="이름" data={data?.name} width="w-[320px]" />
                 {/* <InputBox text="이메일" data={data?.email} /> */}
                 <div className="flex flex-col w-[320px] mb-2">
                   <div className="flex justify-between">
@@ -188,7 +189,7 @@ function MyPage() {
             <div className="w-80 h-80">
               <Lottie animationData={alertAnimation} loop={true} />
             </div>
-            <div className="font-bold text-lg text-gray-400">
+            <div className="font-bold text-lg text-gray-500">
               로그인 후 이용 가능한 서비스입니다
             </div>
             <a href="/login" className="pt-5 text-gray-400 hover:text-gray-600">
