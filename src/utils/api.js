@@ -36,8 +36,16 @@ export const fetchWithToken = async (url, options = {}) => {
     } else {
       localStorage.removeItem("access_token");
       localStorage.removeItem("refresh_token");
+      window.location.href = "/login";
       return null;
     }
+  }
+  // JSON 응답이 없는 경우 처리
+  if (
+    response.status === 204 ||
+    response.headers.get("Content-Length") === "0"
+  ) {
+    return null; // No content (빈 응답 처리)
   }
   // 응답이 JSON이 아닌 경우 텍스트로 처리
   const contentType = response.headers.get("Content-Type");
