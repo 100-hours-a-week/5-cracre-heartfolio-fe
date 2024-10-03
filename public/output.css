@@ -3262,6 +3262,10 @@ input.tab:checked + .tab-content,
   height: 1.25rem;
 }
 
+.h-\[43px\] {
+  height: 43px;
+}
+
 .max-h-\[500px\] {
   max-height: 500px;
 }

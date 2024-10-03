@@ -29,7 +29,7 @@ function RankingPage() {
           >
             <a
               role="tab"
-              className={`tab h-[50px] text-gray-600 font-CookieRunRegular text-base border-solid border-2 border-btnClickColor ${
+              className={`tab h-[43px] text-[15px] text-gray-600 font-CookieRunRegular border-solid border-2 border-btnClickColor ${
                 activeTab === 1 ? "bg-btnClickColor" : "bg-white"
               }`}
               onClick={() => setActiveTab(1)}
@@ -38,7 +38,7 @@ function RankingPage() {
             </a>
             <a
               role="tab"
-              className={`tab h-[50px] text-base text-gray-600 font-CookieRunRegular border-solid border-2 border-btnClickColor ${
+              className={`tab h-[43px] text-[15px] text-gray-600 font-CookieRunRegular border-solid border-2 border-btnClickColor ${
                 activeTab === 2 ? "bg-btnClickColor" : "bg-white"
               }`}
               onClick={() => setActiveTab(2)}
