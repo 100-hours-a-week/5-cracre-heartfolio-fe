@@ -29,7 +29,7 @@ export default function Stocktype() {
                   : "text-gray-500 hover:text-gray-700",
                 tabIdx === 0 ? "rounded-l-lg" : "",
                 tabIdx === tabs.length - 1 ? "rounded-r-lg" : "",
-                "group relative min-w-0 flex items-center justify-center bg-white px-4 py-4 text-center hover:bg-gray-50 focus:z-10",
+                "group relative min-w-0 flex items-center justify-center bg-white px-4 py-4 font-TheJamsil5Bold text-center hover:bg-gray-50 focus:z-10",
                 tab.isIcon ? "flex-none w-16" : "flex-grow" // 아이콘의 경우 고정 너비, 나머지는 flex-grow로 동일하게 분배
               )}
             >
