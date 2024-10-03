@@ -2843,6 +2843,70 @@ input.tab:checked + .tab-content,
   top: 0.5rem;
 }
 
+.-top-8 {
+  top: -2rem;
+}
+
+.top-4 {
+  top: 1rem;
+}
+
+.top-8 {
+  top: 2rem;
+}
+
+.top-10 {
+  top: 2.5rem;
+}
+
+.top-1 {
+  top: 0.25rem;
+}
+
+.bottom-3 {
+  bottom: 0.75rem;
+}
+
+.bottom-20 {
+  bottom: 5rem;
+}
+
+.bottom-32 {
+  bottom: 8rem;
+}
+
+.bottom-24 {
+  bottom: 6rem;
+}
+
+.bottom-16 {
+  bottom: 4rem;
+}
+
+.-top-10 {
+  top: -2.5rem;
+}
+
+.-top-4 {
+  top: -1rem;
+}
+
+.-top-12 {
+  top: -3rem;
+}
+
+.-top-24 {
+  top: -6rem;
+}
+
+.-top-20 {
+  top: -5rem;
+}
+
+.-top-16 {
+  top: -4rem;
+}
+
 .isolate {
   isolation: isolate;
 }
@@ -2853,6 +2917,14 @@ input.tab:checked + .tab-content,
 
 .z-50 {
   z-index: 50;
+}
+
+.z-10 {
+  z-index: 10;
+}
+
+.z-0 {
+  z-index: 0;
 }
 
 .float-right {
@@ -3018,6 +3090,18 @@ input.tab:checked + .tab-content,
   margin-top: 6px;
 }
 
+.mt-6 {
+  margin-top: 1.5rem;
+}
+
+.mt-7 {
+  margin-top: 1.75rem;
+}
+
+.mt-9 {
+  margin-top: 2.25rem;
+}
+
 .block {
   display: block;
 }
@@ -3152,6 +3236,34 @@ input.tab:checked + .tab-content,
 
 .h-screen {
   height: 100vh;
+}
+
+.h-\[75px\] {
+  height: 75px;
+}
+
+.h-\[83px\] {
+  height: 83px;
+}
+
+.h-36 {
+  height: 9rem;
+}
+
+.h-44 {
+  height: 11rem;
+}
+
+.h-4 {
+  height: 1rem;
+}
+
+.h-5 {
+  height: 1.25rem;
+}
+
+.h-\[43px\] {
+  height: 43px;
 }
 
 .max-h-\[500px\] {
@@ -3316,6 +3428,34 @@ input.tab:checked + .tab-content,
 
 .w-full {
   width: 100%;
+}
+
+.w-8 {
+  width: 2rem;
+}
+
+.w-20 {
+  width: 5rem;
+}
+
+.w-\[75px\] {
+  width: 75px;
+}
+
+.w-\[80px\] {
+  width: 80px;
+}
+
+.w-44 {
+  width: 11rem;
+}
+
+.w-5 {
+  width: 1.25rem;
+}
+
+.w-4 {
+  width: 1rem;
 }
 
 .min-w-0 {
@@ -3813,6 +3953,18 @@ input.tab:checked + .tab-content,
   text-align: right;
 }
 
+.font-CookieRunRegular {
+  font-family: CookieRun-Regular;
+}
+
+.font-HakgyoansimSantteutdotumL {
+  font-family: HakgyoansimSantteutdotumL;
+}
+
+.font-RixXladywatermelonR {
+  font-family: RixXladywatermelonR;
+}
+
 .font-TheJamsil5Bold {
   font-family: TheJamsil5Bold;
 }
@@ -3890,6 +4042,10 @@ input.tab:checked + .tab-content,
 
 .font-semibold {
   font-weight: 600;
+}
+
+.font-normal {
+  font-weight: 400;
 }
 
 .text-\[\#000000\] {
@@ -4027,26 +4183,6 @@ input.tab:checked + .tab-content,
 }
 
 @font-face {
-  font-family: "Ubuntu", sans-serif;
-
-  src: url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
-
-  font-weight: 400;
-
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "Do Hyeon", sans-serif;
-
-  src: url('https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Ubuntu&display=swap');
-
-  font-weight: 800;
-
-  font-style: normal;
-}
-
-@font-face {
   font-family: 'TheJamsil5Bold';
 
   src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2302_01@1.0/TheJamsil5Bold.woff2') format('woff2');
@@ -4062,6 +4198,36 @@ input.tab:checked + .tab-content,
   src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/TmoneyRoundWindExtraBold.woff') format('woff');
 
   font-weight: normal;
+
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'RixXladywatermelonR';
+
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2408-4@1.0/RixXladywatermelonR.woff2') format('woff2');
+
+  font-weight: normal;
+
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'CookieRun-Regular';
+
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/CookieRun-Regular.woff') format('woff');
+
+  font-weight: normal;
+
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'HakgyoansimSantteutdotumL';
+
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-2@1.0/HakgyoansimSantteutdotumL.woff2') format('woff2');
+
+  font-weight: 200;
 
   font-style: normal;
 }

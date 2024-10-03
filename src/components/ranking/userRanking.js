@@ -23,7 +23,7 @@ function UserRanking() {
         <div role="tablist" className="tabs w-[180px] mr-auto">
           <a
             role="tab"
-            className={`tab w-[90px] text-[15px] p-0 ${
+            className={`tab w-[90px] text-[15px] p-0 font-HakgyoansimSantteutdotumL ${
               activeTab === 1 ? "tab-active text-iconColor" : ""
             }`}
             onClick={() => setActiveTab(1)}
@@ -32,7 +32,7 @@ function UserRanking() {
           </a>
           <a
             role="tab"
-            className={`tab w-[90px] text-[15px] p-0 ${
+            className={`tab w-[90px] text-[15px] p-0 font-HakgyoansimSantteutdotumL ${
               activeTab === 2 ? "tab-active text-iconColor" : ""
             }`}
             onClick={() => setActiveTab(2)}

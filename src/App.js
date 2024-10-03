@@ -13,23 +13,44 @@ import KakaoRedirect from "./pages/kakaoRedirect";
 import Legal from "./pages/license";
 import CashChargeSuccessPage from "./pages/cashChargeSuccessPage";
 import CashChargeFailPage from "./pages/cashChargeFailPage";
+import PleaseLogin from "./pages/pleaseLoginPage";
+import { useEffect, useState } from "react";
 
 function App() {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+  useEffect(() => {
+    const token = localStorage.getItem("access_token");
+    if (token) {
+      setIsAuthenticated(true);
+    }
+  }, []);
+
+  const protectedRoutes = [
+    { path: "/portfolio", element: <PortfolioPage /> },
+    { path: "/portfolio/:id", element: <PortfolioPage /> },
+    { path: "/mypage", element: <MyPage /> },
+    { path: "/cashcharge", element: <CashChargePage /> },
+  ];
+
   return (
     <Router>
       <Routes>
+        {protectedRoutes.map(({ path, element }) => (
+          <Route
+            key={path}
+            path={path}
+            element={isAuthenticated ? element : <PleaseLogin />}
+          />
+        ))}
         <Route path="/" element={<MainPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/oauth" element={<KakaoRedirect />} />
-        <Route path="/portfolio" element={<PortfolioPage />} />
-        <Route path="/portfolio/:id" element={<PortfolioPage />} />
         <Route path="/intereststock" element={<Intereststock />} />
         <Route path="/popularstock" element={<Popularstock />} />
         <Route path="/search" element={<SearchPage />} />
         <Route path="/stock/:id" element={<StockPage />} />
         <Route path="/ranking" element={<RankingPage />} />
-        <Route path="/mypage" element={<MyPage />} />
-        <Route path="/cashcharge" element={<CashChargePage />} />
         <Route path="/success-payment" element={<CashChargeSuccessPage />} />
         <Route path="/fail-payment" element={<CashChargeFailPage />} />
         <Route path="/legal" element={<Legal />} />

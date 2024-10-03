@@ -3,10 +3,11 @@ module.exports = {
   content: ["./src/**/*.{html,jsx,js}"],
   theme: {
     fontFamily: {
-      Ubuntu: ["Ubuntu"],
-      DoHyeon: ["Do Hyeon"],
       TheJamsil5Bold: ["TheJamsil5Bold"],
       TmoneyRoundWindExtraBold: ["TmoneyRoundWindExtraBold"],
+      RixXladywatermelonR: ["RixXladywatermelonR"],
+      CookieRunRegular: ["CookieRun-Regular"],
+      HakgyoansimSantteutdotumL: ["HakgyoansimSantteutdotumL"],
     },
     extend: {
       boxShadow: {

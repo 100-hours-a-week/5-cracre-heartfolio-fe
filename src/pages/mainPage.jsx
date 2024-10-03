@@ -43,9 +43,9 @@ function MainPage() {
       <Header />
       <div className="py-[70px]">
         <div className="mx-auto w-[390px] px-3">
-          {loading || moneyLoading  ? (
+          {loading || moneyLoading ? (
             <Loading />
-          ) : error  ? (
+          ) : error ? (
             <div className="min-h-screen bg-white text-center">
               Error : {error.message}
             </div>
@@ -57,7 +57,7 @@ function MainPage() {
           ) : (
             <div>
               {hasSeenLuck ? (
-                <MyLuck data={fortuneData} />
+                <MyLuck data={fortuneData} ok={true} />
               ) : (
                 <LuckyBox />
               )}
@@ -66,7 +66,7 @@ function MainPage() {
                 onClick={() => seeMore("/ranking", 2)}
               />
               <div className="mx-auto max-w-[390px] mt-[6px] border-t border-gray-300" />
-              <MoneyRankTop3Box topThree={topThree} />
+              <MoneyRankTop3Box topThree={topThree} main={true} />
               <div className="mx-auto max-w-[390px] mt-10 border-t border-gray-300" />
               <div className="flex justify-around w-[370px] mt-4 pb-3 bg-gray-100">
                 <div className="w-[175px] aspect-[7/8]">

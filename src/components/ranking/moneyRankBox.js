@@ -28,13 +28,13 @@ function MoneyRankTop3Box(props) {
   return (
     <>
       {/* Top 3 */}
-      <div className="flex justify-center items-end mt-5 mb-3 gap-4">
+      <div className={`flex justify-center items-end mb-3 gap-4 ${props.main ? "mt-5" : "mt-9"}`}>
         {reorderedTopThree?.map((item, index) => (
           <div key={index} className="flex flex-col items-center">
-            <div className="text-center text-lg text-gray-800 font-bold">
+            <div className="text-center text-lg text-gray-800 font-bold z-10">
               {customRanks[index]}
             </div>
-            <div className="flex items-center">
+            <div className="flex items-center relative">
               <div className="avatar">
                 <div
                   className={`rounded-full bg-gray-200 ${
@@ -45,6 +45,17 @@ function MoneyRankTop3Box(props) {
                       : "h-14 w-14"
                   }`}
                 >
+                  {props.main ? (
+                    <></>
+                  ) : (
+                    index === 1 && (
+                      <img
+                        src="/assets/images/crown.png"
+                        alt="crown"
+                        className="absolute -top-20 z-0"
+                      />
+                    )
+                  )}
                   <img src={item.profile || ""} alt="profile image" />
                 </div>
               </div>
