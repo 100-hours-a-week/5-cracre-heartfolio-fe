@@ -5,6 +5,7 @@ import { useState } from "react";
 function LuckyBox() {
   const [showLuck, setShowLuck] = useState(false);
   const [luckData, setLuckData] = useState(null);
+  const [ok, setOk] = useState(false);
   const token = localStorage.getItem("access_token");
 
   const isUnauthorized = !token;
@@ -61,19 +62,22 @@ function LuckyBox() {
           }
         } else {
           setLuckData(result?.message);
+          setOk(true);
         }
       } catch (error) {
         setLuckData("운세 데이터를 가져올 수 없습니다. 다시 시도해주세요");
+        setOk(false);
       }
     } else {
       setLuckData("로그인이 필요한 서비스입니다.");
+      setOk(false);
     }
   }
 
   return (
     <div>
       {showLuck || luckData ? (
-        <MyLuck data={luckData} />
+        <MyLuck data={luckData} ok={ok}/>
       ) : (
         <div
           className="flex justify-center pt-[25px] mt-2 h-20 rounded-xl bg-gradient-to-r from-amber-200/50 to-pink-200/50"
