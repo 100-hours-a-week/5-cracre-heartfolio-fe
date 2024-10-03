@@ -32,7 +32,7 @@ function MoneyRanking() {
       {loading ? (
         <Loading />
       ) : (
-        <div className="mx-auto max-w-[350px] h-[588px] overflow-y-auto scrollbar-hide"  style={{ height: "calc(100dvh - 247px)" }}>
+        <div className="mx-auto max-w-[350px] h-[588px] overflow-y-auto scrollbar-hide"  style={{ height: "calc(100dvh - 252px)" }}>
           <MoneyRankTop3Box topThree={topThree} />
           <MoneyRankBox userRanking={userRanking} />
         </div>
