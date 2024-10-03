@@ -29,7 +29,7 @@ function RankingPage() {
           >
             <a
               role="tab"
-              className={`tab h-[50px] text-gray-600 text-base border-solid border-2 border-btnClickColor ${
+              className={`tab h-[50px] text-gray-600 font-CookieRunRegular text-base border-solid border-2 border-btnClickColor ${
                 activeTab === 1 ? "bg-btnClickColor" : "bg-white"
               }`}
               onClick={() => setActiveTab(1)}
@@ -38,7 +38,7 @@ function RankingPage() {
             </a>
             <a
               role="tab"
-              className={`tab h-[50px] text-base text-gray-600 border-solid border-2 border-btnClickColor ${
+              className={`tab h-[50px] text-base text-gray-600 font-CookieRunRegular border-solid border-2 border-btnClickColor ${
                 activeTab === 2 ? "bg-btnClickColor" : "bg-white"
               }`}
               onClick={() => setActiveTab(2)}
@@ -46,7 +46,7 @@ function RankingPage() {
               기부 랭킹
             </a>
           </div>
-          <div className="mx-auto max-w-[370px] p-1" style={{height : "calc(100dvh - 140px)"}}>
+          <div className="mx-auto max-w-[370px] p-2" style={{height : "calc(100dvh - 140px)"}}>
             <div role="tabpanel" className="tab-content block w-[350px]">
               {activeTab === 1 && <UserRanking />}
               {activeTab === 2 && <MoneyRanking />}

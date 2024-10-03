@@ -16,7 +16,7 @@ function MoneyRanking() {
   return (
     <div className="w-[350px]">
       <div className="flex justify-between w-full max-w-[360px]">
-        <div className="text-gray-600 text-xl font-TmoneyRoundWindExtraBold">이달의 기부왕</div>
+        <div className="p-1 text-gray-600 text-xl font-RixXladywatermelonR">이달의 기부천사</div>
         <div className="flex items-center">
           <div className="text-gray-600 text-sm">내 순위 :</div>
           {loading ? (
