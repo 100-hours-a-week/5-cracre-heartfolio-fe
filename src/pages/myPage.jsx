@@ -13,10 +13,9 @@ import { useNavigate } from "react-router-dom";
 
 function MyPage() {
   const navigate = useNavigate();
-  const { data, loading } = useFetch(
+  const { data, error, loading } = useFetch(
     `${process.env.REACT_APP_API_URI}/user/info`
   );
-  const [error, setError] = useState(true);
   const [nickname, setNickname] = useState(data?.nickname);
   const [helperText, setHelperText] = useState("*helper text");
   const [isAuthenticated, setIsAuthenticated] = useState(false);
