@@ -27,7 +27,7 @@ const KakaoRedirect = () => {
           }
         })
         .catch((error) => {
-          console.error("로그인 실패", error);
+          // console.error("로그인 실패", error);
         });
     } else {
       console.log("URL에서 코드를 찾을 수 없습니다.");
