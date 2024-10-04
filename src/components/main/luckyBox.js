@@ -11,7 +11,6 @@ function LuckyBox() {
   const isUnauthorized = !token;
 
   async function seeLuck() {
-    setShowLuck(true);
     if (!isUnauthorized) {
       try {
         let res = await fetchWithToken(
@@ -61,14 +60,17 @@ function LuckyBox() {
             return;
           }
         } else {
+          setShowLuck(true);
           setLuckData(result?.message);
           setOk(true);
         }
       } catch (error) {
+        setShowLuck(true);
         setLuckData("운세 데이터를 가져올 수 없습니다. 다시 시도해주세요");
         setOk(false);
       }
     } else {
+      setShowLuck(true);
       setLuckData("로그인이 필요한 서비스입니다.");
       setOk(false);
     }
@@ -76,8 +78,8 @@ function LuckyBox() {
 
   return (
     <div>
-      {showLuck || luckData ? (
-        <MyLuck data={luckData} ok={ok}/>
+      {showLuck && luckData ? (
+        <MyLuck data={luckData} ok={ok} />
       ) : (
         <div
           className="flex justify-center pt-[25px] mt-2 h-20 rounded-xl bg-gradient-to-r from-amber-200/50 to-pink-200/50"
