@@ -13,9 +13,10 @@ import { useNavigate } from "react-router-dom";
 
 function MyPage() {
   const navigate = useNavigate();
-  const { data, error, loading } = useFetch(
+  const { data, loading } = useFetch(
     `${process.env.REACT_APP_API_URI}/user/info`
   );
+  const [error, setError] = useState(true);
   const [nickname, setNickname] = useState(data?.nickname);
   const [helperText, setHelperText] = useState("*helper text");
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -126,6 +127,10 @@ function MyPage() {
         {isAuthenticated === true ? (
           loading ? (
             <Loading />
+          ) : error ? (
+            <p className="min-h-screen bg-white text-center">
+              Error: {error.message}
+            </p>
           ) : (
             <div className="mx-auto max-w-[390px] w-[380px] pb-[65px]">
               <div>
