@@ -111,9 +111,9 @@ function AssetConfiguration(props) {
           <div className="text-lg text-gray-600">보유한 자산이 없습니다.</div>
         </div>
       ) : error ? (
-        <div className="text-center text-red-500">
-          에러가 발생했습니다: {error.message}
-        </div>
+        <p className="min-h-screen bg-white text-center">
+          Error: {error.message}
+        </p>
       ) : (
         <div className="flex justify-center">
           <div className="pt-4">

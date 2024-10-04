@@ -28,15 +28,18 @@ function Holdings(props) {
           <div className="text-lg text-gray-600">보유 종목이 없습니다.</div>
         </div>
       ) : error ? (
-        <div className="text-center text-red-500">
-          에러가 발생했습니다: {error.message}
-        </div>
+        <p className="min-h-screen bg-white text-center">
+          Error: {error.message}
+        </p>
       ) : (
         <>
           <div className="text-xs mb-2 text-right text-gray-600">
             가격 단위(KRW)
           </div>
-          <div className="mx-auto max-w-[350px] mb-5 overflow-y-auto scrollbar-hide" style={{ height: "calc(100dvh - 250px)" }}>
+          <div
+            className="mx-auto max-w-[350px] mb-5 overflow-y-auto scrollbar-hide"
+            style={{ height: "calc(100dvh - 250px)" }}
+          >
             <ul role="list">
               {data.stocks.map((item) => (
                 <li key={item.stockId} className="py-2">

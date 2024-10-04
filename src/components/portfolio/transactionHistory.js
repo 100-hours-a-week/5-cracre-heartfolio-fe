@@ -24,9 +24,9 @@ function TransactionHistory(props) {
           <Lottie animationData={dotLoadingAnimation} loop={true} />
         ) : error ? (
           // 에러 상태 처리
-          <div className="text-center text-red-500">
-            에러가 발생했습니다: {error.message}
-          </div>
+          <p className="min-h-screen bg-white text-center">
+            Error: {error.message}
+          </p>
         ) : transactionData.length === 0 ? (
           // 거래 내역이 없을 때 처리
           <div className="flex flex-col items-center h-screen max-h-[500px]">
@@ -42,7 +42,10 @@ function TransactionHistory(props) {
             <div className="text-xs mb-2 text-right text-gray-600">
               가격 단위(KRW)
             </div>
-            <div className="overflow-y-auto scrollbar-hide" style={{ height : "calc(100dvh - 240px)" }}>
+            <div
+              className="overflow-y-auto scrollbar-hide"
+              style={{ height: "calc(100dvh - 240px)" }}
+            >
               <ul role="list" className="divide-y divide-gray-200">
                 {transactionData.map((item) => (
                   <li key={item.id} className="py-2">
