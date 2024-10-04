@@ -12,7 +12,8 @@ function SearchPage() {
   const navigate = useNavigate();
   const [searchTerm, setSearchTerm] = useState(""); // 검색어 상태 추가
   const [searchUrl, setSearchUrl] = useState(""); // 검색 API URL 관리
-  const { data, loading } = useFetch(searchUrl); // 검색 결과에 따라 fetch
+  const { data, error, loading } = useFetch(searchUrl); // 검색 결과에 따라 fetch
+  const [popularstock, setPopularstock] = useState([]); // popularstock을 상태로 관리
 
   // 검색창에서 값이 변경될 때마다 searchTerm 상태 업데이트
   const handleInputChange = (event) => {
@@ -22,7 +23,7 @@ function SearchPage() {
     setSearchTerm(filteredValue);
   };
 
-  const { data: popularstock } = useFetch(
+  const { data: popularstockData, error: popularstockError } = useFetch(
     `${process.env.REACT_APP_API_URI}/stock/popular?limit=` + 5
   );
 
@@ -43,6 +44,41 @@ function SearchPage() {
   function handleStock(get_id) {
     navigate(`/stock/${get_id}`);
   }
+
+  useEffect(() => {
+    if (popularstockData && !popularstockError) {
+      setPopularstock(popularstockData);
+    } else {
+      setPopularstock([
+        {
+          stockId: 4,
+          koreanName: "마이크로소프트",
+          englishName: "Microsoft Corporation",
+        },
+        {
+          stockId: 8,
+          koreanName: "엔비디아",
+          englishName: "NVIDIA Corporation",
+        },
+        {
+          stockId: 25,
+          koreanName: "코카콜라",
+          englishName: "The Coca-Cola Company",
+        },
+        {
+          stockId: 21,
+          koreanName: "어도비",
+          englishName: "Adobe Inc.",
+        },
+        {
+          stockId: 34,
+          koreanName: "맥도날드",
+          englishName: "McDonald’s Corporation",
+        },
+      ]);
+    }
+  }, [popularstockData, popularstockError]);
+
   return (
     <>
       <Header />
@@ -80,9 +116,11 @@ function SearchPage() {
               </div>
             )}
           </div>
-
           {/* 검색목록 */}
-          <div className="flex flex-col mt-5 overflow-y-auto scrollbar-hide" style={{ height: "calc(100dvh - 205px)" }}>
+          <div
+            className="flex flex-col mt-5 overflow-y-auto scrollbar-hide"
+            style={{ height: "calc(100dvh - 205px)" }}
+          >
             {searchTerm.length == 0 ? (
               <div className="flex flex-col">
                 <div className="text-gray-600 text-lg pb-3">추천 검색어</div>
@@ -93,7 +131,7 @@ function SearchPage() {
                 ))}
               </div>
             ) : loading ? (
-              <Loading/>
+              <Loading />
             ) : Array.isArray(data) && data.length > 0 ? (
               data.map((item) => (
                 <div key={item.stockId} className="w-[250px] pb-3">
@@ -105,6 +143,10 @@ function SearchPage() {
                   />
                 </div>
               ))
+            ) : error ? (
+              <p className="min-h-screen bg-white text-center">
+                Error: {error.message}
+              </p>
             ) : (
               <p className="pt-4">입력하신 검색어를 찾을 수 없습니다.</p>
             )}
