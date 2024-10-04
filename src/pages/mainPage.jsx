@@ -57,7 +57,7 @@ function MainPage() {
           ) : (
             <div>
               {hasSeenLuck ? (
-                <MyLuck data={fortuneData} ok={true} />
+                <MyLuck data={fortuneData} ok={true} loading={fortuneLoading}/>
               ) : (
                 <LuckyBox />
               )}

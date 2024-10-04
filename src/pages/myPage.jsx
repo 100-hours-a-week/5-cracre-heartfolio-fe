@@ -126,6 +126,10 @@ function MyPage() {
         {isAuthenticated === true ? (
           loading ? (
             <Loading />
+          ) : error ? (
+            <p className="min-h-screen bg-white text-center">
+              Error: {error.message}
+            </p>
           ) : (
             <div className="mx-auto max-w-[390px] w-[380px] pb-[65px]">
               <div>
