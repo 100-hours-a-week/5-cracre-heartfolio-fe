@@ -31,7 +31,8 @@ function MainPage() {
 
   // 운세 데이터 확인
   const hasSeenLuck = fortuneData && fortuneData !== ""; // 운세를 확인한 경우
-
+  console.log("fortuneData",fortuneData)
+  
   // 데이터 구조가 유효한지 확인
   const userRanking = moneyData?.userRanking || [];
 

@@ -24,18 +24,27 @@ function LuckyBox() {
             method: "POST",
           }
         );
-        if (res) {
+        if (res && res.status && res.status === 200) {
+          // 성공한 경우, 정상 데이터를 렌더링
+          console.log("res", res);
           setShowLuck(true);
-          setLuckData(res);
+          if (typeof res === "object") {
+            setLuckData(JSON.stringify(res)); // 객체를 문자열로 변환하여 설정
+          } else {
+            setLuckData(res); // 문자열일 경우 그대로 설정
+          }
           setOk(true);
         } else {
+          // 오류가 있을 때
           setShowLuck(true);
-          setLuckData("운세를 가져올 수 없습니다. 다시 시도해주세요");
+          setLuckData("운세를 가져올 수 없습니다. 다시 시도해주세요"); // 사용자에게 오류 메시지 표시
           setOk(false);
         }
       } catch (error) {
+        // 네트워크 오류 또는 API 호출 실패 처리
+        console.error("API 호출 실패:", error);
         setShowLuck(true);
-        setLuckData("운세를 가져올 수 없습니다. 다시 시도해주세요");
+        setLuckData("운세를 가져올 수 없습니다. 다시 시도해주세요"); // 오류 처리
         setOk(false);
       }
     } else {
