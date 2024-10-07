@@ -43,7 +43,7 @@ function UserRanking() {
           >
             월별 수익률
           </a>
-          <div className="text-[8px] w-[40px] pb-2">{formattedDate}</div>
+          <div className="text-[9px] w-[50px] pb-2">{formattedDate}</div>
         </div>
         <div className="flex items-center">
           <div className="text-sm text-gray-600">내 순위 :</div>
