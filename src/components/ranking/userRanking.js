@@ -17,10 +17,14 @@ function UserRanking() {
   function handlePortfolio(get_id) {
     navigate(`/portfolio/${get_id}`);
   }
+
+  // 현재 달을 가져옴
+  const formattedDate = `${new Date().getMonth() + 1}월 기준`;
+
   return (
     <div className="flex flex-col items-center">
       <div className="flex justify-between w-full max-w-[350px]">
-        <div role="tablist" className="tabs w-[180px] mr-auto">
+        <div role="tablist" className="tabs w-[230px] mr-auto flex">
           <a
             role="tab"
             className={`tab w-[90px] text-[15px] p-0 font-HakgyoansimSantteutdotumL ${
@@ -39,6 +43,7 @@ function UserRanking() {
           >
             월별 수익률
           </a>
+          <div className="text-[8px] w-[40px] pb-2">{formattedDate}</div>
         </div>
         <div className="flex items-center">
           <div className="text-sm text-gray-600">내 순위 :</div>
