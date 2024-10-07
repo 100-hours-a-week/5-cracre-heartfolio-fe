@@ -13,9 +13,12 @@ function MyLuck(props) {
           <Lottie animationData={dotLoadingAnimation} loop={true} />
         ) : (
           <div
-            className={
-              props.ok ? "font-RixXladywatermelonR" : "font-semibold text-gray-600"
+            className={`${
+              props.ok
+                ? "font-RixXladywatermelonR"
+                : "font-semibold text-gray-600"
             }
+              ${props.data.length>28 ? "text-sm" : "text-base"}`}
           >
             {props.data}
           </div>
