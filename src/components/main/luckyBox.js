@@ -24,15 +24,10 @@ function LuckyBox() {
             method: "POST",
           }
         );
-        if (res && res.status && res.status === 200) {
+        if (res) {
           // 성공한 경우, 정상 데이터를 렌더링
-          console.log("res", res);
           setShowLuck(true);
-          if (typeof res === "object") {
-            setLuckData(JSON.stringify(res)); // 객체를 문자열로 변환하여 설정
-          } else {
-            setLuckData(res); // 문자열일 경우 그대로 설정
-          }
+          setLuckData(res);
           setOk(true);
         } else {
           // 오류가 있을 때
