@@ -3374,6 +3374,10 @@ input.tab:checked + .tab-content,
   width: 40px;
 }
 
+.w-\[50px\] {
+  width: 50px;
+}
+
 .min-w-0 {
   min-width: 0px;
 }
@@ -3966,6 +3970,10 @@ input.tab:checked + .tab-content,
 
 .text-\[8px\] {
   font-size: 8px;
+}
+
+.text-\[9px\] {
+  font-size: 9px;
 }
 
 .font-bold {
