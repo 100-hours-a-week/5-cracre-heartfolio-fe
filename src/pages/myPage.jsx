@@ -25,7 +25,7 @@ function MyPage() {
     if (token) {
       setIsAuthenticated(true);
     }
-  }, []);
+  }, [token]);
 
   useEffect(() => {
     if (data) {
