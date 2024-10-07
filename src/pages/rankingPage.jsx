@@ -8,15 +8,8 @@ import MoneyRanking from "../components/ranking/moneyRanking";
 import { useLocation } from "react-router-dom";
 
 function RankingPage() {
-  const location = useLocation();
   // activeTab이 없을 때 기본값 1로 설정
   const [activeTab, setActiveTab] = useState(1);
-
-  useEffect(() => {
-    if (location.state?.activeTab) {
-      setActiveTab(location.state.activeTab);
-    }
-  }, [location.state?.activeTab]);
 
   return (
     <>
@@ -34,7 +27,7 @@ function RankingPage() {
               }`}
               onClick={() => setActiveTab(1)}
             >
-              사용자 랭킹
+              기부 랭킹
             </a>
             <a
               role="tab"
@@ -43,13 +36,13 @@ function RankingPage() {
               }`}
               onClick={() => setActiveTab(2)}
             >
-              기부 랭킹
+              사용자 랭킹
             </a>
           </div>
           <div className="mx-auto max-w-[370px] p-2" style={{height : "calc(100dvh - 140px)"}}>
             <div role="tabpanel" className="tab-content block w-[350px]">
-              {activeTab === 1 && <UserRanking />}
-              {activeTab === 2 && <MoneyRanking />}
+              {activeTab === 1 && <MoneyRanking />}
+              {activeTab === 2 && <UserRanking />}
             </div>
           </div>
         </div>
