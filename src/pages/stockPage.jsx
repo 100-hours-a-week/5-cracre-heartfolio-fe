@@ -28,7 +28,7 @@ function StockPage() {
         >
           <a
             role="tab"
-            className={`tab h-[40px] ${
+            className={`tab h-[35px] font-TheJamsil5Bold ${
               activeTab === 1 ? "bg-btnClickColor" : ""
             }  text-gray-600`}
             onClick={() => setActiveTab(1)}
@@ -37,7 +37,7 @@ function StockPage() {
           </a>
           <a
             role="tab"
-            className={`tab h-[40px] ${
+            className={`tab h-[35px] font-TheJamsil5Bold ${
               activeTab === 2 ? "bg-btnClickColor" : ""
             }  text-gray-600`}
             onClick={() => setActiveTab(2)}
