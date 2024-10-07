@@ -7,14 +7,14 @@ function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const navigate = useNavigate();
+  const token = localStorage.getItem("access_token");
 
   useEffect(() => {
-    const token = localStorage.getItem("access_token");
     if (token) {
       setIsAuthenticated(true);
       // 추가로 사용자 정보를 가져와서 상태로 저장 가능
     }
-  }, []);
+  }, [token]);
   function handleLogin() {
     if (localStorage.getItem("access_token")) {
       localStorage.removeItem("access_token");
