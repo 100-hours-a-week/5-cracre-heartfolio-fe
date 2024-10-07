@@ -19,12 +19,12 @@ import { useEffect, useState } from "react";
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
+  const token = localStorage.getItem("access_token");
   useEffect(() => {
-    const token = localStorage.getItem("access_token");
     if (token) {
       setIsAuthenticated(true);
     }
-  }, []);
+  }, [token]);
 
   const protectedRoutes = [
     { path: "/portfolio", element: <PortfolioPage /> },
