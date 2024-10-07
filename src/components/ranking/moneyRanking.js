@@ -13,10 +13,15 @@ function MoneyRanking() {
   // 상위 3개 아이템 추출
   const topThree = userRanking.slice(0, 3);
 
+  // 현재 달을 가져옴
+  const formattedDate = `${new Date().getMonth() + 1}월의 기부천사`;
+
   return (
     <div className="w-[350px]">
       <div className="flex justify-between w-full max-w-[360px]">
-        <div className="p-1 text-gray-600 text-xl font-RixXladywatermelonR">이달의 기부천사</div>
+        <div className="p-1 text-gray-600 text-xl font-RixXladywatermelonR">
+          {formattedDate}
+        </div>
         <div className="flex items-center">
           <div className="text-gray-600 text-sm">내 순위 :</div>
           {loading ? (
@@ -32,7 +37,10 @@ function MoneyRanking() {
       {loading ? (
         <Loading />
       ) : (
-        <div className="mx-auto max-w-[350px] h-[588px] overflow-y-auto scrollbar-hide"  style={{ height: "calc(100dvh - 252px)" }}>
+        <div
+          className="mx-auto max-w-[350px] h-[588px] overflow-y-auto scrollbar-hide"
+          style={{ height: "calc(100dvh - 252px)" }}
+        >
           <MoneyRankTop3Box topThree={topThree} />
           <MoneyRankBox userRanking={userRanking} />
         </div>
