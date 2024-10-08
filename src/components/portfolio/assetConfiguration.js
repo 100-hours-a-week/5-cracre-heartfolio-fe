@@ -121,7 +121,7 @@ function AssetConfiguration(props) {
               options={options}
               series={chartData.series}
               type="donut"
-              height={350}
+              height={380}
               width={370}
             />
           </div>

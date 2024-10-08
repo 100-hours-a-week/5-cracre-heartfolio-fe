@@ -33,7 +33,7 @@ function HistoryBox(props) {
             <div className="flex w-[140px] justify-between  text-gray-600">
               <div
                 className={`${
-                  props.name.length > 9 ? "text-[13px]" : "text-base"
+                  props.name.length > 8 ? "text-[15px] w-[75px]" : "text-base w-[110px]"
                 } font-semibold`}
               >
                 {props.name}
