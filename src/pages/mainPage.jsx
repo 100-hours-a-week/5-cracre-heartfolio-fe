@@ -68,14 +68,14 @@ function MainPage() {
               <div className="mx-auto max-w-[390px] mt-[6px] border-t border-gray-300" />
               <MoneyRankTop3Box topThree={topThree} main={true} />
               <div className="mx-auto max-w-[390px] mt-10 border-t border-gray-300" />
-              <div className="flex justify-around w-[370px] mt-4 pb-3 bg-gray-100">
-                <div className="w-[175px] aspect-[7/8]">
+              <div className="flex justify-around w-[370px] h-[250px] mt-4 pb-3 bg-gray-100">
+                <div className="relative w-[175px] h-[200px]">
                   <div className="text-left font-bold pt-2 mb-2">
                     S&P 500 (SPY ETF)
                   </div>
                   <TradingViewMini symbol={"AMEX:SPY"} />
                 </div>
-                <div className="w-[175px] aspect-[7/8]">
+                <div className="relative w-[175px] h-[200px]">
                   <div className="text-left font-bold pt-2 mb-2">나스닥</div>
                   <TradingViewMini symbol={"NASDAQ.USD.100"} />
                 </div>
