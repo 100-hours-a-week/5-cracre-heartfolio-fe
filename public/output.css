@@ -4043,6 +4043,10 @@ input.tab:checked + .tab-content,
   color: rgb(223 21 37 / var(--tw-text-opacity));
 }
 
+.underline {
+  text-decoration-line: underline;
+}
+
 .opacity-0 {
   opacity: 0;
 }
