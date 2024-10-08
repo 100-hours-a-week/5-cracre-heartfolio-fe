@@ -3366,6 +3366,34 @@ input.tab:checked + .tab-content,
   width: 100%;
 }
 
+.w-\[13px\] {
+  width: 13px;
+}
+
+.w-\[16px\] {
+  width: 16px;
+}
+
+.w-\[63px\] {
+  width: 63px;
+}
+
+.w-\[80px\] {
+  width: 80px;
+}
+
+.w-\[110px\] {
+  width: 110px;
+}
+
+.w-\[78px\] {
+  width: 78px;
+}
+
+.w-\[75px\] {
+  width: 75px;
+}
+
 .min-w-0 {
   min-width: 0px;
 }
