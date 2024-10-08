@@ -70,13 +70,13 @@ function MainPage() {
               <div className="mx-auto max-w-[390px] mt-10 border-t border-gray-300" />
               <div className="flex justify-around w-[370px] h-[250px] mt-4 pb-3 bg-gray-100">
                 <div className="relative w-[175px] h-[200px]">
-                  <div className="text-left font-bold pt-2 mb-2">
+                  <div className="text-left font-bold pt-2 mb-2 text-gray-600">
                     S&P 500 (SPY ETF)
                   </div>
                   <TradingViewMini symbol={"AMEX:SPY"} />
                 </div>
                 <div className="relative w-[175px] h-[200px]">
-                  <div className="text-left font-bold pt-2 mb-2">나스닥</div>
+                  <div className="text-left font-bold pt-2 mb-2 text-gray-600">나스닥</div>
                   <TradingViewMini symbol={"NASDAQ.USD.100"} />
                 </div>
               </div>
