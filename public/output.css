@@ -3130,6 +3130,10 @@ input.tab:checked + .tab-content,
   height: 30px;
 }
 
+.h-\[35px\] {
+  height: 35px;
+}
+
 .h-\[40px\] {
   height: 40px;
 }
@@ -3174,8 +3178,20 @@ input.tab:checked + .tab-content,
   height: 100vh;
 }
 
-.h-\[35px\] {
-  height: 35px;
+.h-\[240px\] {
+  height: 240px;
+}
+
+.h-\[220px\] {
+  height: 220px;
+}
+
+.h-\[200px\] {
+  height: 200px;
+}
+
+.h-\[300px\] {
+  height: 300px;
 }
 
 .max-h-\[500px\] {
@@ -3274,6 +3290,10 @@ input.tab:checked + .tab-content,
   width: 180px;
 }
 
+.w-\[230px\] {
+  width: 230px;
+}
+
 .w-\[245px\] {
   width: 245px;
 }
@@ -3318,6 +3338,10 @@ input.tab:checked + .tab-content,
   width: 460px;
 }
 
+.w-\[50px\] {
+  width: 50px;
+}
+
 .w-\[65px\] {
   width: 65px;
 }
@@ -3340,42 +3364,6 @@ input.tab:checked + .tab-content,
 
 .w-full {
   width: 100%;
-}
-
-.w-\[200px\] {
-  width: 200px;
-}
-
-.w-\[210px\] {
-  width: 210px;
-}
-
-.w-\[10px\] {
-  width: 10px;
-}
-
-.w-\[20px\] {
-  width: 20px;
-}
-
-.w-\[30px\] {
-  width: 30px;
-}
-
-.w-\[220px\] {
-  width: 220px;
-}
-
-.w-\[230px\] {
-  width: 230px;
-}
-
-.w-\[40px\] {
-  width: 40px;
-}
-
-.w-\[50px\] {
-  width: 50px;
 }
 
 .min-w-0 {
@@ -3408,10 +3396,6 @@ input.tab:checked + .tab-content,
 
 .max-w-full {
   max-width: 100%;
-}
-
-.max-w-\[380px\] {
-  max-width: 380px;
 }
 
 .flex-none {
@@ -3511,10 +3495,6 @@ input.tab:checked + .tab-content,
 .divide-gray-200 > :not([hidden]) ~ :not([hidden]) {
   --tw-divide-opacity: 1;
   border-color: rgb(229 231 235 / var(--tw-divide-opacity));
-}
-
-.self-center {
-  align-self: center;
 }
 
 .overflow-hidden {
@@ -3869,10 +3849,6 @@ input.tab:checked + .tab-content,
   padding-top: 90px;
 }
 
-.pb-1 {
-  padding-bottom: 0.25rem;
-}
-
 .text-left {
   text-align: left;
 }
@@ -3939,6 +3915,10 @@ input.tab:checked + .tab-content,
   font-size: 25px;
 }
 
+.text-\[9px\] {
+  font-size: 9px;
+}
+
 .text-base {
   font-size: 1rem;
   line-height: 1.5rem;
@@ -3962,18 +3942,6 @@ input.tab:checked + .tab-content,
 .text-xs {
   font-size: 0.75rem;
   line-height: 1rem;
-}
-
-.text-\[6px\] {
-  font-size: 6px;
-}
-
-.text-\[8px\] {
-  font-size: 8px;
-}
-
-.text-\[9px\] {
-  font-size: 9px;
 }
 
 .font-bold {
