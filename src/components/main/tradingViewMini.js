@@ -48,7 +48,7 @@ function TradingViewMini(props) {
   }, [props.symbol]);
 
   return (
-    <div className="tradingview-widget-container w-[175px] h-full w-full" ref={container}>
+    <div className="tradingview-widget-container w-[175px] h-full w-full pointer-events-none" ref={container}>
       <div className="tradingview-widget-container__widget"></div>
     </div>
   );
