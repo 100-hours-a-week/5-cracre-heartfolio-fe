@@ -2790,6 +2790,10 @@ input.tab:checked + .tab-content,
   border-width: 0;
 }
 
+.pointer-events-none {
+  pointer-events: none;
+}
+
 .fixed {
   position: fixed;
 }
@@ -4037,6 +4041,10 @@ input.tab:checked + .tab-content,
 .text-redColor {
   --tw-text-opacity: 1;
   color: rgb(223 21 37 / var(--tw-text-opacity));
+}
+
+.underline {
+  text-decoration-line: underline;
 }
 
 .opacity-0 {

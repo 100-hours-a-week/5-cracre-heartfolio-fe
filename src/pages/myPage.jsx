@@ -163,7 +163,7 @@ function MyPage() {
                   />
                   <div className="text-right">
                     <button
-                      className="h-[25px] border-solid border-[1px] border-gray-200 w-[65px] text-sm rounded-lg"
+                      className="h-[25px] border-solid border-[1px]  text-gray-500 border-gray-400 w-[65px] text-sm rounded-lg"
                       onClick={() => navigate("/cashCharge")}
                     >
                       캐시 충전

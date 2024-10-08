@@ -31,7 +31,7 @@ const LoginPage = () => {
             className="w-[180px] my-10 rounded-lg"
           />
 
-          <p className="text-3xl m-5 font-semibold text-gray-600">HeartFoilo</p>
+          <p className="text-3xl m-5 font-semibold text-gray-600 font-TmoneyRoundWindExtraBold">HeartFoilo</p>
           <p className="m-2 font-medium text-gray-400">
             기부로 마음을 공유할 수 있는 모의투자
           </p>
@@ -48,7 +48,7 @@ const LoginPage = () => {
         <p id="token-result" className="mt-4 text-sm text-gray-700"></p>
       </div>
       <a href="/">
-        <p className="text-xs m-5 text-center text-gray-400">
+        <p className="text-xs m-5 text-center text-gray-400 underline">
           비회원으로 이용하기
         </p>
       </a>

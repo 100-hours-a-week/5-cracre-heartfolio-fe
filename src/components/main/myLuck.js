@@ -15,7 +15,7 @@ function MyLuck(props) {
           <div
             className={`${
               props.ok
-                ? "font-RixXladywatermelonR"
+                ? "font-RixXladywatermelonR text-gray-600"
                 : "font-semibold text-gray-600"
             }
               ${props.data.length>28 ? "text-sm" : "text-base"}`}
