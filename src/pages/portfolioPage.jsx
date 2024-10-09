@@ -52,7 +52,7 @@ function Portfolio() {
             <Loading />
           ) : (
             <>
-              <MoneyInfo data={data} />
+              <MoneyInfo data={data} id={id}/>
               <div
                 role="tablist"
                 className="tabs tabs-bordered mx-auto max-w-[370px] bg-backColor mt-[34px]"

@@ -42,6 +42,8 @@ function MyPage() {
     } else if (/[^가-힣a-zA-Z0-9]/.test(nickname)) {
       // 한글, 영어, 숫자를 제외한 특수문자, 공백, 띄어쓰기 등을 입력 시
       setHelperText("특수문자, 공백, 띄어쓰기 등의 입력이 불가능합니다.");
+    } else if (nickname == data?.nickname) {
+      setHelperText("기존의 닉네임과 동일합니다.");
     } else {
       setHelperText("");
       // 닉네임 수정하는 로직
