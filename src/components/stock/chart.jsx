@@ -39,23 +39,25 @@ function Chart(props) {
     const socket = new SockJS(`${process.env.REACT_APP_API_HOST}/heartfolio`);
     stompClient.current = StompJs.Stomp.over(socket);
 
-    stompClient.current.connect({}, function (frame) {
-      console.log("Connected: " + frame);
+    stompClient.current.connect(
+      {},
+      function (frame) {
+        console.log("Connected: " + frame);
 
-      // 특정 종목에 대한 구독
-      if (stompClient.current && props.data?.symbol) {
-        stompClient.current.subscribe(
-          `/from/stock/${props.data.symbol}`,
-          function (message) {
-            const data = JSON.parse(message.body);
+        // 특정 종목에 대한 구독
+        if (stompClient.current && props.data?.symbol) {
+          stompClient.current.subscribe(
+            `/from/stock/${props.data.symbol}`,
+            function (message) {
+              const data = JSON.parse(message.body);
 
-            if (data && data.curPrice) {
-              setCurPrice(data.curPrice);
+              if (data && data.curPrice) {
+                setCurPrice(data.curPrice);
+              }
             }
-          }
-        );
-      }
-    },
+          );
+        }
+      },
       function (error) {
         console.log("WebSocket connection error handled");
       }
@@ -69,21 +71,18 @@ function Chart(props) {
     };
   }, [props.data?.symbol, token]);
 
-  const { data } = useFetch(
-    isAuthenticated ? `${process.env.REACT_APP_API_URI}/portfolio` : null
-  );
+  const { data } = useFetch(`${process.env.REACT_APP_API_URI}/portfolio`);
 
   // 로그인이 되어 있지 않다면 빈 데이터를 설정
   useEffect(() => {
-    console.log("Fetched data: ", data);
+    // console.log("Fetched data: ", data);
     if (!token) {
       setMoneyData([]); // 토큰이 없을 경우 빈 데이터를 설정
     } else if (data) {
       setMoneyData(data); // 데이터를 받아왔을 경우 설정
     }
   }, [data, token]);
-  console.log("useEffect down data",data);
-  console.log("token",token);
+
   function closeBuyModal() {
     setIsBuyModalOpen(false);
   }
