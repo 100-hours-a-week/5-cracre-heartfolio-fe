@@ -3,14 +3,15 @@ module.exports = {
   content: ["./src/**/*.{html,jsx,js}"],
   theme: {
     fontFamily: {
-      "Ubuntu" : ["Ubuntu"],
-      "DoHyeon" : ["Do Hyeon"],
-      "TheJamsil5Bold" : ["TheJamsil5Bold"],
-      "TmoneyRoundWindExtraBold" : ["TmoneyRoundWindExtraBold"],
+      TheJamsil5Bold: ["TheJamsil5Bold"],
+      TmoneyRoundWindExtraBold: ["TmoneyRoundWindExtraBold"],
+      RixXladywatermelonR: ["RixXladywatermelonR"],
+      CookieRunRegular: ["CookieRun-Regular"],
+      HakgyoansimSantteutdotumL: ["HakgyoansimSantteutdotumL"],
     },
     extend: {
       boxShadow: {
-        'custom': 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px',
+        custom: "rgba(99, 99, 99, 0.2) 0px 2px 8px 0px",
       },
       colors: {
         btnClickColor: "#FFBBC0",
@@ -23,12 +24,28 @@ module.exports = {
         modalBtnColor: "#B3B3B3",
         blueColor: "#1573FE",
         redColor: "#DF1525",
-        backColor: "#FFF7F8"
+        backColor: "#FFF7F8",
       },
     },
   },
   container: {
     center: true,
   },
-  plugins: [require("@tailwindcss/typography"), require("@tailwindcss/forms"), require('daisyui'),],
+  plugins: [
+    require("@tailwindcss/typography"),
+    require("@tailwindcss/forms"),
+    require("daisyui"),
+    function ({ addUtilities }) {
+      addUtilities({
+        ".scrollbar-hide": {
+          /* Firefox */
+          "scrollbar-width": "none",
+          /* Safari and Chrome */
+          "&::-webkit-scrollbar": {
+            display: "none",
+          },
+        },
+      });
+    },
+  ],
 };

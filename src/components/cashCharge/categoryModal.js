@@ -24,7 +24,7 @@ function CategoryModal(props) {
                 alt="교육"
                 className="w-24 h-24"
               />
-              <div className="text-gray-600 mt-2">교육</div>
+              <div className="text-gray-600 mt-2 font-HakgyoansimSantteutdotumL">교육</div>
             </div>
             <div
               className="flex flex-col items-center cursor-pointer"
@@ -35,7 +35,7 @@ function CategoryModal(props) {
                 alt="사회참여"
                 className="w-24 h-24"
               />
-              <div className="text-gray-600 mt-2">사회참여</div>
+              <div className="text-gray-600 mt-2 font-HakgyoansimSantteutdotumL">사회참여</div>
             </div>
           </div>
           <div className="flex justify-around items-center my-5">
@@ -48,7 +48,7 @@ function CategoryModal(props) {
                 alt="문화"
                 className="w-24 h-24"
               />
-              <div className="text-gray-600 mt-2">문화</div>
+              <div className="text-gray-600 mt-2 font-HakgyoansimSantteutdotumL">문화</div>
             </div>
             <div
               className="flex flex-col items-center cursor-pointer"
@@ -59,7 +59,7 @@ function CategoryModal(props) {
                 alt="환경"
                 className="w-24 h-24"
               />
-              <div className="text-gray-600 mt-2">환경</div>
+              <div className="text-gray-600 mt-2 font-HakgyoansimSantteutdotumL">환경</div>
             </div>
           </div>
         </div>

@@ -9,6 +9,13 @@ function StockHeader(props) {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [src, setSrc] = useState("/assets/images/uninterest.png"); // 기본값을 초기화
   const [isProcessing, setIsProcessing] = useState(false); // 클릭 상태 관리
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    if (props.data) {
+      setLoading(false);  // 데이터가 로드되면 로딩 상태 해제
+    }
+  }, [props.data]);
 
   useEffect(() => {
     if (token) {
@@ -168,7 +175,7 @@ function StockHeader(props) {
         }
       }
     } catch (error) {
-      console.error("error", error);
+      // console.error("error", error);
     } finally {
       setIsProcessing(false);
     }
@@ -193,8 +200,9 @@ function StockHeader(props) {
               window.location.reload();
             }}
           >
-            {/* 이름이 30자를 넘는 경우 */}
-            {combinedNameLength > 30 ? (
+            {loading ? (
+              <div></div>
+            ) : combinedNameLength > 30 ? (
               <>
                 <div className="font-TheJamsil5Bold">
                   {props.data?.koreanName}

@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
+import { fetchWithToken } from '../utils/api';
 
-function useFetch(url, options) {
+function useFetch(url) {
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -8,17 +9,12 @@ function useFetch(url, options) {
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
-      const newOptions = { ...options };
-
       try {
-        const res = await fetch(url, newOptions);
-        if (!res.ok) {
-          setError(new Error(res.statusText));
-          setLoading(false);
-          return;
+        const res = await fetchWithToken(url);
+        // 응답이 null이 아닌 경우에만 데이터를 설정
+        if (res !== null) {
+          setData(res);
         }
-        const json = await res.json();
-        setData(json);
       } catch (err) {
         setError(err);
       }
@@ -26,7 +22,7 @@ function useFetch(url, options) {
     };
 
     fetchData();
-  }, [url, options]);
+  }, [url]);
 
   return { data, error, loading };
 }

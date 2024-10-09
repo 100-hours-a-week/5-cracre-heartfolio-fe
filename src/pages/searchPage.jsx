@@ -5,57 +5,80 @@ import { useNavigate } from "react-router-dom";
 import Lottie from "lottie-react";
 import ContructionAnimation from "../assets/animations/construction.json";
 import SearchBox from "../components/mock investment/searchBox";
-import Popularstock from "./popularstock";
-import PopularChart from "../components/main/popularChart";
 import useFetch from "../hooks/useFetch";
+import { Loading } from "../components/common/loading";
 
 function SearchPage() {
   const navigate = useNavigate();
-  const [data, setData] = useState(null);
   const [searchTerm, setSearchTerm] = useState(""); // 검색어 상태 추가
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
+  const [searchUrl, setSearchUrl] = useState(""); // 검색 API URL 관리
+  const { data, error, loading } = useFetch(searchUrl); // 검색 결과에 따라 fetch
+  const [popularstock, setPopularstock] = useState([]); // popularstock을 상태로 관리
 
   // 검색창에서 값이 변경될 때마다 searchTerm 상태 업데이트
   const handleInputChange = (event) => {
-    setSearchTerm(event.target.value);
+    const value = event.target.value;
+    // 정규식으로 기호를 제거 (영문, 숫자, 한글만 허용)
+    const filteredValue = value.replace(/[^a-zA-Z0-9ㄱ-ㅎㅏ-ㅣ가-힣 ]/g, "");
+    setSearchTerm(filteredValue);
   };
 
-  // 검색어가 변경될 때마다 검색 수행
-  useEffect(() => {
-    if (searchTerm) {
-      const fetchData = async () => {
-        setLoading(true); // 데이터 가져오기 시작 전에 로딩 상태 설정
-        try {
-          const response = await fetch(
-            `${process.env.REACT_APP_API_URI}/stock/search?keyword=${searchTerm}`
-          );
-
-          if (!response.ok) {
-            throw new Error(response.statusText); // 응답이 정상적이지 않으면 에러 발생
-          }
-
-          const result = await response.json();
-          setData(result); // 가져온 데이터를 상태에 설정
-        } catch (err) {
-          setError(err); // 에러 발생 시 상태에 설정
-        } finally {
-          setLoading(false); // 데이터 가져오기 완료 후 로딩 상태 해제
-        }
-      };
-      fetchData();
-    }
-  }, [searchTerm]); // searchTerm이 변경될 때마다 useEffect 실행
-
-  const { data: popularstock } = useFetch(
+  const { data: popularstockData, error: popularstockError } = useFetch(
     `${process.env.REACT_APP_API_URI}/stock/popular?limit=` + 5
   );
+
+  // 검색어가 변경될 때마다 searchUrl 업데이트
+  useEffect(() => {
+    if (searchTerm.trim().length > 0) {
+      setSearchUrl(
+        `${process.env.REACT_APP_API_URI}/stock/search?keyword=${searchTerm}`
+      );
+    } else {
+      setSearchUrl("");
+    }
+  }, [searchTerm]);
+
   function handleSearch() {
     setSearchTerm("");
   }
   function handleStock(get_id) {
     navigate(`/stock/${get_id}`);
   }
+
+  useEffect(() => {
+    if (popularstockData && !popularstockError) {
+      setPopularstock(popularstockData);
+    } else {
+      setPopularstock([
+        {
+          stockId: 4,
+          koreanName: "마이크로소프트",
+          englishName: "Microsoft Corporation",
+        },
+        {
+          stockId: 8,
+          koreanName: "엔비디아",
+          englishName: "NVIDIA Corporation",
+        },
+        {
+          stockId: 25,
+          koreanName: "코카콜라",
+          englishName: "The Coca-Cola Company",
+        },
+        {
+          stockId: 21,
+          koreanName: "어도비",
+          englishName: "Adobe Inc.",
+        },
+        {
+          stockId: 34,
+          koreanName: "맥도날드",
+          englishName: "McDonald’s Corporation",
+        },
+      ]);
+    }
+  }, [popularstockData, popularstockError]);
+
   return (
     <>
       <Header />
@@ -93,9 +116,11 @@ function SearchPage() {
               </div>
             )}
           </div>
-
           {/* 검색목록 */}
-          <div className="flex flex-col py-5 pb-14">
+          <div
+            className="flex flex-col mt-5 overflow-y-auto scrollbar-hide"
+            style={{ height: "calc(100dvh - 205px)" }}
+          >
             {searchTerm.length == 0 ? (
               <div className="flex flex-col">
                 <div className="text-gray-600 text-lg pb-3">추천 검색어</div>
@@ -106,8 +131,8 @@ function SearchPage() {
                 ))}
               </div>
             ) : loading ? (
-              <p>Loading...</p>
-            ) : data && data.length > 0 ? (
+              <Loading />
+            ) : Array.isArray(data) && data.length > 0 ? (
               data.map((item) => (
                 <div key={item.stockId} className="w-[250px] pb-3">
                   {/* 데이터를 출력하는 부분 */}
@@ -118,6 +143,10 @@ function SearchPage() {
                   />
                 </div>
               ))
+            ) : error ? (
+              <p className="min-h-screen bg-white text-center">
+                Error: {error.message}
+              </p>
             ) : (
               <p className="pt-4">입력하신 검색어를 찾을 수 없습니다.</p>
             )}

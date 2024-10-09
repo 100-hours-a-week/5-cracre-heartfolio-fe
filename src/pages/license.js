@@ -43,6 +43,15 @@ const Legal = () => {
           >
             Environment icons created by tulpahn - Flaticon
           </a>
+          <a href="https://www.flaticon.com/kr/free-icons/" title="왕관 아이콘">
+            왕관 아이콘 제작자: Good Ware - Flaticon
+          </a>
+          <a
+            href="https://www.flaticon.com/kr/free-animated-icons/"
+            title="왕관 애니메이션 아이콘"
+          >
+            왕관 애니메이션 아이콘 제작자: Freepik - Flaticon
+          </a>
         </div>
       </section>
       <ButtomNavigation />
