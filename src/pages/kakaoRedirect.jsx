@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { Loading } from "../components/common/loading";
 
 const KakaoRedirect = () => {
   const navigate = useNavigate();
@@ -19,14 +20,15 @@ const KakaoRedirect = () => {
         .then((data) => {
           if (data && data.token && data.token.access_token) {
             localStorage.setItem("access_token", data.token.access_token);
-            localStorage.setItem('refresh_token', data.token.refresh_token);
+            localStorage.setItem("refresh_token", data.token.refresh_token);
             navigate("/"); // 로그인 후 메인 페이지로 리다이렉트
+            window.location.reload();
           } else {
-            console.error("토큰이 없습니다.", data);
+            // console.error("토큰이 없습니다.", data);
           }
         })
         .catch((error) => {
-          console.error("로그인 실패", error);
+          // console.error("로그인 실패", error);
         });
     } else {
       console.log("URL에서 코드를 찾을 수 없습니다.");
@@ -35,7 +37,7 @@ const KakaoRedirect = () => {
 
   return (
     <div className="pt-3 text-center min-h-screen bg-white">
-      <p>로그인 중...</p>
+      <Loading />
     </div>
   );
 };
