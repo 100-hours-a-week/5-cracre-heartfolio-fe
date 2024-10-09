@@ -1,8 +1,11 @@
+import { useNavigate } from "react-router-dom";
 import useFetch from "../../hooks/useFetch";
 import { Loading } from "../common/loading";
 import { MoneyRankBox, MoneyRankTop3Box } from "./moneyRankBox";
 
-function MoneyRanking() {
+function MoneyRanking() {  
+  const navigate = useNavigate();
+
   const { data, loading } = useFetch(
     `${process.env.REACT_APP_API_URI}/rank/donation`
   );
@@ -16,6 +19,9 @@ function MoneyRanking() {
   // 현재 달을 가져옴
   const formattedDate = `${new Date().getMonth() + 1}월의 기부천사`;
 
+  function handlePortfolio(get_id) {
+    navigate(`/portfolio/${get_id}`);
+  }
   return (
     <div className="w-[350px]">
       <div className="flex justify-between w-full max-w-[360px]">
@@ -41,8 +47,8 @@ function MoneyRanking() {
           className="mx-auto max-w-[350px] h-[588px] overflow-y-auto scrollbar-hide"
           style={{ height: "calc(100dvh - 252px)" }}
         >
-          <MoneyRankTop3Box topThree={topThree} />
-          <MoneyRankBox userRanking={userRanking} />
+          <MoneyRankTop3Box topThree={topThree} onClick={handlePortfolio}/>
+          <MoneyRankBox userRanking={userRanking} onClick={handlePortfolio}/>
         </div>
       )}
     </div>
