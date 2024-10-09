@@ -57,7 +57,7 @@ export const fetchWithToken = async (url, options = {}) => {
     try {
       return await response.json(); // JSON 파싱 시도
     } catch (error) {
-      console.error("Error parsing JSON response:", error);
+      // console.error("Error parsing JSON response:", error);
       return null; // JSON 파싱 오류 처리
     }
   } else {

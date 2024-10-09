@@ -27,7 +27,7 @@ export default function Eachintereststock(props) {
       }
       window.location.reload(); // 페이지 새로고침
     } catch (error) {
-      console.error("error:", error);
+      // console.error("error:", error);
     }
   };
 

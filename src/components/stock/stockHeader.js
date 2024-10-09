@@ -175,7 +175,7 @@ function StockHeader(props) {
         }
       }
     } catch (error) {
-      console.error("error", error);
+      // console.error("error", error);
     } finally {
       setIsProcessing(false);
     }
