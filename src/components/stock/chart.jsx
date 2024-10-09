@@ -42,7 +42,7 @@ function Chart(props) {
     stompClient.current.connect(
       {},
       function (frame) {
-        console.log("Connected: " + frame);
+        // console.log("Connected: " + frame);
 
         // 특정 종목에 대한 구독
         if (stompClient.current && props.data?.symbol) {

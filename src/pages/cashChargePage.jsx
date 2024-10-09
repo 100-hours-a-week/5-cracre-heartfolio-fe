@@ -52,7 +52,7 @@ function CashChargePage() {
     if (response && response.orderUid) {
       setOrderUid(response.orderUid);
     } else {
-      console.error("orderUid가 응답에 포함되지 않았습니다.");
+      // console.error("orderUid가 응답에 포함되지 않았습니다.");
     }
   };
 
@@ -103,7 +103,7 @@ function CashChargePage() {
               window.location.href = "/success-payment";
             })
             .catch((error) => {
-              console.error("Error:", error);
+              // console.error("Error:", error);
               alert("결제 정보 전달 실패");
             });
         } else {

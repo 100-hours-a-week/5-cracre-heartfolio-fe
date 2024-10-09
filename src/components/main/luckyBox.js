@@ -37,7 +37,7 @@ function LuckyBox() {
         }
       } catch (error) {
         // 네트워크 오류 또는 API 호출 실패 처리
-        console.error("API 호출 실패:", error);
+        // console.error("API 호출 실패:", error);
         setShowLuck(true);
         setLuckData("운세를 가져올 수 없습니다. 다시 시도해주세요"); // 오류 처리
         setOk(false);

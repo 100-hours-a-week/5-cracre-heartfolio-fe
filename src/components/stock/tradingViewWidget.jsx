@@ -6,7 +6,7 @@ function TradingViewWidget(props) {
 
   useEffect(() => {
     if (!props.symbol || props.symbol.trim() === "") {
-      console.warn("Invalid symbol:", props.symbol);
+      // console.warn("Invalid symbol:", props.symbol);
       return;
     }
 

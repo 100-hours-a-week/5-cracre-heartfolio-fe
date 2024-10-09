@@ -24,7 +24,7 @@ const KakaoRedirect = () => {
             navigate("/"); // 로그인 후 메인 페이지로 리다이렉트
             window.location.reload();
           } else {
-            console.error("토큰이 없습니다.", data);
+            // console.error("토큰이 없습니다.", data);
           }
         })
         .catch((error) => {
