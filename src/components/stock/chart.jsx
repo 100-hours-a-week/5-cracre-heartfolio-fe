@@ -75,13 +75,15 @@ function Chart(props) {
 
   // 로그인이 되어 있지 않다면 빈 데이터를 설정
   useEffect(() => {
+    console.log("Fetched data: ", data);
     if (!token) {
       setMoneyData([]); // 토큰이 없을 경우 빈 데이터를 설정
     } else if (data) {
       setMoneyData(data); // 데이터를 받아왔을 경우 설정
     }
   }, [data, token]);
-
+  console.log("data",data);
+  console.log("token",token);
   function closeBuyModal() {
     setIsBuyModalOpen(false);
   }
