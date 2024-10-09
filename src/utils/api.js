@@ -1,5 +1,9 @@
 export const fetchWithToken = async (url, options = {}) => {
   let token = localStorage.getItem("access_token");
+  // url에 '/portfolio'가 포함되고 토큰이 없을 때 함수를 바로 종료
+  if (url.includes("/portfolio") && !token) {
+    return null; // 토큰이 없으므로 요청을 실행하지 않고 null을 반환
+  }
   let response = await fetch(url, {
     ...options, // options 객체의 모든 속성 포함
     headers: {
