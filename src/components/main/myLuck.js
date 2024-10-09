@@ -18,7 +18,7 @@ function MyLuck(props) {
                 ? "font-RixXladywatermelonR text-gray-600"
                 : "font-semibold text-gray-600"
             }
-              ${props.data.length>28 ? "text-sm" : "text-base"}`}
+              ${props.data.length>27 ? "text-sm" : "text-base"}`}
           >
             {props.data}
           </div>
