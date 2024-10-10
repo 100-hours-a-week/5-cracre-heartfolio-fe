@@ -30,7 +30,7 @@ function StockHistory(props) {
       <div className="mx-auto max-w-[370px] py-2 flex flex-col justify-center">
         {isAuthenticated ? (
           loading ? (
-            <Loading/>
+            <Loading />
           ) : data?.length === 0 ? (
             <div className="flex flex-col items-center">
               <div className="w-80 h-80">
@@ -45,12 +45,17 @@ function StockHistory(props) {
               </div>
               <ul
                 role="list"
-                className="space-y-3 pb-5 h-[550px] overflow-y-auto scrollbar-hide" style={{ height: "calc(100dvh - 270px)" }}
+                className="space-y-3 pb-5 h-[550px] overflow-y-auto scrollbar-hide"
+                style={{ height: "calc(100dvh - 270px)" }}
               >
                 {data?.map((item) => (
                   <li
                     key={item.id}
-                    className="overflow-hidden rounded-md bg-white p-4 shadow w-[350px] mx-auto"
+                    className={`overflow-hidden rounded-md bg-white p-4 shadow w-[350px] mx-auto ${
+                      item.orderCategory === "buy"
+                        ? "bg-red-50"
+                        : "bg-blue-50"
+                    }`}
                   >
                     <StockHistoryBox
                       orderCategory={item.orderCategory}

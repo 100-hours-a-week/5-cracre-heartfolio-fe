@@ -9,7 +9,7 @@ function StockHistoryBox(props) {
       <div className="w-[350px] mx-auto justify-between">
         <div className="flex w-fit">
           <div className="text-gray-600">
-            {props.orderCategory === "buy" ? "매수 일시 :" : "매도 일시 :"}
+            {props.orderCategory === "buy" ? "매수" : "매도"} 일시 :
           </div>
           <div className="ml-1 text-gray-600">
             {formatDate(props.orderDate)}

@@ -46,11 +46,11 @@ function UserRanking() {
           <div className="text-[9px] w-[50px] pb-2">{formattedDate}</div>
         </div>
         <div className="flex items-center">
-          <div className="text-sm text-gray-600">내 순위 :</div>
+          <div className="text-[12px] text-gray-600 font-HakgyoansimSantteutdotumL">내 순위 :</div>
           {accumulationLoading || monthlyLoading ? (
-            <div className="text-sm text-gray-600">순위 없음</div>
+            <div className="text-[12px] text-gray-600 font-HakgyoansimSantteutdotumL">순위 없음</div>
           ) : (
-            <div className="text-sm text-gray-600">
+            <div className="text-[12px] text-gray-600 font-HakgyoansimSantteutdotumL">
               {activeTab === 1
                 ? accumulationData?.personalRank === -1
                   ? "순위 없음"
