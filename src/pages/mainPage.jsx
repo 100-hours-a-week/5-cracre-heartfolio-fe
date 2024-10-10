@@ -77,7 +77,7 @@ function MainPage() {
                 </div>
                 <div className="relative w-[175px] h-[200px]">
                   <div className="text-left font-bold pt-2 mb-2 text-gray-600">나스닥</div>
-                  <TradingViewMini symbol={"NASDAQ.USD.100"} />
+                  <TradingViewMini symbol={"NASDAQ:IXIC"} />
                 </div>
               </div>
               <TitleBox
