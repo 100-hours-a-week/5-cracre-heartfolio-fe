@@ -29,11 +29,11 @@ function MoneyRanking() {
           {formattedDate}
         </div>
         <div className="flex items-center">
-          <div className="text-gray-600 text-sm">내 순위 :</div>
+          <div className="text-gray-600 text-sm font-RixXladywatermelonR">내 순위 :&nbsp;</div>
           {loading ? (
-            <div className="text-gray-600 text-sm">순위 없음</div>
+            <div className="text-gray-600 text-sm font-RixXladywatermelonR">순위 없음</div>
           ) : (
-            <div className="text-gray-600 text-sm">
+            <div className="text-gray-600 text-sm font-RixXladywatermelonR">
               {data?.personalRank > 0 ? data?.personalRank + "위" : "순위 없음"}
             </div>
           )}

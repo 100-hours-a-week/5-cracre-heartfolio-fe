@@ -125,7 +125,7 @@ function SearchPage() {
               <div className="flex flex-col">
                 <div className="text-gray-600 text-lg pb-3">추천 검색어</div>
                 {popularstock?.map((stock) => (
-                  <div className="p-2 text-gray-500" key={stock.stockId}>
+                  <div className="p-2 text-gray-500 cursor-pointer" key={stock.stockId} onClick={() => handleStock(stock.stockId)}>
                     {stock.koreanName} ({stock.englishName})
                   </div>
                 ))}
