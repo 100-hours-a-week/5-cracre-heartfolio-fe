@@ -46,7 +46,7 @@ function UserRanking() {
           <div className="text-[9px] w-[50px] pb-2">{formattedDate}</div>
         </div>
         <div className="flex items-center">
-          <div className="text-[12px] text-gray-600 font-HakgyoansimSantteutdotumL">내 순위 :</div>
+          <div className="text-[12px] text-gray-600 font-HakgyoansimSantteutdotumL">내 순위 :&nbsp;</div>
           {accumulationLoading || monthlyLoading ? (
             <div className="text-[12px] text-gray-600 font-HakgyoansimSantteutdotumL">순위 없음</div>
           ) : (
